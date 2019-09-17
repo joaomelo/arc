@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --config build/webpack.config.dev.js",
     "clean": "rimraf dist/*",
     "build": "npm run clean && webpack --config build/webpack.config.dev.js",
-    "commit": "git add -A && git commit"
+    "commit": "git add -A && git commit",
+    "push": "npm run commit && git push && git push --tags"
   },
   "author": "j@vmelo.net",
   "license": "ISC",
