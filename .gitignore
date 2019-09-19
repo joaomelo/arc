@@ -6,6 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 
+# Enviroment files
+.env
+
 # Dist folder
 dist/
 
