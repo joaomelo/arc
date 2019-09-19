@@ -1,6 +1,7 @@
 'use strict';
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 
 const path = require('path');
@@ -23,6 +24,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(js|vue)$/,
+        use: 'eslint-loader',
+        enforce: 'pre'
+      },
+      {
         test: /\.vue$/,
         use: 'vue-loader'
       },
@@ -37,6 +43,13 @@ module.exports = {
     ]
   },
   plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: src + '/static',
+        to: dist + '/static',
+        toType: 'dir'
+      }
+    ]),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({ template: src + '/index.html' }),
     new VueLoaderPlugin()
