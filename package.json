@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --config build/webpack.config.dev.js",
     "lint": "eslint --ext .js,.vue src",
     "build": "npm run lint && rimraf dist/* && webpack --config build/webpack.config.dev.js",
-    "deploy": "npm run build && firebase delpoy",
+    "deploy": "npm run build && firebase deploy",
     "commit": "npm run lint && git add -A && git commit",
     "push": "git push && git push --tags",
     "patch": "npm run commit && npm version patch && npm run push",
