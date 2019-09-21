@@ -4,13 +4,14 @@
   "description": "sensible framework for team work",
   "main": "index.html",
   "scripts": {
+    "start": "webpack-dev-server --config build/webpack.config.dev.js",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --ext .js,.vue src --fix",
-    "start": "webpack-dev-server --config build/webpack.config.dev.js",
     "clean": "rimraf dist/*",
     "build": "npm run clean && webpack --config build/webpack.config.dev.js",
     "commit": "npm run lint && git add -A && git commit",
-    "push": "npm run commit && git push && git push --tags"
+    "push": "git push && git push --tags",
+    "patch": "npm run commit && npm version patch && npm run push"
   },
   "author": "j@vmelo.net",
   "license": "ISC",
