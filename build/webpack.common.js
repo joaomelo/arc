@@ -10,7 +10,6 @@ const dist = path.resolve(__dirname, '../dist');
 const src = path.resolve(__dirname, '../src');
 
 module.exports = {
-  mode: 'development',
   entry: ['./src/app.js'],
   output: {
     path: dist,
@@ -19,12 +18,6 @@ module.exports = {
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '../')
-    }
-  },
-  devServer: {
-    hot: true,
-    watchOptions: {
-      poll: true
     }
   },
   module: {
