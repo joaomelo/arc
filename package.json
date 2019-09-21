@@ -6,12 +6,14 @@
   "scripts": {
     "start": "webpack-dev-server --config build/webpack.config.dev.js",
     "lint": "eslint --ext .js,.vue src",
-    "lint:fix": "eslint --ext .js,.vue src --fix",
-    "clean": "rimraf dist/*",
-    "build": "npm run clean && webpack --config build/webpack.config.dev.js",
+    "build": "npm run lint && rimraf dist/* && webpack --config build/webpack.config.dev.js",
+    "deploy": "npm run build && firebase delpoy",
     "commit": "npm run lint && git add -A && git commit",
     "push": "git push && git push --tags",
-    "patch": "npm run commit && npm version patch && npm run push"
+    "patch": "npm run commit && npm version patch && npm run push",
+    "minor": "npm run commit && npm version minor && npm run push",
+    "deploy:patch": "npm run patch && npm run deploy",
+    "deploy:minor": "npm run minor && npm run deploy"
   },
   "author": "j@vmelo.net",
   "license": "ISC",
