@@ -5,6 +5,9 @@ module.exports = {
   rules: {
     semi: ['error', 'always']
   },
-  extends: ['plugin:vue/recommended', 'standard'],
+  extends: [
+    'standard',
+    'plugin:vue/recommended'
+  ],
   plugins: ['vue']
 };
