@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
     <span class="navbar-brand mb-0 h1">Arc</span>
 
     <button

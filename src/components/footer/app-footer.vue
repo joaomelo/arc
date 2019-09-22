@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-secondary mt-auto">
+  <footer class="bg-primary mt-auto">
     <small class="text-light"><AppVersion /></small>
   </footer>
 </template>
