@@ -6,7 +6,6 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     hot: true,
-    open: true,
     historyApiFallback: true,
     watchOptions: {
       poll: true

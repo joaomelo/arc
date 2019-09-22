@@ -10,7 +10,8 @@ const dist = path.resolve(__dirname, '../dist');
 const src = path.resolve(__dirname, '../src');
 
 module.exports = {
-  entry: ['./src/app.js'],
+  // babel-polyfill as the first entry enables the use of async syntax
+  entry: ['babel-polyfill', './src/app.js'],
   output: {
     path: dist,
     filename: 'bundle.js'
