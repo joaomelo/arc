@@ -1,8 +1,12 @@
 import Vue from 'vue';
+
+import './styles';
+
 import App from './app.vue';
+import router from './router';
 
-import 'bootstrap';
-import './styles/index.scss';
-
-const vueApp = new Vue({ render: h => h(App) });
+const vueApp = new Vue({
+  router,
+  render: h => h(App)
+});
 vueApp.$mount('#app');

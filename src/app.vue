@@ -3,7 +3,7 @@
     id="app-canvas"
     class="d-flex flex-column"
   >
-    <h1>Future Router View</h1>
+    <router-view />
     <AppFooter />
   </div>
 </template>
