@@ -11,7 +11,6 @@ const authPlugin = {
     Vue.prototype.$auth = {
       async logout () {
         await auth.signOut();
-        router.push({ name: 'login' });
       }
     };
 

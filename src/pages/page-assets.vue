@@ -1,9 +1,13 @@
 <template>
-  <div><h1>assets page</h1></div>
+  <Desktop>assets page</Desktop>
 </template>
 
 <script>
+import Desktop from 'components/desktop/desktop.vue';
 export default {
-  name: 'PageAssets'
+  name: 'PageAssets',
+  components: {
+    Desktop
+  }
 };
 </script>

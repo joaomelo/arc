@@ -18,7 +18,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../')
+      '@': path.resolve(__dirname, '../'),
+      components: path.resolve(__dirname, '../src/components')
     }
   },
   module: {
@@ -33,7 +34,7 @@ module.exports = {
         use: 'vue-loader'
       },
       {
-        test: /\.scss$/,
+        test: [/\.scss$/, /\.css$/],
         use: ['vue-style-loader', 'style-loader', 'css-loader', 'sass-loader']
       },
       {
