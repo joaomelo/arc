@@ -1,8 +1,8 @@
 import 'firebase/auth';
 
 import { fireApp } from './fire-app.js';
-import router from '@/src/router.js';
-import store from '@/src/store';
+import router from '@/router.js';
+import store from '@/store';
 
 const auth = fireApp.auth();
 

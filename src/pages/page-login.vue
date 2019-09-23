@@ -6,8 +6,8 @@
 import * as firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
 
-import { fireApp } from '@/src/firebase';
-import router from '@/src/router.js';
+import { fireApp } from '@/firebase';
+import router from '@/router.js';
 
 const uiConfig = {
   signInSuccessUrl: '/',

@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import * as data from '@/package.json';
+import * as data from '@/../package.json';
 
 export default {
   name: 'AppVersion',

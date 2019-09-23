@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Desktop from 'components/desktop/desktop.vue';
+import Desktop from '@/components/desktop/desktop.vue';
 export default {
   name: 'PageAssets',
   components: {
