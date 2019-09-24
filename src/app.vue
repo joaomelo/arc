@@ -1,25 +1,11 @@
 <template>
-  <div
-    id="app-canvas"
-    class="d-flex flex-column"
-  >
+  <div id="app-canvas">
     <router-view />
-    <AppFooter />
   </div>
 </template>
-<script>
-import AppFooter from './components/footer/app-footer.vue';
 
+<script>
 export default {
-  name: 'App',
-  components: {
-    AppFooter
-  }
+  name: 'App'
 };
 </script>
-
-<style lang="scss">
-#app-canvas {
-    min-height: 100vh;
-}
-</style>

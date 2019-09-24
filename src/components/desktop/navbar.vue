@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-    <span class="navbar-brand mb-0 h1">Arc</span>
+    <span class="navbar-brand mb-0 h1">Arc <small><sup><AppVersion /></sup></small></span>
+    <!-- <span class="navbar-brand mb-0 h1">Arc <AppVersion class="badge badge-light" /></span> -->
 
     <button
       class="navbar-toggler"
@@ -47,10 +48,13 @@
 
 <script>
 import Logout from './logout.vue';
+import AppVersion from '@/components/app-version.vue';
+
 export default {
   name: 'Navbar',
   components: {
-    Logout
+    Logout,
+    AppVersion
   }
 };
 </script>

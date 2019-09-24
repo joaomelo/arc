@@ -1,8 +1,9 @@
 <template>
-  <div id="version">
+  <span id="version">
     {{ tag }}
-  </div>
+  </span>
 </template>
+
 <script>
 import * as data from '@/../package.json';
 
@@ -10,13 +11,13 @@ export default {
   name: 'AppVersion',
   data () {
     return {
-      tag: calcVersionTag(data.default.version)
+      tag: formatVersionTag(data.default.version)
     };
   }
 };
 
-function calcVersionTag (version) {
-  const prefix = 'arc v';
+function formatVersionTag (version) {
+  const prefix = 'v';
   const posfix = process.env.NODE_ENV === 'development'
     ? '-dev'
     : '';
