@@ -1,16 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import createPersistedState from 'vuex-persistedstate';
 
-import authStore from './store-auth.js';
+import { assetStore } from './asset-store.js';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    authStore
-  },
-  plugins: [createPersistedState()]
+    assetStore
+  }
 });
 
-export default store;
+export { store };

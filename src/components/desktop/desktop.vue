@@ -1,20 +1,22 @@
 <template>
   <div>
     <Navbar />
-    <slot />
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <slot />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Navbar from './navbar.vue';
 export default {
-  name: 'Dektop',
+  name: 'Desktop',
   components: {
     Navbar
   }
 };
 </script>
-
-<style>
-
-</style>

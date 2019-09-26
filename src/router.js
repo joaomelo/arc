@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import store from './store';
 import PageAssets from './pages/page-assets.vue';
 import PageChallenges from './pages/page-challenges.vue';
 import PageResults from './pages/page-results.vue';
@@ -61,7 +60,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   const authRequired = to.matched.some(record => record.meta.authRequired);
-  const loggedIn = store.getters.isLoggedIn;
+  const loggedIn = router.app.$auth.isLoggedIn();
   if (authRequired && !loggedIn) {
     next('/login');
   } else {

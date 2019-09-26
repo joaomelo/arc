@@ -7,6 +7,15 @@ $theme-colors: (
   "danger": rgba(228, 87, 46, 1)
 );
 
+// .card-columns {
+//   @include media-breakpoint-up(md) {
+//     column-count: 3;
+//   }
+//   @include media-breakpoint-down(sm) {
+//     column-count: 1;
+//   }
+// }
+
 $body-bg: map-get($theme-colors, "light"); 
 
 @import '~bootstrap/scss/bootstrap';

@@ -1,7 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-    <span class="navbar-brand mb-0 h1">Arc <small><sup><AppVersion /></sup></small></span>
-    <!-- <span class="navbar-brand mb-0 h1">Arc <AppVersion class="badge badge-light" /></span> -->
+    <span class="navbar-brand mb-0 h1">Arc</span>
 
     <button
       class="navbar-toggler"
@@ -39,6 +38,7 @@
           Challenges
         </router-link>
       </div>
+      <span class="navbar-text"><AppVersion /></span>
       <div class="navbar-nav">
         <Logout class="nav-item nav-link" />
       </div>

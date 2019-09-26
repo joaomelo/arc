@@ -2,7 +2,6 @@ import 'firebase/auth';
 
 import { fireApp } from './fire-app.js';
 import router from '@/router.js';
-import store from '@/store';
 
 const auth = fireApp.auth();
 
@@ -11,11 +10,19 @@ const authPlugin = {
     Vue.prototype.$auth = {
       async logout () {
         await auth.signOut();
+      },
+      isLoggedIn () {
+        return auth.currentUser != null;
+      },
+      getUser () {
+        return auth.currentUser;
+      },
+      getUserId () {
+        return auth.currentUser.uid;
       }
     };
 
     auth.onAuthStateChanged(user => {
-      store.commit('setUser', { user });
       if (!user && router.currentRoute.name !== 'login') {
         router.push({ name: 'login' });
       }
