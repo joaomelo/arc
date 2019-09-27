@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import * as data from '@/../package.json';
+import { getVersion } from '@/common/version.js';
 
 export default {
   name: 'AppVersion',
   data () {
     return {
-      tag: formatVersionTag(data.default.version)
+      tag: formatVersionTag(getVersion())
     };
   }
 };

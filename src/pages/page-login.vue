@@ -7,13 +7,12 @@ import * as firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
 
 import { fireApp } from '@/firebase';
-import router from '@/router.js';
+// import router from '@/router.js';
 
 const uiConfig = {
-  signInSuccessUrl: '/',
   callbacks: {
     signInSuccessWithAuthResult (authResult) {
-      router.push('/');
+      // auth plugin deals with routing so we block redirects here
       return false;
     }
   },

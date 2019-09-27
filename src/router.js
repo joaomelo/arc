@@ -6,6 +6,7 @@ import PageChallenges from './pages/page-challenges.vue';
 import PageResults from './pages/page-results.vue';
 import PageLogin from './pages/page-login.vue';
 import Page404 from './pages/page-404.vue';
+import PageLoading from './pages/page-loading.vue';
 
 Vue.use(Router);
 
@@ -17,10 +18,12 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      redirect: { name: 'assets' },
-      meta: {
-        authRequired: true
-      }
+      redirect: { name: 'assets' }
+    },
+    {
+      path: '/loading',
+      name: 'loading',
+      component: PageLoading
     },
     {
       path: '/assets',
@@ -33,18 +36,12 @@ const router = new Router({
     {
       path: '/challenges',
       name: 'challenges',
-      component: PageChallenges,
-      meta: {
-        authRequired: true
-      }
+      component: PageChallenges
     },
     {
       path: '/results',
       name: 'results',
-      component: PageResults,
-      meta: {
-        authRequired: true
-      }
+      component: PageResults
     },
     {
       path: '/login',
@@ -59,13 +56,11 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  const authRequired = to.matched.some(record => record.meta.authRequired);
-  const loggedIn = router.app.$auth.isLoggedIn();
-  if (authRequired && !loggedIn) {
-    next('/login');
+  if (!router.app.$auth.isUserSolved && to.name !== 'loading') {
+    next('/loading');
   } else {
     next();
-  }
+  };
 });
 
 export default router;

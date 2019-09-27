@@ -8,6 +8,7 @@ const auth = fireApp.auth();
 const authPlugin = {
   install (Vue) {
     Vue.prototype.$auth = {
+      isUserSolved: false,
       async logout () {
         await auth.signOut();
       },
@@ -23,8 +24,11 @@ const authPlugin = {
     };
 
     auth.onAuthStateChanged(user => {
+      Vue.prototype.$auth.isUserSolved = true;
       if (!user && router.currentRoute.name !== 'login') {
         router.push({ name: 'login' });
+      } else if (user && router.currentRoute.name !== 'home') {
+        router.push({ name: 'home' });
       }
     });
   }
