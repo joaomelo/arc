@@ -22,11 +22,15 @@ export default {
   },
   data () {
     return {
-      assets: this.$store.getters.getAssets,
       unsubscribe: undefined
     };
   },
-  mounted () {
+  computed: {
+    assets () {
+      return this.$store.getters.getAssets;
+    }
+  },
+  created () {
     this.unsubscribe = this.$store.dispatch('setAssets');
   },
   beforeDestroy () {
