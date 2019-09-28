@@ -1,13 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { assetStore } from './asset-store.js';
+import { assetsStore } from './assets-store.js';
+import { resultsStore } from './results-store.js';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    assetStore
+    assetsStore,
+    resultsStore
   }
 });
 

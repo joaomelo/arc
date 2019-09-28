@@ -25,7 +25,7 @@ const actions = {
     return bindQuery(
       'assets', {
         orderBy: {
-          field: 'title',
+          field: 'alias',
           direction: 'asc'
         }
       },
@@ -33,11 +33,11 @@ const actions = {
   }
 };
 
-const assetStore = {
+const assetsStore = {
   state,
   getters,
   mutations,
   actions
 };
 
-export { assetStore };
+export { assetsStore };

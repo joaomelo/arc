@@ -1,13 +1,13 @@
 <template>
   <ItemCard>
     <ItemDetail :is-title="true">
-      ({{ item.alias }}) {{ item.title }}
+      {{ item.title }}
     </ItemDetail>
-    <ItemDetail v-if="item.alignment">
-      aligment: {{ item.alignment }}
+    <ItemDetail v-if="item.status">
+      status: {{ item.status }}
     </ItemDetail>
-    <ItemDetail v-if="item.description">
-      {{ item.description }}
+    <ItemDetail v-if="item.done">
+      done when: {{ item.done }}
     </ItemDetail>
   </ItemCard>
 </template>
@@ -17,7 +17,7 @@ import ItemCard from '@/components/items/item-card.vue';
 import ItemDetail from '@/components/items/item-detail.vue';
 
 export default {
-  name: 'AssetCard',
+  name: 'ResultCard',
   components: {
     ItemCard,
     ItemDetail

@@ -1,32 +1,32 @@
 <template>
   <ItemsList
     :component-type="componentType"
-    :items="assets"
+    :items="results"
   />
 </template>
 
 <script>
 import ItemsList from '@/components/items/items-list.vue';
-import AssetCard from './asset-card.vue';
+import ResultCard from './result-card.vue';
 
 export default {
-  name: 'AssetsList',
+  name: 'ResultsList',
   components: {
     ItemsList
   },
   data () {
     return {
       unsubscribe: undefined,
-      componentType: AssetCard
+      componentType: ResultCard
     };
   },
   computed: {
-    assets () {
-      return this.$store.getters.getAssets;
+    results () {
+      return this.$store.getters.getResults;
     }
   },
   created () {
-    this.unsubscribe = this.$store.dispatch('setAssets');
+    this.unsubscribe = this.$store.dispatch('setResults');
   },
   beforeDestroy () {
     this.unsubscribe.then();
