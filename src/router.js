@@ -1,12 +1,18 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import PageAssets from './pages/page-assets.vue';
-import PageChallenges from './pages/page-challenges.vue';
-import PageResults from './pages/page-results.vue';
 import PageLogin from './pages/page-login.vue';
 import Page404 from './pages/page-404.vue';
 import PageLoading from './pages/page-loading.vue';
+
+import Desktop from './components/desktop/desktop.vue';
+
+import AssetsList from './components/asset/assets-list.vue';
+import AssetEdit from './components/asset/asset-edit.vue';
+import ChallengesList from './components/challenge/challenges-list.vue';
+import ChallengeEdit from './components/challenge/challenge-edit.vue';
+import ResultsList from './components/result/results-list.vue';
+import ResultEdit from './components/result/result-edit.vue';
 
 Vue.use(Router);
 
@@ -18,7 +24,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      redirect: { name: 'assets' }
+      redirect: { name: 'assetsList' }
     },
     {
       path: '/loading',
@@ -26,27 +32,48 @@ const router = new Router({
       component: PageLoading
     },
     {
-      path: '/assets',
-      name: 'assets',
-      component: PageAssets,
-      meta: {
-        authRequired: true
-      }
-    },
-    {
-      path: '/challenges',
-      name: 'challenges',
-      component: PageChallenges
-    },
-    {
-      path: '/results',
-      name: 'results',
-      component: PageResults
-    },
-    {
       path: '/login',
       name: 'login',
       component: PageLogin
+    },
+    {
+      path: '/desktop',
+      component: Desktop,
+      children: [
+        {
+          path: 'assets',
+          name: 'assetsList',
+          component: AssetsList
+        },
+        {
+          path: 'asset/:id',
+          name: 'assetEdit',
+          component: AssetEdit,
+          props: true
+        },
+        {
+          path: 'challenges',
+          name: 'challengesList',
+          component: ChallengesList
+        },
+        {
+          path: 'challenge/:id',
+          name: 'challengeEdit',
+          component: ChallengeEdit,
+          props: true
+        },
+        {
+          path: 'results',
+          name: 'resultsList',
+          component: ResultsList
+        },
+        {
+          path: 'result/:id',
+          name: 'resultEdit',
+          component: ResultEdit,
+          props: true
+        }
+      ]
     },
     {
       path: '*',

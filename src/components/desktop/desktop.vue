@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="mb-3">
     <Navbar />
     <div class="container">
       <div class="row">
         <div class="col">
-          <slot />
+          <router-view />
         </div>
       </div>
     </div>

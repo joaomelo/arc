@@ -5,10 +5,12 @@
 </template>
 
 <script>
+import { p } from '@/components/helpers/props.js';
+
 export default {
-  name: 'ItemDetail',
+  name: 'ItemCardDetail',
   props: {
-    isTitle: Boolean
+    isTitle: p(Boolean, false)
   },
   computed: {
     classes () {

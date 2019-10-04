@@ -8,7 +8,7 @@
 import { getVersion } from '@/common/version.js';
 
 export default {
-  name: 'AppVersion',
+  name: 'Version',
   data () {
     return {
       tag: formatVersionTag(getVersion())
