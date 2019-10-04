@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import ItemsList from '@/components/item/items-list.vue';
+import itemsListMixin from '@/components/item/items-list-mixin';
 import AssetView from './asset-view.vue';
 
 export default {
   name: 'AssetsList',
-  components: { ItemsList },
+  mixins: [itemsListMixin],
   data () {
     return {
       viewComponent: AssetView

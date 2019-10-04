@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import ItemsList from '@/components/item/items-list.vue';
+import itemsListMixin from '@/components/item/items-list-mixin';
 import ResultView from './result-view.vue';
 
 export default {
   name: 'ResultsList',
-  components: { ItemsList },
+  mixins: [itemsListMixin],
   data () {
     return {
       viewComponent: ResultView
