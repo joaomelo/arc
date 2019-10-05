@@ -8,7 +8,7 @@
 import { p } from '@/components/helpers/props.js';
 
 export default {
-  name: 'ItemCardDetail',
+  name: 'ItemViewDetail',
   props: {
     isTitle: p(Boolean, false)
   },

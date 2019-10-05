@@ -1,4 +1,4 @@
-import { bindQuery } from '@/firebase';
+import { bindQuery, add } from '@/firebase';
 
 const state = {
   assets: []
@@ -30,6 +30,9 @@ const actions = {
         }
       },
       newAssets => commit('commitAssets', newAssets));
+  },
+  addAsset (context, asset) {
+    add('assets', asset);
   }
 };
 

@@ -1,15 +1,15 @@
 <template>
-  <ItemCard>
-    <ItemCardDetail :is-title="true">
+  <ItemView>
+    <ItemViewDetail :is-title="true">
       ({{ item.alias }}) {{ item.title }}
-    </ItemCardDetail>
-    <ItemCardDetail v-if="item.alignment">
+    </ItemViewDetail>
+    <ItemViewDetail v-if="item.alignment">
       aligment: {{ item.alignment }}
-    </ItemCardDetail>
-    <ItemCardDetail v-if="item.description">
+    </ItemViewDetail>
+    <ItemViewDetail v-if="item.description">
       {{ item.description }}
-    </ItemCardDetail>
-  </ItemCard>
+    </ItemViewDetail>
+  </ItemView>
 </template>
 
 <script>

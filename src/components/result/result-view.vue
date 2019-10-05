@@ -1,15 +1,15 @@
 <template>
-  <ItemCard>
-    <ItemCardDetail :is-title="true">
+  <ItemView>
+    <ItemViewDetail :is-title="true">
       {{ item.title }}
-    </ItemCardDetail>
-    <ItemCardDetail v-if="item.status">
+    </ItemViewDetail>
+    <ItemViewDetail v-if="item.status">
       status: {{ item.status }}
-    </ItemCardDetail>
-    <ItemCardDetail v-if="item.done">
+    </ItemViewDetail>
+    <ItemViewDetail v-if="item.done">
       done when: {{ item.done }}
-    </ItemCardDetail>
-  </ItemCard>
+    </ItemViewDetail>
+  </ItemView>
 </template>
 
 <script>

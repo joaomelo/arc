@@ -16,6 +16,6 @@
 
 <script>
 export default {
-  name: 'ItemCard'
+  name: 'ItemView'
 };
 </script>

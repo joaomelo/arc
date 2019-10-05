@@ -1,11 +1,11 @@
 import { p } from '@/components/helpers/props.js';
-import ItemCard from '@/components/item/item-card.vue';
-import ItemCardDetail from '@/components/item/item-card-detail.vue';
+import ItemView from '@/components/item/Item-view.vue';
+import ItemViewDetail from '@/components/item/Item-view-detail.vue';
 
 export default {
   components: {
-    ItemCard,
-    ItemCardDetail
+    ItemView,
+    ItemViewDetail
   },
   props: {
     item: p(Object)

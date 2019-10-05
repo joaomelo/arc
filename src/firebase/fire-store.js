@@ -1,11 +1,11 @@
-import { fireApp } from './fire-app';
+import { firebase, fireApp } from './fire-app';
 import 'firebase/firestore';
 
-const fireStore = fireApp.firestore();
-// const { TimeStamp, GeoPoint } = fireStore;
+const db = fireApp.firestore();
+const now = firebase.firestore.FieldValue.serverTimestamp();
 
 function bindQuery (collection, options, callback) {
-  let query = fireStore.collection(collection);
+  let query = db.collection(collection);
   if (options.orderBy) {
     const { field, direction } = options.orderBy;
     query = query.orderBy(field, direction || 'asc');
@@ -26,4 +26,11 @@ function bindQuery (collection, options, callback) {
   return unsubscribe;
 }
 
-export { bindQuery };
+function add (collection, data) {
+  db.collection(collection).add({
+    ...data,
+    createdAt: now
+  });
+}
+
+export { bindQuery, add };

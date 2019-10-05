@@ -46,7 +46,7 @@ const router = new Router({
           component: AssetsList
         },
         {
-          path: 'asset/:id',
+          path: 'asset/:itemId',
           name: 'assetEdit',
           component: AssetEdit,
           props: true
@@ -57,7 +57,7 @@ const router = new Router({
           component: ChallengesList
         },
         {
-          path: 'challenge/:id',
+          path: 'challenge/:itemId',
           name: 'challengeEdit',
           component: ChallengeEdit,
           props: true
@@ -68,7 +68,7 @@ const router = new Router({
           component: ResultsList
         },
         {
-          path: 'result/:id',
+          path: 'result/:itemId',
           name: 'resultEdit',
           component: ResultEdit,
           props: true

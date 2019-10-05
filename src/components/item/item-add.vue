@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     add () {
-      this.$router.push({ name: `${this.itemType}Edit`, params: { id: 'add' } });
+      this.$router.push({ name: `${this.itemType}Edit`, params: { itemId: 'add' } });
     }
   }
 };

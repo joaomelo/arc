@@ -1,26 +1,26 @@
 <template>
-  <ItemEdit>
+  <ItemEdit
+    :item-id="itemId"
+    getter="getAsset"
+    action="addAsset"
+    #default="{item}"
+  >
     <TextControl
-      v-model="asset.alias"
+      v-model="item.alias"
       label="Alias"
     />
     <TextControl
-      v-model="asset.title"
+      v-model="item.title"
       label="Title"
     />
   </ItemEdit>
 </template>
 
 <script>
-import ItemEdit from '@/components/item/item-edit.vue';
-import TextControl from '@/components/base/text-control.vue';
-
+import itemEditMixin from '@/components/item/item-edit-mixin.js';
 export default {
-  name: 'AssetForm',
-  components: {
-    ItemEdit,
-    TextControl
-  }
+  name: 'AssetEdit',
+  mixins: [itemEditMixin]
 };
 </script>
 

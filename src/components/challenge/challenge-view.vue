@@ -1,9 +1,9 @@
 <template>
-  <ItemCard>
-    <ItemCardDetail :is-title="true">
+  <ItemView>
+    <ItemViewDetail :is-title="true">
       {{ item.title }}
-    </ItemCardDetail>
-  </ItemCard>
+    </ItemViewDetail>
+  </ItemView>
 </template>
 
 <script>

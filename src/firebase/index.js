@@ -1,5 +1,5 @@
 import { fireApp } from './fire-app.js';
 import { authPlugin } from './auth-plugin.js';
-import { bindQuery } from './fire-store';
+import { bindQuery, add } from './fire-store';
 
-export { fireApp, authPlugin, bindQuery };
+export { fireApp, authPlugin, bindQuery, add };

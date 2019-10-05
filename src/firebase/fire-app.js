@@ -12,4 +12,4 @@ const firebaseConfig = {
 
 const fireApp = firebase.initializeApp(firebaseConfig);
 
-export { fireApp };
+export { fireApp, firebase };
