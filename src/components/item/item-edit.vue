@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import { p } from '@/components/helpers/props.js';
+import { p } from '@/helpers/props.js';
+import { mapStoreFunction } from '@/helpers/taxonomy.js';
 import BaseForm from '@/components/base/base-form.vue';
 
 export default {
@@ -17,13 +18,16 @@ export default {
     BaseForm
   },
   props: {
-    itemId: p(String),
-    getter: p(String),
-    action: p(String)
+    itemType: p(String),
+    itemId: p(String)
   },
   data () {
+    const isAdd = this.itemId === 'add';
+    const getter = mapStoreFunction(this.itemType, 'getterSingle');
+
     return {
-      item: this.itemId === 'add' ? {} : this.$store.getters[this.getter](this.itemId)
+      item: isAdd ? {} : this.$store.getters[getter](this.itemId),
+      action: mapStoreFunction(this.itemType, isAdd ? 'addAction' : 'setAction')
     };
   },
   methods: {

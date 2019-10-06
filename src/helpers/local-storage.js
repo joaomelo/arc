@@ -1,4 +1,4 @@
-import { getVersion } from './version.js';
+import { getVersion } from './version.js.js.js.js';
 
 const versionKey = 'arc' + getVersion();
 const isVersionRegistred = localStorage.getItem(versionKey);

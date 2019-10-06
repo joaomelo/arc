@@ -1,19 +1,17 @@
 <template>
   <ItemsList
     :view-component="viewComponent"
-    type="asset"
-    getter="getAssets"
-    setter="setAssets"
+    item-type="asset"
   />
 </template>
 
 <script>
-import itemsListMixin from '@/components/item/items-list-mixin';
+import ItemsList from '@/components/item/items-list.vue';
 import AssetView from './asset-view.vue';
 
 export default {
   name: 'AssetsList',
-  mixins: [itemsListMixin],
+  components: { ItemsList },
   data () {
     return {
       viewComponent: AssetView

@@ -1,17 +1,12 @@
-import { bindQuery } from '@/firebase';
+import { bind, add, set, del } from '@/firebase';
 
 const state = {
   results: []
 };
 
 const getters = {
-  getResults (state) {
-    return state.results;
-  },
-
-  getResult (state, id) {
-    return state.results.find(result => result.id === id);
-  }
+  getResults: state => state.results,
+  getResult: state => id => state.results.find(result => result.id === id)
 };
 
 const mutations = {
@@ -22,7 +17,7 @@ const mutations = {
 
 const actions = {
   setResults ({ commit }) {
-    return bindQuery(
+    return bind(
       'results', {
         orderBy: {
           field: 'title',
@@ -30,6 +25,15 @@ const actions = {
         }
       },
       newResults => commit('commitResults', newResults));
+  },
+  addResult (context, result) {
+    add('results', result);
+  },
+  setResult (context, result) {
+    set('results', result.id, result);
+  },
+  delResult (context, id) {
+    del('results', id);
   }
 };
 

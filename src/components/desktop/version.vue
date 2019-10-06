@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { getVersion } from '@/common/version.js';
+import { getVersion } from '@/helpers/version.js';
 
 export default {
   name: 'Version',

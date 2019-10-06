@@ -1,5 +1,8 @@
 <template>
-  <ItemView>
+  <ItemView
+    item-type="asset"
+    :item-id="item.id"
+  >
     <ItemViewDetail :is-title="true">
       ({{ item.alias }}) {{ item.title }}
     </ItemViewDetail>
@@ -13,10 +16,18 @@
 </template>
 
 <script>
-import itemViewMixin from '@/components/item/item-view-mixin.js';
+import { p } from '@/helpers/props.js';
+import ItemView from '@/components/item/Item-view.vue';
+import ItemViewDetail from '@/components/item/Item-view-detail.vue';
 
 export default {
   name: 'AssetView',
-  mixins: [itemViewMixin]
+  components: {
+    ItemView,
+    ItemViewDetail
+  },
+  props: {
+    item: p(Object)
+  }
 };
 </script>

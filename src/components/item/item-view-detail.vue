@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { p } from '@/components/helpers/props.js';
+import { p } from '@/helpers/props.js';
 
 export default {
   name: 'ItemViewDetail',

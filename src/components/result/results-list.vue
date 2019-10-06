@@ -1,19 +1,17 @@
 <template>
   <ItemsList
     :view-component="viewComponent"
-    type="result"
-    getter="getResults"
-    setter="setResults"
+    item-type="result"
   />
 </template>
 
 <script>
-import itemsListMixin from '@/components/item/items-list-mixin';
+import ItemsList from '@/components/item/items-list.vue';
 import ResultView from './result-view.vue';
 
 export default {
   name: 'ResultsList',
-  mixins: [itemsListMixin],
+  components: { ItemsList },
   data () {
     return {
       viewComponent: ResultView

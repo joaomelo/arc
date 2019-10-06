@@ -11,22 +11,21 @@
     <p v-else>
       No items found
     </p>
-    <ItemAdd :item-type="type" />
+    <ItemAdd :item-type="itemType" />
   </div>
 </template>
 
 <script>
-import { p } from '@/components/helpers/props.js';
+import { p } from '@/helpers/props.js';
+import { mapStoreFunction } from '@/helpers/taxonomy.js';
 import ItemAdd from './item-add.vue';
 
 export default {
   name: 'ItemsList',
   components: { ItemAdd },
   props: {
-    viewComponent: p(Object),
-    type: p(String),
-    getter: p(String),
-    setter: p(String)
+    itemType: p(String),
+    viewComponent: p(Object)
   },
   data () {
     return {
@@ -35,11 +34,11 @@ export default {
   },
   computed: {
     items () {
-      return this.$store.getters[this.getter];
+      return this.$store.getters[mapStoreFunction(this.itemType, 'getterCol')];
     }
   },
   created () {
-    this.unsubscribe = this.$store.dispatch(this.setter);
+    this.unsubscribe = this.$store.dispatch(mapStoreFunction(this.itemType, 'binAction'));
   },
   beforeDestroy () {
     this.unsubscribe.then();

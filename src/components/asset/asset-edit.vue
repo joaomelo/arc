@@ -1,29 +1,33 @@
 <template>
   <ItemEdit
     :item-id="itemId"
-    getter="getAsset"
-    action="addAsset"
-    #default="{item}"
+    item-type="asset"
+    #default="{item: asset}"
   >
     <TextControl
-      v-model="item.alias"
+      v-model="asset.alias"
       label="Alias"
     />
     <TextControl
-      v-model="item.title"
+      v-model="asset.title"
       label="Title"
     />
   </ItemEdit>
 </template>
 
 <script>
-import itemEditMixin from '@/components/item/item-edit-mixin.js';
+import { p } from '@/helpers/props.js';
+import ItemEdit from '@/components/item/item-edit.vue';
+import TextControl from '@/components/base/text-control.vue';
+
 export default {
   name: 'AssetEdit',
-  mixins: [itemEditMixin]
+  components: {
+    ItemEdit,
+    TextControl
+  },
+  props: {
+    itemId: p(String)
+  }
 };
 </script>
-
-<style>
-
-</style>

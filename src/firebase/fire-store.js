@@ -4,8 +4,8 @@ import 'firebase/firestore';
 const db = fireApp.firestore();
 const now = firebase.firestore.FieldValue.serverTimestamp();
 
-function bindQuery (collection, options, callback) {
-  let query = db.collection(collection);
+function bind (collection, options, callback) {
+  let query = db.collection(collection).where('deleted', '==', false);
   if (options.orderBy) {
     const { field, direction } = options.orderBy;
     query = query.orderBy(field, direction || 'asc');
@@ -14,10 +14,9 @@ function bindQuery (collection, options, callback) {
   const unsubscribe = query.onSnapshot(snapshot => {
     const docs = [];
     snapshot.forEach(doc => {
-      docs.push({
-        id: doc.id,
-        ...doc.data()
-      });
+      const item = { ...doc.data() };
+      Object.defineProperty(item, 'id', { value: doc.id, enumerable: false });
+      docs.push(item);
     });
 
     callback(docs);
@@ -26,11 +25,34 @@ function bindQuery (collection, options, callback) {
   return unsubscribe;
 }
 
+function trail () {
+  return {
+    modifiedAt: now,
+    modifiedBy: firebase.auth().currentUser.uid
+  };
+};
+
 function add (collection, data) {
   db.collection(collection).add({
     ...data,
-    createdAt: now
+    ...trail(),
+    deleted: false
   });
 }
 
-export { bindQuery, add };
+function set (collection, id, data) {
+  db.collection(collection).doc(id).set({
+    ...data,
+    ...trail(),
+    deleted: false
+  });
+}
+
+function del (collection, id) {
+  db.collection(collection).doc(id).update({
+    deleted: true,
+    ...trail()
+  });
+}
+
+export { bind, add, set, del };

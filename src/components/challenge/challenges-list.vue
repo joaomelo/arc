@@ -1,19 +1,17 @@
 <template>
   <ItemsList
     :view-component="viewComponent"
-    type="challenge"
-    getter="getChallenges"
-    setter="setChallenges"
+    item-type="challenge"
   />
 </template>
 
 <script>
-import itemsListMixin from '@/components/item/items-list-mixin';
+import ItemsList from '@/components/item/items-list.vue';
 import ChallengeView from './challenge-view.vue';
 
 export default {
   name: 'ChallengesList',
-  mixins: [itemsListMixin],
+  components: { ItemsList },
   data () {
     return {
       viewComponent: ChallengeView
