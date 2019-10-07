@@ -7,6 +7,8 @@ module.exports = merge(common, {
   devServer: {
     hot: true,
     historyApiFallback: true,
+    noInfo: true,
+    stats: 'minimal',
     watchOptions: {
       poll: true
     }

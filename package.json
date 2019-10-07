@@ -3,6 +3,10 @@
   "version": "0.12.0",
   "description": "sensible framework for team work",
   "main": "index.html",
+  "browserslist": [
+    "> 1%",
+    "not dead"
+  ],
   "scripts": {
     "start": "webpack-dev-server --config build/webpack.dev.js",
     "lint": "eslint --ext .js,.vue src",
@@ -38,6 +42,7 @@
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "dotenv-webpack": "^1.7.0",
+    "es-check": "^5.0.0",
     "eslint": "^6.4.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-loader": "^3.0.0",
@@ -56,8 +61,10 @@
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.40.2",
+    "webpack-bundle-analyzer": "^3.5.2",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.1",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "webpackbar": "^4.0.0"
   }
 }
