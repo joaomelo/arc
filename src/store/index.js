@@ -1,18 +1,18 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { assetsStore } from './assets-store.js';
-import { resultsStore } from './results-store.js';
-import { challengesStore } from './challenges-store.js';
+import assetsStore from './assets.js';
+import resultsStore from './results.js';
+import challengesStore from './challenges.js';
+import teamsStore from './teams.js';
 
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
   modules: {
     assetsStore,
     resultsStore,
-    challengesStore
+    challengesStore,
+    teamsStore
   }
 });
-
-export { store };

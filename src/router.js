@@ -13,6 +13,8 @@ import ChallengesList from './components/challenge/challenges-list.vue';
 import ChallengeEdit from './components/challenge/challenge-edit.vue';
 import ResultsList from './components/result/results-list.vue';
 import ResultEdit from './components/result/result-edit.vue';
+import TeamsList from './components/team/teams-list.vue';
+import TeamEdit from './components/team/team-edit.vue';
 
 Vue.use(Router);
 
@@ -71,6 +73,17 @@ const router = new Router({
           path: 'result/:itemId',
           name: 'resultEdit',
           component: ResultEdit,
+          props: true
+        },
+        {
+          path: 'teams',
+          name: 'teamsList',
+          component: TeamsList
+        },
+        {
+          path: 'team/:itemId',
+          name: 'teamEdit',
+          component: TeamEdit,
           props: true
         }
       ]

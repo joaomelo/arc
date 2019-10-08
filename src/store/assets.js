@@ -37,11 +37,9 @@ const actions = {
   }
 };
 
-const assetsStore = {
+export default {
   state,
   getters,
   mutations,
   actions
 };
-
-export { assetsStore };

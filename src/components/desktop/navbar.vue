@@ -13,29 +13,18 @@
     >
       <span class="navbar-toggler-icon" />
     </button>
-
     <div
       id="navbarContent"
       class="collapse navbar-collapse"
     >
       <div class="navbar-nav mr-auto">
         <router-link
+          v-for="link in links"
+          :key="link.text"
+          :to="{ name: link.route}"
           class="nav-item nav-link"
-          :to="{ name: 'assetsList'}"
         >
-          Assets
-        </router-link>
-        <router-link
-          class="nav-item nav-link"
-          :to="{ name: 'resultsList'}"
-        >
-          Results
-        </router-link>
-        <router-link
-          class="nav-item nav-link"
-          :to="{ name: 'challengesList'}"
-        >
-          Challenges
+          {{ link.text }}
         </router-link>
       </div>
       <span class="navbar-text"><Version /></span>
@@ -55,6 +44,16 @@ export default {
   components: {
     Logout,
     Version
+  },
+  data () {
+    return {
+      links: [
+        { text: 'Assets', route: 'assetsList' },
+        { text: 'Results', route: 'resultsList' },
+        { text: 'Challenges', route: 'challengesList' },
+        { text: 'Teams', route: 'teamsList' }
+      ]
+    };
   }
 };
 </script>

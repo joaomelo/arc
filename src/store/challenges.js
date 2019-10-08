@@ -37,11 +37,9 @@ const actions = {
   }
 };
 
-const challengesStore = {
+export default {
   state,
   getters,
   mutations,
   actions
 };
-
-export { challengesStore };
