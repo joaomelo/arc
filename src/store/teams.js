@@ -27,6 +27,7 @@ const actions = {
       newTeams => commit('commitTeams', newTeams));
   },
   addTeam (context, team) {
+    team.owner =
     add('teams', team);
   },
   setTeam (context, team) {

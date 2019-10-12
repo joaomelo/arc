@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import authStore from './auth.js';
 import assetsStore from './assets.js';
 import resultsStore from './results.js';
 import challengesStore from './challenges.js';
@@ -10,6 +11,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
+    authStore,
     assetsStore,
     resultsStore,
     challengesStore,

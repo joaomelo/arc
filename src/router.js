@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import { auth } from '@/firebase';
+
 import PageLogin from './pages/page-login.vue';
 import Page404 from './pages/page-404.vue';
-import PageLoading from './pages/page-loading.vue';
 
 import Desktop from './components/desktop/desktop.vue';
-
 import AssetsList from './components/asset/assets-list.vue';
 import AssetEdit from './components/asset/asset-edit.vue';
 import ChallengesList from './components/challenge/challenges-list.vue';
@@ -25,16 +25,6 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      redirect: { name: 'assetsList' }
-    },
-    {
-      path: '/loading',
-      name: 'loading',
-      component: PageLoading
-    },
-    {
-      path: '/login',
       name: 'login',
       component: PageLogin
     },
@@ -96,8 +86,10 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (!router.app.$auth.isUserSolved && to.name !== 'loading') {
-    next('/loading');
+  const loginStatus = auth.loginStatus;
+
+  if (loginStatus !== 'loggedin' && to.name !== 'login') {
+    next({ name: 'login' });
   } else {
     next();
   };

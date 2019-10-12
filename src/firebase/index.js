@@ -1,5 +1,6 @@
 import { fireApp } from './fire-app.js';
-import { authPlugin } from './auth-plugin.js';
 import { bind, add, set, del } from './fire-store';
+import auth from './fire-auth.js';
+import { startFireUi } from './fire-ui.js';
 
-export { fireApp, authPlugin, bind, add, set, del };
+export { fireApp, auth, startFireUi, bind, add, set, del };

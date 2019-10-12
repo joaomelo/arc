@@ -1,41 +1,36 @@
 <template>
-  <div id="login-ui-container" />
+  <div>
+    <div
+      id="login-ui-container"
+      class="text-center"
+    />
+    <div
+      v-if="status === 'unsolved'"
+      class="text-center"
+    >
+      Loading...
+    </div>
+  </div>
 </template>
 
 <script>
-import * as firebase from 'firebase/app';
-import * as firebaseui from 'firebaseui';
-
-import { fireApp } from '@/firebase';
-// import router from '@/router.js';
-
-const uiConfig = {
-  callbacks: {
-    signInSuccessWithAuthResult (authResult) {
-      // auth plugin deals with routing so we block redirects here
-      return false;
-    }
-  },
-  signInOptions: [
-    { provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID },
-    {
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      requireDisplayName: false
-    }
-  ],
-  credentialHelper: firebaseui.auth.CredentialHelper.NONE
-};
+import { startFireUi } from '@/firebase';
 
 export default {
   name: 'PageLogin',
-  mounted () {
-    let ui = firebaseui.auth.AuthUI.getInstance();
-    if (ui) {
-      ui.reset();
-    } else {
-      ui = new firebaseui.auth.AuthUI(fireApp.auth());
+  computed: {
+    status () {
+      return this.$store.getters.getLoginStatus;
     }
-    ui.start('#login-ui-container', uiConfig);
+  },
+  watch: {
+    status (status, oldStatus) {
+      if (status === 'loggedin') this.$router.push({ name: 'assetsList' });
+      if (status === 'loggedout') startFireUi('login-ui-container');
+    }
+  },
+  created () {
+    this.$store.dispatch('observeStatusChange');
   }
 };
 </script>
