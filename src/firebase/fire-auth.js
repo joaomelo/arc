@@ -34,8 +34,6 @@ class Auth {
   }
 
   async logout () {
-    console.log(1);
-
     await this.fireAuth.signOut();
   }
 };

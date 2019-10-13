@@ -10,6 +10,7 @@ const getters = {
   getProfiles: state => state.profiles,
   getProfile: state => id => state.profiles.find(profile => profile.id === id),
   getCurrentUser: state => state.currentUser,
+  getCurrentUserId: state => state.currentUser ? state.currentUser.uid : undefined,
   getLoginStatus: state => state.loginStatus
 };
 

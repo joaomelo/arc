@@ -6,14 +6,13 @@
 </template>
 
 <script>
-import { kebabCase } from 'lodash';
+import kebabCase from 'lodash-es';
+import { p } from '@/helpers/props.js';
+
 export default {
   name: 'ControlWrapper',
   props: {
-    label: {
-      type: String,
-      required: true
-    }
+    label: p(String)
   },
   data () {
     return {

@@ -3,13 +3,27 @@
     #default="{ controlId }"
     :label="label"
   >
-    <input
+    <select
       :id="controlId"
-      type="text"
       class="form-control"
       :value="value"
-      @input="update"
+      @change="update"
     >
+      <option
+        disabled
+        selected
+        value=""
+      >
+        Select a option
+      </option>
+      <option
+        v-for="item in items"
+        :key="item.id"
+        :value="item.id"
+      >
+        {{ item.title }}
+      </option>
+    </select>
   </ControlWrapper>
 </template>
 
@@ -18,13 +32,14 @@ import ControlWrapper from './control-wrapper.vue';
 import { p } from '@/helpers/props.js';
 
 export default {
-  name: 'TextControl',
+  name: 'SelectControl',
   components: {
     ControlWrapper
   },
   props: {
     label: p(String),
-    value: p(String, '')
+    value: p(String, ''),
+    items: p(Array)
   },
   methods: {
     update (event) {

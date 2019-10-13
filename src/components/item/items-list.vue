@@ -36,12 +36,6 @@ export default {
     items () {
       return this.$store.getters[mapStoreFunction(this.itemType, 'getterCol')];
     }
-  },
-  created () {
-    this.unsubscribe = this.$store.dispatch(mapStoreFunction(this.itemType, 'binAction'));
-  },
-  beforeDestroy () {
-    this.unsubscribe.then();
   }
 };
 </script>

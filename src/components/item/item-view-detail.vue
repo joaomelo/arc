@@ -1,6 +1,6 @@
 <template>
   <p :class="classes">
-    <slot />
+    <strong v-if="label !== ''">{{ label }}: </strong><slot />
   </p>
 </template>
 
@@ -10,7 +10,8 @@ import { p } from '@/helpers/props.js';
 export default {
   name: 'ItemViewDetail',
   props: {
-    isTitle: p(Boolean, false)
+    isTitle: p(Boolean, false),
+    label: p(String, '')
   },
   computed: {
     classes () {

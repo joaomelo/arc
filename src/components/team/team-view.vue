@@ -6,6 +6,10 @@
     <ItemViewDetail :is-title="true">
       {{ item.title }}
     </ItemViewDetail>
+
+    <ItemViewDetail label="owner">
+      {{ owner.email }}
+    </ItemViewDetail>
   </ItemView>
 </template>
 
@@ -22,6 +26,11 @@ export default {
   },
   props: {
     item: p(Object)
+  },
+  data () {
+    return {
+      owner: this.$store.getters.getProfile(this.item.owner)
+    };
   }
 };
 </script>

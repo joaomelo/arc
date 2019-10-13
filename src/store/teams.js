@@ -6,7 +6,8 @@ const state = {
 
 const getters = {
   getTeams: state => state.teams,
-  getTeam: state => id => state.teams.find(team => team.id === id)
+  getTeam: state => id => state.teams.find(team => team.id === id),
+  getMyTeams: (state, getters) => state.teams.filter(team => team.owner === getters.getCurrentUserId)
 };
 
 const mutations = {
@@ -27,7 +28,7 @@ const actions = {
       newTeams => commit('commitTeams', newTeams));
   },
   addTeam (context, team) {
-    team.owner =
+    team.owner = context.getters.getCurrentUserId;
     add('teams', team);
   },
   setTeam (context, team) {

@@ -1,5 +1,13 @@
 import { firstUpper, firstUpperPlural } from './string.js';
 
+const itemTypes = [
+  'asset',
+  'result',
+  'challenge',
+  'team',
+  'profile'
+];
+
 function mapStoreFunction (itemType, funcType) {
   const functions = {
     getterCol: `get${firstUpperPlural(itemType)}`,
@@ -13,4 +21,4 @@ function mapStoreFunction (itemType, funcType) {
   return functions[funcType];
 }
 
-export { mapStoreFunction };
+export { itemTypes as it, mapStoreFunction };
