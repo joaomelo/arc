@@ -8,6 +8,7 @@
       type="text"
       class="form-control"
       :value="value"
+      :readonly="readOnly"
       @input="update"
     >
   </ControlWrapper>
@@ -24,7 +25,8 @@ export default {
   },
   props: {
     label: p(String),
-    value: p(String, '')
+    value: p(String, ''),
+    readOnly: p(Boolean, false)
   },
   methods: {
     update (event) {

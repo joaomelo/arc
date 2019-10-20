@@ -12,11 +12,6 @@
       v-model="asset.title"
       label="Title"
     />
-    <SelectControl
-      v-model="asset.team"
-      label="Team"
-      :items="teams"
-    />
   </ItemEdit>
 </template>
 
@@ -24,14 +19,12 @@
 import { p } from '@/helpers/props.js';
 import ItemEdit from '@/components/item/item-edit.vue';
 import TextControl from '@/components/base/text-control.vue';
-import SelectControl from '@/components/base/select-control.vue';
 
 export default {
   name: 'AssetEdit',
   components: {
     ItemEdit,
-    TextControl,
-    SelectControl
+    TextControl
   },
   props: {
     itemId: p(String)

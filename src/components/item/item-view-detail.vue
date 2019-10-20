@@ -1,7 +1,7 @@
 <template>
-  <p :class="classes">
+  <div :class="classes">
     <strong v-if="label !== ''">{{ label }}: </strong><slot />
-  </p>
+  </div>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
   computed: {
     classes () {
       return {
-        h5: this.isTitle,
+        h4: this.isTitle,
         'card-title': this.isTitle,
         'card-text': !this.isTitle
       };

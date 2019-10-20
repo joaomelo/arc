@@ -9,8 +9,7 @@ const state = {
 const getters = {
   getProfiles: state => state.profiles,
   getProfile: state => id => state.profiles.find(profile => profile.id === id),
-  getCurrentUser: state => state.currentUser,
-  getCurrentUserId: state => state.currentUser ? state.currentUser.uid : undefined,
+  getCurrentProfile: (state, getters) => state.currentUser ? getters.getProfile(state.currentUser.uid) : undefined,
   getLoginStatus: state => state.loginStatus
 };
 
@@ -35,7 +34,7 @@ const actions = {
 
       if (loginStatus === 'loggedin' && !context.getters.getProfile(currentUser.uid)) {
         const newProfile = {
-          email: currentUser.email
+          title: currentUser.email
         };
         Object.defineProperty(newProfile, 'id', { value: currentUser.uid, enumerable: false });
         context.dispatch('setProfile', newProfile);
@@ -50,12 +49,7 @@ const actions = {
   },
   setProfiles ({ commit }) {
     return bind(
-      'profiles', {
-        orderBy: {
-          field: 'email',
-          direction: 'asc'
-        }
-      },
+      'profiles',
       newProfiles => commit('commitProfiles', newProfiles));
   },
   setProfile (context, profile) {

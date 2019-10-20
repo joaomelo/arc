@@ -18,12 +18,7 @@ const mutations = {
 const actions = {
   setAssets ({ commit }) {
     return bind(
-      'assets', {
-        orderBy: {
-          field: 'alias',
-          direction: 'asc'
-        }
-      },
+      'assets',
       newAssets => commit('commitAssets', newAssets));
   },
   addAsset (context, asset) {

@@ -18,12 +18,7 @@ const mutations = {
 const actions = {
   setResults ({ commit }) {
     return bind(
-      'results', {
-        orderBy: {
-          field: 'title',
-          direction: 'asc'
-        }
-      },
+      'results',
       newResults => commit('commitResults', newResults));
   },
   addResult (context, result) {

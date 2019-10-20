@@ -7,7 +7,11 @@ const state = {
 const getters = {
   getTeams: state => state.teams,
   getTeam: state => id => state.teams.find(team => team.id === id),
-  getMyTeams: (state, getters) => state.teams.filter(team => team.owner === getters.getCurrentUserId)
+  getOtherTeams: state => id => state.teams.filter(team => team.id !== id),
+  getMyTeams: (state, getters) => state.teams.filter(team => team.owner &&
+      getters.getCurrentProfile &&
+      team.owner.id === getters.getCurrentProfile.id
+  )
 };
 
 const mutations = {
@@ -19,16 +23,11 @@ const mutations = {
 const actions = {
   setTeams ({ commit }) {
     return bind(
-      'teams', {
-        orderBy: {
-          field: 'title',
-          direction: 'asc'
-        }
-      },
+      'teams',
       newTeams => commit('commitTeams', newTeams));
   },
   addTeam (context, team) {
-    team.owner = context.getters.getCurrentUserId;
+    team.owner = context.getters.getCurrentProfile;
     add('teams', team);
   },
   setTeam (context, team) {

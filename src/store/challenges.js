@@ -18,12 +18,7 @@ const mutations = {
 const actions = {
   setChallenges ({ commit }) {
     return bind(
-      'challenges', {
-        orderBy: {
-          field: 'title',
-          direction: 'asc'
-        }
-      },
+      'challenges',
       newChallenges => commit('commitChallenges', newChallenges));
   },
   addChallenge (context, challenge) {

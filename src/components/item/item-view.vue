@@ -2,6 +2,8 @@
   <div class="card mb-3">
     <div class="card-body">
       <slot />
+    </div>
+    <div class="card-body pt-0 text-right">
       <BaseButton
         class="btn-primary"
         @click="edit"

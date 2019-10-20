@@ -6,15 +6,14 @@
     <select
       :id="controlId"
       class="form-control"
-      :value="value"
+      :value="initial"
       @change="update"
     >
       <option
-        disabled
-        selected
-        value=""
+        :disabled="isRequired"
+        value="none"
       >
-        Select a option
+        Please select a option
       </option>
       <option
         v-for="item in items"
@@ -32,20 +31,28 @@ import ControlWrapper from './control-wrapper.vue';
 import { p } from '@/helpers/props.js';
 
 export default {
-  name: 'SelectControl',
+  name: 'RelationshipControl',
   components: {
     ControlWrapper
   },
   props: {
+    value: p(Object, null),
     label: p(String),
-    value: p(String, ''),
+    isRequired: p(Boolean, false),
     items: p(Array)
+  },
+  data () {
+    return {
+      initial: this.value ? this.value.id : 'none'
+    };
   },
   methods: {
     update (event) {
-      this.$emit('input', event.target.value);
+      const item = event.target.value === 'none'
+        ? undefined
+        : this.items.find(item => item.id === event.target.value);
+      this.$emit('input', item);
     }
   }
-
 };
 </script>
