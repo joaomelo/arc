@@ -3,16 +3,19 @@
     item-type="result"
     :item-id="item.id"
   >
-    <ItemViewDetail :is-title="true">
-      {{ item.title }}
-    </ItemViewDetail>
-    <ItemViewDetail v-if="item.status">
-      status: {{ item.status }}
-    </ItemViewDetail>
-    <ItemViewDetail v-if="item.done">
-      done when: {{ item.done }}
-    </ItemViewDetail>
-  </ItemView>
+    <ItemViewDetail
+      :is-title="true"
+      :display="item.title"
+    />
+    <ItemViewDetail
+      label="status"
+      :display="item.status"
+    />
+    <ItemViewDetail
+      label="done when"
+      :display="item.done"
+    />
+  </itemview>
 </template>
 
 <script>

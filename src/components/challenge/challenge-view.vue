@@ -3,9 +3,10 @@
     item-type="challenge"
     :item-id="item.id"
   >
-    <ItemViewDetail :is-title="true">
-      {{ item.title }}
-    </ItemViewDetail>
+    <ItemViewDetail
+      :is-title="true"
+      :display="item.title"
+    />
   </ItemView>
 </template>
 

@@ -3,15 +3,17 @@
     item-type="asset"
     :item-id="item.id"
   >
-    <ItemViewDetail :is-title="true">
-      ({{ item.alias }}) {{ item.title }}
-    </ItemViewDetail>
-    <ItemViewDetail v-if="item.alignment">
-      aligment: {{ item.alignment }}
-    </ItemViewDetail>
-    <ItemViewDetail v-if="item.description">
-      {{ item.description }}
-    </ItemViewDetail>
+    <ItemViewDetail
+      :is-title="true"
+      :display="prettyTitle"
+    />
+    <ItemViewDetail
+      label="alignment"
+      :display="item.alignment"
+    />
+    <ItemViewDetail
+      :display="item.description"
+    />
   </ItemView>
 </template>
 
@@ -28,6 +30,11 @@ export default {
   },
   props: {
     item: p(Object)
+  },
+  computed: {
+    prettyTitle () {
+      return `(${this.item.alias}) ${this.item.title}`;
+    }
   }
 };
 </script>

@@ -3,18 +3,26 @@
     item-type="team"
     :item-id="item.id"
   >
-    <ItemViewDetail :is-title="true">
-      {{ item.title }}
-    </ItemViewDetail>
     <ItemViewDetail
-      v-if="item.parent"
+      :is-title="true"
+      :display="item.title"
+    />
+    <ItemViewDetail
       label="parent"
-    >
-      {{ item.parent.title }}
-    </ItemViewDetail>
-    <ItemViewDetail label="owner">
-      {{ item.owner.title }}
-    </ItemViewDetail>
+      :display="item.parent && item.parent.title"
+    />
+    <ItemViewDetail
+      label="owner"
+      :display="item.owner.title"
+    />
+    <ItemViewDetail
+      label="managers"
+      :display="item.managers"
+    />
+    <ItemViewDetail
+      label="staff"
+      :display="item.staff"
+    />
   </ItemView>
 </template>
 

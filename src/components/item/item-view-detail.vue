@@ -1,6 +1,9 @@
 <template>
-  <div :class="classes">
-    <strong v-if="label !== ''">{{ label }}: </strong><slot />
+  <div
+    v-if="display"
+    :class="classes"
+  >
+    <strong v-if="label !== ''">{{ label }}: </strong> {{ displayValue }}
   </div>
 </template>
 
@@ -11,7 +14,8 @@ export default {
   name: 'ItemViewDetail',
   props: {
     isTitle: p(Boolean, false),
-    label: p(String, '')
+    label: p(String, ''),
+    display: p([String, Number, Boolean, Array, Date], null)
   },
   computed: {
     classes () {
@@ -20,6 +24,13 @@ export default {
         'card-title': this.isTitle,
         'card-text': !this.isTitle
       };
+    },
+    displayValue () {
+      if (Array.isArray(this.display) && this.display.length > 0) {
+        return this.display.map(d => d.title).join(', ');
+      } else {
+        return this.display;
+      }
     }
   }
 };
