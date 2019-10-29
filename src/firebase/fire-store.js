@@ -78,10 +78,12 @@ function convertToFiredoc (item) {
   const doc = {};
 
   Object.keys(item).forEach(key => {
-    if (item[key].collection) {
-      doc[key] = convertToReference(item[key].collection, item[key].id);
-    } else {
-      doc[key] = item[key];
+    if (item[key] !== null && item[key] !== undefined) {
+      if (item[key].collection) {
+        doc[key] = convertToReference(item[key].collection, item[key].id);
+      } else {
+        doc[key] = item[key];
+      }
     }
   });
 

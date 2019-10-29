@@ -3,42 +3,34 @@
     #default="{ controlId }"
     :label="label"
   >
-    <select
+    <multiselect
       :id="controlId"
-      class="form-control"
-      :value="initial"
-      @change="update"
-    >
-      <option
-        :disabled="isRequired"
-        value="none"
-      >
-        Please select a option
-      </option>
-      <option
-        v-for="item in items"
-        :key="item.id"
-        :value="item.id"
-      >
-        {{ item.title }}
-      </option>
-    </select>
+      :value="value"
+      :options="items"
+      track-by="id"
+      label="title"
+      @input="update"
+    />
   </ControlWrapper>
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect';
+
 import ControlWrapper from './control-wrapper.vue';
 import { p } from '@/helpers/props.js';
 
 export default {
   name: 'RelationshipControl',
   components: {
+    Multiselect,
     ControlWrapper
   },
   props: {
     value: p(Object, null),
     label: p(String),
     isRequired: p(Boolean, false),
+    isSingle: p(Boolean, true),
     items: p(Array)
   },
   data () {
@@ -47,12 +39,11 @@ export default {
     };
   },
   methods: {
-    update (event) {
-      const item = event.target.value === 'none'
-        ? undefined
-        : this.items.find(item => item.id === event.target.value);
-      this.$emit('input', item);
+    update (value, id) {
+      this.$emit('input', value);
     }
   }
 };
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
