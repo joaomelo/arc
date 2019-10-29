@@ -5,6 +5,8 @@
   >
     <multiselect
       :id="controlId"
+      :multiple="!isSingle"
+      :close-on-select="isSingle"
       :value="value"
       :options="items"
       track-by="id"
@@ -27,7 +29,7 @@ export default {
     ControlWrapper
   },
   props: {
-    value: p(Object, null),
+    value: p([Object, Array], null),
     label: p(String),
     isRequired: p(Boolean, false),
     isSingle: p(Boolean, true),

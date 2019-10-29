@@ -19,6 +19,20 @@
       label="Owner"
       read-only
     />
+    <RelationshipControl
+      v-model="team.managers"
+      label="Managers"
+      :is-required="false"
+      :is-single="false"
+      :items="$store.getters.getOtherProfiles"
+    />
+    <RelationshipControl
+      v-model="team.staff"
+      label="Staff"
+      :is-required="false"
+      :is-single="false"
+      :items="$store.getters.getOtherProfiles"
+    />
   </ItemEdit>
 </template>
 

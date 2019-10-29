@@ -19,10 +19,6 @@
       label="managers"
       :display="item.managers"
     />
-    <ItemViewDetail
-      label="staff"
-      :display="item.staff"
-    />
   </ItemView>
 </template>
 
