@@ -63,7 +63,6 @@ async function convertToItemData (firedata) {
   if (Array.isArray(firedata)) {
     const promises = firedata.map(i => convertToItemData(i));
     result = await Promise.all(promises);
-    return result;
   } else if (isReference(firedata)) {
     const refDoc = await firedata.get();
     result = await convertToItem(refDoc);
@@ -79,7 +78,9 @@ function convertToFiredoc (item) {
 
   Object.keys(item).forEach(key => {
     if (item[key] !== null && item[key] !== undefined) {
-      if (item[key].collection) {
+      if (Array.isArray(item[key])) {
+        doc[key] = item[key].map(i => i.collection ? convertToReference(i.collection, i.id) : i);
+      } else if (item[key].collection) {
         doc[key] = convertToReference(item[key].collection, item[key].id);
       } else {
         doc[key] = item[key];

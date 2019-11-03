@@ -7,6 +7,7 @@
       :id="controlId"
       :multiple="!isSingle"
       :close-on-select="isSingle"
+      :allow-empty="!isRequired"
       :value="value"
       :options="items"
       track-by="id"
@@ -29,19 +30,17 @@ export default {
     ControlWrapper
   },
   props: {
-    value: p([Object, Array], null),
+    value: p([Object, Array], () => []),
     label: p(String),
     isRequired: p(Boolean, false),
     isSingle: p(Boolean, true),
     items: p(Array)
   },
-  data () {
-    return {
-      initial: this.value ? this.value.id : 'none'
-    };
-  },
   methods: {
     update (value, id) {
+      console.log(value);
+      console.log(this.value);
+
       this.$emit('input', value);
     }
   }

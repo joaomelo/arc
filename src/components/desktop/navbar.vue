@@ -22,6 +22,8 @@
           v-for="link in links"
           :key="link.text"
           :to="{ name: link.route}"
+          data-toggle="collapse"
+          data-target="#navbarContent"
           class="nav-item nav-link"
         >
           {{ link.text }}
@@ -29,7 +31,11 @@
       </div>
       <span class="navbar-text"><Version /></span>
       <div class="navbar-nav">
-        <Logout class="nav-item nav-link" />
+        <Logout
+          data-toggle="collapse"
+          data-target="#navbarContent"
+          class="nav-item nav-link"
+        />
       </div>
     </div>
   </nav>
