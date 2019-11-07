@@ -1,56 +1,50 @@
 <template>
-  <ItemEdit
-    :item-id="itemId"
-    item-type="team"
-    #default="{item: team}"
-  >
+  <div>
     <TextControl
-      v-model="team.title"
+      v-model="item.title"
       label="Title"
     />
     <RelationshipControl
-      v-model="team.parent"
+      v-model="item.parent"
       label="Parent"
-      :items="$store.getters.getOtherTeams(itemId)"
+      :items="$store.getters.getOtherTeams(item.id)"
     />
     <TextControl
-      v-if="team.owner"
-      v-model="team.owner.title"
+      v-if="item.owner"
+      v-model="item.owner.title"
       label="Owner"
       read-only
     />
     <RelationshipControl
-      v-model="team.managers"
+      v-model="item.managers"
       label="Managers"
       :is-required="false"
       :is-single="false"
       :items="$store.getters.getOtherProfiles"
     />
     <RelationshipControl
-      v-model="team.staff"
+      v-model="item.staff"
       label="Staff"
       :is-required="false"
       :is-single="false"
       :items="$store.getters.getOtherProfiles"
     />
-  </ItemEdit>
+  </div>
 </template>
 
 <script>
 import { p } from '@/helpers/props.js';
-import ItemEdit from '@/components/item/item-edit.vue';
 import TextControl from '@/components/base/text-control.vue';
 import RelationshipControl from '@/components/base/relationship-control.vue';
 
 export default {
   name: 'TeamEdit',
   components: {
-    ItemEdit,
     TextControl,
     RelationshipControl
   },
   props: {
-    itemId: p(String)
+    item: p(Object)
   }
 };
 </script>

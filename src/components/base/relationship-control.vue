@@ -38,9 +38,6 @@ export default {
   },
   methods: {
     update (value, id) {
-      console.log(value);
-      console.log(this.value);
-
       this.$emit('input', value);
     }
   }

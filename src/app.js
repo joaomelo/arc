@@ -1,16 +1,16 @@
 import Vue from 'vue';
-import VueI18n from 'vue-i18n';
 
 import './styles';
 import App from './app.vue';
 import router from './router.js';
 import store from './store';
+import { i18n } from './i18n';
 import { it, mapStoreFunction } from '@/helpers/taxonomy.js';
 
 Vue.config.productionTip = false;
-Vue.use(VueI18n);
 
 const vueApp = new Vue({
+  i18n,
   store,
   router,
   created () {

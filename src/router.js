@@ -6,6 +6,8 @@ import { auth } from '@/firebase';
 import PageLogin from './pages/page-login.vue';
 import Page404 from './pages/page-404.vue';
 
+import ItemEditor from './components/item/item-editor.vue';
+
 import Desktop from './components/desktop/desktop.vue';
 import AssetsList from './components/asset/assets-list.vue';
 import AssetEdit from './components/asset/asset-edit.vue';
@@ -40,8 +42,8 @@ const router = new Router({
         {
           path: 'asset/:itemId',
           name: 'assetEdit',
-          component: AssetEdit,
-          props: true
+          component: ItemEditor,
+          props: mountEditorProps
         },
         {
           path: 'challenges',
@@ -51,8 +53,8 @@ const router = new Router({
         {
           path: 'challenge/:itemId',
           name: 'challengeEdit',
-          component: ChallengeEdit,
-          props: true
+          component: ItemEditor,
+          props: mountEditorProps
         },
         {
           path: 'results',
@@ -62,8 +64,8 @@ const router = new Router({
         {
           path: 'result/:itemId',
           name: 'resultEdit',
-          component: ResultEdit,
-          props: true
+          component: ItemEditor,
+          props: mountEditorProps
         },
         {
           path: 'teams',
@@ -73,8 +75,8 @@ const router = new Router({
         {
           path: 'team/:itemId',
           name: 'teamEdit',
-          component: TeamEdit,
-          props: true
+          component: ItemEditor,
+          props: mountEditorProps
         }
       ]
     },
@@ -84,6 +86,30 @@ const router = new Router({
     }
   ]
 });
+
+function mountEditorProps (route) {
+  const propsList = {
+    assetEdit: {
+      editFields: AssetEdit,
+      itemCollection: 'assets'
+    },
+    challengeEdit: {
+      editFields: ChallengeEdit,
+      itemCollection: 'challenges'
+    },
+    resultEdit: {
+      editFields: ResultEdit,
+      itemCollection: 'results'
+    },
+    teamEdit: {
+      editFields: TeamEdit,
+      itemCollection: 'teams'
+    }
+  };
+
+  const itemEditorProps = { itemId: route.params.itemId, ...propsList[route.name] };
+  return itemEditorProps;
+}
 
 router.beforeEach((to, from, next) => {
   const loginStatus = auth.loginStatus;

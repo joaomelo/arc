@@ -1,28 +1,29 @@
 <template>
-  <form>
+  <form class="bg-white rounded p-3">
     <slot />
     <div class="text-right">
-      <button
-        type="button"
-        class="btn btn-secondary"
+      <BaseButton
+        class="btn-secondary"
         @click="cancel"
       >
         cancel
-      </button>
-      <button
-        type="submit"
-        class="btn btn-primary ml-1"
-        @click.prevent="save"
+      </BaseButton>
+      <BaseButton
+        class="btn-primary ml-1"
+        @click="save"
       >
         save
-      </button>
+      </BaseButton>
     </div>
   </form>
 </template>
 
 <script>
+import BaseButton from '@/components/base/base-button.vue';
+
 export default {
-  name: 'BaseForm',
+  name: 'FormDialog',
+  components: { BaseButton },
   created () {
     document.addEventListener('keyup', this.keyPressed);
   },

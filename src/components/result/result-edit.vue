@@ -1,29 +1,23 @@
 <template>
-  <ItemEdit
-    :item-id="itemId"
-    item-type="result"
-    #default="{item: result}"
-  >
+  <div>
     <TextControl
-      v-model="result.title"
+      v-model="item.title"
       label="Title"
     />
-  </ItemEdit>
+  </div>
 </template>
 
 <script>
 import { p } from '@/helpers/props.js';
-import ItemEdit from '@/components/item/item-edit.vue';
 import TextControl from '@/components/base/text-control.vue';
 
 export default {
   name: 'ResultEdit',
   components: {
-    ItemEdit,
     TextControl
   },
   props: {
-    itemId: p(String)
+    item: p(Object)
   }
 };
 </script>

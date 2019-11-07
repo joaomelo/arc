@@ -46,9 +46,8 @@ async function convertToItem (doc) {
   const item = {};
   const firedata = { ...doc.data() };
 
-  const collection = doc.ref.parent.id;
-  Object.defineProperty(item, 'collection', { value: collection, enumerable: false });
-  Object.defineProperty(item, 'id', { value: doc.id, enumerable: false });
+  item.collection = doc.ref.parent.id;
+  item.id = doc.id;
 
   for (const key of Object.keys(firedata)) {
     item[key] = await convertToItemData(firedata[key], false);
@@ -77,9 +76,11 @@ function convertToFiredoc (item) {
   const doc = {};
 
   Object.keys(item).forEach(key => {
-    if (item[key] !== null && item[key] !== undefined) {
+    if (![null, undefined].includes(item[key]) && !['id', 'collection'].includes(key)) {
       if (Array.isArray(item[key])) {
-        doc[key] = item[key].map(i => i.collection ? convertToReference(i.collection, i.id) : i);
+        if (item[key].length > 0) {
+          doc[key] = item[key].map(i => i.collection ? convertToReference(i.collection, i.id) : i);
+        }
       } else if (item[key].collection) {
         doc[key] = convertToReference(item[key].collection, item[key].id);
       } else {
@@ -87,7 +88,6 @@ function convertToFiredoc (item) {
       }
     }
   });
-
   return doc;
 }
 

@@ -29,13 +29,36 @@
           {{ link.text }}
         </router-link>
       </div>
-      <span class="navbar-text"><Version /></span>
       <div class="navbar-nav">
-        <Logout
-          data-toggle="collapse"
-          data-target="#navbarContent"
-          class="nav-item nav-link"
-        />
+        <li class="nav-item dropdown">
+          <a
+            id="navbarDropdown"
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            {{ email }}
+          </a>
+          <div
+            class="dropdown-menu"
+            aria-labelledby="navbarDropdown"
+          >
+            <a
+              class="dropdown-item"
+              href="#"
+            >
+              Account
+            </a>
+            <Logout
+              class="dropdown-item"
+            />
+            <div class="dropdown-divider" />
+            <Version class="dropdown-item" />
+          </div>
+        </li>
       </div>
     </div>
   </nav>
@@ -52,12 +75,14 @@ export default {
     Version
   },
   data () {
+    const email = this.$store.getters.getCurrentProfile && this.$store.getters.getCurrentProfile.title;
     return {
+      email,
       links: [
         { text: 'Assets', route: 'assetsList' },
         { text: 'Results', route: 'resultsList' },
         { text: 'Challenges', route: 'challengesList' },
-        { text: 'Teams', route: 'teamsList' }
+        { text: this.$t('nav.teams'), route: 'teamsList' }
       ]
     };
   }

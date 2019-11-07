@@ -1,38 +1,27 @@
 <template>
-  <ItemEdit
-    :item-id="itemId"
-    item-type="asset"
-    #default="{item: asset}"
-  >
+  <div>
     <TextControl
-      v-model="asset.alias"
+      v-model="item.alias"
       label="Alias"
     />
     <TextControl
-      v-model="asset.title"
+      v-model="item.title"
       label="Title"
     />
-  </ItemEdit>
+  </div>
 </template>
 
 <script>
 import { p } from '@/helpers/props.js';
-import ItemEdit from '@/components/item/item-edit.vue';
 import TextControl from '@/components/base/text-control.vue';
 
 export default {
   name: 'AssetEdit',
   components: {
-    ItemEdit,
     TextControl
   },
   props: {
-    itemId: p(String)
-  },
-  computed: {
-    teams () {
-      return this.$store.getters.getMyTeams;
-    }
+    item: p(Object)
   }
 };
 </script>
