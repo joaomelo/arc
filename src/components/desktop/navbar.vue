@@ -76,6 +76,7 @@ export default {
   },
   data () {
     const email = this.$store.getters.getCurrentProfile && this.$store.getters.getCurrentProfile.title;
+
     return {
       email,
       links: [

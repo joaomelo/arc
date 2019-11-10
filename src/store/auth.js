@@ -1,15 +1,17 @@
-import { auth, bind, set } from '@/firebase';
+import { auth, set } from '@/firebase';
+import { setCollection } from './helpers.js';
+import { i18n } from '@/i18n';
 
 const state = {
   profiles: [],
-  loginStatus: undefined,
-  currentUser: undefined
+  loginStatus: 'unsolved',
+  user: undefined
 };
 
 const getters = {
   getProfiles: state => state.profiles,
   getProfile: state => id => state.profiles.find(profile => profile.id === id),
-  getCurrentProfile: (state, getters) => state.currentUser ? getters.getProfile(state.currentUser.uid) : undefined,
+  getCurrentProfile: (state, getters) => state.user ? getters.getProfile(state.user.uid) : undefined,
   getOtherProfiles: (state, getters) => state.profiles.filter(profile => profile.id !== getters.getCurrentProfile.id),
   getLoginStatus: state => state.loginStatus
 };
@@ -18,40 +20,34 @@ const mutations = {
   commitProfiles (state, profiles) {
     state.profiles = profiles;
   },
-  commitStatusChange (state, payload) {
+  commitUser (state, payload) {
     state.loginStatus = payload.loginStatus;
-    state.currentUser = payload.currentUser;
+    state.user = payload.user;
   }
 };
 
 const actions = {
-  observeStatusChange (context) {
-    const callback = (currentUser, loginStatus) => {
-      const payload = {
-        currentUser: currentUser,
-        loginStatus: loginStatus
-      };
-      context.commit('commitStatusChange', payload);
-
-      if (loginStatus === 'loggedin' && !context.getters.getProfile(currentUser.uid)) {
+  setUser ({ commit, getters, dispatch }) {
+    commit('startedLoad', 'user');
+    const setUserAndProfile = (user, loginStatus) => {
+      commit('commitUser', { user, loginStatus });
+      if (loginStatus === 'loggedin' && !getters.getProfile(user.uid)) {
         const newProfile = {
-          title: currentUser.email
+          id: user.uid,
+          title: user.email,
+          lang: i18n.fallbackLocale
         };
-        Object.defineProperty(newProfile, 'id', { value: currentUser.uid, enumerable: false });
-        context.dispatch('setProfile', newProfile);
+        dispatch('setProfile', newProfile);
+        commit('stoppedLoad', 'user');
       }
     };
-
-    context.dispatch('setProfiles');
-    auth.addCallback(callback, true);
+    auth.addCallback(setUserAndProfile, true);
   },
   logout (context) {
     auth.logout();
   },
   setProfiles ({ commit }) {
-    return bind(
-      'profiles',
-      newProfiles => commit('commitProfiles', newProfiles));
+    setCollection(commit, 'profiles');
   },
   setProfile (context, profile) {
     set('profiles', profile.id, profile);

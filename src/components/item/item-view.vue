@@ -22,7 +22,7 @@
 
 <script>
 import { p } from '@/helpers/props.js';
-import { mapStoreFunction } from '@/helpers/taxonomy.js';
+import { mapStoreFunction } from '@/store/helpers.js';
 import BaseButton from '@/components/base/base-button.vue';
 
 export default {

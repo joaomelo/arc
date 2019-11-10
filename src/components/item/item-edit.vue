@@ -1,26 +1,25 @@
 <template>
   <FormEdit
     :item="item"
-    :edit-fields="editFields"
+    #default="{ clone }"
     @save="save"
     @cancel="cancel"
-  />
+  >
+    <slot :clone="clone" />
+  </FormEdit>
 </template>
 
 <script>
 import { p } from '@/helpers/props.js';
-import { mapStoreFunction } from '@/helpers/taxonomy.js';
+import { mapStoreFunction } from '@/store/helpers.js';
 import FormEdit from '@/components/forms/form-edit.vue';
 
 export default {
-  name: 'ItemEditor',
-  components: {
-    FormEdit
-  },
+  name: 'ItemEdit',
+  components: { FormEdit },
   props: {
     itemCollection: p(String),
-    itemId: p(String),
-    editFields: p(Object)
+    itemId: p(String)
   },
   data () {
     const isAdd = this.itemId === 'add';

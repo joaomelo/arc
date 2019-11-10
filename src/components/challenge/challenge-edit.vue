@@ -1,23 +1,29 @@
 <template>
-  <div>
+  <ItemEdit
+    :item-id="itemId"
+    item-collection="challenges"
+    #default="{ clone }"
+  >
     <TextControl
-      v-model="item.title"
+      v-model="clone.title"
       label="Title"
     />
-  </div>
+  </ItemEdit>
 </template>
 
 <script>
 import { p } from '@/helpers/props.js';
+import ItemEdit from '@/components/item/item-edit.vue';
 import TextControl from '@/components/base/text-control.vue';
 
 export default {
   name: 'ChallengeEdit',
   components: {
+    ItemEdit,
     TextControl
   },
   props: {
-    item: p(Object)
+    itemId: p(String)
   }
 };
 </script>

@@ -1,4 +1,5 @@
-import { bind, add, set, del } from '@/firebase';
+import { add, set, del } from '@/firebase';
+import { setCollection } from './helpers.js';
 
 const state = {
   challenges: []
@@ -17,9 +18,7 @@ const mutations = {
 
 const actions = {
   setChallenges ({ commit }) {
-    return bind(
-      'challenges',
-      newChallenges => commit('commitChallenges', newChallenges));
+    setCollection(commit, 'challenges');
   },
   addChallenge (context, challenge) {
     add('challenges', challenge);

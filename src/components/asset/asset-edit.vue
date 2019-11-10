@@ -1,27 +1,30 @@
 <template>
-  <div>
+  <ItemEdit
+    :item-id="itemId"
+    item-collection="assets"
+    #default="{ clone: asset }"
+  >
     <TextControl
-      v-model="item.alias"
+      v-model="asset.alias"
       label="Alias"
     />
     <TextControl
-      v-model="item.title"
+      v-model="asset.title"
       label="Title"
     />
-  </div>
+  </ItemEdit>
 </template>
 
 <script>
 import { p } from '@/helpers/props.js';
+import ItemEdit from '@/components/item/item-edit.vue';
 import TextControl from '@/components/base/text-control.vue';
 
 export default {
   name: 'AssetEdit',
-  components: {
-    TextControl
-  },
+  components: { TextControl, ItemEdit },
   props: {
-    item: p(Object)
+    itemId: p(String)
   }
 };
 </script>

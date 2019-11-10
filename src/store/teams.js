@@ -1,4 +1,5 @@
-import { bind, add, set, del } from '@/firebase';
+import { add, set, del } from '@/firebase';
+import { setCollection } from './helpers.js';
 
 const state = {
   teams: []
@@ -22,9 +23,7 @@ const mutations = {
 
 const actions = {
   setTeams ({ commit }) {
-    return bind(
-      'teams',
-      newTeams => commit('commitTeams', newTeams));
+    setCollection(commit, 'teams');
   },
   addTeam (context, team) {
     team.owner = context.getters.getCurrentProfile;

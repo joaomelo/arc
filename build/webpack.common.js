@@ -4,7 +4,6 @@ const WebpackBar = require('webpackbar');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { VueLoaderPlugin } = require('vue-loader');
 
 const path = require('path');
@@ -58,6 +57,5 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({ template: src + '/index.html' }),
     new VueLoaderPlugin()
-    // new BundleAnalyzerPlugin({ openAnalyzer: false }) //cant finish build with this plugin
   ]
 };

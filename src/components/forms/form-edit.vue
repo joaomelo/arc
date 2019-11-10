@@ -3,10 +3,7 @@
     @save="save"
     @cancel="cancel"
   >
-    <component
-      :is="editFields"
-      :item="itemClone"
-    />
+    <slot :clone="clone" />
   </FormDialog>
 </template>
 
@@ -17,16 +14,11 @@ import FormDialog from './form-dialog.vue';
 
 export default {
   name: 'FormEdit',
-  components: {
-    FormDialog
-  },
-  props: {
-    item: p(Object),
-    editFields: p(Object)
-  },
+  components: { FormDialog },
+  props: { item: p(Object) },
   data () {
     return {
-      itemClone: cloneDeep(this.item)
+      clone: cloneDeep(this.item)
     };
   },
   methods: {
@@ -34,7 +26,7 @@ export default {
       this.$emit('cancel');
     },
     save () {
-      this.$emit('save', this.itemClone);
+      this.$emit('save', this.clone);
     }
   }
 };

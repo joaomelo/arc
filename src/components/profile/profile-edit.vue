@@ -1,22 +1,22 @@
 <template>
   <ItemEdit
     :item-id="itemId"
-    item-type="profile"
-    #default="{item: profile}"
+    item-collection="profiles"
+    #default="{ clone }"
   >
     <TextControl
-      v-model="profile.title"
+      v-model="clone.title"
       label="Email"
       readonly
     />
     <RelationshipControl
-      v-model="profile.lang"
+      v-model="clone.lang"
       label="Language"
       :is-required="true"
       :is-single="true"
       :items="languages"
     />
-  </ItemEdit>
+  </itemedit>
 </template>
 
 <script>
