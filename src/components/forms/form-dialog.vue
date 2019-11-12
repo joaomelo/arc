@@ -6,13 +6,13 @@
         class="btn-secondary"
         @click="cancel"
       >
-        cancel
+        {{ $t('forms.cancel') }}
       </BaseButton>
       <BaseButton
         class="btn-primary ml-1"
         @click="save"
       >
-        save
+        {{ $t('forms.save') }}
       </BaseButton>
     </div>
   </form>

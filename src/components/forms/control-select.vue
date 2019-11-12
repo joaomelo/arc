@@ -3,12 +3,12 @@
     #default="{ controlId }"
     :label="label"
   >
-    <multiselect
+    <Multiselect
       :id="controlId"
       :multiple="!isSingle"
       :close-on-select="isSingle"
       :allow-empty="!isRequired"
-      :value="value"
+      :value="valueObject"
       :options="items"
       track-by="id"
       label="title"
@@ -19,26 +19,30 @@
 
 <script>
 import Multiselect from 'vue-multiselect';
-
-import ControlWrapper from './control-wrapper.vue';
+import ControlWrapper from '@/components/base/control-wrapper.vue';
 import { p } from '@/helpers/props.js';
 
 export default {
-  name: 'RelationshipControl',
+  name: 'ControlSelect',
   components: {
     Multiselect,
     ControlWrapper
   },
   props: {
-    value: p([Object, Array], () => []),
+    value: p([String, Number], null),
     label: p(String),
     isRequired: p(Boolean, false),
     isSingle: p(Boolean, true),
     items: p(Array)
   },
+  computed: {
+    valueObject () {
+      return this.items.find(i => i.id === this.value);
+    }
+  },
   methods: {
     update (value, id) {
-      this.$emit('input', value);
+      this.$emit('input', value.id);
     }
   }
 };

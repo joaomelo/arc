@@ -12,8 +12,15 @@ function bind (collection, callback) {
   });
 }
 
+async function get (collection, id) {
+  const docRef = db.collection(collection).doc(id);
+  const doc = await docRef.get();
+  const item = doc.exists ? await convertToItem(doc) : null;
+  return item;
+}
+
 function add (collection, item) {
-  db.collection(collection).add({
+  return db.collection(collection).add({
     ...convertToFiredoc(item),
     ...trail(),
     deleted: false
@@ -21,7 +28,7 @@ function add (collection, item) {
 }
 
 function set (collection, id, item) {
-  db.collection(collection).doc(id).set({
+  return db.collection(collection).doc(id).set({
     ...convertToFiredoc(item),
     ...trail(),
     deleted: false
@@ -29,7 +36,7 @@ function set (collection, id, item) {
 }
 
 function del (collection, id) {
-  db.collection(collection).doc(id).update({
+  return db.collection(collection).doc(id).update({
     ...trail(),
     deleted: true
   });
@@ -115,4 +122,4 @@ function convertToMoment (timeStamp) {
   return timeStamp.toDate();
 }
 
-export { bind, add, set, del };
+export { bind, get, add, set, del };

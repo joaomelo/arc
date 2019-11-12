@@ -1,56 +1,53 @@
-import { auth, set } from '@/firebase';
-import { setCollection } from './helpers.js';
+import { auth, get, set } from '@/firebase';
 import { i18n } from '@/i18n';
 
 const state = {
-  profiles: [],
   loginStatus: 'unsolved',
   user: undefined
 };
 
 const getters = {
-  getProfiles: state => state.profiles,
-  getProfile: state => id => state.profiles.find(profile => profile.id === id),
-  getCurrentProfile: (state, getters) => state.user ? getters.getProfile(state.user.uid) : undefined,
-  getOtherProfiles: (state, getters) => state.profiles.filter(profile => profile.id !== getters.getCurrentProfile.id),
+  getUser: (state) => state.user,
   getLoginStatus: state => state.loginStatus
 };
 
 const mutations = {
-  commitProfiles (state, profiles) {
-    state.profiles = profiles;
-  },
-  commitUser (state, payload) {
-    state.loginStatus = payload.loginStatus;
-    state.user = payload.user;
+  commitLogin (state, { loginStatus, user }) {
+    state.loginStatus = loginStatus;
+    state.user = user;
   }
 };
 
 const actions = {
-  setUser ({ commit, getters, dispatch }) {
-    commit('startedLoad', 'user');
-    const setUserAndProfile = (user, loginStatus) => {
-      commit('commitUser', { user, loginStatus });
-      if (loginStatus === 'loggedin' && !getters.getProfile(user.uid)) {
-        const newProfile = {
-          id: user.uid,
-          title: user.email,
-          lang: i18n.fallbackLocale
-        };
-        dispatch('setProfile', newProfile);
-        commit('stoppedLoad', 'user');
-      }
+  async setAuth ({ commit, getters, dispatch }) {
+    commit('startedLoad', 'login');
+    commit('startedLoad', 'profile');
+
+    const setLogin = (user, loginStatus) => {
+      commit('commitLogin', { loginStatus, user });
+      commit('stoppedLoad', 'login');
     };
-    auth.addCallback(setUserAndProfile, true);
+
+    const boostrapProfile = async (user, loginStatus) => {
+      if (user) {
+        const dbProfile = await get('profiles', user.uid);
+        if (dbProfile === null) {
+          const newProfile = {
+            id: user.uid,
+            title: user.email,
+            lang: i18n.fallbackLocale
+          };
+          await set('profiles', newProfile.id, newProfile);
+        }
+      }
+      commit('stoppedLoad', 'profile');
+    };
+
+    auth.addCallback(boostrapProfile, true);
+    auth.addCallback(setLogin, true);
   },
   logout (context) {
     auth.logout();
-  },
-  setProfiles ({ commit }) {
-    setCollection(commit, 'profiles');
-  },
-  setProfile (context, profile) {
-    set('profiles', profile.id, profile);
   }
 };
 

@@ -6,12 +6,12 @@
   >
     <TextControl
       v-model="clone.title"
-      label="Email"
-      readonly
+      :label="$t('fields.account.email')"
+      read-only
     />
-    <RelationshipControl
+    <ControlSelect
       v-model="clone.lang"
-      label="Language"
+      :label="$t('fields.account.language')"
       :is-required="true"
       :is-single="true"
       :items="languages"
@@ -24,14 +24,14 @@ import { locales } from '@/i18n';
 import { p } from '@/helpers/props.js';
 import ItemEdit from '@/components/item/item-edit.vue';
 import TextControl from '@/components/base/text-control.vue';
-import RelationshipControl from '@/components/base/relationship-control.vue';
+import ControlSelect from '@/components/forms/control-select.vue';
 
 export default {
   name: 'ProfileEdit',
   components: {
     ItemEdit,
     TextControl,
-    RelationshipControl
+    ControlSelect
   },
   props: {
     itemId: p(String)

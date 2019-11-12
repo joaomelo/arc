@@ -6,17 +6,23 @@ import br from './messages-br.js';
 
 Vue.use(VueI18n);
 
-const locales = {
-  en: 'en',
-  br: 'pt_BR'
-};
+const locales = [
+  {
+    id: 'en',
+    title: 'english'
+  },
+  {
+    id: 'pt_BR',
+    title: 'português'
+  }
+];
 
 const i18n = new VueI18n({
-  locale: locales.br,
-  fallbackLocale: locales.en,
+  locale: 'en',
+  fallbackLocale: 'en',
   messages: {
-    [locales.en]: en,
-    [locales.br]: br
+    en: en,
+    pt_BR: br
   }
 });
 

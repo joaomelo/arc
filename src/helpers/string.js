@@ -6,4 +6,9 @@ function firstUpperPlural (str) {
   return `${firstUpper(str)}s`;
 }
 
-export { firstUpper, firstUpperPlural };
+function extractUsernameFromEmail (email) {
+  const pos = email.indexOf('@');
+  return email.substring(0, pos);
+}
+
+export { extractUsernameFromEmail, firstUpper, firstUpperPlural };

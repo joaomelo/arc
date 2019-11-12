@@ -3,7 +3,7 @@
     :class="['btn-primary', 'btn-block']"
     @click="add"
   >
-    add {{ itemType }}
+    {{ $t('forms.new',{ col: $tc(`collections.${itemType}`, 1) }) }}
   </BaseButton>
 </template>
 

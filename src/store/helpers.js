@@ -3,10 +3,10 @@ import { firstUpper, firstUpperPlural } from '@/helpers/string.js';
 
 const collections = {
   assets: 'assets',
+  profiles: 'profiles',
   results: 'results',
   challenges: 'challenges',
-  teams: 'teams',
-  profiles: 'profiles'
+  teams: 'teams'
 };
 
 function mapStoreFunction (collection, funcType) {

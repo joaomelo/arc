@@ -37,7 +37,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('setUser');
+    this.$store.dispatch('setAuth');
   }
 };
 </script>

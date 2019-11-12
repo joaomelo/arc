@@ -6,7 +6,7 @@
   >
     <TextControl
       v-model="clone.title"
-      label="Title"
+      :label="$t('fields.common.title')"
     />
   </ItemEdit>
 </template>

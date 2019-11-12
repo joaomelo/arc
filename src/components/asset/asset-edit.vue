@@ -6,11 +6,11 @@
   >
     <TextControl
       v-model="asset.alias"
-      label="Alias"
+      :label="$t('fields.assets.alias')"
     />
     <TextControl
       v-model="asset.title"
-      label="Title"
+      :label="$t('fields.common.title')"
     />
   </ItemEdit>
 </template>

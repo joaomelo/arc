@@ -8,15 +8,15 @@
       :display="item.title"
     />
     <ItemViewDetail
-      label="parent"
+      :label="$t('fields.teams.parent')"
       :display="item.parent && item.parent.title"
     />
     <ItemViewDetail
-      label="owner"
+      :label="$t('fields.teams.owner')"
       :display="item.owner.title"
     />
     <ItemViewDetail
-      label="managers"
+      :label="$t('fields.teams.managers')"
       :display="item.managers"
     />
   </ItemView>

@@ -19,7 +19,7 @@ export default {
 function formatVersionTag (version) {
   const prefix = 'v';
   const posfix = process.env.NODE_ENV === 'development'
-    ? '-dev'
+    ? 'd'
     : '';
   return prefix + version + posfix;
 }

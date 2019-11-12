@@ -8,13 +8,13 @@
         class="btn-primary"
         @click="edit"
       >
-        edit
+        {{ $t('forms.edit') }}
       </BaseButton>
       <BaseButton
         class="btn-secondary"
         @click="del"
       >
-        delete
+        {{ $t('forms.delete') }}
       </BaseButton>
     </div>
   </div>
