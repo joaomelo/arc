@@ -19,7 +19,7 @@
 
 <script>
 import Multiselect from 'vue-multiselect';
-import ControlWrapper from '@/components/base/control-wrapper.vue';
+import ControlWrapper from './control-wrapper.vue';
 import { p } from '@/helpers/props.js';
 
 export default {
@@ -36,7 +36,7 @@ export default {
     items: p(Array)
   },
   methods: {
-    update (value, id) {
+    update (value) {
       this.$emit('input', value);
     }
   }

@@ -2,39 +2,40 @@
   <ItemView
     item-type="team"
     :item-id="item.id"
-  >
-    <ItemViewDetail
-      :is-title="true"
-      :display="item.title"
-    />
-    <ItemViewDetail
-      :label="$t('fields.teams.parent')"
-      :display="item.parent && item.parent.title"
-    />
-    <ItemViewDetail
-      :label="$t('fields.teams.owner')"
-      :display="item.owner.title"
-    />
-    <ItemViewDetail
-      :label="$t('fields.teams.managers')"
-      :display="item.managers"
-    />
-  </ItemView>
+    :title="item.title"
+    :details="details"
+  />
 </template>
 
 <script>
 import { p } from '@/helpers/props.js';
-import ItemView from '@/components/item/Item-view.vue';
-import ItemViewDetail from '@/components/item/Item-view-detail.vue';
+import ItemView from '@/components/item/item-view.vue';
 
 export default {
   name: 'TeamView',
   components: {
-    ItemView,
-    ItemViewDetail
+    ItemView
   },
   props: {
     item: p(Object)
+  },
+  computed: {
+    details () {
+      return [
+        {
+          label: this.$t('fields.teams.parent'),
+          display: this.item.parent && this.item.parent.title
+        },
+        {
+          label: this.$t('fields.teams.owner'),
+          display: this.item.owner.title
+        },
+        {
+          label: this.$t('fields.teams.managers'),
+          display: this.item.managers
+        }
+      ];
+    }
   }
 };
 </script>

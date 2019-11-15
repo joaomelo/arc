@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import PageUnsolved from './pages/page-unsolved.vue';
+import PageSolve from './pages/page-solve.vue';
 import PageStart from './pages/page-start.vue';
 import PageLogin from './pages/page-login.vue';
 import Page404 from './pages/page-404.vue';
@@ -26,8 +26,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'unsolved',
-      component: PageUnsolved
+      name: 'solve',
+      component: PageSolve
     },
     {
       path: '/start',

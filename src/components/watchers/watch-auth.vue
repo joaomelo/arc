@@ -16,7 +16,7 @@ export default {
     status: {
       handler (newStatus) {
         const statusRoutes = {
-          unsolved: 'unsolved',
+          unsolved: 'solve',
           loggedin: 'start',
           loggedout: 'login'
         };
@@ -35,9 +35,6 @@ export default {
       },
       imediate: true
     }
-  },
-  created () {
-    this.$store.dispatch('setAuth');
   }
 };
 </script>

@@ -5,14 +5,14 @@
   >
     <Multiselect
       :id="controlId"
-      :multiple="!isSingle"
-      :close-on-select="isSingle"
-      :allow-empty="!isRequired"
-      :value="valueObject"
-      :options="items"
-      track-by="id"
-      label="title"
+      :multiple="true"
+      :close-on-select="false"
+      :allow-empty="true"
+      :taggable="true"
+      :value="value"
+      :options="value"
       @input="update"
+      @tag="addTag"
     />
   </ControlWrapper>
 </template>
@@ -23,26 +23,22 @@ import ControlWrapper from './control-wrapper.vue';
 import { p } from '@/helpers/props.js';
 
 export default {
-  name: 'ControlSelect',
+  name: 'ControlTag',
   components: {
     Multiselect,
     ControlWrapper
   },
   props: {
-    value: p([String, Number], null),
-    label: p(String),
-    isRequired: p(Boolean, false),
-    isSingle: p(Boolean, true),
-    items: p(Array)
-  },
-  computed: {
-    valueObject () {
-      return this.items.find(i => i.id === this.value);
-    }
+    value: p(Array, () => []),
+    label: p(String)
   },
   methods: {
-    update (value, id) {
-      this.$emit('input', value.id);
+    update (value) {
+      this.$emit('input', value);
+    },
+    addTag (newTag) {
+      this.value.push(newTag);
+      this.$emit('input', this.value);
     }
   }
 };

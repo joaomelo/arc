@@ -4,7 +4,7 @@
     item-collection="results"
     #default="{ clone }"
   >
-    <TextControl
+    <ControlText
       v-model="clone.title"
       :label="$t('fields.common.title')"
     />
@@ -14,13 +14,13 @@
 <script>
 import { p } from '@/helpers/props.js';
 import ItemEdit from '@/components/item/item-edit.vue';
-import TextControl from '@/components/base/text-control.vue';
+import ControlText from '@/components/forms/control-text.vue';
 
 export default {
   name: 'ResultEdit',
   components: {
     ItemEdit,
-    TextControl
+    ControlText
   },
   props: {
     itemId: p(String)

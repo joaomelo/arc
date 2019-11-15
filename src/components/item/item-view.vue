@@ -1,36 +1,25 @@
 <template>
-  <div class="card mb-3">
-    <div class="card-body">
-      <slot />
-    </div>
-    <div class="card-body pt-0 text-right">
-      <BaseButton
-        class="btn-primary"
-        @click="edit"
-      >
-        {{ $t('forms.edit') }}
-      </BaseButton>
-      <BaseButton
-        class="btn-secondary"
-        @click="del"
-      >
-        {{ $t('forms.delete') }}
-      </BaseButton>
-    </div>
-  </div>
+  <BaseView
+    :title="title"
+    :details="details"
+    @edit="edit"
+    @del="del"
+  />
 </template>
 
 <script>
 import { p } from '@/helpers/props.js';
 import { mapStoreFunction } from '@/store/helpers.js';
-import BaseButton from '@/components/base/base-button.vue';
+import BaseView from '@/components/base/base-view.vue';
 
 export default {
   name: 'ItemView',
-  components: { BaseButton },
+  components: { BaseView },
   props: {
     itemType: p(String),
-    itemId: p(String)
+    itemId: p(String),
+    title: p(String),
+    details: p(Array, () => [])
   },
   methods: {
     edit () {

@@ -4,7 +4,7 @@
     item-collection="profiles"
     #default="{ clone }"
   >
-    <TextControl
+    <ControlText
       v-model="clone.title"
       :label="$t('fields.account.email')"
       read-only
@@ -23,14 +23,14 @@
 import { locales } from '@/i18n';
 import { p } from '@/helpers/props.js';
 import ItemEdit from '@/components/item/item-edit.vue';
-import TextControl from '@/components/base/text-control.vue';
+import ControlText from '@/components/forms/control-text.vue';
 import ControlSelect from '@/components/forms/control-select.vue';
 
 export default {
   name: 'ProfileEdit',
   components: {
     ItemEdit,
-    TextControl,
+    ControlText,
     ControlSelect
   },
   props: {

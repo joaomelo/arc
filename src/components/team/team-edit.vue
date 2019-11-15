@@ -4,7 +4,7 @@
     item-collection="teams"
     #default="{ clone }"
   >
-    <TextControl
+    <ControlText
       v-model="clone.title"
       :label="$t('fields.common.title')"
     />
@@ -13,7 +13,7 @@
       :label="$t('fields.teams.parent')"
       :items="$store.getters.getOtherTeams(clone.id)"
     />
-    <TextControl
+    <ControlText
       v-if="clone.owner"
       v-model="clone.owner.title"
       :label="$t('fields.teams.owner')"
@@ -39,14 +39,14 @@
 <script>
 import { p } from '@/helpers/props.js';
 import ItemEdit from '@/components/item/item-edit.vue';
-import TextControl from '@/components/base/text-control.vue';
+import ControlText from '@/components/forms/control-text.vue';
 import ControlRelationship from '@/components/forms/control-relationship.vue';
 
 export default {
   name: 'TeamEdit',
   components: {
     ItemEdit,
-    TextControl,
+    ControlText,
     ControlRelationship
   },
   props: {

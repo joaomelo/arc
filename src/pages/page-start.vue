@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    Loading data
+    Loading data...
   </div>
 </template>
 

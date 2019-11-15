@@ -2,25 +2,17 @@
   <ItemView
     item-type="challenge"
     :item-id="item.id"
-  >
-    <ItemViewDetail
-      :is-title="true"
-      :display="item.title"
-    />
-  </ItemView>
+    :title="item.title"
+  />
 </template>
 
 <script>
 import { p } from '@/helpers/props.js';
-import ItemView from '@/components/item/Item-view.vue';
-import ItemViewDetail from '@/components/item/Item-view-detail.vue';
+import ItemView from '@/components/item/item-view.vue';
 
 export default {
   name: 'ChallengeView',
-  components: {
-    ItemView,
-    ItemViewDetail
-  },
+  components: { ItemView },
   props: {
     item: p(Object)
   }

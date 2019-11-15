@@ -19,7 +19,7 @@ import ControlWrapper from './control-wrapper.vue';
 import { p } from '@/helpers/props.js';
 
 export default {
-  name: 'TextControl',
+  name: 'ControlText',
   components: {
     ControlWrapper
   },

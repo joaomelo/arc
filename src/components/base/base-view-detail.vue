@@ -11,7 +11,7 @@
 import { p } from '@/helpers/props.js';
 
 export default {
-  name: 'ItemViewDetail',
+  name: 'BaseViewDetail',
   props: {
     isTitle: p(Boolean, false),
     label: p(String, ''),
@@ -20,14 +20,14 @@ export default {
   computed: {
     classes () {
       return {
-        h4: this.isTitle,
+        h5: this.isTitle,
         'card-title': this.isTitle,
         'card-text': !this.isTitle
       };
     },
     displayValue () {
       if (Array.isArray(this.display) && this.display.length > 0) {
-        return this.display.map(d => d.title).join(', ');
+        return this.display.map(d => d.title || d).join(', ');
       } else {
         return this.display;
       }

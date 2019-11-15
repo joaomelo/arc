@@ -10,6 +10,8 @@ export default {
     logout: 'Logout from {user}'
   },
   forms: {
+    show: 'Show',
+    hide: 'Hide',
     edit: 'Edit',
     delete: 'Delete',
     new: 'New {col}',
@@ -18,14 +20,22 @@ export default {
   },
   fields: {
     common: {
-      title: 'Title'
+      title: 'Title',
+      description: 'Description',
+      tags: 'Tags'
     },
     account: {
       email: 'Email',
       language: 'Language'
     },
     assets: {
-      alias: 'Alias'
+      alias: 'Alias',
+      status: {
+        status: 'Status',
+        active: 'active',
+        blocked: 'blocked',
+        closed: 'closed'
+      }
     },
     teams: {
       parent: 'Parent',
