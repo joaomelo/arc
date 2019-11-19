@@ -9,10 +9,12 @@ const getters = {
   getTeams: state => state.teams,
   getTeam: state => id => state.teams.find(team => team.id === id),
   getOtherTeams: state => id => state.teams.filter(team => team.id !== id),
-  getMyTeams: (state, getters) => state.teams.filter(team => team.owner &&
-      getters.getCurrentProfile &&
-      team.owner.id === getters.getCurrentProfile.id
-  )
+  getMyTeams: (state, getters) => state.teams.filter(team => getters.isMyTeam(team)),
+  isMyTeam: (state, getters) => team => {
+    const uid = getters.getCurrentProfile.id;
+    const mgs = team.managers || [];
+    return (team.owner.id === uid) || (mgs.findIndex(m => m.id === uid) !== -1);
+  }
 };
 
 const mutations = {

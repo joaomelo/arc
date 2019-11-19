@@ -8,7 +8,8 @@
       type="text"
       class="form-control"
       :value="value"
-      :readonly="readOnly"
+      :readonly="isReadonly"
+      :required="isRequired"
       @input="update"
     >
   </ControlWrapper>
@@ -25,14 +26,14 @@ export default {
   },
   props: {
     label: p(String),
-    value: p(String, ''),
-    readOnly: p(Boolean, false)
+    value: p(String, null),
+    isReadonly: p(Boolean, false),
+    isRequired: p(Boolean, false)
   },
   methods: {
     update (event) {
       this.$emit('input', event.target.value);
     }
   }
-
 };
 </script>

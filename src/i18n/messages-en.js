@@ -43,5 +43,11 @@ export default {
       managers: 'Managers',
       staff: 'Staff'
     }
+  },
+  placeholders: {
+    select: 'Please select a value'
+  },
+  error: {
+    required: 'Please provide a valid value'
   }
 };

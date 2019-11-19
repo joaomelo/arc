@@ -8,6 +8,8 @@
       class="form-control"
       rows="3"
       :value="value"
+      :readonly="isReadonly"
+      :required="isRequired"
       @input="update"
     />
   </ControlWrapper>
@@ -24,7 +26,9 @@ export default {
   },
   props: {
     label: p(String),
-    value: p(String, '')
+    value: p(String, null),
+    isReadonly: p(Boolean, false),
+    isRequired: p(Boolean, false)
   },
   methods: {
     update (event) {

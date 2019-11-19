@@ -2,11 +2,14 @@
   <div class="form-group">
     <label :for="controlId">{{ label }}</label>
     <slot :controlId="controlId" />
+    <div class="invalid-feedback">
+      {{ $t('error.required') }}
+    </div>
   </div>
 </template>
 
 <script>
-import kebabCase from 'lodash-es';
+import { kebabCase } from 'lodash-es';
 import { p } from '@/helpers/props.js';
 
 export default {

@@ -3,49 +3,50 @@
     #default="{ controlId }"
     :label="label"
   >
-    <Multiselect
+    <select
       :id="controlId"
-      :multiple="!isSingle"
-      :close-on-select="isSingle"
-      :allow-empty="!isRequired"
-      :value="valueObject"
-      :options="items"
-      track-by="id"
-      label="title"
-      @input="update"
+      ref="select"
+      class="form-control"
+      :readonly="isReadonly"
+      :required="isRequired"
+      :multiple="isMultiple"
     />
   </ControlWrapper>
 </template>
 
 <script>
-import Multiselect from 'vue-multiselect';
+
 import ControlWrapper from './control-wrapper.vue';
 import { p } from '@/helpers/props.js';
+import { initSelect2, extractSelect2Value } from './control-select-helpers.js';
 
 export default {
   name: 'ControlSelect',
   components: {
-    Multiselect,
     ControlWrapper
   },
   props: {
-    value: p([String, Number], null),
     label: p(String),
+    value: p([String, Object, Array], null),
+    options: p(Array, () => []),
+    isReadonly: p(Boolean, false),
     isRequired: p(Boolean, false),
-    isSingle: p(Boolean, true),
-    items: p(Array)
+    isMultiple: p(Boolean, false),
+    isObjectDriven: p(Boolean, false)
   },
-  computed: {
-    valueObject () {
-      return this.items.find(i => i.id === this.value);
-    }
+  mounted () {
+    initSelect2(this.$refs.select, this.isMultiple, this.value, this.options, this.update);
   },
   methods: {
-    update (value, id) {
-      this.$emit('input', value.id);
+    update (event) {
+      const value = extractSelect2Value(this.$refs.select, this.options, this.isMultiple, this.isObjectDriven);
+
+      console.log(value);
+      this.$emit('input', value);
     }
   }
 };
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style src="select2/dist/css/select2.min.css"/>
+<style src="@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css"/>

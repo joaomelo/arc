@@ -1,5 +1,10 @@
 <template>
-  <form class="bg-white rounded p-3">
+  <form
+    ref="form"
+    class="bg-white rounded p-3"
+    novalidate
+    @submit.prevent="save"
+  >
     <slot />
     <div class="text-right">
       <BaseButton
@@ -9,8 +14,8 @@
         {{ $t('forms.cancel') }}
       </BaseButton>
       <BaseButton
+        type="submit"
         class="btn-primary ml-1"
-        @click="save"
       >
         {{ $t('forms.save') }}
       </BaseButton>
@@ -35,7 +40,11 @@ export default {
       this.$emit('cancel');
     },
     save () {
-      this.$emit('save');
+      const form = this.$refs.form;
+      form.classList.add('was-validated');
+      if (form.checkValidity()) {
+        this.$emit('save');
+      }
     },
     keyPressed (event) {
       if (event.keyCode === 27) {

@@ -7,24 +7,25 @@
     <ControlText
       v-model="asset.alias"
       :label="$t('fields.assets.alias')"
+      is-required
     />
     <ControlText
       v-model="asset.title"
       :label="$t('fields.common.title')"
+      is-required
     />
-    <ControlRelationship
+    <ControlSelect
       v-model="asset.team"
       :label="$tc('collections.team', 1)"
       :is-required="true"
-      :is-single="true"
-      :items="$store.getters.getTeams"
+      :is-object-driven="true"
+      :options="$store.getters.getMyTeams"
     />
     <ControlSelect
       v-model="asset.status"
       :label="$t('fields.assets.status.status')"
       :is-required="true"
-      :is-single="true"
-      :items="statuses"
+      :options="statuses"
     />
     <ControlTag
       v-model="asset.tags"
@@ -42,7 +43,6 @@ import { p } from '@/helpers/props.js';
 import ItemEdit from '@/components/item/item-edit.vue';
 import ControlText from '@/components/forms/control-text.vue';
 import ControlTextarea from '@/components/forms/control-textarea.vue';
-import ControlRelationship from '@/components/forms/control-relationship.vue';
 import ControlTag from '@/components/forms/control-tag.vue';
 import ControlSelect from '@/components/forms/control-select.vue';
 import { assetsStatuses } from './assets-statuses.js';
@@ -53,7 +53,6 @@ export default {
     ControlText,
     ControlTextarea,
     ItemEdit,
-    ControlRelationship,
     ControlTag,
     ControlSelect
   },
@@ -64,9 +63,6 @@ export default {
     return {
       statuses: assetsStatuses
     };
-  },
-  validations: {
-
   }
 };
 </script>
