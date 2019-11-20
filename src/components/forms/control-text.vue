@@ -10,6 +10,7 @@
       :value="value"
       :readonly="isReadonly"
       :required="isRequired"
+      :placeholder="$tc('placeholders.enter', 1)"
       @input="update"
     >
   </ControlWrapper>

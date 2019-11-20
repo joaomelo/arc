@@ -8,10 +8,11 @@
       v-model="clone.title"
       :label="$t('fields.common.title')"
     />
-    <ControlRelationship
+    <ControlSelect
       v-model="clone.parent"
       :label="$t('fields.teams.parent')"
-      :items="$store.getters.getOtherTeams(clone.id)"
+      :is-object-driven="true"
+      :options="$store.getters.getOtherTeams(clone.id)"
     />
     <ControlText
       v-if="clone.owner"
@@ -19,19 +20,19 @@
       :label="$t('fields.teams.owner')"
       read-only
     />
-    <ControlRelationship
+    <ControlSelect
       v-model="clone.managers"
       :label="$t('fields.teams.managers')"
-      :is-required="false"
-      :is-single="false"
-      :items="$store.getters.getOtherProfiles"
+      :is-multiple="true"
+      :is-object-driven="true"
+      :options="$store.getters.getOtherProfiles"
     />
-    <ControlRelationship
+    <ControlSelect
       v-model="clone.staff"
       :label="$t('fields.teams.staff')"
-      :is-required="false"
-      :is-single="false"
-      :items="$store.getters.getOtherProfiles"
+      :is-multiple="true"
+      :is-object-driven="true"
+      :options="$store.getters.getOtherProfiles"
     />
   </ItemEdit>
 </template>
@@ -40,14 +41,14 @@
 import { p } from '@/helpers/props.js';
 import ItemEdit from '@/components/item/item-edit.vue';
 import ControlText from '@/components/forms/control-text.vue';
-import ControlRelationship from '@/components/forms/control-relationship.vue';
+import ControlSelect from '@/components/forms/control-select.vue';
 
 export default {
   name: 'TeamEdit',
   components: {
     ItemEdit,
     ControlText,
-    ControlRelationship
+    ControlSelect
   },
   props: {
     itemId: p(String)

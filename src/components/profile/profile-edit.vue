@@ -13,7 +13,6 @@
       v-model="clone.lang"
       :label="$t('fields.account.language')"
       :is-required="true"
-      :is-single="true"
       :items="languages"
     />
   </itemedit>
