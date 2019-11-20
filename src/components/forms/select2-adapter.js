@@ -3,25 +3,32 @@ import 'select2/dist/js/select2.min.js';
 
 import { i18n } from '@/i18n';
 
-function initSelect2 (select, isMultiple, values, options, update) {
+function initSelect2 (select, isTaggable, isMultiple, values, options, update) {
   const pureValues = JSON.parse(JSON.stringify(values));
   const pureOptions = JSON.parse(JSON.stringify(options));
   const data = convertToData(pureValues, pureOptions, isMultiple);
 
+  const placeholderKey = isTaggable ? 'placeholders.enter' : 'placeholders.select';
+  const placeholderPlural = isMultiple ? 2 : 1;
+
   JQuery(select).select2({
     theme: 'bootstrap4',
-    placeholder: i18n.t('placeholders.select'),
+    placeholder: i18n.tc(placeholderKey, placeholderPlural),
+    tags: isTaggable,
+    tokenSeparators: [',', ' '],
     data
   });
   JQuery(select).on('change', update);
 }
 
 function convertToData (values, options, isMultiple) {
+  if (!options || !Array.isArray(options)) return;
+
   let hasSelected = false;
   const data = options.map(option => {
     const dataItem = {
-      id: option.id,
-      text: option.title
+      id: option.id || option,
+      text: option.title || option
     };
     if (isOptionSelected(option, values)) {
       hasSelected = true;
@@ -45,7 +52,7 @@ function isOptionSelected (option, values) {
 
   if (option && values) {
     const isArray = Array.isArray(values);
-    const oid = option.id;
+    const oid = option.id || option;
 
     if (isArray && values.find(v => v === oid || v.id === oid)) {
       result = true;

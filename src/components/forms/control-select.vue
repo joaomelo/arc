@@ -18,7 +18,7 @@
 
 import ControlWrapper from './control-wrapper.vue';
 import { p } from '@/helpers/props.js';
-import { initSelect2, extractSelect2Value } from './control-select-helpers.js';
+import { initSelect2, extractSelect2Value } from './select2-adapter.js';
 
 export default {
   name: 'ControlSelect',
@@ -35,13 +35,11 @@ export default {
     isObjectDriven: p(Boolean, false)
   },
   mounted () {
-    initSelect2(this.$refs.select, this.isMultiple, this.value, this.options, this.update);
+    initSelect2(this.$refs.select, false, this.isMultiple, this.value, this.options, this.update);
   },
   methods: {
     update (event) {
       const value = extractSelect2Value(this.$refs.select, this.options, this.isMultiple, this.isObjectDriven);
-
-      console.log(value);
       this.$emit('input', value);
     }
   }

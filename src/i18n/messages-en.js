@@ -45,7 +45,8 @@ export default {
     }
   },
   placeholders: {
-    select: 'Please select a value'
+    select: 'Please select a value | Please select some values',
+    enter: 'Please enter a value | Please enter some values'
   },
   error: {
     required: 'Please provide a valid value'
