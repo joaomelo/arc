@@ -43,8 +43,8 @@ const actions = {
       commit('stoppedLoad', 'profile');
     };
 
-    auth.addCallback(boostrapProfile, true);
-    auth.addCallback(setLogin, true);
+    auth.addCallback(boostrapProfile);
+    auth.addCallback(setLogin);
   },
   logout (context) {
     auth.logout();

@@ -14,8 +14,8 @@ class Auth {
     });
   }
 
-  addCallback (callback, imediate = false) {
-    imediate && callback(this.currentUser, this.loginStatus);
+  addCallback (callback) {
+    this.isUserSolved && callback(this.currentUser, this.loginStatus);
     this.callbacks.push(callback);
   }
 

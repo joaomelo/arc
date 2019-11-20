@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import WatchLoading from './components/watchers/watch-loading.vue';
-import WatchAuth from './components/watchers/watch-auth.vue';
-import WatchI18n from './components/watchers/watch-i18n.vue';
+import WatchLoading from '@/watchers/watch-loading.vue';
+import WatchAuth from '@/watchers/watch-auth.vue';
+import WatchI18n from '@/watchers/watch-i18n.vue';
 export default {
   name: 'App',
   components: { WatchLoading, WatchAuth, WatchI18n }
