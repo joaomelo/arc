@@ -12,10 +12,12 @@ import { extractUsernameFromEmail } from '@/helpers/string.js';
 
 export default {
   name: 'Logout',
-  data () {
-    return {
-      username: extractUsernameFromEmail(this.$store.getters.getCurrentProfile.title)
-    };
+  computed: {
+    username () {
+      const profile = this.$store.getters.getCurrentProfile;
+      const result = profile ? extractUsernameFromEmail(profile.title) : '';
+      return result;
+    }
   },
   methods: {
     logout () {

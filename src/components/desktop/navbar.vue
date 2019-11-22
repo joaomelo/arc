@@ -29,6 +29,7 @@
       </div>
       <div class="navbar-nav">
         <router-link
+          v-if="userId"
           :to="{ name: 'profileEdit', params: {itemId: userId}}"
           class="nav-item nav-link"
         >
@@ -50,12 +51,10 @@ export default {
     Logout,
     Version
   },
-  data () {
-    return {
-      userId: this.$store.getters.getCurrentProfile.id
-    };
-  },
   computed: {
+    userId () {
+      return this.$store.getters.getCurrentProfile ? this.$store.getters.getCurrentProfile.id : undefined;
+    },
     links () {
       return [
         { text: this.$tc('collections.asset', 2), route: 'assetsList' },

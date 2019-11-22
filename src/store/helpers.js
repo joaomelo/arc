@@ -31,12 +31,11 @@ function mapAllBinders () {
 }
 
 function setCollection (commit, collection) {
-  commit('startedLoad', collection);
   return bind(
     collection,
+    commit,
     newItems => {
       commit(mapStoreFunction(collection, 'colMutation'), newItems);
-      commit('stoppedLoad', collection);
     });
 }
 

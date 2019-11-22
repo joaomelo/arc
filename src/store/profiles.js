@@ -24,13 +24,12 @@ const mutations = {
 
 const actions = {
   setProfiles ({ commit, getters }) {
-    commit('startedLoad', 'profiles');
     bind(
       'profiles',
+      commit,
       profiles => {
         commit(mapStoreFunction('profiles', 'colMutation'), profiles);
         commit('commitCurrentProfile', profiles.find(p => p.id === getters.getUser.uid));
-        commit('stoppedLoad', 'profiles');
       });
   },
   setProfile (context, profile) {

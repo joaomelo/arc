@@ -4,11 +4,15 @@ import { firebase, fireApp } from './fire-app';
 const db = fireApp.firestore();
 const now = firebase.firestore.FieldValue.serverTimestamp();
 
-function bind (collection, callback) {
+function bind (collection, loadMutation, callback) {
   const query = db.collection(collection).where('deleted', '==', false).orderBy('title', 'asc');
   query.onSnapshot(snapshot => {
+    loadMutation('startedLoad', collection);
     const promises = snapshot.docs.map(doc => convertToItem(doc, false));
-    Promise.all(promises).then(items => callback(items));
+    Promise.all(promises).then(items => {
+      callback(items);
+      loadMutation('stoppedLoad', collection);
+    });
   });
 }
 

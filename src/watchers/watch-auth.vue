@@ -2,14 +2,13 @@
   <span id="watch-auth" />
 </template>
 <script>
+import { mapAllBinders } from '@/store/helpers.js';
+
 export default {
   name: 'WatchAuth',
   computed: {
     status () {
       return this.$store.getters.getLoginStatus;
-    },
-    route () {
-      return this.$router.currentRoute.name;
     }
   },
   watch: {
@@ -20,20 +19,16 @@ export default {
           loggedin: 'start',
           loggedout: 'login'
         };
+        (newStatus === 'loggedin') && this.bootstrap();
         this.$router.push({ name: statusRoutes[newStatus] });
       },
       imediate: true
-    },
-    route: {
-      handler (newRoute) {
-        if (this.status === 'unsolved' && newRoute !== 'unsolved') {
-          this.$router.push({ name: 'unsolved' });
-        }
-        if (this.status === 'loggedout' && newRoute !== 'login') {
-          this.$router.push({ name: 'login' });
-        }
-      },
-      imediate: true
+    }
+  },
+  methods: {
+    bootstrap () {
+      const binders = mapAllBinders();
+      binders.forEach(b => this.$store.dispatch(b));
     }
   }
 };

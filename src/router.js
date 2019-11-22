@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import store from '@/store';
+
 import PageSolve from './pages/page-solve.vue';
-import PageStart from './pages/page-start.vue';
 import PageLogin from './pages/page-login.vue';
 import Page404 from './pages/page-404.vue';
 
@@ -30,14 +31,14 @@ const router = new Router({
       component: PageSolve
     },
     {
-      path: '/start',
-      name: 'start',
-      component: PageStart
-    },
-    {
       path: '/login',
       name: 'login',
       component: PageLogin
+    },
+    {
+      path: '/start',
+      name: 'start',
+      redirect: { name: 'assetsList' }
     },
     {
       path: '/desktop',
@@ -100,6 +101,19 @@ const router = new Router({
       component: Page404
     }
   ]
+});
+
+router.beforeEach((to, from, next) => {
+  const loginStatus = store.getters.getLoginStatus;
+  const newRoute = to.name;
+
+  if (loginStatus === 'unsolved' && newRoute !== 'solve') {
+    next({ name: 'solve' });
+  } else if (loginStatus === 'loggedout' && newRoute !== 'login') {
+    next({ name: 'login' });
+  } else {
+    next();
+  }
 });
 
 export default router;

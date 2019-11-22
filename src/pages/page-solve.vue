@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    Solving User...
+    Loading...
   </div>
 </template>
 
