@@ -15,25 +15,30 @@
         />
       </div>
     </div>
-    <div class="card-body pt-0 text-right">
+    <div class="card-body pt-0 d-flex justify-content-start">
+      <div class="mr-auto">
+        <BaseButton
+          :disabled="!canEdit"
+          class="btn-secondary"
+          @click="$emit('edit')"
+        >
+          {{ $t('forms.edit') }}
+        </BaseButton>
+        <BaseButton
+          :disabled="!canEdit"
+          class="btn-secondary"
+          @click="$emit('del')"
+        >
+          {{ $t('forms.delete') }}
+        </BaseButton>
+      </div>
+
       <BaseButton
         v-if="details.length > 0"
         class="btn-primary"
         @click="show"
       >
         {{ showText }}
-      </BaseButton>
-      <BaseButton
-        class="btn-secondary"
-        @click="$emit('edit')"
-      >
-        {{ $t('forms.edit') }}
-      </BaseButton>
-      <BaseButton
-        class="btn-secondary"
-        @click="$emit('del')"
-      >
-        {{ $t('forms.delete') }}
       </BaseButton>
     </div>
   </div>
@@ -52,7 +57,8 @@ export default {
   },
   props: {
     title: p(String),
-    details: p(Array, [])
+    details: p(Array, []),
+    canEdit: p(Boolean, false)
   },
   data () {
     return {

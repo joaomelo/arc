@@ -1,7 +1,6 @@
 <template>
   <ItemView
-    item-type="team"
-    :item-id="item.id"
+    :item="item"
     :title="item.title"
     :details="details"
   />

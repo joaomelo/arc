@@ -1,7 +1,6 @@
 <template>
   <ItemView
-    item-type="asset"
-    :item-id="item.id"
+    :item="item"
     :title="prettyTitle"
     :details="details"
   />
@@ -22,9 +21,6 @@ export default {
     prettyTitle () {
       return `(${this.item.alias}) ${this.item.title}`;
     },
-    prettyStatus () {
-      return prettyStatus(this.item.status);
-    },
     details () {
       return [
         {
@@ -33,7 +29,7 @@ export default {
         },
         {
           label: this.$t('fields.assets.status.status'),
-          display: this.prettyStatus
+          display: prettyStatus(this.item.status)
         },
         {
           label: this.$t('fields.common.tags'),
