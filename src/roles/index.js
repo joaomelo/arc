@@ -1,10 +1,10 @@
 import store from '@/store';
+import { mapRoles } from './collections.js';
 
 function whatProfileCan (profile, item) {
-  if (!item || !item.team) return 'none';
-  if (!profile) return 'none';
+  if (!item || !profile) return 'none';
 
-  const teamRoles = mapRoles(item.team);
+  const teamRoles = mapRoles(item);
   const role = teamRoles[profile.id];
 
   const roleCans = {
@@ -28,17 +28,6 @@ function canEdit (item) {
 
 function getCurrentProfile () {
   return store.getters.getCurrentProfile;
-}
-
-function mapRoles (team) {
-  const roles = {};
-  const fillRole = (array, string) => array.forEach(a => { roles[a.id] = string; });
-
-  team.staff && fillRole(team.staff, 'staff');
-  team.managers && fillRole(team.managers, 'manager');
-  team.owner && fillRole([team.owner], 'owner');
-
-  return roles;
 }
 
 export { canRead, canEdit };

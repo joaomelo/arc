@@ -1,6 +1,11 @@
 <template>
   <div class="form-group">
-    <label :for="controlId">{{ label }}</label>
+    <label
+      v-if="label !== ''"
+      :for="controlId"
+    >
+      {{ label }}
+    </label>
     <slot :controlId="controlId" />
     <div class="invalid-feedback">
       {{ $t('error.required') }}
@@ -10,16 +15,16 @@
 
 <script>
 import { kebabCase } from 'lodash-es';
-import { p } from '@/helpers/props.js';
+import { p } from '@/components/common/props.js';
 
 export default {
   name: 'ControlWrapper',
   props: {
-    label: p(String)
+    label: p(String, '')
   },
   data () {
     return {
-      controlId: kebabCase(`input-${this.label}`)
+      controlId: this.label === '' ? this._uid : kebabCase(`input-${this.label}`)
     };
   }
 };

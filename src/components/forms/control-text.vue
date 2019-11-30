@@ -18,7 +18,7 @@
 
 <script>
 import ControlWrapper from './control-wrapper.vue';
-import { p } from '@/helpers/props.js';
+import { p } from '@/components/common/props.js';
 
 export default {
   name: 'ControlText',

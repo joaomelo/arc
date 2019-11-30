@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import { p } from '@/helpers/props.js';
-import { canEdit } from '@/helpers/roles.js';
+import { p } from '@/components/common/props.js';
+import { canEdit } from '@/roles';
 import { mapStoreFunction } from '@/store/helpers.js';
 import BaseView from '@/components/base/base-view.vue';
 
@@ -20,7 +20,7 @@ export default {
   props: {
     item: p(Object),
     title: p(String),
-    details: p(Array, () => [])
+    details: p(Array, [])
   },
   data () {
     const col = this.item.collection;

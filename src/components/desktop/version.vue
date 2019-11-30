@@ -5,18 +5,18 @@
 </template>
 
 <script>
-import { getVersion } from '@/helpers/version.js';
-
+import * as data from '@/../package.json';
 export default {
   name: 'Version',
   data () {
     return {
-      tag: formatVersionTag(getVersion())
+      tag: getVersionTag()
     };
   }
 };
 
-function formatVersionTag (version) {
+function getVersionTag () {
+  const version = data.default.version;
   const prefix = 'v';
   const posfix = process.env.NODE_ENV === 'development'
     ? 'd'

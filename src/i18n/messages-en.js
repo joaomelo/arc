@@ -24,18 +24,22 @@ export default {
       description: 'Description',
       tags: 'Tags'
     },
+    status: {
+      status: 'Status',
+      active: 'active',
+      blocked: 'blocked',
+      closed: 'closed'
+    },
     account: {
       email: 'Email',
       language: 'Language'
     },
     assets: {
-      alias: 'Alias',
-      status: {
-        status: 'Status',
-        active: 'active',
-        blocked: 'blocked',
-        closed: 'closed'
-      }
+      alias: 'Alias'
+    },
+    results: {
+      recurrent: 'Recurrent',
+      period: 'Period'
     },
     teams: {
       parent: 'Parent',

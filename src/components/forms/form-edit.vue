@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { p } from '@/helpers/props.js';
+import { p } from '@/components/common/props.js';
 import { cloneDeep } from 'lodash-es';
 import FormDialog from './form-dialog.vue';
 

@@ -17,7 +17,7 @@
 <script>
 
 import ControlWrapper from './control-wrapper.vue';
-import { p } from '@/helpers/props.js';
+import { p } from '@/components/common/props.js';
 import { initSelect2, extractSelect2Value } from './select2-adapter.js';
 
 export default {
@@ -28,7 +28,7 @@ export default {
   props: {
     label: p(String),
     value: p([String, Object, Array], null),
-    options: p(Array, () => []),
+    options: p(Array, []),
     isReadonly: p(Boolean, false),
     isRequired: p(Boolean, false),
     isMultiple: p(Boolean, false),

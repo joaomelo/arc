@@ -21,11 +21,8 @@
       :is-object-driven="true"
       :options="$store.getters.getMyTeams"
     />
-    <ControlSelect
+    <ControlStatus
       v-model="asset.status"
-      :label="$t('fields.assets.status.status')"
-      :is-required="true"
-      :options="statuses"
     />
     <ControlTag
       v-model="asset.tags"
@@ -39,13 +36,13 @@
 </template>
 
 <script>
-import { p } from '@/helpers/props.js';
+import { p } from '@/components/common/props.js';
 import ItemEdit from '@/components/item/item-edit.vue';
 import ControlText from '@/components/forms/control-text.vue';
 import ControlTextarea from '@/components/forms/control-textarea.vue';
 import ControlTag from '@/components/forms/control-tag.vue';
 import ControlSelect from '@/components/forms/control-select.vue';
-import { assetsStatuses } from './assets-statuses.js';
+import ControlStatus from '@/components/forms/control-status.vue';
 
 export default {
   name: 'AssetEdit',
@@ -54,15 +51,11 @@ export default {
     ControlTextarea,
     ItemEdit,
     ControlTag,
-    ControlSelect
+    ControlSelect,
+    ControlStatus
   },
   props: {
     itemId: p(String)
-  },
-  data () {
-    return {
-      statuses: assetsStatuses
-    };
   }
 };
 </script>

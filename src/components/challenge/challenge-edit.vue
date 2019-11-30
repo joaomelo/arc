@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { p } from '@/helpers/props.js';
+import { p } from '@/components/common/props.js';
 import ItemEdit from '@/components/item/item-edit.vue';
 import ControlText from '@/components/forms/control-text.vue';
 

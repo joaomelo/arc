@@ -1,3 +1,7 @@
+function isString (value) {
+  return typeof value === 'string';
+}
+
 function firstUpper (str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -11,4 +15,4 @@ function extractUsernameFromEmail (email) {
   return email.substring(0, pos);
 }
 
-export { extractUsernameFromEmail, firstUpper, firstUpperPlural };
+export { isString, extractUsernameFromEmail, firstUpper, firstUpperPlural };

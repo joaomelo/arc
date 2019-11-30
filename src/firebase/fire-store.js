@@ -1,3 +1,5 @@
+import { isPlainObject } from 'lodash-es';
+
 import 'firebase/firestore';
 import { firebase, fireApp } from './fire-app';
 
@@ -61,26 +63,37 @@ async function convertToItem (doc) {
   item.id = doc.id;
 
   for (const key of Object.keys(firedata)) {
-    item[key] = await convertToItemData(firedata[key], false);
+    item[key] = await convertToItemData(firedata[key]);
   }
 
   return item;
 }
 
 async function convertToItemData (firedata) {
-  let result;
+  if (firedata instanceof firebase.firestore.DocumentReference) {
+    const refDoc = await firedata.get();
+    const itemField = await convertToItem(refDoc);
+    return itemField;
+  }
 
   if (Array.isArray(firedata)) {
     const promises = firedata.map(i => convertToItemData(i));
-    result = await Promise.all(promises);
-  } else if (isReference(firedata)) {
-    const refDoc = await firedata.get();
-    result = await convertToItem(refDoc);
-  } else {
-    result = convertToPrimitive(firedata);
+    const arrayField = await Promise.all(promises);
+    return arrayField;
   }
 
-  return result;
+  if (isPlainObject(firedata) && Object.keys(firedata).length > 0) {
+    const objectField = {};
+    Object.keys(firedata).forEach(k => convertToItemData(firedata[k]).then(v => { objectField[k] = v; }));
+    return objectField;
+  }
+
+  if (firedata instanceof firebase.firestore.Timestamp) {
+    const dateField = firedata.toDate();
+    return dateField;
+  }
+
+  return firedata;
 }
 
 function convertToFiredoc (item) {
@@ -102,28 +115,8 @@ function convertToFiredoc (item) {
   return doc;
 }
 
-function isReference (value) {
-  return value instanceof firebase.firestore.DocumentReference;
-}
-
 function convertToReference (collection, id) {
   return db.collection(collection).doc(id);
-}
-
-function convertToPrimitive (value) {
-  if (isTimestamp(value)) {
-    return convertToMoment(value);
-  } else {
-    return value;
-  }
-}
-
-function isTimestamp (value) {
-  return value instanceof firebase.firestore.Timestamp;
-}
-
-function convertToMoment (timeStamp) {
-  return timeStamp.toDate();
 }
 
 export { bind, get, add, set, del };

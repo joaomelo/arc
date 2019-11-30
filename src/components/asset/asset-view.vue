@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import { p } from '@/helpers/props.js';
+import { p } from '@/components/common/props.js';
 import ItemView from '@/components/item/item-view.vue';
-import { prettyStatus } from './assets-statuses.js';
+import { prettyStatus } from '@/components/common/status.js';
 
 export default {
   name: 'AssetView',
@@ -28,7 +28,7 @@ export default {
           display: this.item.team.title
         },
         {
-          label: this.$t('fields.assets.status.status'),
+          label: this.$t('fields.status.status'),
           display: prettyStatus(this.item.status)
         },
         {

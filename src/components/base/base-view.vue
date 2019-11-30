@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { p } from '@/helpers/props.js';
+import { p } from '@/components/common/props.js';
 import BaseViewDetail from './base-view-detail.vue';
 import BaseButton from './base-button.vue';
 
