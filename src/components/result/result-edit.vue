@@ -30,7 +30,7 @@
     <ControlCheckbox
       v-model="result.recurrent"
       :label="$t('fields.results.recurrent')"
-      @input="syncDaterange(result.recurrent)"
+      @input="clearDaterange(result.recurrent)"
     />
     <ControlDaterange
       ref="daterange"
@@ -69,7 +69,7 @@ export default {
     itemId: p(String)
   },
   methods: {
-    syncDaterange (recurrent) {
+    clearDaterange (recurrent) {
       this.$refs.daterange.update(null);
     }
   }

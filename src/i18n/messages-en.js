@@ -18,8 +18,10 @@ export default {
     save: 'Save',
     cancel: 'Cancel'
   },
+  calendar: {
+    date: 'MM/DD/YYYY'
+  },
   daterange: {
-    format: 'MM/DD/YYYY',
     apply: 'Apply',
     cancel: 'Clear',
     from: 'From',

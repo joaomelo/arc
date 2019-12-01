@@ -18,11 +18,11 @@
 
 <script>
 import JQuery from 'jquery';
-import moment from 'moment';
 import 'bootstrap-daterangepicker/daterangepicker.js';
 
 import ControlWrapper from './control-wrapper.vue';
 import { p } from '@/components/common/props.js';
+import { daterangeToString } from '@/components/common/conversions.js';
 
 export default {
   name: 'ControlDaterange',
@@ -75,9 +75,7 @@ export default {
       this.syncInput(this.value);
     },
     syncInput (range) {
-      const hasRange = range && range.start && range.end;
-      const f = d => moment(d).format('DD/MM/YYYY');
-      this.$refs.dateInput.value = hasRange ? `${f(range.start)} - ${f(range.end)}` : '';
+      this.$refs.dateInput.value = daterangeToString(range);
     }
   }
 };
