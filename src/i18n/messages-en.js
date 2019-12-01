@@ -18,6 +18,37 @@ export default {
     save: 'Save',
     cancel: 'Cancel'
   },
+  daterange: {
+    format: 'MM/DD/YYYY',
+    apply: 'Apply',
+    cancel: 'Clear',
+    from: 'From',
+    to: 'To',
+    week: 'W',
+    days: {
+      su: 'Su',
+      mo: 'Mo',
+      tu: 'Tu',
+      we: 'We',
+      th: 'Th',
+      fr: 'Fr',
+      sa: 'Sa'
+    },
+    months: {
+      jan: 'January',
+      feb: 'February',
+      mar: 'March',
+      apr: 'April',
+      may: 'May',
+      jun: 'June',
+      jul: 'July',
+      aug: 'August',
+      sep: 'September',
+      oct: 'October',
+      nov: 'November',
+      dec: 'December'
+    }
+  },
   fields: {
     common: {
       title: 'Title',

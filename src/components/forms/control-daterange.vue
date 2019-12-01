@@ -46,11 +46,32 @@ export default {
       this.$emit('input', newValue);
     },
     initDaterange () {
+      const l = s => this.$t(`daterange.${s}`);
+      const d = s => l(`days.${s}`);
+      const m = s => l(`months.${s}`);
+      const localeOptions = {
+        format: l('format'),
+        separator: ' - ',
+        applyLabel: l('apply'),
+        cancelLabel: l('cancel'),
+        fromLabel: l('from'),
+        toLabel: l('to'),
+        weekLabel: l('week'),
+        daysOfWeek: [d('su'), d('mo'), d('tu'), d('we'), d('th'), d('fr'), d('sa')],
+        monthNames: [m('jan'), m('feb'), m('mar'), m('apr'), m('may'), m('jun'), m('jul'), m('aug'), m('sep'), m('oct'), m('nov'), m('dec')],
+        firstDay: 1
+      };
+
       JQuery(this.$refs.dateInput).daterangepicker({
-        opens: 'left',
-        autoUpdateInput: false
+        opens: 'center',
+        autoUpdateInput: false,
+        cancelButtonClasses: 'btn-secondary',
+        locale: localeOptions
       }, this.update);
-      JQuery(this.$refs.dateInput).on('cancel.daterangepicker', (ev, picker) => this.update());
+
+      // on cacel press the component should clear the data
+      JQuery(this.$refs.dateInput).on('cancel.daterangepicker', (ev, picker) => this.update(null));
+
       this.syncInput(this.value);
     },
     syncInput (range) {
