@@ -1,4 +1,4 @@
-import { bind, set } from '@/firebase';
+import { bind, set } from '@/services/firestore';
 import { mapStoreFunction } from './helpers';
 
 const state = {
@@ -33,7 +33,7 @@ const actions = {
       });
   },
   setProfile (context, profile) {
-    set('profiles', profile.id, profile);
+    set(profile);
   }
 };
 

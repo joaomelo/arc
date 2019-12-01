@@ -1,6 +1,6 @@
 import 'firebase/auth';
 
-import { fireApp } from './fire-app.js';
+import { fireApp } from '@/services/fireapp';
 
 class Auth {
   constructor () {

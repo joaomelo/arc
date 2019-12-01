@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { startFireUi } from '@/firebase';
+import { startFireUi } from '@/services/fireauth';
 
 export default {
   name: 'PageLogin',

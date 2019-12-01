@@ -1,4 +1,4 @@
-import { add, set, del } from '@/firebase';
+import { add, set, del } from '@/services/firestore';
 import { setCollection } from './helpers.js';
 
 const state = {
@@ -21,10 +21,10 @@ const actions = {
     setCollection(commit, 'results');
   },
   addResult (context, result) {
-    add('results', result);
+    add(result);
   },
   setResult (context, result) {
-    set('results', result.id, result);
+    set(result);
   },
   delResult (context, id) {
     del('results', id);

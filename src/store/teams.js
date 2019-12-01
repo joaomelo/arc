@@ -1,4 +1,4 @@
-import { add, set, del } from '@/firebase';
+import { add, set, del } from '@/services/firestore';
 import { setCollection } from './helpers.js';
 
 const state = {
@@ -29,10 +29,10 @@ const actions = {
   },
   addTeam (context, team) {
     team.owner = context.getters.getCurrentProfile;
-    add('teams', team);
+    add(team);
   },
   setTeam (context, team) {
-    set('teams', team.id, team);
+    set(team);
   },
   delTeam (context, id) {
     del('teams', id);

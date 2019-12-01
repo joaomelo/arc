@@ -1,4 +1,4 @@
-import { bind } from '@/firebase';
+import { bind } from '@/services/firestore';
 import { firstUpper, firstUpperPlural } from '@/helpers/string.js';
 
 const collections = {

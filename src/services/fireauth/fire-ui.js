@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
 
-import { fireApp } from './fire-app.js';
+import { fireApp } from '@/services/fireapp';
 
 const uiConfig = {
   callbacks: {

@@ -1,4 +1,5 @@
-import { auth, get, set } from '@/firebase';
+import { auth } from '@/services/fireauth';
+import { get, set } from '@/services/firestore';
 import { i18n } from '@/i18n';
 
 const state = {
@@ -37,7 +38,7 @@ const actions = {
             title: user.email,
             lang: i18n.fallbackLocale
           };
-          await set('profiles', newProfile.id, newProfile);
+          await set(newProfile);
         }
       }
       commit('stoppedLoad', 'profile');

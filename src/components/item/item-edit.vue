@@ -25,7 +25,7 @@ export default {
     const isAdd = this.itemId === 'add';
     const itemGetter = this.$store.getters[mapStoreFunction(this.itemCollection, 'getterSingle')];
     return {
-      item: isAdd ? {} : itemGetter(this.itemId),
+      item: isAdd ? { collection: this.itemCollection } : itemGetter(this.itemId),
       saveAction: mapStoreFunction(this.itemCollection, isAdd ? 'addAction' : 'setAction')
     };
   },

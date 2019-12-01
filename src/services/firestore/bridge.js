@@ -1,59 +1,7 @@
 import { isPlainObject } from 'lodash-es';
 
-import 'firebase/firestore';
-import { firebase, fireApp } from './fire-app';
-
-const db = fireApp.firestore();
-const now = firebase.firestore.FieldValue.serverTimestamp();
-
-function bind (collection, loadMutation, callback) {
-  const query = db.collection(collection).where('deleted', '==', false).orderBy('title', 'asc');
-  query.onSnapshot(snapshot => {
-    loadMutation('startedLoad', collection);
-    const promises = snapshot.docs.map(doc => convertToItem(doc, false));
-    Promise.all(promises).then(items => {
-      callback(items);
-      loadMutation('stoppedLoad', collection);
-    });
-  });
-}
-
-async function get (collection, id) {
-  const docRef = db.collection(collection).doc(id);
-  const doc = await docRef.get();
-  const item = doc.exists ? await convertToItem(doc) : null;
-  return item;
-}
-
-function add (collection, item) {
-  return db.collection(collection).add({
-    ...convertToFiredoc(item),
-    ...trail(),
-    deleted: false
-  });
-}
-
-function set (collection, id, item) {
-  return db.collection(collection).doc(id).set({
-    ...convertToFiredoc(item),
-    ...trail(),
-    deleted: false
-  });
-}
-
-function del (collection, id) {
-  return db.collection(collection).doc(id).update({
-    ...trail(),
-    deleted: true
-  });
-}
-
-function trail () {
-  return {
-    modifiedAt: now,
-    modifiedBy: firebase.auth().currentUser.email
-  };
-};
+import { firebase } from '@/services/fireapp';
+import db from './db.js';
 
 async function convertToItem (doc) {
   const item = {};
@@ -96,7 +44,7 @@ async function convertToItemData (firedata) {
   return firedata;
 }
 
-function convertToFiredoc (item) {
+function convertToDocument (item) {
   const doc = {};
 
   Object.keys(item).forEach(key => {
@@ -119,4 +67,4 @@ function convertToReference (collection, id) {
   return db.collection(collection).doc(id);
 }
 
-export { bind, get, add, set, del };
+export { convertToItem, convertToDocument };
