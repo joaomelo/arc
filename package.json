@@ -8,7 +8,10 @@
     "not dead"
   ],
   "scripts": {
-    "start": "webpack-dev-server --config build/webpack.dev.js",
+    "start": "concurrently -n \"fire,app,test\" -c \"bgYellow.black,bgGreen,bgWhite.black\" \"npm:serve:dev:fire\" \"npm:serve:dev:app\" \"npm:serve:dev:test\"",
+    "serve:dev:app": "webpack-dev-server --config build/webpack.dev.js",
+    "serve:dev:fire": "firebase emulators:start --only firestore",
+    "serve:dev:test": "npx cypress open",
     "lint": "eslint --ext .js,.vue src",
     "build": "npm run lint && rimraf dist/* && webpack --config build/webpack.prod.js",
     "deploy": "npm run build && firebase deploy",
@@ -45,13 +48,16 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
+    "concurrently": "^5.0.1",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
+    "cypress": "^3.7.0",
     "dotenv-webpack": "^1.7.0",
     "es-check": "^5.0.0",
     "eslint": "^6.6.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-loader": "^3.0.0",
+    "eslint-plugin-cypress": "^2.7.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
@@ -71,7 +77,6 @@
     "webpack-bundle-analyzer": "^3.5.2",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.8.1",
-    "webpack-merge": "^4.2.2",
-    "webpackbar": "^4.0.0"
+    "webpack-merge": "^4.2.2"
   }
 }
