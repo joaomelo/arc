@@ -2,7 +2,7 @@ import { firebase } from '@/services/fireapp';
 import db from './db.js';
 import { convertToDocument } from './bridge.js';
 
-function saveVersion (item) {
+async function saveVersion (item) {
   return db
     .collection(item.collection)
     .doc(item.id)

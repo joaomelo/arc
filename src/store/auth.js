@@ -36,7 +36,8 @@ const actions = {
           const newProfile = {
             id: user.uid,
             title: user.email,
-            lang: i18n.fallbackLocale
+            lang: i18n.fallbackLocale,
+            collection: 'profiles'
           };
           await set(newProfile);
         }

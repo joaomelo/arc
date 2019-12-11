@@ -8,10 +8,11 @@
     "not dead"
   ],
   "scripts": {
-    "start": "concurrently -n \"fire,app,test\" -c \"bgYellow.black,bgGreen,bgWhite.black\" \"npm:serve:dev:fire\" \"npm:serve:dev:app\" \"npm:serve:dev:test\"",
+    "start": "npm run serve:dev:fireapp",
+    "serve:dev:fireapp": "firebase emulators:exec --only firestore \"npm run serve:dev:app\"",
     "serve:dev:app": "webpack-dev-server --config build/webpack.dev.js",
-    "serve:dev:fire": "firebase emulators:start --only firestore",
     "serve:dev:test": "npx cypress open",
+    "serve:old:start": "concurrently -n \"fire,app,test\" -c \"bgYellow.black,bgGreen,bgWhite.black\" \"npm:serve:dev:fire\" \"npm:serve:dev:app\" \"npm:serve:dev:test\"",
     "lint": "eslint --ext .js,.vue src",
     "build": "npm run lint && rimraf dist/* && webpack --config build/webpack.prod.js",
     "deploy": "npm run build && firebase deploy",

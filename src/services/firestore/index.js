@@ -38,10 +38,10 @@ function add (item) {
 }
 
 function set (item) {
-  db.collection(item.collection).doc(item.id).set({
+  saveVersion(item);
+  return db.collection(item.collection).doc(item.id).set({
     ...convertToDocument(item)
   });
-  saveVersion(item);
 }
 
 function del (collection, id) {
