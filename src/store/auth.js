@@ -1,5 +1,5 @@
 import { auth } from '@/services/fireauth';
-import { get, set } from '@/services/firestore';
+import { get, set, add } from '@/services/firestore';
 import { i18n } from '@/i18n';
 
 const state = {
@@ -40,6 +40,14 @@ const actions = {
             collection: 'profiles'
           };
           await set(newProfile);
+
+          const newDefaultTeam = {
+            title: i18n.t('fields.teams.defaultTitle'),
+            owner: newProfile,
+            collection: 'teams'
+          };
+
+          await add(newDefaultTeam);
         }
       }
       commit('stoppedLoad', 'profile');

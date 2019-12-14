@@ -1,12 +1,16 @@
 import 'firebase/auth';
 
-import { fireApp } from '@/services/fireapp';
+import { firebase, fireApp } from '@/services/fireapp';
 
 class Auth {
   constructor () {
     this.isUserSolved = false;
     this.callbacks = [];
     this.fireAuth = fireApp.auth();
+
+    // disabling persistence in dev makes tests more reliable
+    const authPersistence = process.env.NODE_ENV === 'development' ? 'NONE' : 'LOCAL';
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence[authPersistence]);
 
     this.fireAuth.onAuthStateChanged(user => {
       this.isUserSolved = true;

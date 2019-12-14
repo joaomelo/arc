@@ -8,12 +8,6 @@
       v-model="clone.title"
       :label="$t('fields.common.title')"
     />
-    <ControlSelect
-      v-model="clone.parent"
-      :label="$t('fields.teams.parent')"
-      :is-object-driven="true"
-      :options="$store.getters.getOtherTeams(clone.id)"
-    />
     <ControlText
       v-if="clone.owner"
       v-model="clone.owner.title"
