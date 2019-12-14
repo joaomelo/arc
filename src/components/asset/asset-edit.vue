@@ -1,8 +1,8 @@
 <template>
   <ItemEdit
+    #default="{ clone: asset }"
     :item-id="itemId"
     item-collection="assets"
-    #default="{ clone: asset }"
   >
     <ControlText
       v-model="asset.alias"

@@ -1,7 +1,7 @@
 <template>
   <FormEdit
-    :item="item"
     #default="{ clone }"
+    :item="item"
     @save="save"
     @cancel="cancel"
   >

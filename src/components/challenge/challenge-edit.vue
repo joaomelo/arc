@@ -1,8 +1,8 @@
 <template>
   <ItemEdit
+    #default="{ clone }"
     :item-id="itemId"
     item-collection="challenges"
-    #default="{ clone }"
   >
     <ControlText
       v-model="clone.title"
