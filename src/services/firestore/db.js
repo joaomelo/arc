@@ -1,9 +1,7 @@
 import 'firebase/firestore';
-import { fireApp } from '@/services/fireapp';
 
-function isAppHostedLocally () {
-  return location.hostname === 'localhost';
-}
+import { appMode } from '@/helpers/enviroment.js';
+import { fireApp } from '@/services/fireapp';
 
 function pointFirestoreToLocalEmulator (db) {
   db.settings({
@@ -14,7 +12,7 @@ function pointFirestoreToLocalEmulator (db) {
 
 function igniteFirestore () {
   const db = fireApp.firestore();
-  if (isAppHostedLocally()) {
+  if (appMode() === 'dev_em') {
     pointFirestoreToLocalEmulator(db);
   }
   return db;

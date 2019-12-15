@@ -1,5 +1,6 @@
 import 'firebase/auth';
 
+import { appMode } from '@/helpers/enviroment.js';
 import { firebase, fireApp } from '@/services/fireapp';
 
 class Auth {
@@ -9,7 +10,7 @@ class Auth {
     this.fireAuth = fireApp.auth();
 
     // disabling persistence in dev makes tests more reliable
-    const authPersistence = process.env.NODE_ENV === 'development' ? 'NONE' : 'LOCAL';
+    const authPersistence = (appMode() !== 'prod') ? 'NONE' : 'LOCAL';
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence[authPersistence]);
 
     this.fireAuth.onAuthStateChanged(user => {

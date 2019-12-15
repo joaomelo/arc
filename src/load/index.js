@@ -1,4 +1,4 @@
-import store from '@/store';
+import store from '@/data/store';
 
 const commit = store.commit;
 

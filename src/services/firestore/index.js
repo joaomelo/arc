@@ -3,14 +3,14 @@ import db from './db.js';
 import { convertToItem, convertToDocument } from './bridge.js';
 import saveVersion from './history.js';
 
-function bind (collection, loadMutation, callback) {
+function bind (collection, callback) {
   const query = db.collection(collection).where('deleted', '==', false).orderBy('title', 'asc');
   query.onSnapshot(snapshot => {
-    loadMutation('startedLoad', collection);
+    startLoad(collection);
     const promises = snapshot.docs.map(doc => convertToItem(doc, false));
     Promise.all(promises).then(items => {
       callback(items);
-      loadMutation('stoppedLoad', collection);
+      stopLoad(collection);
     });
   });
 }

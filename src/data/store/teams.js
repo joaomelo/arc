@@ -9,11 +9,13 @@ const getters = {
   getTeams: state => state.teams,
   getTeam: state => id => state.teams.find(team => team.id === id),
   getOtherTeams: state => id => state.teams.filter(team => team.id !== id),
-  getMyTeams: (state, getters) => state.teams.filter(team => getters.isMyTeam(team)),
-  isMyTeam: (state, getters) => team => {
-    const uid = getters.getCurrentProfile.id;
-    const mgs = team.managers || [];
-    return (team.owner.id === uid) || (mgs.findIndex(m => m.id === uid) !== -1);
+  getMyWriteTeams: (state, getters) => state.teams.filter(team => getters.isMyWriteTeam(team)),
+  isMyWriteTeam: (state, getters) => team => {
+    const id = getters.getCurrentProfile.id;
+    const writeRoles = ['owner', 'editor'];
+    const findedWriteRole = team.roles.find(role => role.profile.id === id && writeRoles.includes(role.role));
+
+    return !!findedWriteRole;
   }
 };
 

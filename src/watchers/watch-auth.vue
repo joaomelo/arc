@@ -2,7 +2,7 @@
   <span id="watch-auth" />
 </template>
 <script>
-import { mapAllBinders } from '@/store/helpers.js';
+import { mapAllBinders } from '@/data/store/helpers.js';
 
 export default {
   name: 'WatchAuth',

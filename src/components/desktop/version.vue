@@ -6,6 +6,8 @@
 
 <script>
 import * as data from '@/../package.json';
+import { appMode } from '@/helpers/enviroment.js';
+
 export default {
   name: 'Version',
   data () {
@@ -18,9 +20,7 @@ export default {
 function getVersionTag () {
   const version = data.default.version;
   const prefix = 'v';
-  const posfix = process.env.NODE_ENV === 'development'
-    ? 'd'
-    : '';
+  const posfix = appMode() === 'prod' ? '' : appMode();
   return prefix + version + posfix;
 }
 

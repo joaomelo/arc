@@ -19,7 +19,7 @@
       :label="$tc('collections.team', 1)"
       :is-required="true"
       :is-object-driven="true"
-      :options="$store.getters.getMyTeams"
+      :options="$store.getters.getMyWriteTeams"
     />
     <ControlStatus
       v-model="asset.status"

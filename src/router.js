@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import store from '@/store';
+import store from '@/data/store';
 
 import PageSolve from './pages/page-solve.vue';
 import PageLogin from './pages/page-login.vue';

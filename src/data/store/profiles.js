@@ -1,5 +1,4 @@
 import { bind, set } from '@/services/firestore';
-import { mapStoreFunction } from './helpers';
 
 const state = {
   profiles: [],
@@ -26,9 +25,8 @@ const actions = {
   setProfiles ({ commit, getters }) {
     bind(
       'profiles',
-      commit,
       profiles => {
-        commit(mapStoreFunction('profiles', 'colMutation'), profiles);
+        commit('commitProfiles', profiles);
         commit('commitCurrentProfile', profiles.find(p => p.id === getters.getUser.uid));
       });
   },

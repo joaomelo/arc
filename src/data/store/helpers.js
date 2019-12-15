@@ -30,12 +30,12 @@ function mapAllBinders () {
   return cols.map(c => mapStoreFunction(c, 'binAction'));
 }
 
-function setCollection (commit, collection) {
+function setCollection (commit, collection, filters) {
   return bind(
     collection,
-    commit,
     newItems => {
-      commit(mapStoreFunction(collection, 'colMutation'), newItems);
+      const mutationName = mapStoreFunction(collection, 'colMutation');
+      commit(mutationName, newItems);
     });
 }
 

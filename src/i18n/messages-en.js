@@ -75,7 +75,6 @@ export default {
       period: 'Period'
     },
     teams: {
-      defaultTitle: 'My Team',
       parent: 'Parent',
       owner: 'Owner',
       managers: 'Managers',

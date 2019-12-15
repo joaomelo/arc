@@ -1,3 +1,4 @@
+import { extractUsernameFromEmail } from '@/helpers/string.js';
 import { auth } from '@/services/fireauth';
 import { get, set, add } from '@/services/firestore';
 import { i18n } from '@/i18n';
@@ -32,18 +33,25 @@ const actions = {
     const boostrapProfile = async (user, loginStatus) => {
       if (user) {
         const dbProfile = await get('profiles', user.uid);
+
         if (dbProfile === null) {
           const newProfile = {
             id: user.uid,
             title: user.email,
             lang: i18n.fallbackLocale,
-            collection: 'profiles'
+            collection: 'profiles',
+            deleted: false
           };
           await set(newProfile);
 
           const newDefaultTeam = {
-            title: i18n.t('fields.teams.defaultTitle'),
-            owner: newProfile,
+            title: `${extractUsernameFromEmail(user.email)} ${i18n.tc('collections.team', 1)}`,
+            roles: [
+              {
+                profile: newProfile,
+                role: 'owner'
+              }
+            ],
             collection: 'teams'
           };
 

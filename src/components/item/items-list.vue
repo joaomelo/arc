@@ -17,7 +17,7 @@
 
 <script>
 import { p } from '@/components/common/props.js';
-import { mapStoreFunction } from '@/store/helpers.js';
+import { mapStoreFunction } from '@/data/store/helpers.js';
 import ItemAdd from './item-add.vue';
 
 export default {

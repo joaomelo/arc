@@ -11,7 +11,7 @@
 <script>
 import { p } from '@/components/common/props.js';
 import { canEdit } from '@/roles';
-import { mapStoreFunction } from '@/store/helpers.js';
+import { mapStoreFunction } from '@/data/store/helpers.js';
 import BaseView from '@/components/base/base-view.vue';
 
 export default {
