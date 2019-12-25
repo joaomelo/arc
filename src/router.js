@@ -1,10 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import store from '@/data/store';
+import { authRoutes } from '@/modules/auth';
 
 import PageSolve from './pages/page-solve.vue';
-import PageLogin from './pages/page-login.vue';
 import Page404 from './pages/page-404.vue';
 
 import Desktop from './components/desktop/desktop.vue';
@@ -16,7 +15,6 @@ import ResultsList from './components/result/results-list.vue';
 import ResultEdit from './components/result/result-edit.vue';
 import TeamsList from './components/team/teams-list.vue';
 import TeamEdit from './components/team/team-edit.vue';
-import ProfileEdit from './components/profile/profile-edit.vue';
 
 Vue.use(Router);
 
@@ -25,15 +23,11 @@ const router = new Router({
   base: process.env.BASE_URL,
   linkActiveClass: 'active',
   routes: [
+    authRoutes.login,
     {
       path: '/',
       name: 'solve',
       component: PageSolve
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: PageLogin
     },
     {
       path: '/start',
@@ -44,6 +38,7 @@ const router = new Router({
       path: '/desktop',
       component: Desktop,
       children: [
+        authRoutes.userEdit,
         {
           path: 'assets',
           name: 'assetsList',
@@ -87,12 +82,6 @@ const router = new Router({
           name: 'teamEdit',
           component: TeamEdit,
           props: true
-        },
-        {
-          path: 'profile/:itemId',
-          name: 'profileEdit',
-          component: ProfileEdit,
-          props: true
         }
       ]
     },
@@ -103,17 +92,4 @@ const router = new Router({
   ]
 });
 
-router.beforeEach((to, from, next) => {
-  const loginStatus = store.getters.getLoginStatus;
-  const newRoute = to.name;
-
-  if (loginStatus === 'unsolved' && newRoute !== 'solve') {
-    next({ name: 'solve' });
-  } else if (loginStatus === 'loggedout' && newRoute !== 'login') {
-    next({ name: 'login' });
-  } else {
-    next();
-  }
-});
-
-export default router;
+export { router };

@@ -1,10 +1,10 @@
 import Vue from 'vue';
 
-import './styles';
+import './core/styles';
 import App from './app.vue';
-import router from './router.js';
-import store from './data/store';
-import { i18n } from './i18n';
+import { router } from './router.js';
+import { store } from './core/store';
+import { i18n } from './core/i18n';
 
 const vueApp = new Vue({
   i18n,
