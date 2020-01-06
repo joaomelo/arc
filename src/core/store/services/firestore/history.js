@@ -1,5 +1,5 @@
 import { firebase } from '@/core/fireapp';
-import db from './db.js';
+import { db } from './db.js';
 
 function saveDocVersion (collection, id, document) {
   return db

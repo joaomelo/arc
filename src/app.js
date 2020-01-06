@@ -1,10 +1,13 @@
 import Vue from 'vue';
+import VueCompositionApi from '@vue/composition-api';
 
 import './core/styles';
 import App from './app.vue';
-import { router } from './router.js';
+import { router } from './core/routes';
 import { store } from './core/store';
 import { i18n } from './core/i18n';
+
+Vue.use(VueCompositionApi);
 
 const vueApp = new Vue({
   i18n,

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 
-import en from './messages-en.js.js';
-import br from './messages-br.js.js';
+import en from './en';
+import br from './br';
 
 Vue.use(VueI18n);
 

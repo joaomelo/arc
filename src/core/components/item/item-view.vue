@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { p } from '@/components/common/props.js';
+import { p } from '@/common';
 import { canEdit } from '@/roles';
 import { mapStoreFunction } from '@/data/store/helpers.js';
 import BaseView from '@/components/base/base-view.vue';

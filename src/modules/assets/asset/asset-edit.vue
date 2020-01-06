@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { p } from '@/components/common/props.js';
+import { p } from '@/common';
 import ItemEdit from '@/components/item/item-edit.vue';
 import ControlText from '@/components/forms/control-text.vue';
 import ControlTextarea from '@/components/forms/control-textarea.vue';

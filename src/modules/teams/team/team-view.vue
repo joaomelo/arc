@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { p } from '@/components/common/props.js';
+import { p } from '@/common';
 import ItemView from '@/components/item/item-view.vue';
 
 export default {

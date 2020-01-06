@@ -6,8 +6,15 @@
     @submit.prevent="save"
   >
     <slot />
+    <p
+      v-if="operationalError"
+      class="text-danger"
+    >
+      {{ operationalError }}
+    </p>
     <div class="text-right">
       <BaseButton
+        v-if="!hideCancelButton"
         class="btn-secondary"
         @click="cancel"
       >
@@ -17,18 +24,33 @@
         type="submit"
         class="btn-primary ml-1"
       >
-        {{ $t('forms.save') }}
+        {{ submitText }}
       </BaseButton>
     </div>
   </form>
 </template>
 
 <script>
-import BaseButton from '@/components/base/base-button.vue';
+import { p } from '@/common';
+import { BaseButton } from '@/core/components';
 
 export default {
   name: 'FormDialog',
   components: { BaseButton },
+  props: {
+    altSubmitText: p(String, ''),
+    hideCancelButton: p(Boolean, false)
+  },
+  data () {
+    return {
+      operationalError: ''
+    };
+  },
+  computed: {
+    submitText () {
+      return this.altSubmitText ? this.altSubmitText : this.$t('forms.save');
+    }
+  },
   created () {
     document.addEventListener('keyup', this.keyPressed);
   },
@@ -40,11 +62,24 @@ export default {
       this.$emit('cancel');
     },
     save () {
-      const form = this.$refs.form;
-      form.classList.add('was-validated');
-      if (form.checkValidity()) {
+      if (this.validate()) {
         this.$emit('save');
       }
+    },
+    validate () {
+      this.reset(); // remove any previous operational error message
+      const form = this.$refs.form;
+      form.classList.add('was-validated');
+      return form.checkValidity();
+    },
+    throwOperationalError (message) {
+      this.reset(); // clear fields validation styles
+      this.operationalError = message;
+    },
+    reset () {
+      const form = this.$refs.form;
+      form.classList.remove('was-validated');
+      this.operationalError = '';
     },
     keyPressed (event) {
       if (event.keyCode === 27) {

@@ -1,18 +1,18 @@
 <template>
-  <div id="app-canvas">
-    <WatchLoading />
-    <WatchAuth />
-    <WatchI18n />
+  <BaseLayout id="app-canvas">
+    <SmartSpinner />
     <router-view />
-  </div>
+  </BaseLayout>
 </template>
 
 <script>
-import WatchLoading from '@/watchers/watch-loading.vue';
-import WatchAuth from '@/watchers/watch-auth.vue';
-import WatchI18n from '@/watchers/watch-i18n.vue';
+import { BaseLayout } from '@/core/components';
+import { SmartSpinner } from '@/core/load';
 export default {
   name: 'App',
-  components: { WatchLoading, WatchAuth, WatchI18n }
+  components: {
+    BaseLayout,
+    SmartSpinner
+  }
 };
 </script>

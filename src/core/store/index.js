@@ -1,3 +1,3 @@
-export { bindCommon } from './common';
-export { bindDocs, getDoc, addDoc, setDoc, delDoc } from './services';
-export { store } from './store.js';
+// export { bindCommon } from './common';
+// export { bindDocs, getDoc, addDoc, setDoc, delDoc } from './services';
+export { store } from './domain';

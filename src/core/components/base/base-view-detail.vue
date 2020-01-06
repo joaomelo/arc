@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { p } from '@/components/common/props.js';
+import { p } from '@/common';
 
 export default {
   name: 'BaseViewDetail',

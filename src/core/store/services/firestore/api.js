@@ -1,4 +1,4 @@
-import db from './db.js';
+import { db } from './db.js';
 import { saveDocVersion } from './history.js';
 
 function bindDocs ({ collection, filters = [] }, callback) {

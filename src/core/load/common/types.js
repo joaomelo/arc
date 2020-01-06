@@ -1,0 +1,6 @@
+const LOAD_STATUS = {
+  IDLE: Symbol('LOAD_STATUS.IDLE'),
+  LOADING: Symbol('LOAD_STATUS.LOADING')
+};
+
+export { LOAD_STATUS };

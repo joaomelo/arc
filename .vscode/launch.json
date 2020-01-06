@@ -7,9 +7,17 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
+      "name": "chrome-local",
       "url": "http://localhost:8080",
-      "webRoot": "${workspaceFolder}",
+      "webRoot": "${workspaceFolder}/src",
+      "sourceMaps": true,
+      "disableNetworkCache": true,
+      "sourceMapPathOverrides": {
+        "webpack:///*": "${webRoot}/../*",
+        "webpack:///./*": "${webRoot}/../*",
+        "webpack:///src/*": "${webRoot}/../src/*",
+        "webpack:///./~/*": "${webRoot}/../node_modules/*"
+      },
       "skipFiles": [
         "${workspaceFolder}/node_modules/**/*.js",
         "<node_internals>/**/*.js"

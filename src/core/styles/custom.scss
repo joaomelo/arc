@@ -18,4 +18,9 @@ $theme-colors: (
 
 $body-bg: map-get($theme-colors, "light"); 
 
+//by filling the page heigth felx utilities can be vertically centralized
+html, body {
+  height: 100%;
+}
+
 @import '~bootstrap/scss/bootstrap';
