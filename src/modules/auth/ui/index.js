@@ -1,4 +1,4 @@
-import DialogLogin from './dialog-login.vue';
-import PageLogin from './page-login.vue';
+import LinkLogout from './link-logout';
+import PageLogin from './page-login';
 
-export { DialogLogin, PageLogin };
+export { LinkLogout, PageLogin };

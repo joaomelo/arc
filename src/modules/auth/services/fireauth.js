@@ -7,11 +7,11 @@ function igniteService (callback) {
   service.onAuthStateChanged(user => callback(user));
 };
 
-async function login (email, password) {
-  let result;
+async function fireLogin (email, password) {
+  let result = '';
 
   try {
-    result = await service.signInWithEmailAndPassword(email, password);
+    await service.signInWithEmailAndPassword(email, password);
   } catch (e) {
     result = e.message;
   };
@@ -19,8 +19,8 @@ async function login (email, password) {
   return result;
 }
 
-function logout () {
+function fireLogout () {
   return service.signOut();
 };
 
-export { igniteService, login, logout };
+export { igniteService, fireLogin, fireLogout };

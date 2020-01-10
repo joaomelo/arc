@@ -19,7 +19,8 @@ module.exports = {
   resolve: {
     alias: {
       '@': src
-    }
+    },
+    extensions: ['.wasm', '.mjs', '.js', '.json', '.vue']
   },
   module: {
     rules: [

@@ -35,20 +35,20 @@
         >
           {{ $t('nav.account') }}
         </router-link>
-        <Logout class="nav-item nav-link" />
+        <LinkLogout class="nav-item nav-link" />
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import Logout from './logout.vue';
-import Version from './version.vue';
+import { LinkLogout } from '@/modules/auth';
+import { Version } from '@/core/meta';
 
 export default {
-  name: 'Navbar',
+  name: 'NavbarDesktop',
   components: {
-    Logout,
+    LinkLogout,
     Version
   },
   computed: {
@@ -57,10 +57,10 @@ export default {
     },
     links () {
       return [
-        { text: this.$tc('collections.asset', 2), route: 'assetsList' },
-        { text: this.$tc('collections.result', 2), route: 'resultsList' },
-        { text: this.$tc('collections.challenge', 2), route: 'challengesList' },
-        { text: this.$tc('collections.team', 2), route: 'teamsList' }
+        // { text: this.$tc('collections.asset', 2), route: 'assetsList' },
+        // { text: this.$tc('collections.result', 2), route: 'resultsList' },
+        // { text: this.$tc('collections.challenge', 2), route: 'challengesList' },
+        // { text: this.$tc('collections.team', 2), route: 'teamsList' }
       ];
     }
   }

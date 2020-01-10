@@ -1,6 +1,6 @@
 import { store } from '@/core/store';
 import { AUTH_STATUS } from '../common';
-import { igniteService, login as serviceLogin, logout as serviceLogout } from '../services';
+import { igniteService, fireLogin, fireLogout } from '../services';
 
 function bindAuthToServiceStatus () {
   const updateAuthState = user => {
@@ -13,11 +13,11 @@ function bindAuthToServiceStatus () {
 }
 
 function login (email, password) {
-  return serviceLogin(email, password);
+  return fireLogin(email, password);
 };
 
 function logout () {
-  serviceLogout();
+  fireLogout();
 };
 
 export { bindAuthToServiceStatus, login, logout };

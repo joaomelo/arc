@@ -1,4 +1,2 @@
-import { bindAuthToServiceStatus } from './auth';
-bindAuthToServiceStatus();
-
-export { login, logout } from './auth';
+export * from './auth';
+export * from './user';

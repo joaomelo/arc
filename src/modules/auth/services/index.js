@@ -1,1 +1,1 @@
-export { igniteService, login, logout } from './fireauth';
+export * from './fireauth';

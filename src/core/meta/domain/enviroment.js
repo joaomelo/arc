@@ -1,9 +1,5 @@
-export function sleep (ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-export function appMode () {
-  let result;
+function appEnviroment () {
+  let result = 'unknow';
 
   if (process.env.NODE_ENV === 'development' && process.env.FIREBASE_MODE === 'emulator') {
     // development mode using firebase emulator
@@ -19,3 +15,5 @@ export function appMode () {
 
   return result;
 }
+
+export { appEnviroment };

@@ -32,7 +32,7 @@
 
 <script>
 import { p } from '@/common';
-import { BaseButton } from '@/core/components';
+import { BaseButton } from '@/core/components/base';
 
 export default {
   name: 'FormDialog',

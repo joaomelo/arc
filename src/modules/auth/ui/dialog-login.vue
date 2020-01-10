@@ -10,7 +10,7 @@
       Loading...
     </div>
     <FormDialog
-      v-if="authStatus===AUTH_STATUS.LOGGEDOUT"
+      v-else
       ref="loginForm"
       :alt-submit-text="$t('forms.login')"
       hide-cancel-button
@@ -29,10 +29,10 @@
 </template>
 
 <script>
-import { FormDialog, ControlEmail, ControlPassword } from '@/core/components';
 import { startLoadTask, stopLoadTask } from '@/core/load';
-import { login } from '../domain';
+import { FormDialog, ControlEmail, ControlPassword } from '@/core/components';
 import { AUTH_STATUS } from '../common';
+import { login } from '../domain';
 
 export default {
   name: 'DialogLogin',
@@ -56,11 +56,11 @@ export default {
   methods: {
     dispatchLogin () {
       startLoadTask('login');
-      login(this.email, this.password).then(result => {
-        if (result) {
+      login(this.email, this.password).then(error => {
+        stopLoadTask('login');
+        if (error) {
           this.$refs.loginForm.throwOperationalError(this.$t('errors.login'));
         }
-        stopLoadTask('login');
       });
     }
   }

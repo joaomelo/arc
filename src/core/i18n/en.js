@@ -6,8 +6,7 @@ export default {
     team: 'Team | Teams'
   },
   nav: {
-    account: 'Account',
-    logout: 'Logout from {user}'
+    account: 'Account'
   },
   forms: {
     show: 'Show',
@@ -92,5 +91,10 @@ export default {
   errors: {
     required: 'Please provide a valid value',
     login: 'Unable to login'
+  },
+  modules: {
+    auth: {
+      logout: 'Logout from {user}'
+    }
   }
 };

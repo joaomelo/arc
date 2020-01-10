@@ -1,9 +1,11 @@
 <template>
-  <h1>Under maintence</h1>
+  <div>
+    <h1>Joker Page</h1>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'PageMaintence'
+  name: 'Joker'
 };
 </script>

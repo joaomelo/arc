@@ -1,3 +1,8 @@
-export { AUTH_STATUS } from './common';
-export { authStore } from './store';
-export { PageLogin, DialogLogin } from './ui';
+// kickstart module
+import { bindAuthToServiceStatus } from './domain';
+bindAuthToServiceStatus();
+
+// export
+export * from './common';
+export * from './ui';
+export * from './store';
