@@ -1,4 +1,4 @@
-import { LayoutDesktop } from '@/core/layouts';
+import { Desktop } from '@/core/desktop';
 import { Joker } from '@/core/components';
 
 import { PageLogin } from '@/modules/auth';
@@ -28,7 +28,7 @@ const routes = [
   },
   {
     path: '/desktop',
-    component: LayoutDesktop,
+    component: Desktop,
     children: [
       // {
       //     path: 'users/:itemId',

@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const path = require('path');
 const dist = path.resolve(__dirname, '../dist');
@@ -53,6 +54,15 @@ module.exports = {
     ]),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({ template: src + '/index.html' }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new CircularDependencyPlugin({
+      // exclude detection of files based on a RegExp
+      exclude: /node_modules/,
+      // allow import cycles that include an asyncronous import,
+      // e.g. via import(/* webpackMode: "weak" */ './file.js')
+      allowAsyncCycles: false,
+      // set the current working directory for displaying module paths
+      cwd: process.cwd()
+    })
   ]
 };

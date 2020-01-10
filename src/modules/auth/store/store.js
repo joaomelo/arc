@@ -1,4 +1,5 @@
 import { AUTH_STATUS } from '../common';
+import { store } from '@/core/store';
 
 const state = {
   authStatus: AUTH_STATUS.UNSOLVED,
@@ -19,4 +20,8 @@ const authStore = {
   mutations
 };
 
-export { authStore };
+function igniteAuthStore () {
+  store.registerModule('auth', authStore);
+}
+
+export { igniteAuthStore };

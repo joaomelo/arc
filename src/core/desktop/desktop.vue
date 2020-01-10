@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <NavbarDesktop />
+    <Navbar />
     <LayoutGrid>
       <router-view />
     </LayoutGrid>
@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import LayoutGrid from './layout-grid.vue';
-import NavbarDesktop from './navbar-desktop.vue';
+import { LayoutGrid } from '@/core/layouts';
+import Navbar from './navbar.vue';
 export default {
-  name: 'LayoutDesktop',
+  name: 'Desktop',
   components: {
     LayoutGrid,
-    NavbarDesktop
+    Navbar
   }
 };
 </script>

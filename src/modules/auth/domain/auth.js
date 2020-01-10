@@ -2,7 +2,7 @@ import { store } from '@/core/store';
 import { AUTH_STATUS } from '../common';
 import { igniteService, fireLogin, fireLogout } from '../services';
 
-function bindAuthToServiceStatus () {
+function igniteAuth () {
   const updateAuthState = user => {
     const newAuthStatus = user ? AUTH_STATUS.LOGGEDIN : AUTH_STATUS.LOGGEDOUT;
     store.commit('setCurrentUser', user);
@@ -20,4 +20,4 @@ function logout () {
   fireLogout();
 };
 
-export { bindAuthToServiceStatus, login, logout };
+export { igniteAuth, login, logout };
