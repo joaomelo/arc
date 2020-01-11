@@ -1,26 +1,18 @@
 import { LOAD_STATUS } from '../common';
-
-const state = {
-  loadStatus: LOAD_STATUS.IDLE,
-  runningTasks: new Set()
-};
+import { store } from '@/core/store';
 
 function startLoadTask (task) {
-  state.runningTasks.add(task);
-  syncState();
+  store.state.runningTasks.add(task);
+  updateStatus();
 }
 
 function stopLoadTask (task) {
-  state.runningTasks.delete(task);
-  syncState();
+  store.state.runningTasks.delete(task);
+  updateStatus();
 }
 
-function syncState () {
-  state.loadStatus = state.runningTasks.size > 0 ? LOAD_STATUS.LOADING : LOAD_STATUS.IDLE;
+function updateStatus () {
+  store.state.loadStatus = store.state.runningTasks.size > 0 ? LOAD_STATUS.LOADING : LOAD_STATUS.IDLE;
 };
 
-function isLoading () {
-  return state.loadStatus === LOAD_STATUS.LOADING;
-}
-
-export { startLoadTask, stopLoadTask, isLoading };
+export { startLoadTask, stopLoadTask };
