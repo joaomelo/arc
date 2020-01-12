@@ -7,7 +7,7 @@ function subscribe (eventType, callback, runIfCalled = false) {
     const subscriptionTemplate = {
       state: SUBSCRIPTION_STATES.VIRGIN,
       lastPayload: null,
-      callbaks: []
+      callbacks: []
     };
     subscriptions.set(eventType, subscriptionTemplate);
   }

@@ -4,7 +4,7 @@
       Arc
     </h1>
     <div
-      v-if="authStatus!==AUTH_STATUS.LOGGEDOUT"
+      v-if="authStatus!==AUTH_STATUSES.LOGGEDOUT"
       class="text-center"
     >
       Loading...
@@ -29,9 +29,10 @@
 </template>
 
 <script>
-import { startLoadTask, stopLoadTask } from '@/core/load';
+import { subscribe } from '@/core/bus';
+// import { startLoadTask, stopLoadTask } from '@/core/load';
 import { FormDialog, ControlEmail, ControlPassword } from '@/core/components';
-import { AUTH_STATUS } from '../common';
+import { AUTH_EVENTS, AUTH_STATUSES } from '../common';
 import { login } from '../domain';
 
 export default {
@@ -43,21 +44,27 @@ export default {
   },
   data () {
     return {
-      AUTH_STATUS,
+      AUTH_STATUSES,
+      authStatus: AUTH_STATUSES.UNSOLVED,
       email: null,
       password: null
     };
   },
-  computed: {
-    authStatus () {
-      return this.$store.state.auth.authStatus;
-    }
+  created () {
+    // startLoadTask('SOLVING_USER');
+
+    const updateAuthStatus = payload => {
+      this.authStatus = payload.status;
+      // stopLoadTask('SOLVING_USER');
+    };
+
+    subscribe(AUTH_EVENTS.AUTH_STATUS_CHANGED, updateAuthStatus, true);
   },
   methods: {
     dispatchLogin () {
-      startLoadTask('login');
+      // startLoadTask('login');
       login(this.email, this.password).then(error => {
-        stopLoadTask('login');
+        // stopLoadTask('login');
         if (error) {
           this.$refs.loginForm.throwOperationalError(this.$t('errors.login'));
         }

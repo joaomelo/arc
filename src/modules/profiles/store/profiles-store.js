@@ -1,4 +1,4 @@
-import { AUTH_STATUS } from '../common';
+import { AUTH_STATUSES } from '../common';
 
 import { startLoad, stopLoad } from '@/load';
 import { setDoc, getDoc, authService } from '@/services';
@@ -6,7 +6,7 @@ import { convertProfileToDoc, convertDocToProfile } from '@/data/adapters';
 import { bindCommon } from '../../../data/store/common.js';
 
 const state = {
-  status: AUTH_STATUS.UNSOLVED,
+  status: AUTH_STATUSES.UNSOLVED,
   currentProfile: null,
   profiles: []
 };

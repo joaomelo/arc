@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import { currentUsername, logout } from '../domain';
+import { getCurrentUsername, logout } from '../domain';
 
 export default {
   name: 'LinkLogout',
   data () {
     return {
-      username: currentUsername()
+      username: getCurrentUsername()
     };
   },
   methods: {

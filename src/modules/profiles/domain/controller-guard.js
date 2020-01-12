@@ -1,5 +1,5 @@
 import router from '@/router.js';
-import { auth, AUTH_EVENTS, AUTH_STATUS } from '../services';
+import { auth, AUTH_EVENTS, AUTH_STATUSES } from '../services';
 import { bus } from '@/core/bus';
 
 class ControllerGuard {
@@ -27,7 +27,7 @@ class ControllerGuard {
   }
 
   isStatusFenced (status) {
-    const fencedStatus = [AUTH_STATUS.UNSOLVED, AUTH_STATUS.UNSOLVED];
+    const fencedStatus = [AUTH_STATUSES.UNSOLVED, AUTH_STATUSES.UNSOLVED];
     return fencedStatus.contains(status);
   }
 }
