@@ -1,16 +1,16 @@
 <template>
   <div id="app-canvas">
-    <!-- <SmartSpinner /> -->
+    <SmartSpinner />
     <router-view />
   </div>
 </template>
 
 <script>
-// import { SmartSpinner } from '@/core/load';
+import { SmartSpinner } from '@/core/load';
 export default {
-  name: 'App'
-  // components: {
-  //   SmartSpinner
-  // }
+  name: 'App',
+  components: {
+    SmartSpinner
+  }
 };
 </script>

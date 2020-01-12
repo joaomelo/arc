@@ -1,18 +1,30 @@
-import { LOAD_STATUS } from '../common';
-import { store } from '@/core/store';
+import { publish } from '@/core/bus';
+import { LOAD_EVENTS, LOAD_STATUS } from '../common';
 
-function startLoadTask (task) {
-  store.state.runningTasks.add(task);
+const state = {
+  loadStatus: LOAD_STATUS.IDLE,
+  runningTasks: new Set()
+};
+
+function startLoading (task) {
+  state.runningTasks.add(task);
   updateStatus();
+
+  const stop = () => stopLoading(task);
+  return stop;
 }
 
-function stopLoadTask (task) {
-  store.state.runningTasks.delete(task);
+function stopLoading (task) {
+  state.runningTasks.delete(task);
   updateStatus();
 }
 
 function updateStatus () {
-  store.state.loadStatus = store.state.runningTasks.size > 0 ? LOAD_STATUS.LOADING : LOAD_STATUS.IDLE;
+  const newStatus = state.runningTasks.size > 0 ? LOAD_STATUS.LOADING : LOAD_STATUS.IDLE;
+  if (newStatus !== state.loadStatus) {
+    state.loadStatus = newStatus;
+    publish(LOAD_EVENTS.LOAD_STATUS_CHANGED, { status: newStatus });
+  }
 };
 
-export { startLoadTask, stopLoadTask };
+export { startLoading };

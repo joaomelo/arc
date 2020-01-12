@@ -11,16 +11,22 @@
 <script>
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-
-import { isLoading } from '../domain';
+import { subscribe } from '@/core/bus';
+import { LOAD_STATUS, LOAD_EVENTS } from '../common';
 
 export default {
   name: 'SmartSpinner',
   components: { Loading },
-  computed: {
-    isLoading () {
-      return isLoading();
-    }
+  data () {
+    return {
+      isLoading: false
+    };
+  },
+  created () {
+    const updateLoading = ({ status }) => {
+      this.isLoading = status === LOAD_STATUS.LOADING;
+    };
+    subscribe(LOAD_EVENTS.LOAD_STATUS_CHANGED, updateLoading, true);
   }
 };
 

@@ -30,7 +30,7 @@
 
 <script>
 import { subscribe } from '@/core/bus';
-// import { startLoadTask, stopLoadTask } from '@/core/load';
+import { startLoading } from '@/core/load';
 import { FormDialog, ControlEmail, ControlPassword } from '@/core/components';
 import { AUTH_EVENTS, AUTH_STATUSES } from '../common';
 import { login } from '../domain';
@@ -51,20 +51,19 @@ export default {
     };
   },
   created () {
-    // startLoadTask('SOLVING_USER');
-
-    const updateAuthStatus = payload => {
-      this.authStatus = payload.status;
-      // stopLoadTask('SOLVING_USER');
+    const stop = startLoading('SOLVING_USER');
+    const updateAuthStatus = ({ status }) => {
+      this.authStatus = status;
+      stop();
     };
 
     subscribe(AUTH_EVENTS.AUTH_STATUS_CHANGED, updateAuthStatus, true);
   },
   methods: {
     dispatchLogin () {
-      // startLoadTask('login');
+      const stop = startLoading('LOGGING_IN');
       login(this.email, this.password).then(error => {
-        // stopLoadTask('login');
+        stop();
         if (error) {
           this.$refs.loginForm.throwOperationalError(this.$t('errors.login'));
         }

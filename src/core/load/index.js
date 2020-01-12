@@ -1,2 +1,3 @@
+export { LOAD_STATUS, LOAD_EVENTS } from './common';
 export { SmartSpinner } from './ui';
-export { startLoadTask, stopLoadTask } from './domain';
+export { startLoading } from './domain';
