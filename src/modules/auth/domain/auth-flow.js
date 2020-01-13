@@ -14,11 +14,8 @@ function igniteAuth () {
     const newAuthStatus = user ? AUTH_STATUSES.LOGGEDIN : AUTH_STATUSES.LOGGEDOUT;
     state.authStatus = newAuthStatus;
 
-    const eventPayload = {
-      user,
-      status: newAuthStatus
-    };
-    publish(AUTH_EVENTS.AUTH_STATUS_CHANGED, eventPayload);
+    publish(AUTH_EVENTS.AUTH_STATUS_CHANGED, { user, status: newAuthStatus });
+    if (newAuthStatus === AUTH_STATUSES.LOGGEDIN) publish(AUTH_EVENTS.USER_LOGGEDIN, { user });
   };
 
   igniteService(updateAuthState);

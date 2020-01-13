@@ -53,7 +53,8 @@ export default {
   },
   computed: {
     userId () {
-      return this.$store.getters.getCurrentProfile ? this.$store.getters.getCurrentProfile.id : undefined;
+      // return this.$store.getters.getCurrentProfile ? this.$store.getters.getCurrentProfile.id : undefined;
+      return undefined;
     },
     links () {
       return [

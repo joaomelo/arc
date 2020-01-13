@@ -21,7 +21,7 @@ import JQuery from 'jquery';
 import 'bootstrap-daterangepicker/daterangepicker.js';
 
 import ControlWrapper from './control-wrapper.vue';
-import { p } from '@/common';
+import { p } from '@/common/components-helpers';
 import { daterangeToString } from '@/components/common/conversions.js';
 
 export default {

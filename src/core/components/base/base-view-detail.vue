@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { p } from '@/common';
+import { p } from '@/common/components-helpers';
 
 export default {
   name: 'BaseViewDetail',

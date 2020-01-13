@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { p } from '@/common';
+import { p } from '@/common/components-helpers';
 import ItemView from '@/components/item/item-view.vue';
 import { prettyStatus } from '@/components/common/status.js';
 import { daterangeToString } from '@/components/common/conversions.js';

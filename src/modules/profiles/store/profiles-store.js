@@ -1,76 +1,32 @@
-import { AUTH_STATUSES } from '../common';
+import { reactive } from '@vue/composition-api';
+import { startLoading } from '@/core/load';
+import { subscribe } from '@/core/bus';
+import { bindDocs } from '@/core/firestore';
+import { AUTH_EVENTS } from '@/modules/auth';
+import { convertDocsToProfiles } from './adapters';
 
-import { startLoad, stopLoad } from '@/load';
-import { setDoc, getDoc, authService } from '@/services';
-import { convertProfileToDoc, convertDocToProfile } from '@/data/adapters';
-import { bindCommon } from '../../../data/store/common.js';
-
-const state = {
-  status: AUTH_STATUSES.UNSOLVED,
-  currentProfile: null,
+const state = reactive({
   profiles: []
+});
+
+function bindProfiles () {
+  const config = { collection: 'profiles' };
+  const callback = docs => {
+    const stop = startLoading(config.collection);
+    state.profiles = convertDocsToProfiles(docs);
+    stop();
+  };
+
+  subscribe(AUTH_EVENTS.USER_LOGGEDIN, () => bindDocs(callback, config), true);
 };
 
-const getters = {
-  getAuthStatus: state => state.authStatus,
-  getCurrentProfile: state => state.currentProfile,
-  getProfiles: state => state.profiles,
-  getProfile: state => id => state.profiles.find(profile => profile.id === id),
-  getOtherProfiles: (state, getters) => state.profiles.filter(profile => profile.id !== getters.getCurrentProfile.id)
-};
+function getProfiles () {
+  return state.profiles;
+}
 
-const mutations = {
-  commitProfiles (state, profiles) {
-    state.profiles = profiles;
-  },
-  commitAuthStatus (state, { status, profile }) {
-    state.authStatus = status;
-    state.currentProfile = profile;
-  }
-};
+function getProfile (id) {
+  const profile = state.profiles.find(profile => profile.id === id);
+  return profile;
+}
 
-const actions = {
-  bindProfiles ({ commit }) {
-    const config = { collection: 'profiles' };
-    const adapter = convertDocToProfile;
-    const mutation = profiles => commit('commitProfiles', profiles);
-
-    bindCommon(config, adapter, mutation);
-  },
-
-  bindAuth ({ commit, dispatch }) {
-    const onAuthChange = async (user, status) => {
-      startLoad('authChanged');
-      let profile = await dispatch('pullProfileFromDataService', user.uid);
-      if (!profile) {
-        await dispatch('createUserProfile', user);
-        profile = await dispatch('pullProfileFromDataService', user.uid);
-      };
-
-      commit('commitAuthStatus', { status, profile });
-      stopLoad('authChanged');
-    };
-
-    authService.addCallback(onAuthChange);
-  },
-
-  pullProfileFromDataService (context, id) {
-    return getDoc('profiles', id);
-  },
-
-  createUserProfile ({ dispatch }, user) {
-    const profile = {
-      id: user.uid,
-      title: user.email
-    };
-    const profileDocument = convertProfileToDoc(profile);
-    return setDoc('profiles', profile.id, profileDocument);
-  }
-};
-
-export default {
-  state,
-  getters,
-  mutations,
-  actions
-};
+export { bindProfiles, getProfiles, getProfile };

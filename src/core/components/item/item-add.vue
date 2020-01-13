@@ -9,7 +9,7 @@
 
 <script>
 import BaseButton from '@/components/base/base-button.vue';
-import { p } from '@/common';
+import { p } from '@/common/components-helpers';
 
 export default {
   name: 'ItemAdd',

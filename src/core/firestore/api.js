@@ -1,7 +1,7 @@
-import { db } from './db.js';
-import { saveDocVersion } from './history.js';
+import { db } from './db';
+import { saveDocVersion } from './history';
 
-function bindDocs ({ collection, filters = [] }, callback) {
+function bindDocs (callback, { collection, filters = [] }) {
   let query = db.collection(collection).where('deleted', '==', false);
 
   let i = 0;
@@ -12,7 +12,7 @@ function bindDocs ({ collection, filters = [] }, callback) {
   }
   query = query.orderBy('title', 'asc');
 
-  query.onSnapshot(snapshot => callback(snapshot.doc));
+  query.onSnapshot(snapshot => callback(snapshot.docs));
 }
 
 function getDoc (collection, id) {

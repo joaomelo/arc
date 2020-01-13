@@ -1,26 +1,31 @@
-import { i18n } from '@/modules/auth/data/@/i18n';
+import { i18n } from '@/core/i18n';
 
-function convertUserToDoc (user) {
+function convertProfileToDoc (profile) {
   const doc = {
-    title: user.title,
-    lang: user.lang || i18n.fallbackLocale,
-    deleted: user.deleted || false
+    title: profile.title,
+    lang: profile.lang || i18n.fallbackLocale,
+    deleted: profile.deleted || false
   };
 
   return doc;
 }
 
-function convertDocToUser (doc) {
+function convertDocsToProfiles (docs) {
+  const profiles = docs.map(doc => convertDocToProfile(doc));
+  return profiles;
+}
+
+function convertDocToProfile (doc) {
   const data = { ...doc.data() };
 
-  const user = {
-    collection: 'users',
+  const profile = {
+    collection: 'profiles',
     id: doc.id,
     title: data.title,
     lang: data.lang || i18n.fallbackLocale
   };
 
-  return user;
+  return profile;
 };
 
-export { convertUserToDoc, convertDocToUser };
+export { convertProfileToDoc, convertDocsToProfiles, convertDocToProfile };

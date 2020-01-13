@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { p } from '@/common';
+import { p } from '@/common/components-helpers';
 import { mapStoreFunction } from '@/data/store/helpers.js';
 import ItemAdd from './item-add.vue';
 

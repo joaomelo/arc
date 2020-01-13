@@ -15,7 +15,7 @@
 
 <script>
 import { kebabCase } from 'lodash-es';
-import { p } from '@/common';
+import { p } from '@/common/components-helpers';
 
 export default {
   name: 'ControlWrapper',

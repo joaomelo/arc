@@ -1,5 +1,5 @@
 import { Desktop } from '@/core/desktop';
-import { Joker } from '@/core/components';
+import { Joker } from '@/common/joker';
 
 import { PageLogin } from '@/modules/auth';
 
