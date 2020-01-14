@@ -3,16 +3,10 @@
     <h1 class="text-center display-1">
       Arc
     </h1>
-    <div
-      v-if="authStatus!==AUTH_STATUSES.LOGGEDOUT"
-      class="text-center"
-    >
-      Loading...
-    </div>
     <FormDialog
-      v-else
+      v-if="authStatus===AUTH_STATUSES.LOGGEDOUT"
       ref="loginForm"
-      :alt-submit-text="$t('forms.login')"
+      :alt-submit-text="$t('modules.auth.login')"
       hide-cancel-button
       @save="dispatchLogin"
     >
@@ -65,7 +59,7 @@ export default {
       login(this.email, this.password).then(error => {
         stop();
         if (error) {
-          this.$refs.loginForm.throwOperationalError(this.$t('errors.login'));
+          this.$refs.loginForm.throwOperationalError(this.$t('modules.auth.loginError'));
         }
       });
     }

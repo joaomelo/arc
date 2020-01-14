@@ -10,7 +10,7 @@
       :value="value"
       :readonly="isReadonly"
       :required="isRequired"
-      :placeholder="$t('placeholders.password')"
+      :placeholder="placeholder"
       @input="update"
     >
   </ControlWrapper>
@@ -26,10 +26,15 @@ export default {
     ControlWrapper
   },
   props: {
-    label: p(String, 'Password'),
     value: p(String, null),
     isReadonly: p(Boolean, false),
     isRequired: p(Boolean, false)
+  },
+  data () {
+    return {
+      label: this.$t('components.controls.password.password'),
+      placeholder: this.$t('components.controls.password.placeholder')
+    };
   },
   methods: {
     update (event) {

@@ -10,7 +10,7 @@
       :value="value"
       :readonly="isReadonly"
       :required="isRequired"
-      :placeholder="$t('placeholders.email')"
+      :placeholder="placeholder"
       @input="update"
     >
   </ControlWrapper>
@@ -26,10 +26,15 @@ export default {
     ControlWrapper
   },
   props: {
-    label: p(String, 'Email'),
     value: p(String, null),
     isReadonly: p(Boolean, false),
     isRequired: p(Boolean, false)
+  },
+  data () {
+    return {
+      label: this.$t('components.controls.email.email'),
+      placeholder: this.$t('components.controls.email.placeholder')
+    };
   },
   methods: {
     update (event) {

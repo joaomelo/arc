@@ -8,7 +8,7 @@
     </label>
     <slot :controlId="controlId" />
     <div class="invalid-feedback">
-      {{ $t('errors.required') }}
+      {{ $t('components.controls.wrapper.requiredError') }}
     </div>
   </div>
 </template>
