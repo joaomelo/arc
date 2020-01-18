@@ -1,43 +1,39 @@
 <template>
-  <ItemEdit
-    #default="{ clone }"
-    :item-id="itemId"
-    item-collection="users"
+  <FormEdit
+    #default="{ item: profile }"
+    :fetch-action="fetch"
+    :save-action="save"
   >
-    <ControlText
-      v-model="clone.title"
-      :label="$t('fields.account.email')"
+    <ControlEmail
+      v-model="profile.title"
       read-only
     />
-    <ControlSelect
-      v-model="clone.lang"
-      :label="$t('fields.account.language')"
+    <ControlLocales
+      v-model="profile.lang"
       :is-required="true"
-      :items="languages"
     />
-  </itemedit>
+  </FormEdit>
 </template>
 
 <script>
-import { locales } from '@/i18n';
 import { p } from '@/common/components-helpers';
-import ItemEdit from '@/components/item/item-edit.vue';
-import ControlText from '@/components/forms/control-text.vue';
-import ControlSelect from '@/components/forms/control-select.vue';
+import { FormEdit, ControlEmail } from '@/core/components';
+import ControlLocales from './control-locales';
 
 export default {
-  name: 'UserEdit',
+  name: 'EditProfile',
   components: {
-    ItemEdit,
-    ControlText,
-    ControlSelect
+    FormEdit,
+    ControlEmail,
+    ControlLocales
   },
   props: {
-    itemId: p(String)
+    profileId: p(String)
   },
   data () {
     return {
-      languages: locales
+      fetch: () => true,
+      save: profile => true
     };
   }
 };

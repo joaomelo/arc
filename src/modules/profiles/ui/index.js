@@ -1,3 +1,9 @@
-import PageLogin from './page-login.vue';
-import UserEdit from './user-edit.vue';
-export { PageLogin, UserEdit };
+import EditProfile from './edit-profile';
+import LinkPreferences from './link-preferences';
+import SelectProfiles from './select-profiles';
+
+export {
+  EditProfile,
+  LinkPreferences,
+  SelectProfiles
+};

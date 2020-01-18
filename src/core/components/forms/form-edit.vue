@@ -3,30 +3,35 @@
     @save="save"
     @cancel="cancel"
   >
-    <slot :clone="clone" />
+    <slot :item="item" />
   </FormDialog>
 </template>
 
 <script>
 import { p } from '@/common/components-helpers';
-import { cloneDeep } from 'lodash-es';
 import FormDialog from './form-dialog.vue';
 
 export default {
   name: 'FormEdit',
-  components: { FormDialog },
-  props: { item: p(Object) },
+  components: {
+    FormDialog
+  },
+  props: {
+    saveAction: p(Function),
+    fetchAction: p(Function)
+  },
   data () {
     return {
-      clone: cloneDeep(this.item)
+      item: this.fetchAction()
     };
   },
   methods: {
     cancel () {
-      this.$emit('cancel');
+      this.$router.go(-1);
     },
     save () {
-      this.$emit('save', this.clone);
+      this.saveAction(this.item);
+      this.$router.go(-1);
     }
   }
 };

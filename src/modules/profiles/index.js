@@ -1,8 +1,6 @@
 // kickstarting module
-import { bindProfileCreation } from './domain';
-import { bindProfiles } from './store';
-bindProfiles();
-bindProfileCreation();
+import { bindProfileSetup } from './domain';
+bindProfileSetup();
 
 // export public asssets
-export { getProfiles, getProfile } from './store';
+export { EditProfile, LinkPreferences, SelectProfiles } from './ui';

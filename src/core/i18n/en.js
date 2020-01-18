@@ -15,10 +15,16 @@ export default {
     }
   },
   modules: {
+    i18n: {
+      language: 'Language'
+    },
     auth: {
       login: 'Login',
       logout: 'Logout from {user}',
       loginError: 'Unable to login'
+    },
+    profiles: {
+      preferences: 'Preferences'
     }
   }
   // collections: {
@@ -26,9 +32,6 @@ export default {
   //   result: 'Result | Results',
   //   challenge: 'Challenge | Challenges',
   //   team: 'Team | Teams'
-  // },
-  // nav: {
-  //   account: 'Account'
   // },
   // forms: {
   //   show: 'Show',
@@ -87,9 +90,6 @@ export default {
   //     active: 'active',
   //     blocked: 'blocked',
   //     closed: 'closed'
-  //   },
-  //   account: {
-  //     language: 'Language'
   //   },
   //   assets: {
   //     alias: 'Alias'

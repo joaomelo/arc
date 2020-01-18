@@ -2,9 +2,9 @@ import { Desktop } from '@/core/desktop';
 import { Joker } from '@/common/joker';
 
 import { PageLogin } from '@/modules/auth';
+import { EditProfile } from '@/modules/profiles';
 
 // import { PageMaintence, Page404 } from '@/core/pages';
-// import { UserEdit } from '../components';
 // import AssetsList from './components/asset/assets-list.vue';
 // import AssetEdit from './components/asset/asset-edit.vue';
 // import ChallengesList from './components/challenge/challenges-list.vue';
@@ -15,27 +15,15 @@ import { PageLogin } from '@/modules/auth';
 // import TeamEdit from './components/team/team-edit.vue';
 
 const routes = [
-  {
-    path: '/login',
-    name: 'login',
-    component: PageLogin
-  },
-  {
-    path: '/start',
-    name: 'start',
-    redirect: { name: 'innerjoker' }
-    // redirect: { name: 'assetsList' }
-  },
+  { path: '/login', name: 'login', component: PageLogin },
+  { path: '/start', name: 'start', redirect: { name: 'innerjoker' } /* redirect: { name: 'assetsList' } */ },
   {
     path: '/desktop',
     component: Desktop,
     children: [
-      // {
-      //     path: 'users/:itemId',
-      //     name: 'userEdit',
-      //     component: UserEdit,
-      //     props: true
-      // }
+      { path: 'profiles/:itemId', name: 'profileEdit', component: EditProfile, props: true },
+      { path: '/innerjoker', name: 'innerjoker', component: Joker }
+
       //     //     // {
       //     //   path: 'assets',
       //     //   name: 'assetsList',
@@ -80,14 +68,9 @@ const routes = [
       //     //   component: TeamEdit,
       //     //   props: true
       //     // }
-      { path: '/innerjoker', name: 'innerjoker', component: Joker }
     ]
   },
-  {
-    path: '/joker',
-    name: 'joker',
-    component: Joker
-  }
+  { path: '/joker', name: 'joker', component: Joker }
   // {
   //   path: '*',
   //   component: Page404

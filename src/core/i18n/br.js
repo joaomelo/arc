@@ -15,10 +15,16 @@ export default {
     }
   },
   modules: {
+    i18n: {
+      language: 'Idioma'
+    },
     auth: {
-      login: 'Login',
-      logout: 'Logout de {user}',
+      login: 'Entrar',
+      logout: 'Sair de {user}',
       loginError: 'Erro ao tentar login'
+    },
+    profiles: {
+      preferences: 'Preferências'
     }
   }
   // collections: {
@@ -26,10 +32,6 @@ export default {
   //   result: 'Resultado | Resultados',
   //   challenge: 'Desafio | Desafios',
   //   team: 'Time | Times'
-  // },
-  // nav: {
-  //   account: 'Preferências',
-  //   logout: 'Sair de {user}'
   // },
   // forms: {
   //   edit: 'Editar',
@@ -41,9 +43,6 @@ export default {
   // fields: {
   //   common: {
   //     title: 'Título'
-  //   },
-  //   account: {
-  //     language: 'Idioma'
   //   },
   //   assets: {
   //     alias: 'Apelido'

@@ -28,13 +28,7 @@
         </router-link>
       </div>
       <div class="navbar-nav">
-        <router-link
-          v-if="userId"
-          :to="{ name: 'profileEdit', params: {itemId: userId}}"
-          class="nav-item nav-link"
-        >
-          {{ $t('nav.account') }}
-        </router-link>
+        <LinkPreferences class="nav-item nav-link" />
         <LinkLogout class="nav-item nav-link" />
       </div>
     </div>
@@ -42,20 +36,18 @@
 </template>
 
 <script>
-import { LinkLogout } from '@/modules/auth';
 import { Version } from '@/core/meta';
+import { LinkLogout } from '@/modules/auth';
+import { LinkPreferences } from '@/modules/profiles';
 
 export default {
   name: 'NavbarDesktop',
   components: {
+    LinkPreferences,
     LinkLogout,
     Version
   },
   computed: {
-    userId () {
-      // return this.$store.getters.getCurrentProfile ? this.$store.getters.getCurrentProfile.id : undefined;
-      return undefined;
-    },
     links () {
       return [
         // { text: this.$tc('collections.asset', 2), route: 'assetsList' },

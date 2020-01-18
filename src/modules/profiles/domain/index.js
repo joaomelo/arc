@@ -1,1 +1,1 @@
-export * from './profile-creation';
+export * from './profile-setup';

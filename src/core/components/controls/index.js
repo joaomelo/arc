@@ -1,4 +1,9 @@
-import ControlEmail from './control-email.vue';
-import ControlPassword from './control-password.vue';
+import ControlEmail from './control-email';
+import ControlPassword from './control-password';
+import ControlSelect from './control-select';
 
-export { ControlEmail, ControlPassword };
+export {
+  ControlEmail,
+  ControlPassword,
+  ControlSelect
+};

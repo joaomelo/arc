@@ -16,6 +16,8 @@ function convertDocsToProfiles (docs) {
 }
 
 function convertDocToProfile (doc) {
+  if (!doc.exists) return;
+
   const data = { ...doc.data() };
 
   const profile = {

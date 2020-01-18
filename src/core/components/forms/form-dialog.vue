@@ -32,7 +32,7 @@
 
 <script>
 import { p } from '@/common/components-helpers';
-import { BaseButton } from '@/core/components/base';
+import { BaseButton } from '@/core/components/buttons';
 
 export default {
   name: 'FormDialog',
