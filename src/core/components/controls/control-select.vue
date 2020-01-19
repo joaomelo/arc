@@ -19,7 +19,6 @@ import JQuery from 'jquery';
 import 'select2/dist/js/select2.min.js';
 
 import { p } from '@/common/components-helpers';
-import { i18n } from '@/core/i18n';
 import ControlWrapper from './control-wrapper.vue';
 
 export default {
@@ -36,59 +35,73 @@ export default {
     isMultiple: p(Boolean, false),
     isObjectDriven: p(Boolean, false)
   },
-  mounted () {
-    this.initSelect2();
+  data () {
+    return {
+      initialValuesAsStrings: JSON.parse(JSON.stringify(this.value)),
+      initialOptionsAsStrings: JSON.parse(JSON.stringify(this.options))
+    };
   },
-  methods: {
-    update (event) {
-      const value = this.selectedValue();
-      this.$emit('input', value);
-    },
-    initSelect2 () {
-      JQuery(this.$refs.select).select2({
-        theme: 'bootstrap4',
-        placeholder: this.placeholder(),
-        tags: this.isTaggable,
-        tokenSeparators: [',', ' '],
-        data: this.dataSelect()
-      });
-      JQuery(this.$refs.select).on('change', this.update);
-    },
+  computed: {
     placeholder () {
-      const placeholderKey = this.isTaggable ? 'placeholders.enter' : 'placeholders.select';
-      const placeholderPlural = this.isMultiple ? 2 : 1;
-      return i18n.tc(placeholderKey, placeholderPlural);
-    },
-    initialOptions () {
-      const rawData = JSON.parse(JSON.stringify(this.options));
-      if (!rawData || !Array.isArray(rawData)) throw new Error('Options must be a array');
-      return rawData;
-    },
-    initialValues () {
-      return JSON.parse(JSON.stringify(this.values));
+      const plural = this.isMultiple ? 2 : 1;
+      const key = this.isTaggable ? 'text' : 'select';
+      const placeholder = this.$tc(`components.controls.${key}.placeholder`, plural);
+      return placeholder;
     },
     selectedValues () {
       const selectedIds = JQuery(this.$refs.select).select2('data').map(v => v.id);
       if (selectedIds.length === 0) return;
 
-      const values = this.isObjectDriven ? this.initialOptions.filter(o => selectedIds.includes(o.id)) : selectedIds;
-      return this.isMultiple ? values : values[0];
+      const values = this.isObjectDriven
+        ? this.initialOptionsAsStrings.filter(o => selectedIds.includes(o.id))
+        : selectedIds;
+      const result = this.isMultiple ? values : values[0];
+      return result;
+    }
+  },
+  mounted () {
+    JQuery(this.$refs.select).select2({
+      theme: 'bootstrap4',
+      placeholder: this.placeholder,
+      tags: this.isTaggable,
+      tokenSeparators: [',', ' '],
+      data: this.mountDataObject()
+    });
+    JQuery(this.$refs.select).on('change', this.update);
+  },
+  methods: {
+    update (event) {
+      const value = this.selectedValues;
+      this.$emit('input', value);
     },
-    dataSelect () {
-      let hasSelected = false;
-      const data = this.initialOptions.map(option => {
+    mountDataObject () {
+      let hasSelectedValue = false;
+      const data = this.initialOptionsAsStrings.map(option => {
         const dataItem = {
           id: option.id || option,
           text: option.title || option
         };
-        if (this.isOptionSelected(option)) {
-          hasSelected = true;
+
+        let isOptionSelected = false;
+        if (this.initialValuesAsStrings) {
+          const isArray = Array.isArray(this.initialValuesAsStrings);
+          const oid = option.id || option;
+
+          isOptionSelected = isArray
+            ? !!this.initialValuesAsStrings.find(v => v === oid || v.id === oid)
+            : (oid === this.initialValuesAsStrings || oid === this.initialValuesAsStrings.id);
+        }
+
+        if (isOptionSelected) {
+          hasSelectedValue = true;
           dataItem.selected = 'selected';
         };
+
         return dataItem;
       });
 
-      if (!hasSelected && !this.isMultiple) {
+      // provides select2 with a empty option for selection
+      if (!hasSelectedValue && !this.isMultiple) {
         data.unshift({
           id: '',
           text: ''
@@ -96,23 +109,6 @@ export default {
       }
 
       return data;
-    },
-    isOptionSelected (option) {
-      let result = false;
-
-      if (option && this.initialValues) {
-        const isArray = Array.isArray(this.initialValues);
-        const oid = option.id || option;
-
-        if (isArray && this.initialValues.find(v => v === oid || v.id === oid)) {
-          result = true;
-        }
-        if (!isArray && (oid === this.initialValues || oid === this.initialValues.id)) {
-          result = true;
-        }
-      }
-
-      return result;
     }
   }
 };

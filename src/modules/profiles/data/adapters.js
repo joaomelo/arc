@@ -3,8 +3,7 @@ import { i18n } from '@/core/i18n';
 function convertProfileToDoc (profile) {
   const doc = {
     title: profile.title,
-    lang: profile.lang || i18n.fallbackLocale,
-    deleted: profile.deleted || false
+    lang: profile.lang || i18n.fallbackLocale
   };
 
   return doc;

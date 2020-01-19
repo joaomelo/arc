@@ -1,7 +1,7 @@
 <template>
   <form
     ref="form"
-    class="bg-white rounded p-3"
+    class="bg-white rounded border p-3"
     novalidate
     @submit.prevent="save"
   >
@@ -18,7 +18,7 @@
         class="btn-secondary"
         @click="cancel"
       >
-        {{ $t('forms.cancel') }}
+        {{ $t('components.forms.cancel') }}
       </BaseButton>
       <BaseButton
         type="submit"
@@ -48,7 +48,7 @@ export default {
   },
   computed: {
     submitText () {
-      return this.altSubmitText ? this.altSubmitText : this.$t('forms.save');
+      return this.altSubmitText ? this.altSubmitText : this.$t('components.forms.save');
     }
   },
   created () {

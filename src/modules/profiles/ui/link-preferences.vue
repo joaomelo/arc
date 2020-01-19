@@ -10,12 +10,15 @@
 
 <script>
 import { BaseLink } from '@/core/components';
+import { getCurrentProfile } from '../data';
+
 export default {
   name: 'LinkPreferences',
   components: { BaseLink },
   computed: {
     currentId () {
-      return 'teste';
+      const profile = getCurrentProfile();
+      return profile ? profile.id : null;
     }
   }
 };

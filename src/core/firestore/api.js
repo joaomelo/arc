@@ -29,9 +29,11 @@ async function addDoc (collection, doc) {
   return docRef;
 }
 
-function setDoc (collection, id, document) {
-  saveDocVersion(collection, id, document);
-  return db.collection(collection).doc(id).set(document);
+function setDoc (collection, id, doc) {
+  doc.deleted = false;
+
+  saveDocVersion(collection, id, doc);
+  return db.collection(collection).doc(id).set(doc);
 }
 
 async function delDoc (collection, id) {

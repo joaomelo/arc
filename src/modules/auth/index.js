@@ -3,6 +3,6 @@ import { igniteAuth } from './domain';
 igniteAuth();
 
 // export public asssets
-export { getAuthStatus } from './domain';
+export { getAuthStatus, getCurrentUser } from './domain';
 export { AUTH_EVENTS, AUTH_STATUSES } from './common';
 export { LinkLogout, PageLogin } from './ui';

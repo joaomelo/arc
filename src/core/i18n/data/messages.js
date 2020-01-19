@@ -1,7 +1,6 @@
-import en from '../en';
-import br from '../br';
+import en from './messages-en';
+import br from './messages-br';
 
-// has to be a default export to be compatible with i18n-ally vscode extension
 const messages = {
   en: en,
   pt_BR: br

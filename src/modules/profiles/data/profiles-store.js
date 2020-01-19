@@ -1,9 +1,10 @@
 import { reactive } from '@vue/composition-api';
 
 import { startLoading } from '@/core/load';
-import { subscribe } from '@/core/bus';
+import { subscribe, publish } from '@/core/bus';
 import { bindDocs, getDoc, setDoc } from '@/core/firestore';
-import { AUTH_EVENTS } from '@/modules/auth';
+import { AUTH_EVENTS, getCurrentUser } from '@/modules/auth';
+import { I18N_EVENTS } from '@/core/i18n';
 import { convertDocsToProfiles, convertDocToProfile, convertProfileToDoc } from './adapters';
 
 const profileState = reactive({
@@ -16,21 +17,20 @@ function bindProfiles () {
   const callback = docs => {
     const stop = startLoading(config.collection);
     profileState.profiles = convertDocsToProfiles(docs);
+    setCurrentProfile();
     stop();
   };
 
   subscribe(AUTH_EVENTS.USER_LOGGEDIN, () => bindDocs(callback, config), true);
 };
 
-async function createUserProfile (user) {
+function createUserProfile (user) {
   const profileData = {
     id: user.uid,
     title: user.email
   };
   const profileDocument = convertProfileToDoc(profileData);
-  await setDoc('profiles', profileData.id, profileDocument);
-  const profile = pullUserProfile(user);
-  return profile;
+  return setDoc('profiles', profileData.id, profileDocument);
 }
 
 async function pullUserProfile (user) {
@@ -40,8 +40,19 @@ async function pullUserProfile (user) {
   return profile;
 }
 
-function setCurrentProfile (profile) {
-  profileState.currentProfile = profile;
+function setCurrentProfile () {
+  const id = getCurrentUser().uid;
+
+  const newProfile = getProfile(id);
+  const oldProfile = getCurrentProfile();
+
+  profileState.currentProfile = newProfile || null;
+
+  const newLang = newProfile ? newProfile.lang : null;
+  const oldLang = oldProfile ? oldProfile.lang : null;
+  if (newLang !== oldLang) {
+    publish(I18N_EVENTS.LANGUAGE_PREFERENCE_CHANGED, { lang: newLang });
+  }
 }
 
 function getCurrentProfile () {
@@ -57,6 +68,11 @@ function getProfile (id) {
   return profile;
 }
 
+function updateProfile (profile) {
+  const doc = convertProfileToDoc(profile);
+  setDoc('profiles', profile.id, doc);
+}
+
 export {
   bindProfiles,
   createUserProfile,
@@ -64,5 +80,6 @@ export {
   setCurrentProfile,
   getCurrentProfile,
   getProfiles,
-  getProfile
+  getProfile,
+  updateProfile
 };

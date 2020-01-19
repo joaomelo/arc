@@ -1,4 +1,4 @@
-const LOCALES = {
+const supportedLocales = {
   EN: {
     id: 'en',
     title: 'english'
@@ -9,4 +9,4 @@ const LOCALES = {
   }
 };
 
-export { LOCALES };
+export { supportedLocales };

@@ -1,39 +1,43 @@
 <template>
-  <FormEdit
+  <ItemEdit
     #default="{ item: profile }"
-    :fetch-action="fetch"
-    :save-action="save"
+    :item-id="itemId"
+    :fetch-action="fetchAction"
+    :add-action="addAction"
+    :update-action="updateAction"
   >
     <ControlEmail
       v-model="profile.title"
-      read-only
+      is-readonly
     />
     <ControlLocales
       v-model="profile.lang"
       :is-required="true"
     />
-  </FormEdit>
+  </ItemEdit>
 </template>
 
 <script>
 import { p } from '@/common/components-helpers';
-import { FormEdit, ControlEmail } from '@/core/components';
-import ControlLocales from './control-locales';
+import { ItemEdit, ControlEmail } from '@/core/components';
+import { ControlLocales } from '@/core/i18n';
+import { getProfile, updateProfile } from '../data';
 
 export default {
   name: 'EditProfile',
   components: {
-    FormEdit,
+    ItemEdit,
     ControlEmail,
     ControlLocales
   },
   props: {
-    profileId: p(String)
+    itemId: p(String)
   },
   data () {
     return {
-      fetch: () => true,
-      save: profile => true
+      fetchAction: getProfile,
+      updateAction: updateProfile,
+      addAction: item => { throw new Error('manually creation of profiles is not supported'); }
     };
   }
 };

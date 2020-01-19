@@ -1,18 +1,20 @@
 <template>
   <ControlSelect
+    :value="value"
     :label="$t('modules.i18n.language')"
     :options="locales"
     :is-readonly="isReadonly"
     :is-required="isRequired"
     :is-multiple="false"
-    :is-object-driven="true"
+    :is-object-driven="false"
+    @input="update"
   />
 </template>
 
 <script>
 import { p } from '@/common/components-helpers';
 import { ControlSelect } from '@/core/components';
-import { LOCALES } from '@/core/i18n'; ;
+import { supportedLocales } from '../data';
 
 export default {
   components: { ControlSelect },
@@ -23,7 +25,12 @@ export default {
   },
   computed: {
     locales () {
-      return Object.values(LOCALES);
+      return Object.values(supportedLocales);
+    }
+  },
+  methods: {
+    update (value) {
+      this.$emit('input', value);
     }
   }
 };

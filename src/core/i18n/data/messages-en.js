@@ -11,7 +11,17 @@ export default {
       password: {
         password: 'Password',
         placeholder: 'Enter password'
+      },
+      select: {
+        placeholder: 'Select value | Select values'
+      },
+      text: {
+        placeholder: 'Type value | Types values'
       }
+    },
+    forms: {
+      save: 'Save',
+      cancel: 'Cancel'
     }
   },
   modules: {
@@ -39,12 +49,6 @@ export default {
   //   edit: 'Edit',
   //   delete: 'Delete',
   //   new: 'New {col}',
-  //   save: 'Save',
-  //   cancel: 'Cancel'
-  // },
-  // placeholders: {
-  //   select: 'Please select a value | Please select some values',
-  //   enter: 'Please enter a value | Please enter some values'
   // },
   // calendar: {
   //   date: 'MM/DD/YYYY'

@@ -11,7 +11,17 @@ export default {
       password: {
         password: 'Senha',
         placeholder: 'Digite senha'
+      },
+      select: {
+        placeholder: 'Selecione a opção | Selecione as opções'
+      },
+      text: {
+        placeholder: 'Digite o valor | Digite os valores'
       }
+    },
+    forms: {
+      save: 'Salvar',
+      cancel: 'Cancelar'
     }
   },
   modules: {
@@ -37,8 +47,6 @@ export default {
   //   edit: 'Editar',
   //   delete: 'Excluir',
   //   new: 'Novo {col}',
-  //   save: 'Salvar',
-  //   cancel: 'Cancelar'
   // },
   // fields: {
   //   common: {
