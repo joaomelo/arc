@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import { p } from '@/common/components-helpers';
-import { BaseButton } from '@/core/components/buttons';
+import { p } from '@src/common/components-helpers';
+import { BaseButton } from '@src/core/components/buttons';
 
 export default {
   name: 'FormDialog',

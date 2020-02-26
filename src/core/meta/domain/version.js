@@ -1,4 +1,4 @@
-import * as data from '@/../package.json';
+import * as data from '@src/../package.json';
 import { appEnviroment } from './enviroment';
 
 function appVersion () {

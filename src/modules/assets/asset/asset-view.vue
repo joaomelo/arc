@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import { p } from '@/common/components-helpers';
-import ItemView from '@/components/item/item-view.vue';
-import { prettyStatus } from '@/components/common/status.js';
+import { p } from '@src/common/components-helpers';
+import ItemView from '@src/components/item/item-view.vue';
+import { prettyStatus } from '@src/components/common/status.js';
 
 export default {
   name: 'AssetView',

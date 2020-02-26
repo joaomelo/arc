@@ -1,4 +1,4 @@
-import store from '@/data/store';
+import store from '@src/data/store';
 import { mapRoles } from './collections.js';
 
 function whatProfileCan (profile, item) {

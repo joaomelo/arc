@@ -4,5 +4,5 @@ igniteAuth();
 
 // export public asssets
 export { getAuthStatus, getCurrentUser } from './domain';
-export { AUTH_EVENTS, AUTH_STATUSES } from './common';
+export { AUTH_EVENTS } from './common';
 export { LinkLogout, PageLogin } from './ui';

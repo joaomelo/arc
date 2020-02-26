@@ -1,36 +1,39 @@
-import { publish } from '@/core/bus';
-import { AUTH_EVENTS, AUTH_STATUSES } from '../common';
-import { igniteService, fireLogin, fireLogout } from '../services';
+import { publish } from '@joaomelo/bus';
+import { AUTH_EVENTS } from '../common';
+import { createService } from '../services';
 import { setCurrentUser } from './current-user';
 
-const state = {
-  authStatus: AUTH_STATUSES.UNSOLVED
-};
+let authMachine;
 
 function igniteAuth () {
-  const updateAuthState = user => {
+  const updateAuthState = ({ user, status }) => {
     setCurrentUser(user);
 
-    const newAuthStatus = user ? AUTH_STATUSES.LOGGEDIN : AUTH_STATUSES.LOGGEDOUT;
-    state.authStatus = newAuthStatus;
-
-    publish(AUTH_EVENTS.AUTH_STATUS_CHANGED, { user, status: newAuthStatus });
-    if (newAuthStatus === AUTH_STATUSES.LOGGEDIN) publish(AUTH_EVENTS.USER_LOGGEDIN, { user });
+    publish(AUTH_EVENTS.AUTH_STATUS_CHANGED, { user, status });
+    if (status === 'SIGNIN') publish(AUTH_EVENTS.USER_LOGGEDIN, { user });
   };
 
-  igniteService(updateAuthState);
+  authMachine = createService(updateAuthState);
 }
 
 function getAuthStatus () {
-  return state.authStatus;
+  return authMachine.authStatus;
 }
 
-function login (email, password) {
-  return fireLogin(email, password);
-};
+async function login (email, password) {
+  let result = '';
+
+  try {
+    await authMachine.service.signInWithEmailAndPassword(email, password);
+  } catch (e) {
+    result = e.message;
+  };
+
+  return result;
+}
 
 function logout () {
-  fireLogout();
+  return authMachine.service.signOut();
 };
 
 export { igniteAuth, getAuthStatus, login, logout };

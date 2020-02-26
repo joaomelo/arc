@@ -1,26 +1,14 @@
 import 'firebase/auth';
-import { fireApp } from '@/core/fireapp';
+import { fireApp } from '@src/core/fireapp';
+import { AuthMachine } from '@joaomelo/fireauth-machine';
 
-const service = fireApp.auth();
+let authMachine;
 
-function igniteService (callback) {
-  service.onAuthStateChanged(user => callback(user));
+function createService (onAuthChangeCallback) {
+  if (!authMachine) {
+    authMachine = new AuthMachine(fireApp.auth(), onAuthChangeCallback);
+  }
+  return authMachine;
 };
 
-async function fireLogin (email, password) {
-  let result = '';
-
-  try {
-    await service.signInWithEmailAndPassword(email, password);
-  } catch (e) {
-    result = e.message;
-  };
-
-  return result;
-}
-
-function fireLogout () {
-  return service.signOut();
-};
-
-export { igniteService, fireLogin, fireLogout };
+export { createService };

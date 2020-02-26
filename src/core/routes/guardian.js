@@ -1,5 +1,5 @@
-import { subscribe } from '@/core/bus';
-import { AUTH_EVENTS, AUTH_STATUSES, getAuthStatus } from '@/modules/auth';
+import { subscribe } from '@joaomelo/bus';
+import { AUTH_EVENTS, getAuthStatus } from '@src/modules/auth';
 import { router } from './router';
 
 function igniteGuardian () {
@@ -12,7 +12,7 @@ function igniteGuardian () {
 }
 
 function syncRouteToAuthStatus ({ status }) {
-  const newRouteName = status === AUTH_STATUSES.LOGGEDIN ? 'start' : 'login';
+  const newRouteName = status === 'SIGNIN' ? 'start' : 'login';
 
   if (newRouteName !== router.currentRoute.name) {
     router.push({ name: newRouteName });
@@ -30,7 +30,7 @@ function guardRoutes (to, from, next) {
 }
 
 function isStatusFenced (status) {
-  const fencedStatus = [AUTH_STATUSES.UNSOLVED, AUTH_STATUSES.LOGGEDOUT];
+  const fencedStatus = ['UNSOLVED', 'SIGNOUT'];
   const currentStatus = getAuthStatus();
   return fencedStatus.includes(currentStatus);
 }

@@ -9,7 +9,7 @@
 
 <script>
 import { cloneDeep } from 'lodash-es';
-import { p } from '@/common/components-helpers';
+import { p } from '@src/common/components-helpers';
 import { FormDialog } from '../forms';
 
 const ITEM_EDIT_STATES = {

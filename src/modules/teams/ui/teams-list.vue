@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import ItemsList from '@/components/item/items-list.vue';
-import TeamView from './team-view.vue';
+import { ItemsList } from '@src/core/components';
+import TeamView from './team-view';
 
 export default {
   name: 'TeamsList',

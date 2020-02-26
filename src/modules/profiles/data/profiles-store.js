@@ -1,13 +1,13 @@
 import { reactive } from '@vue/composition-api';
 
-import { startLoading } from '@/core/load';
-import { subscribe, publish } from '@/core/bus';
-import { bindDocs, getDoc, setDoc } from '@/core/firestore';
-import { AUTH_EVENTS, getCurrentUser } from '@/modules/auth';
-import { I18N_EVENTS } from '@/core/i18n';
-import { convertDocsToProfiles, convertDocToProfile, convertProfileToDoc } from './adapters';
+import { startLoading } from '@src/core/load';
+import { subscribe, publish } from '@joaomelo/bus';
+import { bindDocs, getDoc, setDoc } from '@src/core/firestore';
+import { AUTH_EVENTS, getCurrentUser } from '@src/modules/auth';
+import { I18N_EVENTS } from '@src/core/i18n';
+import { convertDocsToProfiles, convertDocToProfile, convertProfileToDoc } from './profile-adapters';
 
-const profileState = reactive({
+const profilesState = reactive({
   currentProfile: null,
   profiles: []
 });
@@ -16,7 +16,7 @@ function bindProfiles () {
   const config = { collection: 'profiles' };
   const callback = docs => {
     const stop = startLoading(config.collection);
-    profileState.profiles = convertDocsToProfiles(docs);
+    profilesState.profiles = convertDocsToProfiles(docs);
     setCurrentProfile();
     stop();
   };
@@ -46,7 +46,7 @@ function setCurrentProfile () {
   const newProfile = getProfile(id);
   const oldProfile = getCurrentProfile();
 
-  profileState.currentProfile = newProfile || null;
+  profilesState.currentProfile = newProfile || null;
 
   const newLang = newProfile ? newProfile.lang : null;
   const oldLang = oldProfile ? oldProfile.lang : null;
@@ -56,15 +56,15 @@ function setCurrentProfile () {
 }
 
 function getCurrentProfile () {
-  return profileState.currentProfile;
+  return profilesState.currentProfile;
 }
 
 function getProfiles () {
-  return profileState.profiles;
+  return profilesState.profiles;
 }
 
 function getProfile (id) {
-  const profile = profileState.profiles.find(profile => profile.id === id);
+  const profile = profilesState.profiles.find(profile => profile.id === id);
   return profile;
 }
 

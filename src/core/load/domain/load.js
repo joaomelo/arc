@@ -1,4 +1,4 @@
-import { publish } from '@/core/bus';
+import { publish } from '@joaomelo/bus';
 import { LOAD_EVENTS, LOAD_STATUS } from '../common';
 
 const state = {

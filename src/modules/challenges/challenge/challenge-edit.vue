@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import { p } from '@/common/components-helpers';
-import ItemEdit from '@/components/item/item-edit.vue';
-import ControlText from '@/components/forms/control-text.vue';
+import { p } from '@src/common/components-helpers';
+import ItemEdit from '@src/components/item/item-edit.vue';
+import ControlText from '@src/components/forms/control-text.vue';
 
 export default {
   name: 'ChallengeEdit',

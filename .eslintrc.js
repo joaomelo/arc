@@ -2,16 +2,12 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint'
   },
-  env: {
-    'cypress/globals': true
-  },
   rules: {
     semi: ['error', 'always']
   },
   extends: [
     'standard',
-    'plugin:vue/recommended',
-    'plugin:cypress/recommended'
+    'plugin:vue/recommended'
   ],
-  plugins: ['vue', 'cypress']
+  plugins: ['vue']
 };

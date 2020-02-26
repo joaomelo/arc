@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ItemsList from '@/components/item/items-list.vue';
+import ItemsList from '@src/components/item/items-list.vue';
 import ResultView from './result-view.vue';
 
 export default {

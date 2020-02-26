@@ -1,5 +1,5 @@
-import { subscribe } from '@/core/bus';
-import { AUTH_EVENTS } from '@/modules/auth';
+import { subscribe } from '@joaomelo/bus';
+import { AUTH_EVENTS } from '@src/modules/auth';
 import { pullUserProfile, createUserProfile } from '../data';
 
 function bindProfileSetup () {
@@ -7,9 +7,9 @@ function bindProfileSetup () {
 }
 
 async function setupProfile ({ user }) {
-  let profile = await pullUserProfile(user);
+  const profile = await pullUserProfile(user);
   if (!profile) {
-    profile = await createUserProfile(user);
+    createUserProfile(user);
   }
 }
 

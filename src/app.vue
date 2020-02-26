@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { SmartSpinner } from '@/core/load';
+import { SmartSpinner } from '@src/core/load';
 export default {
   name: 'App',
   components: {

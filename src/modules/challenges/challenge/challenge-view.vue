@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import { p } from '@/common/components-helpers';
-import ItemView from '@/components/item/item-view.vue';
+import { p } from '@src/common/components-helpers';
+import ItemView from '@src/components/item/item-view.vue';
 
 export default {
   name: 'ChallengeView',

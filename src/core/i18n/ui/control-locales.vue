@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import { p } from '@/common/components-helpers';
-import { ControlSelect } from '@/core/components';
+import { p } from '@src/common/components-helpers';
+import { ControlSelect } from '@src/core/components';
 import { supportedLocales } from '../data';
 
 export default {

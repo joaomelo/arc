@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { LayoutGrid } from '@/core/layouts';
+import { LayoutGrid } from '@src/core/layouts';
 import Navbar from './navbar.vue';
 export default {
   name: 'Desktop',

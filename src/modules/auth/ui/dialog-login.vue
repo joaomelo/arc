@@ -4,7 +4,7 @@
       Arc
     </h1>
     <FormDialog
-      v-if="authStatus===AUTH_STATUSES.LOGGEDOUT"
+      v-if="authStatus==='SIGNOUT'"
       ref="loginForm"
       :alt-submit-text="$t('modules.auth.login')"
       hide-cancel-button
@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import { subscribe } from '@/core/bus';
-import { startLoading } from '@/core/load';
-import { FormDialog, ControlEmail, ControlPassword } from '@/core/components';
-import { AUTH_EVENTS, AUTH_STATUSES } from '../common';
+import { subscribe } from '@joaomelo/bus';
+import { startLoading } from '@src/core/load';
+import { FormDialog, ControlEmail, ControlPassword } from '@src/core/components';
+import { AUTH_EVENTS } from '../common';
 import { login } from '../domain';
 
 export default {
@@ -38,8 +38,7 @@ export default {
   },
   data () {
     return {
-      AUTH_STATUSES,
-      authStatus: AUTH_STATUSES.UNSOLVED,
+      authStatus: 'UNSOLVED',
       email: null,
       password: null
     };

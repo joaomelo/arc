@@ -1,10 +1,9 @@
-import { bind, add, set, del } from '@/services/firestore';
-import { extractUsernameFromEmail } from '@/helpers/string.js';
-import { i18n } from '@/i18n';
+import { reactive } from '@vue/composition-api';
+import { bind, add, set, del } from '@src/services/firestore';
 
-const state = {
+const teamsState = reactive({
   teams: []
-};
+});
 
 const getters = {
   getTeams: state => state.teams,
@@ -39,17 +38,6 @@ const actions = {
       });
   },
 
-  createDefaultTeam ({ getters }) {
-    const user = getters.getUser;
-    const userTag = extractUsernameFromEmail(user.email);
-
-    const newDefaultTeam = {
-      title: i18n.t('fields.teams.defaultTeam', { user: userTag }),
-      owner: user
-    };
-    add(newDefaultTeam);
-  },
-
   addTeam (context, team) {
     team.owner = context.getters.getCurrentProfile;
     add(team);
@@ -65,8 +53,8 @@ const actions = {
   }
 };
 
-export default {
-  state,
+export {
+  teamsState,
   getters,
   mutations,
   actions

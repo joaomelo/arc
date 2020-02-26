@@ -17,7 +17,7 @@
 <script>
 
 import ControlWrapper from './control-wrapper.vue';
-import { p } from '@/common/components-helpers';
+import { p } from '@src/common/components-helpers';
 import { initSelect2, extractSelect2Value } from './select2-adapter.js';
 
 export default {

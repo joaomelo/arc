@@ -1,4 +1,4 @@
-import { add, set, del } from '@/services/firestore';
+import { add, set, del } from '@src/services/firestore';
 import { setCollection } from './helpers.js';
 
 const state = {

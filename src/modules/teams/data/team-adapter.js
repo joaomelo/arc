@@ -1,7 +1,40 @@
-import { isPlainObject } from './node_modules/lodash-es';
+// import { pullProfile }
 
-import { firebase } from './node_modules/@/services/fireapp';
-import db from './db.js.js.js';
+function convertTeamToDoc(team) {
+  const doc = {
+    title: team.title,
+    owner: team.owner.id
+  };
+
+  const membersTypes = ['editors', 'viewers'];
+  membersTypes.forEach(type => {
+    if (team[type] && team[type].length > 0) {
+      doc[type] = team[type].map(member => member.id);
+    }
+  });
+
+  return doc;
+}
+
+function convertDocsToTeams (docs) {
+  return docs.map(doc => convertDocToTeam(doc));
+}
+
+function convertDocToTeam (doc) {
+  if (!doc.exists) return;
+  const data = { ...doc.data() };
+
+  const team = {
+    collection: 'teams',
+    id: doc.id,
+    tittle: data.title
+  };
+
+
+
+
+  return team;
+}
 
 async function convertToItem (doc) {
   const item = {};
@@ -67,4 +100,4 @@ function convertToReference (collection, id) {
   return db.collection(collection).doc(id);
 }
 
-export { convertToItem, convertToDocument };
+export { convertTeamToDoc, convertDocsToTeams };

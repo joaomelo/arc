@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import { Version } from '@/core/meta';
-import { LinkLogout } from '@/modules/auth';
-import { LinkPreferences } from '@/modules/profiles';
+import { Version } from '@src/core/meta';
+import { LinkLogout } from '@src/modules/auth';
+import { LinkPreferences } from '@src/modules/profiles';
 
 export default {
   name: 'NavbarDesktop',

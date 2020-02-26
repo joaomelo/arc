@@ -35,6 +35,13 @@ export default {
     },
     profiles: {
       preferences: 'Preferences'
+    },
+    teams: {
+      parent: 'Parent',
+      owner: 'Owner',
+      managers: 'Managers',
+      staff: 'Staff',
+      defaultTeam: '{user}"s" team'
     }
   }
   // collections: {
@@ -102,12 +109,5 @@ export default {
   //     recurrent: 'Recurrent',
   //     period: 'Period'
   //   },
-  //   teams: {
-  //     parent: 'Parent',
-  //     owner: 'Owner',
-  //     managers: 'Managers',
-  //     staff: 'Staff',
-  //     defaultTeam: '{user}"s" team'
-  //   }
   // },
 };

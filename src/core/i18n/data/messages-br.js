@@ -35,6 +35,13 @@ export default {
     },
     profiles: {
       preferences: 'Preferências'
+    },
+    teams: {
+      parent: 'Ascendente',
+      owner: 'Proprietário',
+      managers: 'Gestores',
+      staff: 'equipe',
+      defaultTeam: 'time do {user}'
     }
   }
   // collections: {
@@ -55,12 +62,5 @@ export default {
   //   assets: {
   //     alias: 'Apelido'
   //   },
-  //   teams: {
-  //     parent: 'Ascendente',
-  //     owner: 'Proprietário',
-  //     managers: 'Gestores',
-  //     staff: 'equipe',
-  //     defaultTeam: 'time do {user}'
-  //   }
   // }
 };

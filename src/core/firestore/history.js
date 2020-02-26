@@ -1,4 +1,4 @@
-import { firebase } from '@/core/fireapp';
+import { firebase } from '@src/core/fireapp';
 import { db } from './db';
 
 function saveDocVersion (collection, id, document) {

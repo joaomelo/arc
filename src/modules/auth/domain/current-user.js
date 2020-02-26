@@ -1,3 +1,5 @@
+import { extractUsernameFromEmail } from '@src/common/helpers';
+
 const state = {
   currentUser: null
 };
@@ -12,8 +14,8 @@ function getCurrentUser () {
 
 function getCurrentUsername () {
   const email = state.currentUser.email;
-  const pos = email.indexOf('@');
-  return email.substring(0, pos);
+  const username = extractUsernameFromEmail(email);
+  return username;
 }
 
 export { setCurrentUser, getCurrentUser, getCurrentUsername };

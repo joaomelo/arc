@@ -1,6 +1,6 @@
 import { isPlainObject } from './node_modules/lodash-es';
 
-import { firebase } from './node_modules/@/services/fireapp';
+import { firebase } from './node_modules/src/services/fireapp';
 import db from './db.js.js.js';
 
 async function convertToItem (doc) {

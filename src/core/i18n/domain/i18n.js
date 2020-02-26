@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 
-import { subscribe } from '@/core/bus';
+import { subscribe } from '@joaomelo/bus';
 import { I18N_EVENTS } from '../common';
 import { messages } from '../data';
 

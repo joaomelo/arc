@@ -19,7 +19,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@': src
+      '@src': src
     },
     extensions: ['.wasm', '.mjs', '.js', '.json', '.vue']
   },

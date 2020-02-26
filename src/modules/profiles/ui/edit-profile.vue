@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import { p } from '@/common/components-helpers';
-import { ItemEdit, ControlEmail } from '@/core/components';
-import { ControlLocales } from '@/core/i18n';
+import { p } from '@src/common/components-helpers';
+import { ItemEdit, ControlEmail } from '@src/core/components';
+import { ControlLocales } from '@src/core/i18n';
 import { getProfile, updateProfile } from '../data';
 
 export default {

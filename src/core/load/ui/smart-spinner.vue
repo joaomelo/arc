@@ -11,7 +11,7 @@
 <script>
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import { subscribe } from '@/core/bus';
+import { subscribe } from '@joaomelo/bus';
 import { LOAD_STATUS, LOAD_EVENTS } from '../common';
 
 export default {
