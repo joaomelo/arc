@@ -1,6 +1,6 @@
 import { LayoutDesktop, LayoutShell } from '__cli/core/layouts';
 import { PageSplash } from '__cli/core/loader';
-// import { PageTeams } from '__cli/modules/teams';
+import { TeamsPage } from '__cli/modules/teams';
 
 const routes = [
   {
@@ -16,9 +16,9 @@ const routes = [
     path: '/desktop',
     component: LayoutDesktop,
     children: [
-      { path: '/dashboard', name: 'dashboard', redirect: { name: 'loading' } }
-      // { path: '/challenges', name: 'challenges', component: PageChallenges }
-      // { path: '/teams', name: 'teams', component: PageTeams }
+      { path: '/dashboard', name: 'dashboard', redirect: { name: 'teams' } },
+      { path: '/challenges/list', name: 'challenges', redirect: { name: 'teams' } },
+      { path: '/teams/list', name: 'teams', component: TeamsPage }
       // { path: '/account', name: 'account', component: PageAccount }
     ]
   }

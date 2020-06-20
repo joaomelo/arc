@@ -50,25 +50,18 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
 
-          <v-list-item :to="{ name: 'challenges' }">
-            <v-list-item-icon>
-              <v-icon>mdi-cogs</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Job Setup</v-list-item-title>
-          </v-list-item>
-
           <v-list-item :to="{ name: 'teams' }">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
+            <v-list-item-title>Teams</v-list-item-title>
           </v-list-item>
 
-          <v-list-item @click="logout">
+          <v-list-item @click="signOut">
             <v-list-item-icon>
               <v-icon>mdi-logout</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Logout</v-list-item-title>
+            <v-list-item-title>Sign Out</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -78,7 +71,7 @@
 
 <script>
 import { appTitle } from '__cli/core/meta';
-// import { authMech } from '__cli/core/auth';
+import { authMech } from '__cli/core/auth';
 
 export default {
   name: 'BaseBar',
@@ -100,9 +93,8 @@ export default {
     };
   },
   methods: {
-    logout () {
-      // authMech.signOut();
-      console.log('logout pressed');
+    signOut () {
+      authMech.signOut();
     }
   }
 };

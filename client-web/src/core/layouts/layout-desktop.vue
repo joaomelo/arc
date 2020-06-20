@@ -2,7 +2,7 @@
   <div>
     <BaseBar
       :is-active="true"
-      title-route-name="run"
+      title-route-name="dashboard"
     />
     <BaseContent />
   </div>

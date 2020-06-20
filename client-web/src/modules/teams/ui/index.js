@@ -1,3 +1,3 @@
-import TeamsList from './teams-list';
+import TeamsPage from './teams-page';
 
-export { TeamsList };
+export { TeamsPage };

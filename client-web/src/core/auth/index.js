@@ -9,8 +9,19 @@
 
 const authMech = {
   subscribe (observer) {
-    observer({ status: 'UNSOLVED' });
-    setTimeout(() => observer({ status: 'SIGNEDIN' }), 1000);
+    this.state = { status: 'UNSOLVED' };
+    observer(this.state);
+    setTimeout(
+      () => {
+        this.state = { status: 'SIGNEDIN' };
+        observer(this.state);
+      },
+      1000
+    );
+  },
+
+  signOut () {
+    console.log('logout pressed');
   }
 };
 

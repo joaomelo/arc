@@ -27,8 +27,7 @@ function activateBeforeEachRouteCheck (router) {
   router.beforeEach((to, from, next) => {
     const openRouteNames = ['loading', 'login', 'unverified'];
     const isGoingToOpenRoute = openRouteNames.includes(to.name);
-    // const isSignedIn = authMech.state.status === 'SIGNEDIN';
-    const isSignedIn = true;
+    const isSignedIn = authMech.state.status === 'SIGNEDIN';
     const isFreeToGo = isGoingToOpenRoute || isSignedIn;
 
     if (isFreeToGo) {
