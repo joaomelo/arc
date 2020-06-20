@@ -1,6 +1,6 @@
 // import { pullProfile }
 
-function convertTeamToDoc(team) {
+function convertTeamToDoc (team) {
   const doc = {
     title: team.title,
     owner: team.owner.id
@@ -29,9 +29,6 @@ function convertDocToTeam (doc) {
     id: doc.id,
     tittle: data.title
   };
-
-
-
 
   return team;
 }

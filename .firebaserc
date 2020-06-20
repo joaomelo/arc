@@ -1,6 +1,6 @@
 {
   "projects": {
-    "production": "calystone-arc",
-    "development": "calystone-arc-dev",
+    "prod": "calystone-arc",
+    "stge": "calystone-arc-dev"
   }
 }

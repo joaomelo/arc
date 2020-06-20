@@ -4,17 +4,13 @@
   "description": "sensible framework for team work",
   "main": "index.html",
   "scripts": {
-    "start": "npm run dev:app",
-    "dev:app": "webpack-dev-server --config build/webpack.dev.js",
-    "lint": "eslint --ext .js,.vue src",
-    "build": "npm run lint && rimraf dist/* && webpack --config build/webpack.prod.js",
-    "deploy": "npm run build && firebase deploy",
-    "commit": "npm run lint && git add -A && git commit",
-    "push": "git push && git push --tags",
-    "bump:patch": "npm run lint && npm run commit && npm version patch && npm run push",
-    "bump:minor": "npm run lint && npm run commit && npm version minor && npm run push",
-    "release:patch": "npm run bump:patch && npm run deploy",
-    "release:minor": "npm run bump:minor && npm run deploy"
+    "start": "npm run dev:cli",
+    "dev:cli": "webpack-dev-server --config client/config/webpack.dev.js",
+    "lint": "eslint --fix --ext .js,.vue client/src/",
+    "test": "npm run lint && jest",
+    "build": "rimraf client/dist/* && webpack --config client/config/webpack.prod.js",
+    "deploy:stge": "npm run build && firebase use stge && firebase deploy",
+    "deploy:prod": "npm run build && firebase use prod && firebase deploy"
   },
   "repository": {
     "type": "git",
