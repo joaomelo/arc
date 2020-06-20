@@ -1,3 +1,5 @@
+THIS APP IS IN IT EARLY DEVELOPMENT. THE README FILE DECLARES FEATURES YET TO BE DEVELOPED, DO NOT CONSIDER IT AS SOURCE OF CODE DOCUMENTATION.
+
 # ARC
 
 ARC is a web app still in early development that aims to help teams manage their work using an asset driven mindset.
@@ -33,6 +35,32 @@ ARC is a Single Page Application developed with these main technologies
 * [Webpack](https://webpack.js.org/) - JavaScript module bundler
 
 I also am helped by a lot of packages from the vibrating javascript community. All of them can be checked in the [package.json](package.json) file.
+
+# Decentralized Architecture 
+
+Clients are self sufficient apps that saves all data locally, they synchronize teams information in peer based connections using WebRTC.
+
+How to run locally without internet. The server should just release app version and metadata to wich other version it is able to talk to.
+
+_How to establish identity?_
+
+# Client
+
+The client is a full off-line capable app
+
+----
+There is the team.
+There are challenges developed inside teams.
+
+What is the local data technology?
+How to abstract it?
+Should the database deal with synchronization or there to much business and that is another module?
+Should i use pouchDB or couchDb? HotCollection can be a data store abstraction?
+---
+
+---
+There is a point to login locally? Should i have a server just to login?
+ 
 
 ## Versioning
 
