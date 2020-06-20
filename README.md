@@ -1,12 +1,18 @@
 THIS APP IS IN IT EARLY DEVELOPMENT. THE README FILE DECLARES FEATURES YET TO BE DEVELOPED, DO NOT CONSIDER IT AS SOURCE OF CODE DOCUMENTATION.
 
-# ARC
+# Arc
 
-ARC is a web app still in early development that aims to help teams manage their work using an asset driven mindset.
+ARC is a web app that aims to help individuals, organizations, communities and families collaboratively organize their work pipeline using an impact driven mindset.
 
-## Core Concepts
+# Core Concepts
 
-The system is built under three concepts: Assets, Results, and Challenges. They are loosely based on OKR and Agile methodologies.
+The system is built under few concepts streamlined from management methodologies like OKR and Agile.
+
+# Teams
+
+Are the central places for the whole app. It groups any number of people, even one person is a perfect valid team setup, around a management environment with challenges and other work related items.
+
+Every team has at least one admin which defaults to the item creator, editors whom are users with limited data editing capabilities and members whom could see team data and edit data in work item delegated to them.
 
 ### Assets
 

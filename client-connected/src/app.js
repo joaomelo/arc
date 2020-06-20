@@ -1,6 +1,6 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-import Vue from 'client/src/vue';
+import 'client-web/src/core/vue/core-js/stable';
+import 'client-web/src/core/vue/regenerator-runtime/runtime';
+import Vue from 'client-web/src/core/vue/client/src/vue';
 import './core/composition-api';
 
 import './core/styles';
