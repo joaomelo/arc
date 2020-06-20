@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { ItemsList } from '@src/core/components';
+import { ItemsList } from '__cli/core/components';
 import TeamView from './team-view';
 
 export default {

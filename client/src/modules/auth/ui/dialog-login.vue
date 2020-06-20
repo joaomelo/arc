@@ -24,8 +24,8 @@
 
 <script>
 import { subscribe } from '@joaomelo/bus';
-import { startLoading } from '@src/core/load';
-import { FormDialog, ControlEmail, ControlPassword } from '@src/core/components';
+import { startLoading } from '__cli/core/load';
+import { FormDialog, ControlEmail, ControlPassword } from '__cli/core/components';
 import { AUTH_EVENTS } from '../common';
 import { login } from '../domain';
 

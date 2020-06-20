@@ -1,11 +1,11 @@
-const Dotenv = require('client/config/dotenv-webpack');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
-const merge = require('client/config/webpack-merge');
-const common = require('./webpack.common.js.js.js');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'inline-source-map',
   devServer: {
     hot: true,
     port: 8080,
@@ -17,6 +17,7 @@ module.exports = merge(common, {
     }
   },
   plugins: [
-    new Dotenv({ path: './env/dev.env' })
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv({ path: './.env.dev' })
   ]
 });

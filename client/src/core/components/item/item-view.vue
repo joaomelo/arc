@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import { p } from '@src/common/components-helpers';
-import { canEdit } from '@src/roles';
-import { mapStoreFunction } from '@src/data/store/helpers.js';
-import BaseView from '@src/components/base/base-view.vue';
+import { p } from '__cli/common/components-helpers';
+import { canEdit } from '__cli/roles';
+import { mapStoreFunction } from '__cli/data/store/helpers.js';
+import BaseView from '__cli/components/base/base-view.vue';
 
 export default {
   name: 'ItemView',

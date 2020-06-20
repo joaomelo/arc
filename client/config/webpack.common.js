@@ -1,28 +1,29 @@
 'use strict';
-const webpack = require('webpack');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const CircularDependencyPlugin = require('circular-dependency-plugin');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 const path = require('path');
-const dist = path.resolve(__dirname, '../dist');
-const src = path.resolve(__dirname, '../src');
+const clientDist = path.resolve(__dirname, '../dist');
+const clientSrc = path.resolve(__dirname, '../src');
 
 module.exports = {
-  // babel-polyfill as the first entry enables the use of async syntax
-  entry: ['babel-polyfill', './src/app.js'],
+  entry: './client/src/app.js',
+  devtool: 'source-map',
   output: {
     publicPath: '/',
-    path: dist,
-    filename: 'bundle.js'
+    path: clientDist,
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js'
   },
   resolve: {
     alias: {
-      '@src': src
+      __cli: clientSrc
     },
-    extensions: ['.wasm', '.mjs', '.js', '.json', '.vue']
+    extensions: ['.js', '.json', '.vue']
   },
   module: {
     rules: [
@@ -34,6 +35,10 @@ module.exports = {
       {
         test: /\.vue$/,
         use: 'vue-loader'
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader'
       },
       {
         test: [/\.css$/, /\.s(c|a)ss$/],
@@ -52,29 +57,28 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        test: /\.js$/,
-        use: 'babel-loader'
       }
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: src + '/static',
-        to: dist + '/static',
-        toType: 'dir'
-      }
-    ]),
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({ template: src + '/index.html' }),
-    new VueLoaderPlugin(),
-    new VuetifyLoaderPlugin(),
     new CircularDependencyPlugin({
       exclude: /node_modules/,
       allowAsyncCycles: false,
       cwd: process.cwd()
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: clientSrc + '/static',
+        to: clientDist + '/static',
+        toType: 'dir'
+      }
+    ]),
+    new HtmlWebpackPlugin({ template: clientSrc + '/index.html' }),
+    new FaviconsWebpackPlugin({
+      logo: clientSrc + '/static/favicon.png',
+      inject: true
+    }),
+    new VueLoaderPlugin(),
+    new VuetifyLoaderPlugin()
   ]
 };

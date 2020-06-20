@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { BaseLink } from '@src/core/components';
+import { BaseLink } from '__cli/core/components';
 import { getCurrentProfile } from '../data';
 
 export default {

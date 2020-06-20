@@ -15,7 +15,8 @@ module.exports = {
   },
   extends: [
     'standard',
-    'plugin:vue/recommended'
+    'plugin:vue/recommended',
+    'plugin:jest/all'
   ],
-  plugins: ['vue']
+  plugins: ['vue', 'jest']
 };

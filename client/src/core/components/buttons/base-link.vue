@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { p } from '@src/common/components-helpers';
+import { p } from '__cli/common/components-helpers';
 
 export default {
   props: {

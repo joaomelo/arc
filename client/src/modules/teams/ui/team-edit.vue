@@ -32,10 +32,10 @@
 </template>
 
 <script>
-import { p } from '@src/common/components-helpers';
-import ItemEdit from '@src/components/item/item-edit.vue';
-import ControlText from '@src/components/forms/control-text.vue';
-import ControlSelect from '@src/components/forms/control-select.vue';
+import { p } from '__cli/common/components-helpers';
+import ItemEdit from '__cli/components/item/item-edit.vue';
+import ControlText from '__cli/components/forms/control-text.vue';
+import ControlSelect from '__cli/components/forms/control-select.vue';
 
 export default {
   name: 'TeamEdit',

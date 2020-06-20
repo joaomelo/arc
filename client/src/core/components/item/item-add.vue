@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import BaseButton from '@src/components/base/base-button.vue';
-import { p } from '@src/common/components-helpers';
+import BaseButton from '__cli/components/base/base-button.vue';
+import { p } from '__cli/common/components-helpers';
 
 export default {
   name: 'ItemAdd',

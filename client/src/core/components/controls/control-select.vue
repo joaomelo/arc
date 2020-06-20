@@ -18,7 +18,7 @@
 import JQuery from 'jquery';
 import 'select2/dist/js/select2.min.js';
 
-import { p } from '@src/common/components-helpers';
+import { p } from '__cli/common/components-helpers';
 import ControlWrapper from './control-wrapper.vue';
 
 export default {

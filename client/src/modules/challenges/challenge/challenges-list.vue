@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ItemsList from '@src/components/item/items-list.vue';
+import ItemsList from '__cli/components/item/items-list.vue';
 import ChallengeView from './challenge-view.vue';
 
 export default {

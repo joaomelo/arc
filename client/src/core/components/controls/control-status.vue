@@ -10,8 +10,8 @@
 
 <script>
 import ControlSelect from './control-select.vue';
-import { statuses } from '@src/components/common/status.js';
-import { p } from '@src/common/components-helpers';
+import { statuses } from '__cli/components/common/status.js';
+import { p } from '__cli/common/components-helpers';
 
 export default {
   name: 'ControlStatus',

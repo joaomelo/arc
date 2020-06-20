@@ -3,9 +3,9 @@ import { Joker } from 'client/src/common/joker';
 
 import { PageLogin } from 'client/src/modules/auth';
 import { EditProfile } from 'client/src/modules/profiles';
-// import { TeamsList } from '@src/modules/teams';
+// import { TeamsList } from '__cli/modules/teams';
 
-// import { PageMaintence, Page404 } from '@src/core/pages';
+// import { PageMaintence, Page404 } from '__cli/core/pages';
 // import AssetsList from './components/asset/assets-list.vue';
 // import AssetEdit from './components/asset/asset-edit.vue';
 // import ChallengesList from './components/challenge/challenges-list.vue';

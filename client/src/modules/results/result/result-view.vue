@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import { p } from '@src/common/components-helpers';
-import ItemView from '@src/components/item/item-view.vue';
-import { prettyStatus } from '@src/components/common/status.js';
-import { daterangeToString } from '@src/components/common/conversions.js';
+import { p } from '__cli/common/components-helpers';
+import ItemView from '__cli/components/item/item-view.vue';
+import { prettyStatus } from '__cli/components/common/status.js';
+import { daterangeToString } from '__cli/components/common/conversions.js';
 
 export default {
   name: 'ResultView',

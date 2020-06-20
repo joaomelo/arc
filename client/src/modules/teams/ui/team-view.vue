@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { p } from '@src/common/components-helpers';
-import { ItemView } from '@src/components';
+import { p } from '__cli/common/components-helpers';
+import { ItemView } from '__cli/components';
 
 export default {
   name: 'TeamView',

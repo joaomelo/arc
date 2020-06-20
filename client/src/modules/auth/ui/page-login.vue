@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { LayoutGrid } from '@src/core/layouts';
+import { LayoutGrid } from '__cli/core/layouts';
 import DialogLogin from './dialog-login.vue';
 export default {
   name: 'PageLogin',
