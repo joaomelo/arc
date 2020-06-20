@@ -1,7 +1,7 @@
 import { extractUsernameFromEmail } from '__cli/core/auth/domain/client/src/common/helpers';
 import { subscribe } from 'client/src/modules/teams/domain/@joaomelo/bus';
 import { i18n } from '__cli/core/profiles/data/client/src/core/i18n';
-import { AUTH_EVENTS } from '__cli/core/profiles/data/client/src/modules/auth';
+import { AUTH_EVENTS } from 'client-web/src/core/router/__cli/core/profiles/data/client/src/modules/auth';
 import { pullUserTeams, addTeam } from '../data';
 
 function bindTeamSetup () {

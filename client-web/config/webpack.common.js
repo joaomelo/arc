@@ -75,7 +75,7 @@ module.exports = {
     ]),
     new HtmlWebpackPlugin({ template: clientSrc + '/index.html' }),
     new FaviconsWebpackPlugin({
-      logo: clientSrc + '/static/favicon.png',
+      logo: clientSrc + '/static/logo.png',
       inject: true
     }),
     new VueLoaderPlugin(),

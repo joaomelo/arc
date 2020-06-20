@@ -1,3 +1,4 @@
-import LayoutGrid from './layout-grid';
+import LayoutShell from './layout-shell';
+import LayoutDesktop from './layout-desktop';
 
-export { LayoutGrid };
+export { LayoutShell, LayoutDesktop };

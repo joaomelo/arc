@@ -1,8 +1,8 @@
-import { Desktop } from 'client/src/core/desktop';
-import { Joker } from 'client/src/common/joker';
+import { Desktop } from 'client-web/src/core/router/client/src/core/desktop';
+import { Joker } from 'client-web/src/core/router/client/src/common/joker';
 
-import { PageLogin } from '__cli/core/profiles/data/client/src/modules/auth';
-import { EditProfile } from 'client/src/modules/profiles';
+import { PageLogin } from 'client-web/src/core/router/__cli/core/profiles/data/client/src/modules/auth';
+import { EditProfile } from 'client-web/src/core/router/client/src/modules/profiles';
 // import { TeamsList } from '__cli/modules/teams';
 
 // import { PageMaintence, Page404 } from '__cli/core/pages';
