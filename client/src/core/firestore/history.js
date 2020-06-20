@@ -1,4 +1,4 @@
-import { firebase } from 'client/src/core/fireapp';
+import { firebase } from '__cli/core/auth/services/client/src/core/fireapp';
 import { db } from './db';
 
 function saveDocVersion (collection, id, document) {

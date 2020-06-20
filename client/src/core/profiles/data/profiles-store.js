@@ -1,10 +1,10 @@
-import { reactive } from 'client/src/modules/profiles/data/@vue/composition-api';
+import { reactive } from '__cli/core/profiles/data/@vue/composition-api';
 
-import { startLoading } from 'client/src/core/load';
-import { subscribe, publish } from 'client/src/modules/profiles/data/@joaomelo/bus';
-import { bindDocs, getDoc, setDoc } from 'client/src/core/firestore';
-import { AUTH_EVENTS, getCurrentUser } from 'client/src/modules/auth';
-import { I18N_EVENTS } from 'client/src/core/i18n';
+import { startLoading } from '__cli/core/profiles/data/client/src/core/load';
+import { subscribe, publish } from '__cli/core/profiles/data/@joaomelo/bus';
+import { bindDocs, getDoc, setDoc } from '__cli/core/profiles/data/client/src/core/firestore';
+import { AUTH_EVENTS, getCurrentUser } from '__cli/core/profiles/data/client/src/modules/auth';
+import { I18N_EVENTS } from '__cli/core/profiles/data/client/src/core/i18n';
 import { convertDocsToProfiles, convertDocToProfile, convertProfileToDoc } from './profile-adapters';
 
 const profilesState = reactive({

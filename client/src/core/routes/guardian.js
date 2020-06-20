@@ -1,5 +1,5 @@
 import { subscribe } from 'client/src/core/routes/@joaomelo/bus';
-import { AUTH_EVENTS, getAuthStatus } from 'client/src/modules/auth';
+import { AUTH_EVENTS, getAuthStatus } from '__cli/core/profiles/data/client/src/modules/auth';
 import { router } from './router';
 
 function igniteGuardian () {

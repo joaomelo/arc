@@ -1,4 +1,4 @@
-import { i18n } from 'client/src/core/i18n';
+import { i18n } from '__cli/core/profiles/data/client/src/core/i18n';
 
 function convertProfileToDoc (profile) {
   const doc = {

@@ -1,4 +1,4 @@
-import { publish } from 'client/src/modules/auth/domain/@joaomelo/bus';
+import { publish } from '__cli/core/auth/domain/@joaomelo/bus';
 import { AUTH_EVENTS } from '../common';
 import { createService } from '../services';
 import { setCurrentUser } from './current-user';

@@ -1,6 +1,6 @@
-import 'client/src/modules/auth/services/firebase/auth';
-import { fireApp } from 'client/src/core/fireapp';
-import { AuthMachine } from 'client/src/modules/auth/services/@joaomelo/fireauth-machine';
+import '__cli/core/auth/services/firebase/auth';
+import { fireApp } from '__cli/core/auth/services/client/src/core/fireapp';
+import { AuthMachine } from '__cli/core/auth/services/@joaomelo/fireauth-machine';
 
 let authMachine;
 

@@ -1,5 +1,5 @@
-import { subscribe } from 'client/src/modules/profiles/domain/@joaomelo/bus';
-import { AUTH_EVENTS } from 'client/src/modules/auth';
+import { subscribe } from '__cli/core/profiles/domain/@joaomelo/bus';
+import { AUTH_EVENTS } from '__cli/core/profiles/domain/client/src/modules/auth';
 import { pullUserProfile, createUserProfile } from '../data';
 
 function bindProfileSetup () {

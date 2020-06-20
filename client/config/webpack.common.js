@@ -1,10 +1,10 @@
 'use strict';
-const CircularDependencyPlugin = require('circular-dependency-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
+const CircularDependencyPlugin = require('client/config/circular-dependency-plugin');
+const HtmlWebpackPlugin = require('client/config/html-webpack-plugin');
+const FaviconsWebpackPlugin = require('client/config/favicons-webpack-plugin');
+const CopyWebpackPlugin = require('client/config/copy-webpack-plugin');
+const { VueLoaderPlugin } = require('client/config/vue-loader');
+const VuetifyLoaderPlugin = require('client/config/vuetify-loader/lib/plugin');
 
 const path = require('path');
 const clientDist = path.resolve(__dirname, '../dist');
@@ -49,9 +49,9 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              implementation: require('sass'),
+              implementation: require('client/config/sass'),
               sassOptions: {
-                fiber: require('fibers'),
+                fiber: require('client/config/fibers'),
                 indentedSyntax: true
               }
             }

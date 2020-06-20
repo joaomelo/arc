@@ -1,7 +1,7 @@
 import { Desktop } from 'client/src/core/desktop';
 import { Joker } from 'client/src/common/joker';
 
-import { PageLogin } from 'client/src/modules/auth';
+import { PageLogin } from '__cli/core/profiles/data/client/src/modules/auth';
 import { EditProfile } from 'client/src/modules/profiles';
 // import { TeamsList } from '__cli/modules/teams';
 
