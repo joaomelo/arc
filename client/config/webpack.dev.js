@@ -1,0 +1,22 @@
+const Dotenv = require('client/config/dotenv-webpack');
+
+const merge = require('client/config/webpack-merge');
+const common = require('./webpack.common.js.js.js');
+
+module.exports = merge(common, {
+  mode: 'development',
+  devtool: 'inline-source-map',
+  devServer: {
+    hot: true,
+    port: 8080,
+    historyApiFallback: true,
+    noInfo: false,
+    stats: 'normal',
+    watchOptions: {
+      poll: true
+    }
+  },
+  plugins: [
+    new Dotenv({ path: './env/dev.env' })
+  ]
+});

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "calystone-arc"
+    "production": "calystone-arc",
+    "development": "calystone-arc-dev",
   }
 }
