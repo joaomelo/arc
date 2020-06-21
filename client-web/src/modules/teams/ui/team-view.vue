@@ -1,39 +1,54 @@
 <template>
   <ItemView
-    :item="item"
     :title="item.title"
-    :details="details"
-  />
+    :subtitle="item.id"
+  >
+    <template v-slot:details>
+      <ItemViewDetail
+        label="Admins"
+        :display="item.admins"
+      />
+      <ItemViewDetail
+        label="Editors"
+        :display="item.editors"
+      />
+      <ItemViewDetail
+        label="Members"
+        :display="item.members"
+      />
+    </template>
+    <!-- <template v-slot:actions>
+      <BaseButton
+        :disabled="!canEdit"
+        class="btn-secondary"
+        @click="$emit('edit')"
+      >
+        {{ $t('forms.edit') }}
+      </BaseButton>
+      <BaseButton
+        :disabled="!canEdit"
+        class="btn-secondary"
+        @click="$emit('del')"
+      >
+        {{ $t('forms.delete') }}
+      </BaseButton>
+    </template> -->
+  </ItemView>
 </template>
 
 <script>
-import { p } from '__cli/common/components-helpers';
-import { ItemView } from '__cli/components';
+import { ItemView, ItemViewDetail } from '__cli/modules/item';
 
 export default {
   name: 'TeamView',
   components: {
-    ItemView
+    ItemView,
+    ItemViewDetail
   },
   props: {
-    item: p(Object)
-  },
-  computed: {
-    details () {
-      return [
-        {
-          label: this.$t('fields.teams.parent'),
-          display: this.item.parent && this.item.parent.title
-        },
-        {
-          label: this.$t('fields.teams.owner'),
-          display: this.item.owner.title
-        },
-        {
-          label: this.$t('fields.teams.managers'),
-          display: this.item.managers
-        }
-      ];
+    item: {
+      type: Object,
+      required: true
     }
   }
 };

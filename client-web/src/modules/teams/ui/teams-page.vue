@@ -1,15 +1,23 @@
 <template>
-  <div>
-    <!-- <TeamsList /> -->
-    <h1>Hello Teams</h1>
-  </div>
+  <ItemsList
+    :view-component="TeamView"
+    :items="teamsCollection"
+  />
 </template>
 
 <script>
-// import TeamsList from './teams-list';
+import { ItemsList } from '__cli/core/components';
+import { teamsCollection } from '../domain';
+import TeamView from './team-view';
 
 export default {
-  name: 'PageTeams'
-  // components: { TeamsList }
+  name: 'TeamsPage',
+  components: { ItemsList },
+  data () {
+    return {
+      TeamView,
+      teamsCollection
+    };
+  }
 };
 </script>
