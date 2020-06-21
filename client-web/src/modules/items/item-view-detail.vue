@@ -1,5 +1,8 @@
 <template>
-  <p v-if="display">
+  <p
+    v-if="display"
+    class="my-1 mx-0"
+  >
     <strong v-if="label">{{ label }}: </strong> {{ displayValue }}
   </p>
 </template>

@@ -9,16 +9,17 @@
     >
       <slot name="details" />
     </v-card-text>
-    <v-divider v-if="$slots.actions" />
+    <v-divider v-if="$slots.actions || $slots.details" />
     <v-card-actions>
       <v-spacer />
       <slot name="actions" />
       <v-btn
         v-if="$slots.details"
+        icon
         @click="folded = !folded"
       >
         <v-icon>
-          {{ folded ? "unfold-more-horizontal" : "unfold-less-horizontal" }}
+          {{ folded ? "mdi-unfold-more-horizontal" : "mdi-unfold-less-horizontal" }}
         </v-icon>
       </v-btn>
     </v-card-actions>

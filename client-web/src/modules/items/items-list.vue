@@ -6,6 +6,7 @@
         v-for="item in items"
         :key="item.id"
         :item="item"
+        class="mt-2"
       />
     </div>
     <p v-else>

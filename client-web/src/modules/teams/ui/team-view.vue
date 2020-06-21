@@ -1,6 +1,6 @@
 <template>
   <ItemView
-    :title="item.title"
+    :title="item.name"
     :subtitle="item.id"
   >
     <template v-slot:details>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { ItemView, ItemViewDetail } from '__cli/modules/item';
+import { ItemView, ItemViewDetail } from '__cli/modules/items';
 
 export default {
   name: 'TeamView',

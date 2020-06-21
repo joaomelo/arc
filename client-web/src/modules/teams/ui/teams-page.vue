@@ -1,12 +1,12 @@
 <template>
   <ItemsList
     :view-component="TeamView"
-    :items="teamsCollection"
+    :items="teams"
   />
 </template>
 
 <script>
-import { ItemsList } from '__cli/core/components';
+import { ItemsList } from '__cli/modules/items';
 import { teamsCollection } from '../domain';
 import TeamView from './team-view';
 
@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       TeamView,
-      teamsCollection
+      teams: teamsCollection.items
     };
   }
 };
