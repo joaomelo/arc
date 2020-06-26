@@ -2,7 +2,7 @@ THIS APP IS IN IT EARLY DEVELOPMENT. THE README FILE DECLARES FEATURES YET (OR N
 
 # Arc
 
-ARC is experimental web app that aims to help individuals, organizations, communities and families to collaboratively organize their work pipeline using an impact driven mindset.
+ARC is an experimental web app that aims to help individuals, organizations, communities and families to collaboratively organize their work pipeline using an impact driven mindset.
 
 # Core Concepts
 
