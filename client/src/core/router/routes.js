@@ -9,7 +9,7 @@ const routes = [
     component: LayoutShell,
     children: [
       { path: '/loading', name: 'loading', component: PageSplash },
-      { path: '/login', name: 'login', component: PageAuth },
+      { path: '/auth', name: 'auth', component: PageAuth },
       { path: '/unverified', name: 'unverified', component: PageUnverified }
     ]
   },
