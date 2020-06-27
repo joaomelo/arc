@@ -5,7 +5,9 @@
   "main": "index.html",
   "scripts": {
     "start": "npm run dev:web",
+    "dev": "concurrently -n \"web,test\" -c \"bgYellow.black,bgWhite.black\" \"npm:dev:web\" \"npm:dev:test\"",
     "dev:web": "webpack-dev-server --config client/config/webpack.dev.js",
+    "dev:test": "jest --watch",
     "lint": "eslint --fix --ext .js,.vue client/src/",
     "test": "npm run lint && jest",
     "build": "rimraf client/dist/* && webpack --config client/config/webpack.prod.js",
@@ -41,6 +43,7 @@
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "circular-dependency-plugin": "^5.2.0",
+    "concurrently": "^5.2.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.6.0",
     "deepmerge": "^4.2.2",
