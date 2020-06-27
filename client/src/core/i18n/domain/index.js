@@ -1,5 +1,2 @@
 export { supportedLocales } from './supported-locales';
-
-export const i18n = {
-  fallbackLocale: 'en'
-};
+export { i18n } from './i18n';

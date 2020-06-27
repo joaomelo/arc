@@ -18,4 +18,17 @@ const authMech = new AuthMech({
   }
 });
 
+// global locale update was moved here to avoid
+// circular dependency between i18n and auth
+// but this is probably not a ideal encapsulation
+// yet to be improved
+authMech.subscribe(({ userData }) => {
+  if (!userData || !userData.locale) return;
+
+  const newLocale = userData.locale;
+  if (newLocale !== i18n.locale) {
+    i18n.locale = newLocale;
+  }
+});
+
 export { authMech };

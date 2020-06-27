@@ -10,7 +10,7 @@
       />
     </div>
     <p v-else>
-      No items found
+      {{ $t("items.no-items-found") }}
     </p>
   </div>
 </template>

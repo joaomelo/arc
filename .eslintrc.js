@@ -8,10 +8,10 @@ module.exports = {
   },  
   rules: {
     semi: ['error', 'always'],
-    'no-debugger': 'off',
+    'no-debugger': 'warn',
     'jest/no-test-callback': 'off',
     'jest/prefer-expect-assertions': 'off',
-    'jest/no-hooks': 'off'    
+    'jest/no-hooks': 'off',
   },
   extends: [
     'standard',
