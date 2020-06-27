@@ -3,20 +3,19 @@ const loaderState = {
   runningTasks: new Set()
 };
 
-function promiseLoading (promise, taskId) {
-  const stop = startLoading(taskId);
-  promise.finally(() => stop());
-}
-
 function startLoading (taskId) {
-  loaderState.runningTasks.add(taskId);
+  const id = taskId || Date.now();
+
+  loaderState.runningTasks.add(id);
   updateStatus();
 
-  const stop = () => stopLoading(taskId);
+  const stop = () => stopLoading(id);
   return stop;
 }
 
 function stopLoading (taskId) {
+  if (!taskId) throw new Error('no taskId argument was passed to stopLoading');
+
   loaderState.runningTasks.delete(taskId);
   updateStatus();
 }
@@ -28,4 +27,4 @@ function updateStatus () {
   }
 };
 
-export { loaderState, startLoading, promiseLoading };
+export { loaderState, startLoading };

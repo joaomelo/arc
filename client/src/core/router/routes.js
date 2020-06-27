@@ -1,6 +1,6 @@
 import { LayoutDesktop, LayoutShell } from '__cli/core/layouts';
 import { PageSplash } from '__cli/core/loader';
-import { PageAuth, PageAccount, PageUnverified } from '__cli/core/auth';
+import { PageAuth, PageAccount, PagePreferences, PageUnverified } from '__cli/core/auth';
 import { TeamsPage } from '__cli/modules/teams';
 
 const routes = [
@@ -17,10 +17,11 @@ const routes = [
     path: '/desktop',
     component: LayoutDesktop,
     children: [
-      { path: '/dashboard', name: 'dashboard', redirect: { name: 'teams' } },
-      { path: '/challenges/list', name: 'challenges', redirect: { name: 'teams' } },
+      { path: '/dashboard', name: 'dashboard', component: TeamsPage },
+      // { path: '/challenges/list', name: 'challenges', redirect: { name: 'teams' } },
       { path: '/teams/list', name: 'teams', component: TeamsPage },
-      { path: '/account/edit', name: 'account', component: PageAccount }
+      { path: '/account/edit', name: 'account', component: PageAccount },
+      { path: '/preferences/edit', name: 'preferences', component: PagePreferences }
     ]
   }
 ];

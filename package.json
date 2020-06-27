@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/joaomelo/arc#readme",
   "dependencies": {
-    "@joaomelo/auth-mech": "^0.1.23",
+    "@joaomelo/auth-mech": "^0.2.1",
     "@joaomelo/hot-collection": "^0.9.4",
     "firebase": "^7.15.5",
     "lodash-es": "^4.17.15",

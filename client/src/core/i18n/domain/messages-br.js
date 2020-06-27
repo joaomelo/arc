@@ -30,7 +30,8 @@ export default {
     },
     auth: {
       login: 'Entrar',
-      logout: 'Sair de {user}',
+      logout: 'Sair de {user
+      }',
       loginError: 'Erro ao tentar login'
     },
     profiles: {
@@ -41,7 +42,8 @@ export default {
       owner: 'Proprietário',
       managers: 'Gestores',
       staff: 'equipe',
-      defaultTeam: 'time do {user}'
+      defaultTeam: 'time do {user
+      }'
     }
   }
   // collections: {

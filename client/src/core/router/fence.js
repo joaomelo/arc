@@ -6,7 +6,10 @@ function fenceRoutes (router) {
 };
 
 function activateReactionToAuthState (router) {
-  authMech.subscribe(({ status }) => {
+  authMech.subscribe(({ oldStatus, status }) => {
+    // only user data changed
+    if (oldStatus === status) return;
+
     const routesForStatus = {
       UNSOLVED: 'loading',
       UNVERIFIED: 'unverified',

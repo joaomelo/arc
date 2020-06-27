@@ -104,6 +104,7 @@ export default {
         const stop = startLoading('email update');
         authMech.updateEmail(this.newEmail, this.password)
           .then(() => {
+            authMech.updateProps({ publicEmail: this.newEmail });
             this.emailAlertMessage = 'We sent you a e-mail verification message';
             this.emailAlertType = 'info';
           })

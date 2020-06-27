@@ -1,4 +1,5 @@
 import { AuthMech } from '@joaomelo/auth-mech';
+import { i18n } from '__cli/core/i18n';
 import { fireauth } from '__cli/core/firebase';
 
 const authMech = new AuthMech({
@@ -6,11 +7,12 @@ const authMech = new AuthMech({
   fuse: {
     name: 'profiles',
     onCreate: user => {
-      const email = user.email;
-      const nickname = email.slice(0, email.indexOf('@'));
+      const publicEmail = user.email;
+      const nickname = publicEmail.slice(0, publicEmail.indexOf('@'));
       return {
+        locale: i18n.fallbackLocale,
         nickname,
-        email
+        publicEmail
       };
     }
   }

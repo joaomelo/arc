@@ -64,6 +64,13 @@
             <v-list-item-title>Account</v-list-item-title>
           </v-list-item>
 
+          <v-list-item :to="{ name: 'preferences' }">
+            <v-list-item-icon>
+              <v-icon>mdi-cogs</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Preferences</v-list-item-title>
+          </v-list-item>
+
           <v-list-item @click="signOut">
             <v-list-item-icon>
               <v-icon>mdi-logout</v-icon>

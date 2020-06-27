@@ -1,2 +1,2 @@
 export { OverlayLoading, PageSplash } from './ui';
-export { startLoading, promiseLoading } from './domain';
+export { startLoading } from './domain';

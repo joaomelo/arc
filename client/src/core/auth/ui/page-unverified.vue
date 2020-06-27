@@ -5,7 +5,7 @@
     :message-type="alertType"
   >
     <template>
-      <p>Please confirm your e-mail address by clicking in the message link we sent to you.</p>
+      <p>Please confirm the {{ email }} e-mail address by clicking in the message link we sent to you.</p>
       <p>If you don't the see the email in your inbox, make sure to check the spam folder.</p>
     </template>
     <template v-slot:actions>
@@ -32,7 +32,8 @@ export default {
   data () {
     return {
       alertMessage: '',
-      alertType: ''
+      alertType: '',
+      email: authMech.state.userData.email
     };
   },
   methods: {
