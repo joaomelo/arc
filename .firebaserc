@@ -1,6 +1,6 @@
 {
   "projects": {
     "prod": "arc-prod-41999",
-    "stge": "arc-stge-41999"
+    "dev": "arc-dev-3494d"
   }
 }

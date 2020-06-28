@@ -11,8 +11,7 @@
     "lint": "eslint --fix --ext .js,.vue client/src/",
     "test": "npm run lint && jest",
     "build": "rimraf client/dist/* && webpack --config client/config/webpack.prod.js",
-    "deploy:stge": "npm run build && firebase use stge && firebase deploy",
-    "deploy:prod": "npm run build && firebase use prod && firebase deploy"
+    "deploy": "npm run build && firebase use prod && firebase deploy"
   },
   "repository": {
     "type": "git",
