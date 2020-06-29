@@ -13,6 +13,9 @@ module.exports = {
     'jest/prefer-expect-assertions': 'off',
     'jest/no-hooks': 'off',
   },
+  globals: {
+    firebase: "readonly"
+  },
   extends: [
     'standard',
     'plugin:vue/recommended',

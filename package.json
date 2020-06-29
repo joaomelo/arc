@@ -4,13 +4,14 @@
   "description": "ARC is an experimental web app that aims to help individuals, organizations, communities and families to collaboratively organize their work pipeline using an impact driven mindset.",
   "main": "index.html",
   "scripts": {
-    "start": "npm run dev:build",
-    "dev": "concurrently -n \"web,test\" -c \"bgYellow.black,bgWhite.black\" \"npm:dev:web\" \"npm:dev:test\"",
+    "start": "npm run dev",
+    "dev": "concurrently -n \"build,serve\" -c \"bgYellow.black,bgWhite.black\" \"npm:dev:build\" \"npm:dev:serve\"",
     "dev:build": "webpack --config client/config/webpack.dev.js --watch",
+    "dev:serve": "firebase serve --project=dev",
     "lint": "eslint --fix --ext .js,.vue client/src/",
     "test": "npm run lint",
     "build": "webpack --config client/config/webpack.prod.js",
-    "deploy": "npm run build && firebase use prod && firebase deploy"
+    "deploy": "npm run build && firebase deploy --project=prod"
   },
   "repository": {
     "type": "git",
