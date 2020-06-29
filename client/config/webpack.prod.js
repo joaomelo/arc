@@ -1,6 +1,11 @@
-const merge = require('client/config/webpack-merge');
+const merge = require('webpack-merge');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  mode: 'production'
+  mode: 'production',
+  plugins: [
+    new CleanWebpackPlugin()
+  ]
 });
