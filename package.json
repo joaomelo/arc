@@ -7,7 +7,7 @@
     "start": "npm run dev",
     "dev": "concurrently -n \"build,serve\" -c \"bgYellow.black,bgWhite.black\" \"npm:dev:build\" \"npm:dev:serve\"",
     "dev:build": "webpack --config client/config/webpack.dev.js --watch",
-    "dev:serve": "firebase serve --project=dev",
+    "dev:serve": "firebase emulators:start --project=dev",
     "lint": "eslint --fix --ext .js,.vue client/src/",
     "test": "npm run lint",
     "build": "webpack --config client/config/webpack.prod.js",
