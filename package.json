@@ -11,7 +11,7 @@
     "lint": "eslint --fix --ext .js,.vue client/src/",
     "test": "npm run lint",
     "build": "webpack --config client/config/webpack.prod.js",
-    "deploy": "npm run build && firebase deploy --project=prod"
+    "publish": "npm run build && firebase deploy --project=prod"
   },
   "repository": {
     "type": "git",
