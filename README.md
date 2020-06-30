@@ -1,3 +1,5 @@
+![publish](https://github.com/joaomelo/arc/workflows/publish/badge.svg?branch=master)
+
 THIS APP IS IN IT EARLY DEVELOPMENT AND THE README FILE DECLARES FEATURES YET (OR NEVER) TO BE DEVELOPED. FOR THE TIME BEING, DO NOT CONSIDER IT AS SOURCE OF VALID DOCUMENTATION.
 
 # Arc
