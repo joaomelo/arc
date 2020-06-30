@@ -10,8 +10,7 @@
     "dev:serve": "firebase emulators:start --project=dev",
     "lint": "eslint --fix --ext .js,.vue client/src/",
     "test": "npm run lint",
-    "build": "webpack --config client/config/webpack.prod.js",
-    "publish": "npm run build && firebase deploy --project=prod"
+    "prod:build": "webpack --config client/config/webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -26,9 +25,10 @@
   "dependencies": {
     "@joaomelo/auth-mech": "^0.2.1",
     "@joaomelo/hot-collection": "^0.9.4",
-    "firebase": "^7.15.5",
+    "core-js": "^3.6.5",
     "lodash-es": "^4.17.15",
     "moment": "^2.27.0",
+    "regenerator-runtime": "^0.13.5",
     "vue": "^2.6.11",
     "vue-i18n": "^8.18.2",
     "vue-router": "^3.3.4",
