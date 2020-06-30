@@ -58,7 +58,7 @@ export default {
   },
   data () {
     return {
-      enableSignup: process.env.SIGN_UP === 'ENABLE',
+      enableSignup: true,
       tab: 0,
       email: null,
       password: null,
