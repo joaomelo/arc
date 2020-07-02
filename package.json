@@ -6,11 +6,11 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "concurrently -n \"build,serve\" -c \"bgYellow.black,bgWhite.black\" \"npm:dev:build\" \"npm:dev:serve\"",
-    "dev:build": "webpack --config client/config/webpack.dev.js --watch",
+    "dev:build": "webpack --env dev --config client/webpack.config.js --watch",
     "dev:serve": "firebase emulators:start --project=dev",
     "lint": "eslint --fix --ext .js,.vue client/src/",
     "test": "npm run lint",
-    "prod:build": "webpack --config client/config/webpack.prod.js"
+    "prod:build": "webpack  --env prod --config client/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -71,8 +71,6 @@
     "vue-template-compiler": "^2.6.11",
     "vuetify-loader": "^1.5.0",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-cli": "^3.3.12"
   }
 }
