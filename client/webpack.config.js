@@ -21,8 +21,7 @@ module.exports = function (env, argv) {
     output: {
       publicPath: '/',
       path: clientDist,
-      filename: '[name].bundle.js',
-      chunkFilename: '[name].bundle.js'
+      filename: '[name].[contenthash].bundle.js'
     },
     resolve: {
       alias: {
@@ -81,11 +80,8 @@ module.exports = function (env, argv) {
       ]),
       new HtmlWebpackPlugin({ template: clientSrc + '/index.html' }),
       new FaviconsWebpackPlugin({
-        mode: 'webapp',
-        devMode: 'webapp',
         logo: clientSrc + '/static/logo.png',
         inject: true,
-        outputPath: '/static',
         prefix: 'static/'
       }),
       new VueLoaderPlugin(),
