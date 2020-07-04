@@ -1,38 +1,16 @@
 import HotCollection from '@joaomelo/hot-collection';
+import { firedb } from '__cli/core/firebase';
 
-const teamsCollection = new HotCollection('teams');
+const teamsCollection = new HotCollection('teams', {
+  adapter: { firestore: firedb }
+});
 
-// just mocking
-teamsCollection.connect({ adapter: 'in-memory' });
-
-// setTimeout(() => {
-//   teamsCollection.add({
-//     name: 'familia',
-//     creator: 'jm',
-//     admins: ['jm'],
-//     editors: ['graci'],
-//     participants: ['sofia', 'pedro']
-//   });
-// }, 1000);
-
-// setTimeout(() => {
-//   teamsCollection.add({
-//     name: 'outro',
-//     creator: 'jm',
-//     admins: ['jm'],
-//     editors: ['batman', 'superman'],
-//     participants: ['lanterna', 'marciano']
-//   });
-// }, 2000);
-
-// setTimeout(() => {
-//   teamsCollection.add({
-//     name: 'mais um',
-//     creator: 'jm',
-//     admins: ['jm'],
-//     editors: ['batman', 'superman'],
-//     participants: ['lanterna', 'marciano']
-//   });
-// }, 3000);
+teamsCollection.add({
+  name: 'familia',
+  creator: 'jm',
+  admins: ['jm'],
+  editors: ['graci'],
+  participants: ['sofia', 'pedro']
+});
 
 export { teamsCollection };
