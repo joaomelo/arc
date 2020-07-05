@@ -2,6 +2,7 @@
   <div>
     <v-text-field
       v-model="primaryPassword"
+      data-test="auth-primary-password"
       :label="label"
       prepend-icon="mdi-lock"
       :append-icon="showPassword ? 'mdi-eye': 'mdi-eye-off'"
@@ -14,6 +15,7 @@
     <v-text-field
       v-if="shouldMatch"
       v-model="shadowPassword"
+      data-test="auth-shadow-password"
       label="Repeat password"
       prepend-icon="mdi-lock"
       :type="showPassword ? 'text': 'password'"

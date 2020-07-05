@@ -9,6 +9,7 @@ firebase-debug.log*
 # Enviroment files
 env/
 *.env
+*.env.json
 
 # Dist folder
 dist/

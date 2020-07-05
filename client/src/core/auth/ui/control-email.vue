@@ -1,5 +1,6 @@
 <template>
   <v-text-field
+    data-test="auth-email"
     prepend-icon="mdi-account-circle"
     :label="label"
     :rules="emailRules"

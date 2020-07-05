@@ -3,23 +3,16 @@ module.exports = {
     parser: 'babel-eslint'
   },
   ignorePatterns: ['*/dist/*'],
-  env: {
-    'jest/globals': true
-  },  
   rules: {
     semi: ['error', 'always'],
     'no-debugger': 'warn',
-    'jest/no-test-callback': 'off',
-    'jest/prefer-expect-assertions': 'off',
-    'jest/no-hooks': 'off',
   },
   globals: {
-    firebase: "readonly"
+    firebase: 'readonly'
   },
   extends: [
     'standard',
     'plugin:vue/recommended',
-    'plugin:jest/all'
   ],
-  plugins: ['vue', 'jest']
+  plugins: ['vue']
 };

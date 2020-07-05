@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
-      - run: npm test
+      - run: npm run prod:test
 
   publish:
     needs: [bump, test]

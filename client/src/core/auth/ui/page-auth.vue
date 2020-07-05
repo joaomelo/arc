@@ -12,7 +12,10 @@
           <v-tab>Login</v-tab>
           <v-tab>Sign Up</v-tab>
         </v-tabs>
-        <v-form ref="form">
+        <v-form
+          ref="form"
+          data-test="auth-form"
+        >
           <ControlEmail
             v-model="email"
           />
@@ -24,6 +27,7 @@
       </template>
       <template v-slot:actions>
         <v-btn
+          data-test="auth-btn"
           color="success"
           @click="runAuthAction"
         >
