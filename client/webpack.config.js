@@ -23,6 +23,19 @@ module.exports = function (env, argv) {
       path: clientDist,
       filename: '[name].[contenthash].bundle.js'
     },
+    optimization: {
+      moduleIds: 'hashed',
+      runtimeChunk: 'single',
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },      
+    },    
     resolve: {
       alias: {
         __cli: clientSrc
@@ -70,7 +83,7 @@ module.exports = function (env, argv) {
         allowAsyncCycles: false,
         cwd: process.cwd()
       }),
-      new CleanWebpackPlugin({ cleanStaleWebpackAssets: isProd }),
+      new CleanWebpackPlugin(),
       new CopyWebpackPlugin([
         {
           from: clientSrc + '/static',
