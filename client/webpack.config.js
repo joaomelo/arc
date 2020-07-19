@@ -58,7 +58,15 @@ module.exports = function (env, argv) {
           use: 'babel-loader'
         },
         {
-          test: [/\.css$/, /\.s(c|a)ss$/],
+          test: [/\.css$/],
+          use: [
+            'vue-style-loader',
+            'style-loader',
+            'css-loader'
+          ]
+        },
+        {
+          test: [/\.s(c|a)ss$/],
           use: [
             'vue-style-loader',
             'style-loader',

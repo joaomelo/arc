@@ -1,6 +1,6 @@
 <template>
   <BaseDialog
-    title="email confirmation"
+    title="Email Confirmation"
     :message="alertMessage"
     :message-type="alertType"
   >
@@ -23,6 +23,7 @@
 <script>
 import { startLoading } from '__cli/core/loader';
 import { BaseDialog } from '__cli/core/components';
+import { showMessage } from '__cli/core/messages';
 import { authState, sendEmailVerification } from '../domain';
 import ButtonLogout from './button-logout';
 
@@ -40,15 +41,8 @@ export default {
     sendEmailVerificationToUser () {
       const stop = startLoading('sending email verification');
       sendEmailVerification()
-        .then(() => {
-          this.alertType = 'info';
-          this.alertMessage = 'email successfully sent';
-        })
-        .catch(error => {
-          this.alertType = 'error';
-          this.alertMessage = error.message;
-          console.error(error);
-        })
+        .then(() => showMessage({ text: 'email successfully sent', type: 'success' }))
+        .catch(error => showMessage({ text: error.message, type: 'error' }))
         .finally(() => stop());
     }
   }
