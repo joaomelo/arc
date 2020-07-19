@@ -31,11 +31,11 @@ module.exports = function (env, argv) {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
-            chunks: 'all',
-          },
-        },
-      },      
-    },    
+            chunks: 'all'
+          }
+        }
+      }
+    },
     resolve: {
       alias: {
         __cli: clientSrc

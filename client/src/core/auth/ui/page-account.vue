@@ -1,5 +1,13 @@
 <template>
   <div>
+    <v-alert
+      type="info"
+      text
+      class="mt-2 text-center"
+    >
+      Your current email is {{ authState.userData && authState.userData.email }}.<br>
+      Below you can update both email and password.
+    </v-alert>
     <BaseDialog
       :message="emailAlertMessage"
       :message-type="emailAlertType"
@@ -10,7 +18,7 @@
           <ControlEmail
             v-model="newEmail"
             class="mt-3"
-            label="Email"
+            label="Type the New Email"
           />
           <ControlPassword
             v-model="password"
@@ -30,7 +38,7 @@
           color="success"
           icon="mdi-content-save"
           text="Update Email"
-          @click="updateEmail"
+          @click="updateEmailAccount"
         />
       </template>
     </BaseDialog>
@@ -66,7 +74,7 @@
           color="success"
           icon="mdi-content-save"
           text="Update Password"
-          @click="updatePassword"
+          @click="updatePasswordAccount"
         />
       </template>
     </BaseDialog>
@@ -75,7 +83,7 @@
 <script>
 import { startLoading } from '__cli/core/loader';
 import { BaseDialog, BaseButton } from '__cli/core/components';
-import { authMech } from '../domain';
+import { authState, updateEmail, updatePassword } from '../domain';
 import ControlEmail from './control-email';
 import ControlPassword from './control-password';
 
@@ -89,7 +97,8 @@ export default {
   },
   data () {
     return {
-      newEmail: authMech.state.userData.email,
+      authState,
+      newEmail: null,
       newPassword: null,
       password: null,
       emailAlertMessage: '',
@@ -99,14 +108,14 @@ export default {
     };
   },
   methods: {
-    updateEmail () {
+    updateEmailAccount () {
       if (this.$refs.emailForm.validate()) {
         const stop = startLoading('email update');
-        authMech.updateEmail(this.newEmail, this.password)
+        updateEmail(this.newEmail, this.password)
           .then(() => {
-            authMech.updateProps({ publicEmail: this.newEmail });
             this.emailAlertMessage = 'We sent you a e-mail verification message';
             this.emailAlertType = 'info';
+            this.$router.go(-1);
           })
           .catch(error => {
             this.emailAlertMessage = error.message;
@@ -115,13 +124,14 @@ export default {
           .finally(() => stop());
       }
     },
-    updatePassword () {
+    updatePasswordAccount () {
       if (this.$refs.passwordForm.validate()) {
         const stop = startLoading('password update');
-        authMech.updatePassword(this.newPassword, this.password)
+        updatePassword(this.newPassword, this.password)
           .then(() => {
             this.passwordAlertMessage = 'Password updated';
             this.passwordAlertType = 'info';
+            this.$router.go(-1);
           })
           .catch(error => {
             this.emailAlertMessage = error.message;

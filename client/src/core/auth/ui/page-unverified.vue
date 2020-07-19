@@ -5,14 +5,14 @@
     :message-type="alertType"
   >
     <template>
-      <p>Please confirm the {{ email }} e-mail address by clicking in the message link we sent to you.</p>
+      <p>Please confirm the <b>{{ authState.userData && authState.userData.email }}</b> e-mail address by clicking in the message link we sent to you.</p>
       <p>If you don't the see the email in your inbox, make sure to check the spam folder.</p>
     </template>
     <template v-slot:actions>
       <ButtonLogout />
       <v-btn
         color="info"
-        @click="sendEmailVerification"
+        @click="sendEmailVerificationToUser"
       >
         Resend e-mail
       </v-btn>
@@ -23,7 +23,7 @@
 <script>
 import { startLoading } from '__cli/core/loader';
 import { BaseDialog } from '__cli/core/components';
-import { authMech } from '../domain';
+import { authState, sendEmailVerification } from '../domain';
 import ButtonLogout from './button-logout';
 
 export default {
@@ -33,13 +33,13 @@ export default {
     return {
       alertMessage: '',
       alertType: '',
-      email: authMech.state.userData.email
+      authState
     };
   },
   methods: {
-    sendEmailVerification () {
+    sendEmailVerificationToUser () {
       const stop = startLoading('sending email verification');
-      authMech.sendEmailVerification()
+      sendEmailVerification()
         .then(() => {
           this.alertType = 'info';
           this.alertMessage = 'email successfully sent';

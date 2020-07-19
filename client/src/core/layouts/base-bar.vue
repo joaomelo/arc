@@ -64,7 +64,7 @@
             <v-list-item-title>Account</v-list-item-title>
           </v-list-item>
 
-          <v-list-item :to="{ name: 'preferences' }">
+          <v-list-item :to="{ name: 'account' }">
             <v-list-item-icon>
               <v-icon>mdi-cogs</v-icon>
             </v-list-item-icon>
@@ -85,7 +85,7 @@
 
 <script>
 import { appTitle } from '__cli/core/meta';
-import { authMech } from '__cli/core/auth';
+import { signOut } from '__cli/core/auth';
 
 export default {
   name: 'BaseBar',
@@ -107,9 +107,7 @@ export default {
     };
   },
   methods: {
-    signOut () {
-      authMech.signOut();
-    }
+    signOut
   }
 };
 </script>

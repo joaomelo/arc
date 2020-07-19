@@ -49,7 +49,7 @@
 import { appDescription } from '__cli/core/meta';
 import { startLoading } from '__cli/core/loader';
 import { BaseDialog } from '__cli/core/components';
-import { authMech } from '../domain';
+import { signUp, signIn } from '../domain';
 import ControlEmail from './control-email';
 import ControlPassword from './control-password';
 
@@ -70,7 +70,7 @@ export default {
       disclaimer: `
         ${appDescription()}
 
-        This is personal instance and you are welcome to freely sign up for an 
+        This is a personal instance and you are welcome to freely sign up for an 
         account. But since this is a hobby project, i can't guarantee any service 
         level. 
 
@@ -84,13 +84,13 @@ export default {
         0: {
           mode: 'LOGIN',
           button: 'Log In',
-          action: 'signIn',
+          action: signIn,
           shouldMatch: false
         },
         1: {
           mode: 'SIGNUP',
           button: 'Create user',
-          action: 'signUp',
+          action: signUp,
           shouldMatch: true
         }
       };
@@ -102,12 +102,9 @@ export default {
     runAuthAction () {
       if (this.$refs.form.validate()) {
         const stop = startLoading('authenticate');
-        const method = this.outfit.action;
-        authMech[method](this.email, this.password)
-          .catch(e => {
-            console.error(e);
-            this.alertMessage = e.message;
-          })
+        const action = this.outfit.action;
+        action({ email: this.email, password: this.password })
+          .catch(e => { this.alertMessage = e.message; })
           .finally(() => stop());
       }
     }

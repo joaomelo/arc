@@ -1,4 +1,4 @@
-import { authMech } from '__cli/core/auth';
+import { AUTH_STATUSES, authState, subscribeToAuthStateChanged } from '__cli/core/auth';
 
 function fenceRoutes (router) {
   activateReactionToAuthState(router);
@@ -6,15 +6,15 @@ function fenceRoutes (router) {
 };
 
 function activateReactionToAuthState (router) {
-  authMech.subscribe(({ oldStatus, status }) => {
+  subscribeToAuthStateChanged(({ oldStatus, status }) => {
     // only user data changed
     if (oldStatus === status) return;
 
     const routesForStatus = {
-      UNSOLVED: 'loading',
-      UNVERIFIED: 'unverified',
-      SIGNEDOUT: 'auth',
-      SIGNEDIN: 'dashboard'
+      [AUTH_STATUSES.UNSOLVED]: 'loading',
+      [AUTH_STATUSES.SIGNEDOUT]: 'auth',
+      [AUTH_STATUSES.PENDING]: 'unverified',
+      [AUTH_STATUSES.SIGNEDIN]: 'dashboard'
     };
 
     const currentName = router.currentRoute.name;
@@ -30,7 +30,7 @@ function activateBeforeEachRouteCheck (router) {
   router.beforeEach((to, from, next) => {
     const openRouteNames = ['loading', 'auth', 'unverified'];
     const isGoingToOpenRoute = openRouteNames.includes(to.name);
-    const isSignedIn = authMech.state.status === 'SIGNEDIN';
+    const isSignedIn = authState.status === AUTH_STATUSES.SIGNEDIN;
     const isFreeToGo = isGoingToOpenRoute || isSignedIn;
 
     if (isFreeToGo) {
