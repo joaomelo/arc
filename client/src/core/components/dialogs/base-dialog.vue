@@ -16,14 +16,6 @@
         <slot name="actions" />
       </v-card-actions>
     </v-card>
-    <v-alert
-      v-if="message"
-      :type="messageType"
-      text
-      class="mt-2 text-center"
-    >
-      {{ message }}
-    </v-alert>
   </div>
 </template>
 
@@ -34,14 +26,6 @@ export default {
     title: {
       type: String,
       default: ''
-    },
-    message: {
-      type: String,
-      default: ''
-    },
-    messageType: {
-      type: String,
-      default: 'error'
     }
   }
 };

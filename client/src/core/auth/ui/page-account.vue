@@ -9,12 +9,10 @@
       Below you can update both email and password.
     </v-alert>
     <BaseDialog
-      :message="emailAlertMessage"
-      :message-type="emailAlertType"
+      title="Update Email"
     >
       <template>
         <v-form ref="emailForm">
-          <h2>Update Email</h2>
           <ControlEmail
             v-model="newEmail"
             class="mt-3"
@@ -43,12 +41,10 @@
       </template>
     </BaseDialog>
     <BaseDialog
-      :message="passwordAlertMessage"
-      :message-type="passwordAlertType"
+      title="Update Password"
       class="mt-8"
     >
       <template>
-        <h2>Update Password</h2>
         <v-form ref="passwordForm">
           <ControlPassword
             v-model="newPassword"
@@ -82,6 +78,7 @@
 </template>
 <script>
 import { startLoading } from '__cli/core/loader';
+import { showMessage } from '__cli/core/messages';
 import { BaseDialog, BaseButton } from '__cli/core/components';
 import { authState, updateEmail, updatePassword } from '../domain';
 import ControlEmail from './control-email';
@@ -100,11 +97,7 @@ export default {
       authState,
       newEmail: null,
       newPassword: null,
-      password: null,
-      emailAlertMessage: '',
-      emailAlertType: 'error',
-      passwordAlertMessage: '',
-      passwordAlertType: 'error'
+      password: null
     };
   },
   methods: {
@@ -113,13 +106,17 @@ export default {
         const stop = startLoading('email update');
         updateEmail(this.newEmail, this.password)
           .then(() => {
-            this.emailAlertMessage = 'We sent you a e-mail verification message';
-            this.emailAlertType = 'info';
+            showMessage({
+              text: 'A e-mail verification message was sent',
+              type: 'success'
+            });
             this.$router.go(-1);
           })
           .catch(error => {
-            this.emailAlertMessage = error.message;
-            this.emailAlertType = 'error';
+            showMessage({
+              text: error.message,
+              type: 'error'
+            });
           })
           .finally(() => stop());
       }
@@ -129,13 +126,17 @@ export default {
         const stop = startLoading('password update');
         updatePassword(this.newPassword, this.password)
           .then(() => {
-            this.passwordAlertMessage = 'Password updated';
-            this.passwordAlertType = 'info';
+            showMessage({
+              text: 'Password updated',
+              type: 'success'
+            });
             this.$router.go(-1);
           })
           .catch(error => {
-            this.emailAlertMessage = error.message;
-            this.emailAlertType = 'error';
+            showMessage({
+              text: error.message,
+              type: 'error'
+            });
           })
           .finally(() => stop());
       }

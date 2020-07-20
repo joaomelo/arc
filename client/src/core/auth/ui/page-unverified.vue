@@ -1,8 +1,6 @@
 <template>
   <BaseDialog
     title="Email Confirmation"
-    :message="alertMessage"
-    :message-type="alertType"
   >
     <template>
       <p>Please confirm the <b>{{ authState.userData && authState.userData.email }}</b> e-mail address by clicking in the message link we sent to you.</p>
@@ -32,8 +30,6 @@ export default {
   components: { BaseDialog, ButtonLogout },
   data () {
     return {
-      alertMessage: '',
-      alertType: '',
       authState
     };
   },

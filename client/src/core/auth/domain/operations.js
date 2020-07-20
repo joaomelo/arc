@@ -29,8 +29,6 @@ function sendEmailVerification () {
 function updateEmail (newEmail, password) {
   const currentEmail = authState.userData.email;
 
-  console.log(authState, newEmail);
-
   if (newEmail === currentEmail) return Promise.reject(new Error('New email must differ from current'));
   if (!password) return Promise.reject(new Error('Must provide current password to confirm'));
 

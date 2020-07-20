@@ -1,15 +1,12 @@
 <template>
   <div>
-    <BaseDialog
-      :message="alertMessage"
-    >
+    <BaseDialog>
       <template>
         <v-tabs
-          v-if="enableSignup"
           v-model="tab"
           grow
         >
-          <v-tab>Login</v-tab>
+          <v-tab>Sign In</v-tab>
           <v-tab>Sign Up</v-tab>
         </v-tabs>
         <v-form
@@ -48,6 +45,7 @@
 <script>
 import { appDescription } from '__cli/core/meta';
 import { startLoading } from '__cli/core/loader';
+import { showMessage } from '__cli/core/messages';
 import { BaseDialog } from '__cli/core/components';
 import { signUp, signIn } from '../domain';
 import ControlEmail from './control-email';
@@ -62,11 +60,9 @@ export default {
   },
   data () {
     return {
-      enableSignup: true,
       tab: 0,
       email: null,
       password: null,
-      alertMessage: '',
       disclaimer: `
         ${appDescription()}
 
@@ -104,7 +100,12 @@ export default {
         const stop = startLoading('authenticate');
         const action = this.outfit.action;
         action({ email: this.email, password: this.password })
-          .catch(e => { this.alertMessage = e.message; })
+          .catch(error => {
+            showMessage({
+              text: error.message,
+              type: 'error'
+            });
+          })
           .finally(() => stop());
       }
     }
