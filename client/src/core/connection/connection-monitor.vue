@@ -1,22 +1,22 @@
 <template>
-  <v-footer
-    v-if="!isConnected"
-    app
-    padless
-    color="info"
-    class="justify-center white--text font-weight-bold"
-  >
-    Not Connect to The Internet
-  </v-footer>
+  <span />
 </template>
 
 <script>
+import { showMessage } from '__cli/core/messages';
+
 export default {
-  name: 'FooterConnection',
+  name: 'ConnectionMonitor',
   data () {
     return {
       isConnected: true
     };
+  },
+  watch: {
+    isConnected (value) {
+      const status = value ? 'Connected to' : 'Disconnect from';
+      showMessage(`${status} the internet`);
+    }
   },
   mounted () {
     window.addEventListener('offline', () => {

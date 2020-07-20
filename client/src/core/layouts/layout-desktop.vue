@@ -15,6 +15,5 @@ import BaseContent from './base-content';
 export default {
   name: 'LayoutDesktop',
   components: { BaseBar, BaseContent }
-
 };
 </script>

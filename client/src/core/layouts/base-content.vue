@@ -12,15 +12,12 @@
         </v-row>
       </v-container>
     </v-main>
-    <FooterConnection />
   </div>
 </template>
 
 <script>
-import FooterConnection from './footer-connection';
 
 export default {
-  name: 'BaseContent',
-  components: { FooterConnection }
+  name: 'BaseContent'
 };
 </script>
