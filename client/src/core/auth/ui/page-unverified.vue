@@ -1,33 +1,33 @@
 <template>
   <BaseDialog
-    title="Email Confirmation"
+    :title="$t('auth.email-confirmation')"
   >
     <template>
-      <p>Please confirm the <b>{{ authState.userData && authState.userData.email }}</b> e-mail address by clicking in the message link we sent to you.</p>
-      <p>If you don't the see the email in your inbox, make sure to check the spam folder.</p>
+      <p>{{ $t('auth.email-confirmation-pledge', { email: authState.userData && authState.userData.email }) }}</p>
+      <p>{{ $t('auth.email-check-spam') }}</p>
     </template>
     <template v-slot:actions>
       <ButtonLogout />
-      <v-btn
+      <BaseButton
         color="info"
+        icon="mdi-email"
+        :text="$t('auth.email-resend')"
         @click="sendEmailVerificationToUser"
-      >
-        Resend e-mail
-      </v-btn>
+      />
     </template>
   </BaseDialog>
 </template>
 
 <script>
 import { startLoading } from '__cli/core/loader';
-import { BaseDialog } from '__cli/core/components';
+import { BaseButton, BaseDialog } from '__cli/core/components';
 import { showMessage } from '__cli/core/messages';
 import { authState, sendEmailVerification } from '../domain';
 import ButtonLogout from './button-logout';
 
 export default {
   name: 'PageUnverified',
-  components: { BaseDialog, ButtonLogout },
+  components: { BaseButton, BaseDialog, ButtonLogout },
   data () {
     return {
       authState
@@ -37,7 +37,7 @@ export default {
     sendEmailVerificationToUser () {
       const stop = startLoading('sending email verification');
       sendEmailVerification()
-        .then(() => showMessage({ text: 'email successfully sent', type: 'success' }))
+        .then(() => showMessage({ text: this.$t('auth.email-sent'), type: 'success' }))
         .catch(error => showMessage({ text: error.message, type: 'error' }))
         .finally(() => stop());
     }

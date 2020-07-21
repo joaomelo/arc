@@ -1,0 +1,32 @@
+{
+  "actions": {
+    "back": "voltar"
+  },
+  "items": {
+    "no-items-found": "Nenhum item encontrado"
+  },
+  "auth": {
+    "account-update-below": "Abaixo você pode atualiza seu e-mail and senha",
+    "email": "E-mail",
+    "email-check-spam": "Se você não encontrar o e-mail na sua caixa de entrada, confirme na pasta de spam",
+    "email-confirmation": "Confirmação de e-mail",
+    "email-confirmation-pledge": "Por favor, confirme o endereço de e-mail {email} clicando no link da mensagem enviada",
+    "email-current": "Seu e-mail atual é {email}",
+    "email-new": "Digite o novo e-mail",
+    "email-required": "E-mail é obrigatório",
+    "email-resend": "Enviar mensagem de verificação",
+    "email-sent": "Uma mensagem de confirmação de e-mail foi enviada",
+    "email-update": "Atualização de e-mail",
+    "email-valid": "E-mail tem de ser válido",
+    "password": "Senha",
+    "password-confirm": "Confirme com a senha atual",
+    "password-match": "As senhas devem ser iguais",
+    "password-required": "Senha obrigatória",
+    "password-repeat": "Confirmar senha",
+    "password-update": "Atualização de senha",
+    "password-updated": "Senha atualizada",
+    "sign-in": "Entrar",
+    "sign-out": "Sair",
+    "sign-up": "Criar"
+  }
+}

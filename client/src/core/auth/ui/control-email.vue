@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { i18n } from '__cli/core/i18n';
+
 export default {
   name: 'ControlEmail',
   props: {
@@ -20,14 +22,14 @@ export default {
     },
     label: {
       type: String,
-      default: 'Email'
+      default: i18n.t('auth.email')
     }
   },
   data () {
     return {
       emailRules: [
-        v => !!v || 'Email is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid'
+        v => !!v || this.$t('auth.email-required'),
+        v => /.+@.+\..+/.test(v) || this.$t('auth.email-valid')
       ]
     };
   },

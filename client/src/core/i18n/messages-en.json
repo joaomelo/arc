@@ -1,0 +1,32 @@
+{
+  "actions": {
+    "back": "back"
+  },
+  "items": {
+    "no-items-found": "No items found"
+  },
+  "auth": {
+    "account-update-below": "Below you can update both e-mail and password",
+    "email": "E-mail",
+    "email-check-spam": "If you don't the see the email in your inbox, make sure to check the spam folder",
+    "email-confirmation": "E-mail confirmation",
+    "email-confirmation-pledge": "Please confirm the {email} e-mail address by clicking in the message link we sent to you",
+    "email-current": "Your current e-mail is {email}",
+    "email-new": "Type the new e-mail",
+    "email-required": "E-mail is required",
+    "email-resend": "Send e-mail verification",
+    "email-sent": "A e-mail verification message was sent",
+    "email-update": "Update e-mail",
+    "email-valid": "E-mail must be valid",
+    "password": "Password",
+    "password-confirm": "Confirm with current password",
+    "password-match": "Passwords must match",
+    "password-required": "Password is required",
+    "password-repeat": "Repeat password",
+    "password-update": "Update password",
+    "password-updated": "Password updated",
+    "sign-in": "Sign In",
+    "sign-out": "Sign Out",
+    "sign-up": "Sign Up"
+  }
+}

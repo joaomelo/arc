@@ -6,7 +6,7 @@
     <v-icon left>
       mdi-logout
     </v-icon>
-    Sign Out
+    {{ $t("auth.sign-out") }}
   </v-btn>
 </template>
 

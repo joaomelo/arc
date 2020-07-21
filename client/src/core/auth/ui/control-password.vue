@@ -16,7 +16,7 @@
       v-if="shouldMatch"
       v-model="shadowPassword"
       data-test="auth-shadow-password"
-      label="Repeat password"
+      :label="$t('auth.password-repeat')"
       prepend-icon="mdi-lock"
       :type="showPassword ? 'text': 'password'"
       required
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { i18n } from '__cli/core/i18n';
+
 export default {
   name: 'ControlPassword',
   props: {
@@ -39,12 +41,12 @@ export default {
     },
     label: {
       type: String,
-      default: 'Password'
+      default: i18n.t('auth.password')
     }
   },
   data () {
-    const requireRule = v => !!v || 'Password is required';
-    const matchRule = v => this.primaryPassword === this.shadowPassword || 'Passwords must match';
+    const requireRule = v => !!v || this.$t('auth.password-required');
+    const matchRule = v => this.primaryPassword === this.shadowPassword || this.$t('auth.password-match');
 
     return {
       showPassword: false,

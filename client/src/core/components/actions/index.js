@@ -1,4 +1,5 @@
-import BaseButton from './base-button.vue';
-import SaveCancel from './save-cancel.vue';
+import BaseButton from './base-button';
+import BackButton from './back-button';
+import SaveCancel from './save-cancel';
 
-export { BaseButton, SaveCancel };
+export { BaseButton, BackButton, SaveCancel };

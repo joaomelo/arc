@@ -6,8 +6,8 @@
           v-model="tab"
           grow
         >
-          <v-tab>Sign In</v-tab>
-          <v-tab>Sign Up</v-tab>
+          <v-tab>{{ $t('auth.sign-in') }}</v-tab>
+          <v-tab>{{ $t('auth.sign-up') }}</v-tab>
         </v-tabs>
         <v-form
           ref="form"
@@ -23,13 +23,11 @@
         </v-form>
       </template>
       <template v-slot:actions>
-        <v-btn
-          data-test="auth-btn"
+        <BaseButton
           color="success"
+          :text="outfit.button"
           @click="runAuthAction"
-        >
-          {{ outfit.button }}
-        </v-btn>
+        />
       </template>
     </BaseDialog>
     <v-alert
@@ -46,7 +44,7 @@
 import { appDescription } from '__cli/core/meta';
 import { startLoading } from '__cli/core/loader';
 import { showMessage } from '__cli/core/messages';
-import { BaseDialog } from '__cli/core/components';
+import { BaseDialog, BaseButton } from '__cli/core/components';
 import { signUp, signIn } from '../domain';
 import ControlEmail from './control-email';
 import ControlPassword from './control-password';
@@ -54,6 +52,7 @@ import ControlPassword from './control-password';
 export default {
   name: 'PageAuth',
   components: {
+    BaseButton,
     BaseDialog,
     ControlEmail,
     ControlPassword
@@ -79,13 +78,13 @@ export default {
       const options = {
         0: {
           mode: 'LOGIN',
-          button: 'Log In',
+          button: this.$t('auth.sign-in'),
           action: signIn,
           shouldMatch: false
         },
         1: {
           mode: 'SIGNUP',
-          button: 'Create user',
+          button: this.$t('auth.sign-up'),
           action: signUp,
           shouldMatch: true
         }

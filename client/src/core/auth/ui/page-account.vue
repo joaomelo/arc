@@ -5,43 +5,38 @@
       text
       class="mt-2 text-center"
     >
-      Your current email is {{ authState.userData && authState.userData.email }}.<br>
-      Below you can update both email and password.
+      {{ $t('auth.email-current', { email: authState.userData && authState.userData.email }) }}<br>
+      {{ $t('auth.account-update-below') }}
     </v-alert>
     <BaseDialog
-      title="Update Email"
+      :title="$t('auth.email-update')"
     >
       <template>
         <v-form ref="emailForm">
           <ControlEmail
             v-model="newEmail"
             class="mt-3"
-            label="Type the New Email"
+            :label="$t('auth.email-new')"
           />
           <ControlPassword
             v-model="password"
             class="mt-3"
-            label="Confirm with Current Password"
+            :label="$t('auth.password-confirm')"
           />
         </v-form>
       </template>
       <template v-slot:actions>
-        <BaseButton
-          color="secondary"
-          icon="mdi-backspace"
-          text="Back"
-          @click="cancel"
-        />
+        <BackButton @back="cancel" />
         <BaseButton
           color="success"
           icon="mdi-content-save"
-          text="Update Email"
+          :text="$t('auth.email-update')"
           @click="updateEmailAccount"
         />
       </template>
     </BaseDialog>
     <BaseDialog
-      title="Update Password"
+      :title="$t('auth.password-update')"
       class="mt-8"
     >
       <template>
@@ -55,21 +50,16 @@
           <ControlPassword
             v-model="password"
             class="mt-3"
-            label="Confirm with Current Password"
+            :label="$t('auth.password-confirm')"
           />
         </v-form>
       </template>
       <template v-slot:actions>
-        <BaseButton
-          color="secondary"
-          icon="mdi-backspace"
-          text="Back"
-          @click="cancel"
-        />
+        <BackButton @back="cancel" />
         <BaseButton
           color="success"
           icon="mdi-content-save"
-          text="Update Password"
+          :text="$t('auth.password-update')"
           @click="updatePasswordAccount"
         />
       </template>
@@ -79,7 +69,7 @@
 <script>
 import { startLoading } from '__cli/core/loader';
 import { showMessage } from '__cli/core/messages';
-import { BaseDialog, BaseButton } from '__cli/core/components';
+import { BaseDialog, BaseButton, BackButton } from '__cli/core/components';
 import { authState, updateEmail, updatePassword } from '../domain';
 import ControlEmail from './control-email';
 import ControlPassword from './control-password';
@@ -90,7 +80,8 @@ export default {
     BaseDialog,
     ControlEmail,
     ControlPassword,
-    BaseButton
+    BaseButton,
+    BackButton
   },
   data () {
     return {
@@ -107,7 +98,7 @@ export default {
         updateEmail(this.newEmail, this.password)
           .then(() => {
             showMessage({
-              text: 'A e-mail verification message was sent',
+              text: this.$t('auth.email-sent'),
               type: 'success'
             });
             this.$router.go(-1);
@@ -127,7 +118,7 @@ export default {
         updatePassword(this.newPassword, this.password)
           .then(() => {
             showMessage({
-              text: 'Password updated',
+              text: this.$t('auth.password-updated'),
               type: 'success'
             });
             this.$router.go(-1);
