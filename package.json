@@ -24,11 +24,11 @@
   "homepage": "https://github.com/joaomelo/arc#readme",
   "dependencies": {
     "@joaomelo/bus": "^1.1.5",
-    "@joaomelo/hot-collection": "^0.9.4",
     "core-js": "^3.6.5",
     "lodash-es": "^4.17.15",
     "moment": "^2.27.0",
     "regenerator-runtime": "^0.13.5",
+    "rxjs": "^6.6.0",
     "vue": "^2.6.11",
     "vue-i18n": "^8.18.2",
     "vue-router": "^3.3.4",
