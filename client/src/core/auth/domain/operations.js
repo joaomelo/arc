@@ -1,17 +1,11 @@
-import { subscribe, publish } from '@joaomelo/bus';
 import { AUTH_EVENTS } from './types';
-import { authState } from './state';
-import { authService, createCredential, extractUserData } from './service';
+import { authState, triggerAuthStateChanged } from './state';
+import { authService, createCredential } from './service';
 
 function signUp ({ email, password }) {
   return authService
     .createUserWithEmailAndPassword(email, password)
-    .then(({ user }) => {
-      const userData = extractUserData(user);
-      publish(AUTH_EVENTS.USER_CREATED, userData);
-
-      return user.sendEmailVerification();
-    });
+    .then(({ user }) => user.sendEmailVerification());
 }
 
 function signIn ({ email, password }) {
@@ -35,9 +29,8 @@ function updateEmail (newEmail, password) {
   return reauthenticate({ email: currentEmail, password })
     .then(({ user }) => user.updateEmail(newEmail))
     .then(() => {
-      sendEmailVerification();
-      authState.userData.email = newEmail;
-      publish(AUTH_EVENTS.USER_UPDATED, { ...authState.userData });
+      triggerAuthStateChanged(AUTH_EVENTS.USER_EMAIL_UPDATED, newEmail);
+      return sendEmailVerification();
     });
 }
 
@@ -53,17 +46,7 @@ function updatePassword (newPassword, password) {
 
 function reauthenticate ({ email, password }) {
   const credential = createCredential({ email, password });
-  return authService
-    .currentUser
-    .reauthenticateWithCredential(credential);
-}
-
-function subscribeToUserCreated (observer) {
-  return subscribe(AUTH_EVENTS.USER_CREATED, observer);
-}
-
-function subscribeToUserUpdated (observer) {
-  return subscribe(AUTH_EVENTS.USER_UPDATED, observer);
+  return authService.currentUser.reauthenticateWithCredential(credential);
 }
 
 export {
@@ -72,7 +55,5 @@ export {
   signOut,
   sendEmailVerification,
   updateEmail,
-  updatePassword,
-  subscribeToUserCreated,
-  subscribeToUserUpdated
+  updatePassword
 };

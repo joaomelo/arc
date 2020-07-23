@@ -1,10 +1,7 @@
 export {
-  AUTH_STATUSES,
   authState,
-  signOut,
-  subscribeToAuthStateChanged,
-  subscribeToUserCreated,
-  subscribeToUserUpdated
+  authStateChanged,
+  signOut
 } from './domain';
 
 export {
