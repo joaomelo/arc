@@ -1,7 +1,7 @@
 import { subscribe, publish } from '@joaomelo/bus';
 import { AUTH_EVENTS } from './types';
 import { authState } from './state';
-import { authService, authProvider, extractUserData } from './service';
+import { authService, createCredential, extractUserData } from './service';
 
 function signUp ({ email, password }) {
   return authService
@@ -52,7 +52,7 @@ function updatePassword (newPassword, password) {
 }
 
 function reauthenticate ({ email, password }) {
-  const credential = authProvider.credential(email, password);
+  const credential = createCredential({ email, password });
   return authService
     .currentUser
     .reauthenticateWithCredential(credential);

@@ -2,9 +2,13 @@ import { fireapp, fireauth } from '__cli/core/firebase';
 
 const authService = fireauth;
 
-// long reaching for EmailAuthProvider class reference
-// sadly classes are not directly available in auth
-const authProvider = fireapp.firebase_.auth.EmailAuthProvider;
+function createCredential ({ email, password }) {
+  // long reaching for EmailAuthProvider class reference
+  // sadly classes are not directly available in auth
+  const authProvider = fireapp.firebase_.auth.EmailAuthProvider;
+  const credential = authProvider.credential(email, password);
+  return credential;
+}
 
 function extractUserData (serviceUser) {
   const userData = {};
@@ -24,4 +28,4 @@ function extractUserData (serviceUser) {
   return userData;
 }
 
-export { authService, authProvider, extractUserData };
+export { authService, createCredential, extractUserData };
