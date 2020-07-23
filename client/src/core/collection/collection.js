@@ -4,15 +4,15 @@ import { FirestoreAdapter } from './firestore-adapter';
 class Collection {
   constructor (name, options) {
     this.name = name;
-    this.collectionUpdatedSignal = new BehaviorSubject([]);
-    this.collectionUpdatedSignal.subscribe(items => { this.items = items; });
+    this.collectionUpdated = new BehaviorSubject(null);
+    this.collectionUpdated.subscribe(items => { this.items = items; });
 
     if (options) {
       this.connect(options);
     }
   }
 
-  connect (options) {
+  connect (options = {}) {
     validateOptions(this.name, options);
 
     this.disconnect();
@@ -22,11 +22,11 @@ class Collection {
     // subscriptions to the collection even after reconnections
     this.adapterUpdateSignal = new Subject();
     this.adapterUpdateSignalSubscription = this.adapterUpdateSignal.subscribe(items => {
-      this.collectionUpdatedSignal.next(items);
+      this.collectionUpdated.next(items);
     });
     this.adapter = new FirestoreAdapter({
-      options,
       name: this.name,
+      options,
       adapterUpdateSignal: this.adapterUpdateSignal
     });
   }
@@ -39,12 +39,12 @@ class Collection {
     this.adapterUpdateSignal.complete();
     this.adapter = null;
 
-    // clean items and signal empty array state after disconnection
-    this.collectionUpdatedSignal.next([]);
+    // clean items and signal null state after disconnection
+    this.collectionUpdated.next(null);
   }
 
   subscribe (observer) {
-    return this.collectionUpdatedSignal.subscribe(observer);
+    return this.collectionUpdated.subscribe(observer);
   }
 
   getItems () {
