@@ -1,4 +1,5 @@
 export {
+  AUTH_STATUSES,
   authState,
   authStateChanged,
   signOut

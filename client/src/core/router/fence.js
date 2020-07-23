@@ -1,4 +1,4 @@
-import { AUTH_STATUSES, authState, subscribeToAuthStateChanged } from '__cli/core/auth';
+import { AUTH_STATUSES, authState, authStateChanged } from '__cli/core/auth';
 
 function fenceRoutes (router) {
   activateReactionToAuthState(router);
@@ -6,7 +6,7 @@ function fenceRoutes (router) {
 };
 
 function activateReactionToAuthState (router) {
-  subscribeToAuthStateChanged(({ oldStatus, status }) => {
+  authStateChanged.subscribe(({ oldStatus, status }) => {
     // only user data changed
     if (oldStatus === status) return;
 

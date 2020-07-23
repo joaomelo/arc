@@ -50,4 +50,4 @@ function triggerAuthStateChanged (event, payload) {
   authStateChanged.next({ ...authState, oldStatus, oldUserData });
 }
 
-export { authState, authStateChanged };
+export { authState, authStateChanged, triggerAuthStateChanged };
