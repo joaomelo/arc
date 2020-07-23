@@ -7,14 +7,16 @@ const authState = {
   userData: null
 };
 
-const authStateChanged = new BehaviorSubject(authState);
+const authStateChanged = new BehaviorSubject({ ...authState, oldStatus: null, oldUserData: null });
 
-authService.onAuthStateChanged(user => {
-  const AUTH_EVENT = user
-    ? AUTH_EVENTS.USER_SIGNEDIN
-    : AUTH_EVENTS.USER_SIGNEDOUT;
-  triggerAuthStateChanged(AUTH_EVENT, user);
-});
+function startListeningToAuthService () {
+  authService.onAuthStateChanged(user => {
+    const AUTH_EVENT = user
+      ? AUTH_EVENTS.USER_SIGNEDIN
+      : AUTH_EVENTS.USER_SIGNEDOUT;
+    triggerAuthStateChanged(AUTH_EVENT, user);
+  });
+}
 
 function triggerAuthStateChanged (event, payload) {
   const oldStatus = authState.status;
@@ -50,4 +52,4 @@ function triggerAuthStateChanged (event, payload) {
   authStateChanged.next({ ...authState, oldStatus, oldUserData });
 }
 
-export { authState, authStateChanged, triggerAuthStateChanged };
+export { authState, authStateChanged, startListeningToAuthService, triggerAuthStateChanged };

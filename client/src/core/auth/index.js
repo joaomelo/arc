@@ -1,3 +1,8 @@
+import { startListeningToAuthService } from './domain';
+
+// initialization
+startListeningToAuthService();
+
 export {
   AUTH_STATUSES,
   authState,
