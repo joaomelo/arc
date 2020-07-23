@@ -12,9 +12,12 @@ class FirestoreAdapter {
     };
 
     const query = createQuery(reference, options.query || {});
-    query.onSnapshot(snapshot => {
-      const items = this.convertDocsToItems(snapshot.docs);
-      adapterUpdateSignal.next(items);
+    query.onSnapshot({
+      next: snapshot => {
+        const items = this.convertDocsToItems(snapshot.docs);
+        adapterUpdateSignal.next(items);
+      },
+      error: error => console.error(error)
     });
   }
 
