@@ -1,23 +1,11 @@
 import { combineLatest } from 'rxjs';
-import { Collection } from '__cli/core/collection';
+import { i18n } from '__cli/core/i18n';
 import { AUTH_STATUSES, authStateChanged } from '__cli/core/auth';
+import { profilesCollection } from './collection';
 
-const profilesCollection = new Collection('profiles');
-
-function activateProfileSync () {
-  authStateChanged.subscribe(syncConnection);
-
+function plugProfileAuthSync () {
   const combinedAuthAndProfiles = combineLatest(profilesCollection.collectionUpdated, authStateChanged);
   combinedAuthAndProfiles.subscribe(checkAndSyncProfile);
-}
-
-function syncConnection ({ status, oldStatus }) {
-  if (status === oldStatus) return;
-  if (status === AUTH_STATUSES.SIGNEDIN) {
-    profilesCollection.connect();
-  } else {
-    profilesCollection.disconnect();
-  }
 }
 
 function checkAndSyncProfile (payload) {
@@ -35,7 +23,8 @@ function checkAndSyncProfile (payload) {
     profilesCollection.set({
       id: userData.uid,
       publicEmail: email,
-      nickname: email.slice(0, email.indexOf('@'))
+      nickname: email.slice(0, email.indexOf('@')),
+      locale: i18n.fallbackLocale
     });
   } else if (userData.email !== userProfile.publicEmail) {
     profilesCollection.update({
@@ -45,4 +34,4 @@ function checkAndSyncProfile (payload) {
   }
 }
 
-export { activateProfileSync };
+export { plugProfileAuthSync };
