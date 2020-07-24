@@ -1,6 +1,6 @@
 {
   "name": "arc",
-  "version": "0.22.29",
+  "version": "0.22.30",
   "description": "ARC is an experimental web app that aims to help individuals, organizations, communities and families to collaboratively organize their work pipeline using an impact driven mindset.",
   "main": "index.html",
   "scripts": {
