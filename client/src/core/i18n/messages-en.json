@@ -28,5 +28,14 @@
     "sign-in": "Sign In",
     "sign-out": "Sign Out",
     "sign-up": "Sign Up"
+  },
+  "profiles": {
+    "language": "Language",
+    "language-required": "Language is required",
+    "nickname": "Nickname",
+    "nickname-required": "Nickname is required",
+    "preferences-updated": "Preferences updated",
+    "public-email": "Public e-mail",
+    "update-preferences": "Update preferences"
   }
 }
