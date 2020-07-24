@@ -1,28 +1,28 @@
 <template>
   <BaseDialog
-    title="Update Preferences"
+    :title="$t('profiles.update-preferences')"
   >
     <template>
       <v-form ref="form">
         <v-text-field
           v-model="publicEmail"
-          label="Public Email"
+          :label="$t('profiles.public-email')"
           readonly
           disabled
         />
         <v-text-field
           v-model="nickname"
-          label="Nickname"
-          :rules="[v => !!v || this.$t('auth.email-required')]"
+          :label="$t('profiles.nickname')"
+          :rules="[v => !!v || this.$t('profiles.nickname-required')]"
           required
         />
         <v-select
           v-model="locale"
-          label="Language"
+          :label="$t('profiles.language')"
           :items="supportedLocales"
           item-text="title"
           item-value="id"
-          :rules="[v => !!v || this.$t('auth.email-required')]"
+          :rules="[v => !!v || this.$t('profiles.language-required')]"
           required
         />
       </v-form>
@@ -62,7 +62,7 @@ export default {
         .update({ nickname: this.nickname, locale: this.locale })
         .then(() => {
           this.$router.go(-1);
-          showSuccess('profile updated');
+          showSuccess(this.$t('profiles.preferences-updated'));
         })
         .catch(error => showError(error.message))
         .finally(() => stop());
