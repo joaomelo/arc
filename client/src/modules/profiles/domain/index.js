@@ -1,2 +1,3 @@
 export * from './collection';
-export * from './sync';
+export * from './auth-sync';
+export * from './locale-sync';

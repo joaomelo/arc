@@ -58,8 +58,10 @@ export default {
   methods: {
     save () {
       const stop = startLoading('saving preferences');
+      const currentProfile = getCurrentProfile();
+      const id = currentProfile.id;
       profilesCollection
-        .update({ nickname: this.nickname, locale: this.locale })
+        .update({ id, nickname: this.nickname, locale: this.locale })
         .then(() => {
           this.$router.go(-1);
           showSuccess(this.$t('profiles.preferences-updated'));

@@ -1,4 +1,5 @@
-import { plugProfileAuthSync, plugCollection } from './domain';
+import { plugProfileAuthSync, plugLocaleSync, plugCollection } from './domain';
 
 plugCollection();
 plugProfileAuthSync();
+plugLocaleSync();
