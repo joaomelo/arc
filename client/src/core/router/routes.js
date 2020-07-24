@@ -18,7 +18,7 @@ const routes = [
     path: '/desktop',
     component: LayoutDesktop,
     children: [
-      { path: '/dashboard', name: 'dashboard', component: PagePreferences /* TeamsPage */ },
+      { path: '/dashboard', name: 'dashboard', component: PageAccount /* TeamsPage */ },
       // { path: '/challenges/list', name: 'challenges', redirect: { name: 'teams' } },
       // { path: '/teams/list', name: 'teams', component: TeamsPage },
       { path: '/account/edit', name: 'account', component: PageAccount },

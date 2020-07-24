@@ -1,4 +1,3 @@
-import { activateProfileSync } from './domain';
+import './init';
 
-// module initialization
-activateProfileSync();
+export { PagePreferences } from './ui';

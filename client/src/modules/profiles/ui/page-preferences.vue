@@ -7,14 +7,13 @@
         <v-text-field
           v-model="publicEmail"
           label="Public Email"
-          :rules="[requiredRule]"
           readonly
           disabled
         />
         <v-text-field
           v-model="nickname"
           label="Nickname"
-          :rules="[requiredRule]"
+          :rules="[v => !!v || this.$t('auth.email-required')]"
           required
         />
         <v-select
@@ -23,7 +22,7 @@
           :items="supportedLocales"
           item-text="title"
           item-value="id"
-          :rules="[requiredRule]"
+          :rules="[v => !!v || this.$t('auth.email-required')]"
           required
         />
       </v-form>
@@ -39,17 +38,17 @@
 
 <script>
 import { startLoading } from '__cli/core/loader';
-import { BaseDialog, SaveCancel, requiredRule } from '__cli/core/components';
+import { showSuccess, showError } from '__cli/core/messages';
+import { BaseDialog, SaveCancel } from '__cli/core/components';
 import { supportedLocales } from '__cli/core/i18n';
-import { authMech } from '../domain';
+import { profilesCollection, getCurrentProfile } from '../domain';
 
 export default {
   name: 'PagePreferences',
   components: { BaseDialog, SaveCancel },
   data () {
-    const { publicEmail, nickname, locale } = authMech.state.userData;
+    const { publicEmail, nickname, locale } = getCurrentProfile();
     return {
-      requiredRule,
       supportedLocales,
       publicEmail,
       nickname,
@@ -59,9 +58,13 @@ export default {
   methods: {
     save () {
       const stop = startLoading('saving preferences');
-      authMech
-        .updateProps({ nickname: this.nickname, locale: this.locale })
-        .then(() => this.$router.go(-1))
+      profilesCollection
+        .update({ nickname: this.nickname, locale: this.locale })
+        .then(() => {
+          this.$router.go(-1);
+          showSuccess('profile updated');
+        })
+        .catch(error => showError(error.message))
         .finally(() => stop());
     }
   }
