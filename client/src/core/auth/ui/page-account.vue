@@ -68,7 +68,7 @@
 </template>
 <script>
 import { startLoading } from '__cli/core/loader';
-import { showMessage } from '__cli/core/messages';
+import { showSuccess, showError } from '__cli/core/messages';
 import { BaseDialog, BaseButton, BackButton } from '__cli/core/components';
 import { authState, updateEmail, updatePassword } from '../domain';
 import ControlEmail from './control-email';
@@ -97,18 +97,10 @@ export default {
         const stop = startLoading('email update');
         updateEmail(this.newEmail, this.password)
           .then(() => {
-            showMessage({
-              text: this.$t('auth.email-sent'),
-              type: 'success'
-            });
+            showSuccess(this.$t('auth.email-sent'));
             this.$router.go(-1);
           })
-          .catch(error => {
-            showMessage({
-              text: error.message,
-              type: 'error'
-            });
-          })
+          .catch(error => showError(error.message))
           .finally(() => stop());
       }
     },
@@ -117,18 +109,10 @@ export default {
         const stop = startLoading('password update');
         updatePassword(this.newPassword, this.password)
           .then(() => {
-            showMessage({
-              text: this.$t('auth.password-updated'),
-              type: 'success'
-            });
+            showSuccess(this.$t('auth.password-updated'));
             this.$router.go(-1);
           })
-          .catch(error => {
-            showMessage({
-              text: error.message,
-              type: 'error'
-            });
-          })
+          .catch(error => showError(error.message))
           .finally(() => stop());
       }
     },

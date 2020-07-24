@@ -48,8 +48,8 @@ export default {
   },
   methods: {
     updateMessage (message) {
-      this.text = typeof message === 'string' ? message : message.text;
-      this.type = message.type || 'info';
+      this.text = message.text;
+      this.type = message.type;
       this.showMessage = true;
     }
   }

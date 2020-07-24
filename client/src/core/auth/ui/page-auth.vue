@@ -43,7 +43,7 @@
 <script>
 import { appDescription } from '__cli/core/meta';
 import { startLoading } from '__cli/core/loader';
-import { showMessage } from '__cli/core/messages';
+import { showError } from '__cli/core/messages';
 import { BaseDialog, BaseButton } from '__cli/core/components';
 import { signUp, signIn } from '../domain';
 import ControlEmail from './control-email';
@@ -99,12 +99,7 @@ export default {
         const stop = startLoading('authenticate');
         const action = this.outfit.action;
         action({ email: this.email, password: this.password })
-          .catch(error => {
-            showMessage({
-              text: error.message,
-              type: 'error'
-            });
-          })
+          .catch(error => showError(error.message))
           .finally(() => stop());
       }
     }

@@ -21,7 +21,7 @@
 <script>
 import { startLoading } from '__cli/core/loader';
 import { BaseButton, BaseDialog } from '__cli/core/components';
-import { showMessage } from '__cli/core/messages';
+import { showSuccess, showError } from '__cli/core/messages';
 import { authState, sendEmailVerification } from '../domain';
 import ButtonLogout from './button-logout';
 
@@ -37,8 +37,8 @@ export default {
     sendEmailVerificationToUser () {
       const stop = startLoading('sending email verification');
       sendEmailVerification()
-        .then(() => showMessage({ text: this.$t('auth.email-sent'), type: 'success' }))
-        .catch(error => showMessage({ text: error.message, type: 'error' }))
+        .then(() => showSuccess(this.$t('auth.email-sent')))
+        .catch(error => showError(error.message))
         .finally(() => stop());
     }
   }

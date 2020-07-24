@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { showMessage } from '__cli/core/messages';
+import { showInfo } from '__cli/core/messages';
 
 export default {
   name: 'ConnectionMonitor',
@@ -15,7 +15,7 @@ export default {
   watch: {
     isConnected (value) {
       const status = value ? 'Connected to' : 'Disconnect from';
-      showMessage(`${status} the internet`);
+      showInfo(`${status} the internet`);
     }
   },
   mounted () {
