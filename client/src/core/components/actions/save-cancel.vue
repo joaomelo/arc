@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { i18n } from '__cli/core/i18n';
+
 import BaseButton from './base-button';
 export default {
   name: 'SaveCancel',
@@ -23,11 +25,11 @@ export default {
   props: {
     cancelLabel: {
       type: String,
-      default: 'Cancel'
+      default: i18n.t('actions.cancel')
     },
     saveLabel: {
       type: String,
-      default: 'Save'
+      default: i18n.t('actions.save')
     }
   }
 };

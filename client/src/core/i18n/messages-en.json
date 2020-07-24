@@ -1,6 +1,8 @@
 {
   "actions": {
-    "back": "back"
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "items": {
     "no-items-found": "No items found"

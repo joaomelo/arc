@@ -1,6 +1,8 @@
 {
   "actions": {
-    "back": "voltar"
+    "back": "Voltar",
+    "save": "Salvar",
+    "cancel": "Cancelar"    
   },
   "items": {
     "no-items-found": "Nenhum item encontrado"
