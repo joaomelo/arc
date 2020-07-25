@@ -37,7 +37,7 @@ export default {
   data () {
     const rules = this.validationRules;
     if (this.isRequired) {
-      const requiredRule = v => !!v || this.$t('required', { label: this.label });
+      const requiredRule = v => !!v || this.$t('components.required', { text: this.label });
       rules.push(requiredRule);
     }
 

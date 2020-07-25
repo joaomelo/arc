@@ -1,17 +1,9 @@
 {
-  "navigation": {
-    "home": "Home",
-    "teams": "Teams",
-    "account": "Account",
-    "preferences": "Preferences"
-  },
-  "actions": {
+  "components": {
     "back": "Back",
+    "cancel": "Cancel",
     "save": "Save",
-    "cancel": "Cancel"
-  },
-  "items": {
-    "no-items-found": "No items found"
+    "required": "{text} is required"
   },
   "auth": {
     "account-update-below": "Below you can update both e-mail and password",
@@ -29,13 +21,22 @@
     "password": "Password",
     "password-confirm": "Confirm with current password",
     "password-match": "Passwords must match",
-    "password-required": "Password is required",
     "password-repeat": "Repeat password",
+    "password-required": "Password is required",
     "password-update": "Update password",
     "password-updated": "Password updated",
     "sign-in": "Sign In",
     "sign-out": "Sign Out",
     "sign-up": "Sign Up"
+  },
+  "items": {
+    "no-items-found": "No items found"
+  },
+  "navigation": {
+    "account": "Account",
+    "home": "Home",
+    "preferences": "Preferences",
+    "teams": "Teams"
   },
   "profiles": {
     "language": "Language",

@@ -1,17 +1,9 @@
 {
-  "navigation": {
-    "home": "Início",
-    "teams": "Times",
-    "account": "Conta",
-    "preferences": "Preferências"
-  },
-    "actions": {
+  "components": {
     "back": "Voltar",
+    "cancel": "Cancelar",
     "save": "Salvar",
-    "cancel": "Cancelar"    
-  },
-  "items": {
-    "no-items-found": "Nenhum item encontrado"
+    "required": "{text} é orbigatório"
   },
   "auth": {
     "account-update-below": "Abaixo você pode atualizar seu e-mail and senha",
@@ -29,13 +21,22 @@
     "password": "Senha",
     "password-confirm": "Confirme com a senha atual",
     "password-match": "As senhas devem ser iguais",
-    "password-required": "Senha obrigatória",
     "password-repeat": "Confirmar senha",
+    "password-required": "Senha obrigatória",
     "password-update": "Atualização de senha",
     "password-updated": "Senha atualizada",
     "sign-in": "Entrar",
     "sign-out": "Sair",
     "sign-up": "Criar"
+  },
+  "items": {
+    "no-items-found": "Nenhum item encontrado"
+  },
+  "navigation": {
+    "account": "Conta",
+    "home": "Início",
+    "preferences": "Preferências",
+    "teams": "Times"
   },
   "profiles": {
     "language": "Idioma",
@@ -45,5 +46,5 @@
     "preferences-updated": "Preferências atualizadas",
     "public-email": "E-mail público",
     "update-preferences": "Atualizar preferências"
-  }  
+  }
 }

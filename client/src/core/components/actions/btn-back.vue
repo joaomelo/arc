@@ -2,7 +2,7 @@
   <BaseButton
     color="secondary"
     icon="mdi-backspace"
-    :text="$t('actions.back')"
+    :text="$t('components.back')"
     @click="$emit('back')"
   />
 </template>

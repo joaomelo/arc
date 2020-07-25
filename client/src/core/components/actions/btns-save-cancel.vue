@@ -3,13 +3,13 @@
     <BaseButton
       color="secondary"
       icon="mdi-backspace"
-      :text="$t('actions.cancel')"
+      :text="$t('components.cancel')"
       @click="$emit('cancel')"
     />
     <BaseButton
       color="success"
       icon="mdi-content-save"
-      :text="$t('actions.save')"
+      :text="$t('components.save')"
       @click="$emit('save')"
     />
   </div>
