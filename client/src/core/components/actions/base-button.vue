@@ -6,7 +6,7 @@
   >
     <v-icon
       v-if="icon"
-      left
+      :left="!!text"
     >
       {{ icon }}
     </v-icon>
