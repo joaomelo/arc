@@ -1,4 +1,10 @@
 {
+  "navigation": {
+    "home": "Home",
+    "teams": "Teams",
+    "account": "Account",
+    "preferences": "Preferences"
+  },
   "actions": {
     "back": "Back",
     "save": "Save",

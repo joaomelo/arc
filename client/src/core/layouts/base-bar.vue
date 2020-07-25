@@ -47,35 +47,35 @@
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>{{ $t('navigation.home') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item :to="{ name: 'teams' }">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Teams</v-list-item-title>
+            <v-list-item-title>{{ $t('navigation.teams') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item :to="{ name: 'account' }">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
+            <v-list-item-title>{{ $t('navigation.account') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item :to="{ name: 'preferences' }">
             <v-list-item-icon>
               <v-icon>mdi-cogs</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Preferences</v-list-item-title>
+            <v-list-item-title>{{ $t('navigation.preferences') }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item @click="signOut">
             <v-list-item-icon>
               <v-icon>mdi-logout</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Sign Out</v-list-item-title>
+            <v-list-item-title>{{ $t('auth.sign-out') }}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

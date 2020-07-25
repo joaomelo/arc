@@ -1,5 +1,11 @@
 {
-  "actions": {
+  "navigation": {
+    "home": "Início",
+    "teams": "Times",
+    "account": "Conta",
+    "preferences": "Preferências"
+  },
+    "actions": {
     "back": "Voltar",
     "save": "Salvar",
     "cancel": "Cancelar"    
@@ -8,7 +14,7 @@
     "no-items-found": "Nenhum item encontrado"
   },
   "auth": {
-    "account-update-below": "Abaixo você pode atualiza seu e-mail and senha",
+    "account-update-below": "Abaixo você pode atualizar seu e-mail and senha",
     "email": "E-mail",
     "email-check-spam": "Se você não encontrar o e-mail na sua caixa de entrada, confirme na pasta de spam",
     "email-confirmation": "Confirmação de e-mail",
