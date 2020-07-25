@@ -5,9 +5,10 @@ import { profilesCollection } from './collection';
 function plugLocaleSync () {
   profilesCollection.subscribe(profiles => {
     if (!profiles) return;
-    const currentLocale = profiles
-      .find(p => p.id === authState.userData.uid)
-      .locale;
+    const currentProfile = profiles.find(p => p.id === authState.userData.uid);
+    if (!currentProfile) return;
+
+    const currentLocale = currentProfile.locale;
     if (i18n.locale !== currentLocale) {
       i18n.locale = currentLocale;
     }
