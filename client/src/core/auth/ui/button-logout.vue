@@ -1,20 +1,19 @@
 <template>
-  <v-btn
+  <BaseButton
     v-bind="$attrs"
+    icon="mdi-logout"
+    :text="$t('auth.sign-out')"
     @click="signOut"
-  >
-    <v-icon left>
-      mdi-logout
-    </v-icon>
-    {{ $t("auth.sign-out") }}
-  </v-btn>
+  />
 </template>
 
 <script>
+import { BaseButton } from '__cli/core/components';
 import { signOut } from '../domain';
 
 export default {
   name: 'ButtonLogout',
+  components: { BaseButton },
   methods: {
     signOut
   }
