@@ -1,1 +1,1 @@
-export * from './teams-store';
+export * from './collection';
