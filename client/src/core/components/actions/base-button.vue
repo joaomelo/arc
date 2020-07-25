@@ -1,5 +1,6 @@
 <template>
   <v-btn
+    v-bind="$attrs"
     :color="color"
     :icon="icon && !text"
     @click="$emit('click')"
