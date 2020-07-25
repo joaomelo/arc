@@ -1,3 +1,3 @@
-import TeamsPage from './teams-page';
+import PageTeams from './page-teams';
 
-export { TeamsPage };
+export { PageTeams };
