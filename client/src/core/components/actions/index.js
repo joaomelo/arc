@@ -1,5 +1,6 @@
 import BaseButton from './base-button';
-import BackButton from './back-button';
-import SaveCancel from './save-cancel';
+import BtnAdd from './btn-add';
+import BtnBack from './btn-back';
+import BtnsSaveCancel from './btns-save-cancel';
 
-export { BaseButton, BackButton, SaveCancel };
+export { BaseButton, BtnAdd, BtnBack, BtnsSaveCancel };

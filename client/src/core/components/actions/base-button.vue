@@ -1,6 +1,7 @@
 <template>
   <v-btn
     :color="color"
+    :icon="icon && !text"
     @click="$emit('click')"
   >
     <v-icon
@@ -19,7 +20,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'primary'
+      default: ''
     },
     icon: {
       type: String,
@@ -27,7 +28,7 @@ export default {
     },
     text: {
       type: String,
-      required: true
+      default: ''
     }
   }
 };
