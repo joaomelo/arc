@@ -1,7 +1,5 @@
 <template>
-  <BaseDialog
-    :title="title"
-  >
+  <BaseDialog :title="title">
     <template v-slot:default>
       <v-form ref="form">
         <slot />
