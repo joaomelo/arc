@@ -1,10 +1,9 @@
 <template>
   <v-text-field
-    type="text"
-    :label="label"
+    v-bind="$attrs"
     :value="value"
+    :label="label"
     :rules="rules"
-    :readonly="isReadonly"
     @input="input"
   />
 </template>
@@ -13,17 +12,13 @@
 export default {
   name: 'ControlText',
   props: {
-    label: {
-      type: String,
-      required: true
-    },
     value: {
       type: String,
       default: null
     },
-    isReadonly: {
-      type: Boolean,
-      default: false
+    label: {
+      type: String,
+      required: true
     },
     isRequired: {
       type: Boolean,
@@ -34,16 +29,17 @@ export default {
       default: () => []
     }
   },
-  data () {
-    const rules = this.validationRules;
-    if (this.isRequired) {
-      const requiredRule = v => !!v || this.$t('components.required', { text: this.label });
-      rules.push(requiredRule);
-    }
+  computed: {
+    rules () {
+      const rules = this.validationRules;
+      if (this.isRequired) {
+        const text = this.label || this.$t('components.field');
+        const requiredRule = v => !!v || this.$t('components.required', { text });
+        rules.unshift(requiredRule);
+      }
 
-    return {
-      rules
-    };
+      return rules;
+    }
   },
   methods: {
     input (text) {

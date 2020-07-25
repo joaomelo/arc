@@ -3,6 +3,7 @@
     "back": "Voltar",
     "cancel": "Cancelar",
     "save": "Salvar",
+    "field": "Campo",
     "required": "{text} é orbigatório"
   },
   "auth": {
@@ -13,7 +14,6 @@
     "email-confirmation-pledge": "Por favor, confirme o endereço de e-mail {email} clicando no link da mensagem enviada",
     "email-current": "Seu e-mail atual é {email}",
     "email-new": "Digite o novo e-mail",
-    "email-required": "E-mail é obrigatório",
     "email-resend": "Enviar mensagem de verificação",
     "email-sent": "Uma mensagem de confirmação de e-mail foi enviada",
     "email-update": "Atualização de e-mail",
@@ -22,7 +22,6 @@
     "password-confirm": "Confirme com a senha atual",
     "password-match": "As senhas devem ser iguais",
     "password-repeat": "Confirmar senha",
-    "password-required": "Senha obrigatória",
     "password-update": "Atualização de senha",
     "password-updated": "Senha atualizada",
     "sign-in": "Entrar",

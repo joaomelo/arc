@@ -1,19 +1,21 @@
 <template>
-  <v-text-field
+  <ControlText
+    :value="value"
     prepend-icon="mdi-account-circle"
     :label="label"
-    :rules="emailRules"
-    required
-    :value="value"
+    :validation-rules="emailRules"
+    is-required
     @input="input"
   />
 </template>
 
 <script>
 import { i18n } from '__cli/core/i18n';
+import { ControlText } from '__cli/core/components';
 
 export default {
   name: 'ControlEmail',
+  components: { ControlText },
   props: {
     value: {
       type: String,
@@ -27,7 +29,6 @@ export default {
   data () {
     return {
       emailRules: [
-        v => !!v || this.$t('auth.email-required'),
         v => /.+@.+\..+/.test(v) || this.$t('auth.email-valid')
       ]
     };

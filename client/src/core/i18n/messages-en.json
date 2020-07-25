@@ -3,6 +3,7 @@
     "back": "Back",
     "cancel": "Cancel",
     "save": "Save",
+    "field": "Field",
     "required": "{text} is required"
   },
   "auth": {
@@ -13,7 +14,6 @@
     "email-confirmation-pledge": "Please confirm the {email} e-mail address by clicking in the message link we sent to you",
     "email-current": "Your current e-mail is {email}",
     "email-new": "Type the new e-mail",
-    "email-required": "E-mail is required",
     "email-resend": "Send e-mail verification",
     "email-sent": "A e-mail verification message was sent",
     "email-update": "Update e-mail",
@@ -22,7 +22,6 @@
     "password-confirm": "Confirm with current password",
     "password-match": "Passwords must match",
     "password-repeat": "Repeat password",
-    "password-required": "Password is required",
     "password-update": "Update password",
     "password-updated": "Password updated",
     "sign-in": "Sign In",

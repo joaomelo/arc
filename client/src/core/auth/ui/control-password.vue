@@ -1,31 +1,33 @@
 <template>
   <div>
-    <v-text-field
-      v-model="primaryPassword"
+    <ControlText
+      :value="primaryPassword"
       :label="label"
       prepend-icon="mdi-lock"
       :append-icon="showPassword ? 'mdi-eye': 'mdi-eye-off'"
       :type="showPassword ? 'text': 'password'"
-      required
-      :rules="primaryRules"
+      is-required
       @click:append="showPassword = !showPassword"
       @input="input"
     />
-    <v-text-field
+    <ControlText
       v-if="shouldMatch"
       v-model="shadowPassword"
       :label="$t('auth.password-repeat')"
       prepend-icon="mdi-lock"
       :type="showPassword ? 'text': 'password'"
-      required
-      :rules="shadowRules"
+      is-required
+      :validation-rules="shadowRules"
     />
   </div>
 </template>
 
 <script>
+import { ControlText } from '__cli/core/components';
+
 export default {
   name: 'ControlPassword',
+  components: { ControlText },
   props: {
     shouldMatch: {
       type: Boolean,
@@ -41,15 +43,11 @@ export default {
     }
   },
   data () {
-    const requireRule = v => !!v || this.$t('auth.password-required');
-    const matchRule = v => this.primaryPassword === this.shadowPassword || this.$t('auth.password-match');
-
     return {
       showPassword: false,
       primaryPassword: null,
       shadowPassword: null,
-      primaryRules: [requireRule],
-      shadowRules: [requireRule, matchRule]
+      shadowRules: [v => this.primaryPassword === this.shadowPassword || this.$t('auth.password-match')]
     };
   },
   methods: {
