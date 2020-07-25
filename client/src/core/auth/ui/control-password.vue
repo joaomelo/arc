@@ -2,7 +2,6 @@
   <div>
     <v-text-field
       v-model="primaryPassword"
-      data-test="auth-primary-password"
       :label="label"
       prepend-icon="mdi-lock"
       :append-icon="showPassword ? 'mdi-eye': 'mdi-eye-off'"
@@ -15,7 +14,6 @@
     <v-text-field
       v-if="shouldMatch"
       v-model="shadowPassword"
-      data-test="auth-shadow-password"
       :label="$t('auth.password-repeat')"
       prepend-icon="mdi-lock"
       :type="showPassword ? 'text': 'password'"
@@ -26,8 +24,6 @@
 </template>
 
 <script>
-import { i18n } from '__cli/core/i18n';
-
 export default {
   name: 'ControlPassword',
   props: {
@@ -41,7 +37,7 @@ export default {
     },
     label: {
       type: String,
-      default: i18n.t('auth.password')
+      required: true
     }
   },
   data () {

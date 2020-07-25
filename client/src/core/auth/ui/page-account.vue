@@ -44,6 +44,7 @@
           <ControlPassword
             v-model="newPassword"
             class="mt-3"
+            :label="$t('auth.password')"
             :should-match="true"
           />
           <v-divider class="my-5" />

@@ -19,6 +19,7 @@
           <ControlPassword
             v-model="password"
             :should-match="outfit.shouldMatch"
+            :label="$t('auth.password')"
           />
         </v-form>
       </template>
