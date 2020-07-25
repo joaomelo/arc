@@ -28,7 +28,7 @@
       </v-form>
     </template>
     <template v-slot:actions>
-      <SaveCancel
+      <BtnsSaveCancel
         @cancel="$router.go(-1)"
         @save="save"
       />
@@ -39,13 +39,13 @@
 <script>
 import { startLoading } from '__cli/core/loader';
 import { showSuccess, showError } from '__cli/core/messages';
-import { BaseDialog, SaveCancel } from '__cli/core/components';
+import { BaseDialog, BtnsSaveCancel } from '__cli/core/components';
 import { supportedLocales } from '__cli/core/i18n';
 import { profilesCollection, getCurrentProfile } from '../domain';
 
 export default {
   name: 'PagePreferences',
-  components: { BaseDialog, SaveCancel },
+  components: { BaseDialog, BtnsSaveCancel },
   data () {
     const { publicEmail, nickname, locale } = getCurrentProfile();
     return {

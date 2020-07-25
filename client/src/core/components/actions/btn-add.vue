@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    :icon="mdi-plus-box"
+    icon="mdi-plus-box"
     @click="$emit('add')"
   />
 </template>

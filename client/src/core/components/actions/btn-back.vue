@@ -11,7 +11,7 @@
 import BaseButton from './base-button';
 
 export default {
-  name: 'BackButton',
+  name: 'BtnBack',
   components: { BaseButton }
 };
 </script>

@@ -1,3 +1,3 @@
 import './init';
 
-export { PageTeams } from './ui';
+export { PageTeams, PageTeam } from './ui';

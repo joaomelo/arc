@@ -1,14 +1,15 @@
 <template>
-  <ItemEdit
-    #default="{ clone }"
+  <PageItem
+    v-slot="{ itemClone }"
+    title="Team"
     :item-id="itemId"
-    item-collection="teams"
+    :collection="teamsCollection"
   >
     <ControlText
-      v-model="clone.title"
-      :label="$t('fields.common.title')"
+      v-model="itemClone.name"
+      :label="$t('fields.common.name')"
     />
-    <ControlText
+    <!-- <ControlText
       v-if="clone.owner"
       v-model="clone.owner.title"
       :label="$t('fields.teams.owner')"
@@ -27,25 +28,31 @@
       :is-multiple="true"
       :is-object-driven="true"
       :options="$store.getters.getOtherProfiles"
-    />
-  </ItemEdit>
+    /> -->
+  </PageItem>
 </template>
 
 <script>
-import { p } from '__cli/common/components-helpers';
-import ItemEdit from '__cli/components/item/item-edit.vue';
-import ControlText from '__cli/components/forms/control-text.vue';
-import ControlSelect from '__cli/components/forms/control-select.vue';
+import { ControlText } from '__cli/core/components';
+import { PageItem } from '__cli/modules/items';
+import { teamsCollection } from '../domain';
 
 export default {
   name: 'TeamEdit',
   components: {
-    ItemEdit,
-    ControlText,
-    ControlSelect
+    PageItem,
+    ControlText
   },
   props: {
-    itemId: p(String)
+    itemId: {
+      type: String,
+      default: 'add'
+    }
+  },
+  data () {
+    return {
+      teamsCollection
+    };
   }
 };
 </script>

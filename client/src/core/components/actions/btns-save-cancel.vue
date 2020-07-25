@@ -18,7 +18,7 @@
 <script>
 import BaseButton from './base-button';
 export default {
-  name: 'SaveCancel',
+  name: 'BtnsSaveCancel',
   components: { BaseButton }
 };
 </script>

@@ -4,11 +4,11 @@
   >
     <template v-slot:default>
       <v-form ref="form">
-        <slot :itemClone="itemClone" />
+        <slot />
       </v-form>
     </template>
     <template v-slot:actions>
-      <SaveCancel
+      <BtnsSaveCancel
         @cancel="cancel"
         @save="save"
       />
@@ -17,26 +17,17 @@
 </template>
 
 <script>
-import { SaveCancel } from '../actions';
+import { BtnsSaveCancel } from '../actions';
 import BaseDialog from './base-dialog';
 
 export default {
   name: 'FormDialog',
-  components: { SaveCancel, BaseDialog },
+  components: { BtnsSaveCancel, BaseDialog },
   props: {
     title: {
       type: String,
       default: ''
-    },
-    item: {
-      type: Object,
-      required: true
     }
-  },
-  data () {
-    return {
-      itemClone: { ...this.item }
-    };
   },
   created () {
     document.addEventListener('keyup', this.keyPressed);
@@ -50,7 +41,7 @@ export default {
     },
     save () {
       if (this.$refs.form.validate()) {
-        this.$emit('save', this.itemClone);
+        this.$emit('save');
       }
     },
     keyPressed (event) {

@@ -1,39 +1,53 @@
 <template>
-  <ControlWrapper
-    #default="{ controlId }"
+  <v-text-field
+    type="text"
     :label="label"
-  >
-    <input
-      :id="controlId"
-      type="text"
-      class="form-control"
-      :value="value"
-      :readonly="isReadonly"
-      :required="isRequired"
-      :placeholder="$tc('placeholders.enter', 1)"
-      @input="update"
-    >
-  </ControlWrapper>
+    :value="value"
+    :rules="rules"
+    :readonly="isReadonly"
+    @input="input"
+  />
 </template>
 
 <script>
-import ControlWrapper from './control-wrapper.vue';
-import { p } from '__cli/common/components-helpers';
-
 export default {
   name: 'ControlText',
-  components: {
-    ControlWrapper
-  },
   props: {
-    label: p(String),
-    value: p(String, null),
-    isReadonly: p(Boolean, false),
-    isRequired: p(Boolean, false)
+    label: {
+      type: String,
+      required: true
+    },
+    value: {
+      type: String,
+      default: null
+    },
+    isReadonly: {
+      type: Boolean,
+      default: false
+    },
+    isRequired: {
+      type: Boolean,
+      default: false
+    },
+    validationRules: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data () {
+    const rules = this.validationRules;
+    if (this.isRequired) {
+      const requiredRule = v => !!v || this.$t('required', { label: this.label });
+      rules.push(requiredRule);
+    }
+
+    return {
+      rules
+    };
   },
   methods: {
-    update (event) {
-      this.$emit('input', event.target.value);
+    input (text) {
+      this.$emit('input', text);
     }
   }
 };

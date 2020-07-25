@@ -1,9 +1,5 @@
-import ControlEmail from './control-email';
-import ControlPassword from './control-password';
-import ControlSelect from './control-select';
+import ControlText from './control-text';
 
 export {
-  ControlEmail,
-  ControlPassword,
-  ControlSelect
+  ControlText
 };

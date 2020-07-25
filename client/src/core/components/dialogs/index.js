@@ -1,2 +1,4 @@
 import BaseDialog from './base-dialog';
-export { BaseDialog };
+import FormDialog from './form-dialog';
+
+export { BaseDialog, FormDialog };

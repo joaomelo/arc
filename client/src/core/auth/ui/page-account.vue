@@ -26,7 +26,7 @@
         </v-form>
       </template>
       <template v-slot:actions>
-        <BackButton @back="cancel" />
+        <BtnBack @back="cancel" />
         <BaseButton
           color="success"
           icon="mdi-content-save"
@@ -56,7 +56,7 @@
         </v-form>
       </template>
       <template v-slot:actions>
-        <BackButton @back="cancel" />
+        <BtnBack @back="cancel" />
         <BaseButton
           color="success"
           icon="mdi-content-save"
@@ -70,7 +70,7 @@
 <script>
 import { startLoading } from '__cli/core/loader';
 import { showSuccess, showError } from '__cli/core/messages';
-import { BaseDialog, BaseButton, BackButton } from '__cli/core/components';
+import { BaseDialog, BaseButton, BtnBack } from '__cli/core/components';
 import { authState, updateEmail, updatePassword } from '../domain';
 import ControlEmail from './control-email';
 import ControlPassword from './control-password';
@@ -82,7 +82,7 @@ export default {
     ControlEmail,
     ControlPassword,
     BaseButton,
-    BackButton
+    BtnBack
   },
   data () {
     return {
