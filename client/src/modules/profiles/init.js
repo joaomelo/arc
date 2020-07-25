@@ -1,5 +1,6 @@
-import { plugProfileAuthSync, plugLocaleSync, plugCollection } from './domain';
+import { bindCollectionToAuth } from '__cli/core/collection';
+import { profilesCollection, plugProfileAuthSync, plugLocaleSync } from './domain';
 
-plugCollection();
+bindCollectionToAuth(profilesCollection);
 plugProfileAuthSync();
 plugLocaleSync();
