@@ -16,7 +16,7 @@ module.exports = function (env, argv) {
 
   return {
     mode: isProd ? 'production' : 'development',
-    devtool: isProd ? 'source-map' : 'eval',
+    devtool: 'source-map',
     entry: `${clientSrc}/index.js`,
     output: {
       publicPath: '/',
