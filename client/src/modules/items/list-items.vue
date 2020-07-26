@@ -2,7 +2,7 @@
   <div>
     <div v-if="items.length > 0">
       <component
-        :is="viewComponent"
+        :is="view"
         v-for="item in items"
         :key="item.id"
         :item="item"
@@ -23,7 +23,7 @@ export default {
       type: Array,
       required: true
     },
-    viewComponent: {
+    view: {
       type: Object,
       required: true
     }

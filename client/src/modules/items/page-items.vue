@@ -1,26 +1,24 @@
 <template>
   <v-card flat>
-    <BarItems :title="title">
-      <slot name="bar" />
+    <BarItems :title="$attrs.title">
+      <slot />
     </BarItems>
     <v-divider />
     <v-card-text>
-      <slot />
+      <ListItems
+        :view="$attrs.view"
+        :items="$attrs.items"
+      />
     </v-card-text>
   </v-card>
 </template>
 
 <script>
 import BarItems from './bar-items';
+import ListItems from './list-items';
 
 export default {
   name: 'PageItems',
-  components: { BarItems },
-  props: {
-    title: {
-      type: String,
-      default: ''
-    }
-  }
+  components: { BarItems, ListItems }
 };
 </script>
