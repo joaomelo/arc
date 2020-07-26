@@ -1,8 +1,12 @@
 <template>
   <v-card flat>
-    <BarItems :title="$attrs.title">
+    <v-toolbar flat>
+      <v-toolbar-title class="text-h5 font-weight-medium">
+        {{ title }}
+      </v-toolbar-title>
+      <v-spacer />
       <slot />
-    </BarItems>
+    </v-toolbar>
     <v-divider />
     <v-card-text>
       <ListItems
@@ -14,11 +18,16 @@
 </template>
 
 <script>
-import BarItems from './bar-items';
 import ListItems from './list-items';
 
 export default {
   name: 'PageItems',
-  components: { BarItems, ListItems }
+  components: { ListItems },
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  }
 };
 </script>
