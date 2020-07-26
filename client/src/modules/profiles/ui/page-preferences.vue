@@ -37,8 +37,7 @@
 </template>
 
 <script>
-import { startLoading } from '__cli/core/loader';
-import { showSuccess, showError } from '__cli/core/messages';
+import { startLoading, showSuccess, showError } from '__cli/core/busui';
 import { BaseDialog, BtnsSaveCancel } from '__cli/core/components';
 import { supportedLocales } from '__cli/core/i18n';
 import { profilesCollection, getCurrentProfile } from '../domain';

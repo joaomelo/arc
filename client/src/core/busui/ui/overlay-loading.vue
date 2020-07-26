@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import { loaderState } from './loader';
+import { loaderState } from '../domain';
+
 export default {
   name: 'OverlayLoading',
   data () {

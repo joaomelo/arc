@@ -43,8 +43,7 @@
 </template>
 <script>
 import { appDescription } from '__cli/core/meta';
-import { startLoading } from '__cli/core/loader';
-import { showError } from '__cli/core/messages';
+import { startLoading, showError } from '__cli/core/busui';
 import { BaseDialog, BaseButton } from '__cli/core/components';
 import { signUp, signIn } from '../domain';
 import ControlEmail from './control-email';

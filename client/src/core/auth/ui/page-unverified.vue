@@ -19,9 +19,8 @@
 </template>
 
 <script>
-import { startLoading } from '__cli/core/loader';
+import { startLoading, showSuccess, showError } from '__cli/core/busui';
 import { BaseButton, BaseDialog } from '__cli/core/components';
-import { showSuccess, showError } from '__cli/core/messages';
 import { authState, sendEmailVerification } from '../domain';
 import ButtonLogout from './button-logout';
 

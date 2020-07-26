@@ -1,18 +1,14 @@
 <template>
   <v-app>
-    <OverlayLoading />
-    <MessagePanel />
-    <ConnectionMonitor />
+    <Busui />
     <router-view />
   </v-app>
 </template>
 
 <script>
-import { OverlayLoading } from '__cli/core/loader';
-import { MessagePanel } from '__cli/core/messages';
-import { ConnectionMonitor } from '__cli/core/connection';
+import { Busui } from '__cli/core/busui';
 export default {
   name: 'VueRoot',
-  components: { OverlayLoading, MessagePanel, ConnectionMonitor }
+  components: { Busui }
 };
 </script>

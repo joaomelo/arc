@@ -9,8 +9,7 @@
 </template>
 
 <script>
-import { startLoading } from '__cli/core/loader';
-import { showSuccess, showError } from '__cli/core/messages';
+import { startLoading, showSuccess, showError } from '__cli/core/busui';
 import FormDialog from './form-dialog';
 
 export default {

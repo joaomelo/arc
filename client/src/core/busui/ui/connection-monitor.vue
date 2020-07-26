@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { showInfo } from '__cli/core/messages';
+import { showInfo } from '../domain';
 
 export default {
   name: 'ConnectionMonitor',
