@@ -1,13 +1,14 @@
 <template>
   <PageItem
     v-slot="{ itemClone }"
-    title="Team"
-    :item-id="itemId"
+    v-bind="$attrs"
+    :title="$tc('teams.team', 1)"
     :collection="teamsCollection"
   >
     <ControlText
       v-model="itemClone.name"
-      :label="$t('fields.common.name')"
+      :label="$t('fields.name')"
+      is-required
     />
     <!-- <ControlText
       v-if="clone.owner"
@@ -42,12 +43,6 @@ export default {
   components: {
     PageItem,
     ControlText
-  },
-  props: {
-    itemId: {
-      type: String,
-      default: 'add'
-    }
   },
   data () {
     return {

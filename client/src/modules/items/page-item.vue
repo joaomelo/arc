@@ -1,24 +1,20 @@
 <template>
-  <FormDialog
-    :title="title"
-    @save="save"
-    @cancel="cancel"
+  <EnhancedDialog
+    v-bind="$attrs"
+    :action="() => save()"
+    :message="message"
   >
     <slot :itemClone="itemClone" />
-  </FormDialog>
+  </EnhancedDialog>
 </template>
 
 <script>
-import { FormDialog } from '__cli/core/components';
+import { EnhancedDialog } from '__cli/core/components';
 
 export default {
   name: 'PageItem',
-  components: { FormDialog },
+  components: { EnhancedDialog },
   props: {
-    title: {
-      type: String,
-      default: ''
-    },
     itemId: {
       type: String,
       default: 'add'
@@ -29,18 +25,25 @@ export default {
     }
   },
   data () {
-    return {
-      itemClone: this.itemId === 'add' ? {} : { ...this.collection.getItem(this.itemId) }
+    const outfit = {
+      add: {
+        message: this.$t('items.successfully-added'),
+        itemClone: {},
+        action: 'add'
+      },
+      update: {
+        message: this.$t('items.successfully-updated'),
+        itemClone: { ...this.collection.getItem(this.itemId) },
+        action: 'update'
+      }
     };
+    const key = this.itemId === 'add' ? 'add' : 'update';
+
+    return outfit[key];
   },
   methods: {
-    cancel () {
-      this.$router.go(-1);
-    },
     save () {
-      const action = this.itemId === 'add' ? 'add' : 'update';
-      this.collection[action](this.itemClone);
-      this.$router.go(-1);
+      return this.collection[this.action](this.itemClone);
     }
   }
 };
