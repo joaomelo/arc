@@ -1,5 +1,5 @@
 <template>
-  <BaseDialog :title="title">
+  <BaseDialog v-bind="$attrs">
     <template v-slot:default>
       <v-form ref="form">
         <slot />
@@ -21,12 +21,6 @@ import BaseDialog from './base-dialog';
 export default {
   name: 'FormDialog',
   components: { BtnsSaveCancel, BaseDialog },
-  props: {
-    title: {
-      type: String,
-      default: ''
-    }
-  },
   created () {
     document.addEventListener('keyup', this.keyPressed);
   },
