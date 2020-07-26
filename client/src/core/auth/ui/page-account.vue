@@ -8,69 +8,47 @@
       {{ $t('auth.email-current', { email: authState.userData && authState.userData.email }) }}<br>
       {{ $t('auth.account-update-below') }}
     </v-alert>
-    <BaseDialog
+    <FormDialog
       :title="$t('auth.email-update')"
+      @save="updateEmailAccount"
+      @cancel="cancel"
     >
-      <template>
-        <v-form ref="emailForm">
-          <ControlEmail
-            v-model="newEmail"
-            class="mt-3"
-            :label="$t('auth.email-new')"
-          />
-          <ControlPassword
-            v-model="password"
-            class="mt-3"
-            :label="$t('auth.password-confirm')"
-          />
-        </v-form>
-      </template>
-      <template v-slot:actions>
-        <BtnBack @back="cancel" />
-        <BaseButton
-          color="success"
-          icon="mdi-content-save"
-          :text="$t('auth.email-update')"
-          @click="updateEmailAccount"
-        />
-      </template>
-    </BaseDialog>
-    <BaseDialog
-      :title="$t('auth.password-update')"
+      <ControlEmail
+        v-model="newEmail"
+        class="mt-3"
+        :label="$t('auth.email-new')"
+      />
+      <ControlPassword
+        v-model="password"
+        class="mt-3"
+        :label="$t('auth.password-current')"
+      />
+    </FormDialog>
+    <FormDialog
       class="mt-8"
+      :title="$t('auth.password-update')"
+      @save="updatePasswordAccount"
+      @cancel="cancel"
     >
-      <template>
-        <v-form ref="passwordForm">
-          <ControlPassword
-            v-model="newPassword"
-            class="mt-3"
-            :label="$t('auth.password')"
-            :should-match="true"
-          />
-          <v-divider class="my-5" />
-          <ControlPassword
-            v-model="password"
-            class="mt-3"
-            :label="$t('auth.password-confirm')"
-          />
-        </v-form>
-      </template>
-      <template v-slot:actions>
-        <BtnBack @back="cancel" />
-        <BaseButton
-          color="success"
-          icon="mdi-content-save"
-          :text="$t('auth.password-update')"
-          @click="updatePasswordAccount"
-        />
-      </template>
-    </BaseDialog>
+      <ControlPassword
+        v-model="newPassword"
+        class="mt-3"
+        :label="$t('auth.password-new')"
+        :should-match="true"
+      />
+      <v-divider class="my-5" />
+      <ControlPassword
+        v-model="password"
+        class="mt-3"
+        :label="$t('auth.password-current')"
+      />
+    </FormDialog>
   </div>
 </template>
 <script>
 import { startLoading } from '__cli/core/loader';
 import { showSuccess, showError } from '__cli/core/messages';
-import { BaseDialog, BaseButton, BtnBack } from '__cli/core/components';
+import { FormDialog } from '__cli/core/components';
 import { authState, updateEmail, updatePassword } from '../domain';
 import ControlEmail from './control-email';
 import ControlPassword from './control-password';
@@ -78,11 +56,9 @@ import ControlPassword from './control-password';
 export default {
   name: 'PageAccount',
   components: {
-    BaseDialog,
+    FormDialog,
     ControlEmail,
-    ControlPassword,
-    BaseButton,
-    BtnBack
+    ControlPassword
   },
   data () {
     return {
@@ -94,28 +70,24 @@ export default {
   },
   methods: {
     updateEmailAccount () {
-      if (this.$refs.emailForm.validate()) {
-        const stop = startLoading('email update');
-        updateEmail(this.newEmail, this.password)
-          .then(() => {
-            showSuccess(this.$t('auth.email-sent'));
-            this.$router.go(-1);
-          })
-          .catch(error => showError(error.message))
-          .finally(() => stop());
-      }
+      const stop = startLoading('email update');
+      updateEmail(this.newEmail, this.password)
+        .then(() => {
+          showSuccess(this.$t('auth.email-sent'));
+          this.$router.go(-1);
+        })
+        .catch(error => showError(error.message))
+        .finally(() => stop());
     },
     updatePasswordAccount () {
-      if (this.$refs.passwordForm.validate()) {
-        const stop = startLoading('password update');
-        updatePassword(this.newPassword, this.password)
-          .then(() => {
-            showSuccess(this.$t('auth.password-updated'));
-            this.$router.go(-1);
-          })
-          .catch(error => showError(error.message))
-          .finally(() => stop());
-      }
+      const stop = startLoading('password update');
+      updatePassword(this.newPassword, this.password)
+        .then(() => {
+          showSuccess(this.$t('auth.password-updated'));
+          this.$router.go(-1);
+        })
+        .catch(error => showError(error.message))
+        .finally(() => stop());
     },
     cancel () {
       this.$router.go(-1);
