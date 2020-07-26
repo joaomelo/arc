@@ -1,50 +1,40 @@
 <template>
-  <BaseDialog
+  <EnhancedDialog
     :title="$t('profiles.update-preferences')"
+    :action="() => updatePreferences()"
+    :message="$t('profiles.preferences-updated')"
   >
-    <template>
-      <v-form ref="form">
-        <v-text-field
-          v-model="publicEmail"
-          :label="$t('profiles.public-email')"
-          readonly
-          disabled
-        />
-        <v-text-field
-          v-model="nickname"
-          :label="$t('profiles.nickname')"
-          :rules="[v => !!v || this.$t('profiles.nickname-required')]"
-          required
-        />
-        <v-select
-          v-model="locale"
-          :label="$t('profiles.language')"
-          :items="supportedLocales"
-          item-text="title"
-          item-value="id"
-          :rules="[v => !!v || this.$t('profiles.language-required')]"
-          required
-        />
-      </v-form>
-    </template>
-    <template v-slot:actions>
-      <BtnsSaveCancel
-        @cancel="$router.go(-1)"
-        @save="save"
-      />
-    </template>
-  </BaseDialog>
+    <ControlText
+      v-model="publicEmail"
+      :label="$t('profiles.public-email')"
+      readonly
+      disabled
+    />
+    <ControlText
+      v-model="nickname"
+      :label="$t('profiles.nickname')"
+      is-required
+    />
+    <v-select
+      v-model="locale"
+      :label="$t('profiles.language')"
+      :items="supportedLocales"
+      item-text="title"
+      item-value="id"
+      :rules="[v => !!v || this.$t('profiles.language-required')]"
+      required
+    />
+  </EnhancedDialog>
 </template>
 
 <script>
-import { startLoading, showSuccess, showError } from '__cli/core/busui';
-import { BaseDialog, BtnsSaveCancel } from '__cli/core/components';
+import { EnhancedDialog, ControlText } from '__cli/core/components';
 import { supportedLocales } from '__cli/core/i18n';
 import { profilesCollection, getCurrentProfile } from '../domain';
 
 export default {
   name: 'PagePreferences',
-  components: { BaseDialog, BtnsSaveCancel },
+  components: { EnhancedDialog, ControlText },
   data () {
     const { publicEmail, nickname, locale } = getCurrentProfile();
     return {
@@ -55,18 +45,14 @@ export default {
     };
   },
   methods: {
-    save () {
-      const stop = startLoading('saving preferences');
+    updatePreferences () {
       const currentProfile = getCurrentProfile();
       const id = currentProfile.id;
-      profilesCollection
-        .update({ id, nickname: this.nickname, locale: this.locale })
-        .then(() => {
-          this.$router.go(-1);
-          showSuccess(this.$t('profiles.preferences-updated'));
-        })
-        .catch(error => showError(error.message))
-        .finally(() => stop());
+      return profilesCollection.update({
+        id,
+        nickname: this.nickname,
+        locale: this.locale
+      });
     }
   }
 };
