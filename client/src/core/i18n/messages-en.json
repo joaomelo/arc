@@ -1,5 +1,4 @@
 {
-  "test": "test",
   "components": {
     "back": "Back",
     "cancel": "Cancel",
@@ -30,8 +29,13 @@
     "sign-out": "Sign Out",
     "sign-up": "Sign Up"
   },
+  "fields": {
+    "name": "Name"
+  },  
   "items": {
-    "no-items-found": "No items found"
+    "no-items-found": "No items found",
+    "successfully-updated": "Successfully updated",
+    "successfully-added": "Successfully added"
   },
   "navigation": {
     "account": "Account",
@@ -47,5 +51,8 @@
     "preferences-updated": "Preferences updated",
     "public-email": "Public e-mail",
     "update-preferences": "Update preferences"
+  },
+  "teams": {
+    "team": "Team | Teams"
   }
 }

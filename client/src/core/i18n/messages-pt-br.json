@@ -30,7 +30,15 @@
     "sign-up": "Criar"
   },
   "items": {
-    "no-items-found": "Nenhum item encontrado"
+    "no-items-found": "Nenhum item encontrado",
+    "successfully-updated": "Atualizado com sucesso",
+    "successfully-added": "Adicionado com sucesso"    
+  },
+  "fields": {
+    "name": "Nome"
+  },
+  "teams": {
+    "team": "Time | Times"
   },
   "navigation": {
     "account": "Conta",
