@@ -8,10 +8,10 @@
       {{ $t('auth.email-current', { email: authState.userData && authState.userData.email }) }}<br>
       {{ $t('auth.account-update-below') }}
     </v-alert>
-    <FormDialog
+    <EnhancedDialog
       :title="$t('auth.email-update')"
-      @save="updateEmailAccount"
-      @cancel="cancel"
+      :action="() => updateEmailAccount()"
+      :message="$t('auth.email-sent')"
     >
       <ControlEmail
         v-model="newEmail"
@@ -23,12 +23,12 @@
         class="mt-3"
         :label="$t('auth.password-current')"
       />
-    </FormDialog>
-    <FormDialog
+    </EnhancedDialog>
+    <EnhancedDialog
       class="mt-8"
       :title="$t('auth.password-update')"
-      @save="updatePasswordAccount"
-      @cancel="cancel"
+      :action="() => updatePasswordAccount()"
+      :message="$t('auth.password-updated')"
     >
       <ControlPassword
         v-model="newPassword"
@@ -42,13 +42,11 @@
         class="mt-3"
         :label="$t('auth.password-current')"
       />
-    </FormDialog>
+    </EnhancedDialog>
   </div>
 </template>
 <script>
-import { startLoading } from '__cli/core/loader';
-import { showSuccess, showError } from '__cli/core/messages';
-import { FormDialog } from '__cli/core/components';
+import { EnhancedDialog } from '__cli/core/components';
 import { authState, updateEmail, updatePassword } from '../domain';
 import ControlEmail from './control-email';
 import ControlPassword from './control-password';
@@ -56,7 +54,7 @@ import ControlPassword from './control-password';
 export default {
   name: 'PageAccount',
   components: {
-    FormDialog,
+    EnhancedDialog,
     ControlEmail,
     ControlPassword
   },
@@ -70,27 +68,10 @@ export default {
   },
   methods: {
     updateEmailAccount () {
-      const stop = startLoading('email update');
-      updateEmail(this.newEmail, this.password)
-        .then(() => {
-          showSuccess(this.$t('auth.email-sent'));
-          this.$router.go(-1);
-        })
-        .catch(error => showError(error.message))
-        .finally(() => stop());
+      return updateEmail(this.newEmail, this.password);
     },
     updatePasswordAccount () {
-      const stop = startLoading('password update');
-      updatePassword(this.newPassword, this.password)
-        .then(() => {
-          showSuccess(this.$t('auth.password-updated'));
-          this.$router.go(-1);
-        })
-        .catch(error => showError(error.message))
-        .finally(() => stop());
-    },
-    cancel () {
-      this.$router.go(-1);
+      return updatePassword(this.newPassword, this.password);
     }
   }
 };
