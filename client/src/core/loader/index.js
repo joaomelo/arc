@@ -1,2 +1,4 @@
-export { OverlayLoading, PageSplash } from './ui';
-export { startLoading } from './domain';
+import OverlayLoading from './overlay-loading';
+
+export { OverlayLoading };
+export { startLoading } from './loader';
