@@ -1,4 +1,4 @@
-import PageMaintence from './page-maintence.vue';
+import PageSplash from './page-splash.vue';
 import Page404 from './page-404.vue';
 
-export { PageMaintence, Page404 };
+export { PageSplash, Page404 };
