@@ -1,5 +1,5 @@
 import { LayoutDesktop, LayoutShell } from '__cli/core/layouts';
-import { PageSplash } from '__cli/core/loader';
+import { PageSplash } from '__cli/core/pages';
 import { PageAuth, PageAccount, PageUnverified } from '__cli/core/auth';
 import { PageDashboard } from '__cli/modules/dashboard';
 import { PagePreferences } from '__cli/modules/profiles';
