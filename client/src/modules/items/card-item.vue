@@ -1,8 +1,8 @@
 <template>
   <v-card>
-    <v-card-title>{{ title }}</v-card-title>
-    <v-card-subtitle v-if="subtitle">
-      {{ subtitle }}
+    <v-card-title>{{ item[titleField] }}</v-card-title>
+    <v-card-subtitle>
+      {{ item[subtitleField] }}
     </v-card-subtitle>
     <v-card-text
       v-if="$slots.details && !folded"
@@ -11,23 +11,19 @@
     </v-card-text>
     <v-divider />
     <v-card-actions>
-      <v-btn
+      <BaseButton
         v-if="$slots.details"
-        icon
+        :icon="folded ? 'mdi-unfold-more-horizontal' : 'mdi-unfold-less-horizontal'"
         @click="folded = !folded"
-      >
-        <v-icon>
-          {{ folded ? "mdi-unfold-more-horizontal" : "mdi-unfold-less-horizontal" }}
-        </v-icon>
-      </v-btn>
+      />
       <v-spacer />
       <BaseButton
         icon="mdi-pencil"
-        @click="$emit('edit', id)"
+        @click="edit"
       />
       <BaseButton
         icon="mdi-delete"
-        @click="$emit('del', id)"
+        @click="del"
       />
       <slot name="actions" />
     </v-card-actions>
@@ -36,28 +32,49 @@
 
 <script>
 import { BaseButton } from '__cli/core/components';
+import { startLoading, showInfo, showError } from '__cli/core/busui';
 
 export default {
   name: 'CardItem',
   components: { BaseButton },
   props: {
-    id: {
+    item: {
+      type: Object,
+      required: true
+    },
+    collection: {
+      type: Object,
+      required: true
+    },
+    editRoute: {
       type: String,
       required: true
     },
-    title: {
+    titleField: {
       type: String,
-      required: true
+      default: 'name'
     },
-    subtitle: {
+    subtitleField: {
       type: String,
-      default: ''
+      default: 'id'
     }
   },
   data () {
     return {
       folded: true
     };
+  },
+  methods: {
+    edit () {
+      this.$router.push({ name: this.editRoute, params: { id: this.item.id } });
+    },
+    del () {
+      const stop = startLoading();
+      this.collection.del(this.item.id)
+        .then(() => showInfo(this.$t('items.item-deleted')))
+        .catch(error => showError(error.message))
+        .finally(() => stop());
+    }
   }
 };
 </script>

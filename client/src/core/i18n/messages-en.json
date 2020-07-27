@@ -1,11 +1,4 @@
 {
-  "components": {
-    "back": "Back",
-    "cancel": "Cancel",
-    "save": "Save",
-    "field": "Field",
-    "required": "{text} is required"
-  },
   "auth": {
     "account-update-below": "Below you can update both e-mail and password",
     "email": "E-mail",
@@ -19,9 +12,9 @@
     "email-update": "Update e-mail",
     "email-valid": "E-mail must be valid",
     "password": "Password",
-    "password-new": "New password",
     "password-current": "Current password",
     "password-match": "Passwords must match",
+    "password-new": "New password",
     "password-repeat": "Repeat password",
     "password-update": "Update password",
     "password-updated": "Password updated",
@@ -29,13 +22,21 @@
     "sign-out": "Sign Out",
     "sign-up": "Sign Up"
   },
+  "components": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "field": "Field",
+    "required": "{text} is required",
+    "save": "Save"
+  },
   "fields": {
     "name": "Name"
-  },  
+  },
   "items": {
+    "item-deleted": "Item deleted",
     "no-items-found": "No items found",
-    "successfully-updated": "Successfully updated",
-    "successfully-added": "Successfully added"
+    "successfully-added": "Successfully added",
+    "successfully-updated": "Successfully updated"
   },
   "navigation": {
     "account": "Account",
