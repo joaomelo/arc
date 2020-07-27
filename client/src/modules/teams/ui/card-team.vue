@@ -1,9 +1,12 @@
 <template>
-  <ItemView
+  <CardItem
+    :id="item.id"
     :title="item.name"
     :subtitle="item.id"
+    @edit="id => $emit('edit', id)"
+    @del="id => $emit('del', id)"
   >
-    <template v-slot:details>
+    <!-- <template v-slot:details>
       <ItemViewDetail
         label="Admins"
         :display="item.admins"
@@ -17,7 +20,7 @@
         :display="item.members"
       />
     </template>
-    <!-- <template v-slot:actions>
+    <template v-slot:actions>
       <BaseButton
         :disabled="!canEdit"
         class="btn-secondary"
@@ -33,18 +36,15 @@
         {{ $t('forms.delete') }}
       </BaseButton>
     </template> -->
-  </ItemView>
+  </CardItem>
 </template>
 
 <script>
-import { ItemView, ItemViewDetail } from '__cli/modules/items';
+import { CardItem } from '__cli/modules/items';
 
 export default {
-  name: 'TeamView',
-  components: {
-    ItemView,
-    ItemViewDetail
-  },
+  name: 'CardTeam',
+  components: { CardItem },
   props: {
     item: {
       type: Object,

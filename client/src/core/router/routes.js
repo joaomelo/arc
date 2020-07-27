@@ -21,7 +21,8 @@ const routes = [
     children: [
       { path: '/dashboard', name: 'dashboard', component: PageDashboard },
       { path: '/teams/list', name: 'teams', component: PageTeams },
-      { path: '/teams/add', name: 'teams-add', component: PageTeam },
+      { path: '/teams/add', name: 'team-add', component: PageTeam },
+      { path: '/teams/edit/:id', name: 'team-edit', component: PageTeam, props: true },
       { path: '/account/edit', name: 'account', component: PageAccount },
       { path: '/preferences/edit', name: 'preferences', component: PagePreferences }
     ]

@@ -6,27 +6,46 @@
       </v-toolbar-title>
       <v-spacer />
       <slot />
+      <BtnAdd @add="$emit('add')" />
     </v-toolbar>
     <v-divider />
     <v-card-text>
-      <ListItems
-        :view="$attrs.view"
-        :items="$attrs.items"
-      />
+      <div v-if="items.length > 0">
+        <div
+          v-for="item in items"
+          :key="item.id"
+          :item="item"
+        >
+          <!-- the item can be rendered whatever way wanted -->
+          <!-- just use the renderItem slot to implement -->
+          <!-- CardItem component is a helpful optional default -->
+          <slot
+            name="renderItem"
+            :item="item"
+          />
+        </div>
+      </div>
+      <p v-else>
+        {{ $t("items.no-items-found") }}
+      </p>
     </v-card-text>
   </v-card>
 </template>
 
 <script>
-import ListItems from './list-items';
+import { BtnAdd } from '__cli/core/components';
 
 export default {
   name: 'PageItems',
-  components: { ListItems },
+  components: { BtnAdd },
   props: {
     title: {
       type: String,
       default: ''
+    },
+    items: {
+      type: Array,
+      required: true
     }
   }
 };

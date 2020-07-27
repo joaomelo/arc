@@ -15,7 +15,7 @@ export default {
   name: 'PageItem',
   components: { EnhancedDialog },
   props: {
-    itemId: {
+    id: {
       type: String,
       default: 'add'
     },
@@ -33,11 +33,11 @@ export default {
       },
       update: {
         message: this.$t('items.successfully-updated'),
-        itemClone: { ...this.collection.getItem(this.itemId) },
+        itemClone: { ...this.collection.getItem(this.id) },
         action: 'update'
       }
     };
-    const key = this.itemId === 'add' ? 'add' : 'update';
+    const key = this.id === 'add' ? 'add' : 'update';
 
     return outfit[key];
   },

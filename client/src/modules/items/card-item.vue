@@ -9,10 +9,8 @@
     >
       <slot name="details" />
     </v-card-text>
-    <v-divider v-if="$slots.actions || $slots.details" />
+    <v-divider />
     <v-card-actions>
-      <v-spacer />
-      <slot name="actions" />
       <v-btn
         v-if="$slots.details"
         icon
@@ -22,14 +20,31 @@
           {{ folded ? "mdi-unfold-more-horizontal" : "mdi-unfold-less-horizontal" }}
         </v-icon>
       </v-btn>
+      <v-spacer />
+      <BaseButton
+        icon="mdi-pencil"
+        @click="$emit('edit', id)"
+      />
+      <BaseButton
+        icon="mdi-delete"
+        @click="$emit('del', id)"
+      />
+      <slot name="actions" />
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
+import { BaseButton } from '__cli/core/components';
+
 export default {
-  name: 'ItemView',
+  name: 'CardItem',
+  components: { BaseButton },
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     title: {
       type: String,
       required: true

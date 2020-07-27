@@ -1,27 +1,44 @@
 <template>
   <PageItems
     :title="$tc('teams.team', 2)"
-    :view="TeamView"
     :items="teamsCollection.items"
+    @add="add"
   >
-    <BtnAdd @add="$router.push({name: 'teams-add'})" />
+    <template v-slot:renderItem="{ item }">
+      <CardTeam
+        class="mt-2"
+        :item="item"
+        @edit="edit"
+        @del="del"
+      />
+    </template>
   </PageItems>
 </template>
 
 <script>
-import { BtnAdd } from '__cli/core/components';
 import { PageItems } from '__cli/modules/items';
 import { teamsCollection } from '../domain';
-import TeamView from './team-view';
+import CardTeam from './card-team';
 
 export default {
   name: 'PageTeams',
-  components: { BtnAdd, PageItems },
+  components: { PageItems, CardTeam },
   data () {
     return {
-      TeamView,
+      CardTeam,
       teamsCollection
     };
+  },
+  methods: {
+    add () {
+      this.$router.push({ name: 'team-add' });
+    },
+    edit (id) {
+      this.$router.push({ name: 'team-edit', params: { id } });
+    },
+    del (id) {
+      this.teamsCollection.del(id);
+    }
   }
 };
 </script>
