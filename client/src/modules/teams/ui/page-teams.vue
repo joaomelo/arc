@@ -8,8 +8,6 @@
       <CardTeam
         class="mt-2"
         :item="item"
-        @edit="edit"
-        @del="del"
       />
     </template>
   </PageItems>
@@ -32,12 +30,6 @@ export default {
   methods: {
     add () {
       this.$router.push({ name: 'team-add' });
-    },
-    edit (id) {
-      this.$router.push({ name: 'team-edit', params: { id } });
-    },
-    del (id) {
-      this.teamsCollection.del(id);
     }
   }
 };

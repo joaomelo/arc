@@ -1,10 +1,8 @@
 <template>
   <CardItem
-    :id="item.id"
-    :title="item.name"
-    :subtitle="item.id"
-    @edit="id => $emit('edit', id)"
-    @del="id => $emit('del', id)"
+    :item="item"
+    :collection="teamsCollection"
+    edit-route="team-edit"
   >
     <!-- <template v-slot:details>
       <ItemViewDetail
@@ -41,6 +39,7 @@
 
 <script>
 import { CardItem } from '__cli/modules/items';
+import { teamsCollection } from '../domain';
 
 export default {
   name: 'CardTeam',
@@ -50,6 +49,11 @@ export default {
       type: Object,
       required: true
     }
+  },
+  data () {
+    return {
+      teamsCollection
+    };
   }
 };
 </script>
