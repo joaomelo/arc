@@ -68,7 +68,7 @@ class FirestoreAdapter {
     const docRef = this.collection.reference.doc(id);
     return docRef
       .update({ isActive: false })
-      .then(() => this.checkAndVersion(docRef, id, 'del'));
+      .then(() => this.checkAndVersion(docRef, { id }, 'del'));
   }
 
   convertItemToActiveDoc (item) {
