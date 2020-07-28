@@ -14,5 +14,13 @@ service cloud.firestore {
     match /teams/{teamsId}/history/{historyUd} {
       allow read, write: if request.auth.uid != null;
     }
+
+    match /challenges/{challengeId} {
+      allow read, write: if request.auth.uid != null;
+    }
+
+    match /challenges/{challengesId}/history/{historyUd} {
+      allow read, write: if request.auth.uid != null;
+    }
   }
 }

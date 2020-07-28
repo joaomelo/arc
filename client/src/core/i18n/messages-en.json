@@ -30,7 +30,8 @@
     "save": "Save"
   },
   "fields": {
-    "name": "Name"
+    "name": "Name",
+    "title": "Title"
   },
   "items": {
     "item-deleted": "Item deleted",
@@ -41,8 +42,7 @@
   "navigation": {
     "account": "Account",
     "home": "Home",
-    "preferences": "Preferences",
-    "teams": "Teams"
+    "preferences": "Preferences"
   },
   "profiles": {
     "language": "Language",
@@ -52,6 +52,9 @@
     "preferences-updated": "Preferences updated",
     "public-email": "Public e-mail",
     "update-preferences": "Update preferences"
+  },
+  "challenges": {
+    "challenge": "Challenge | Challenges"
   },
   "teams": {
     "team": "Team | Teams"

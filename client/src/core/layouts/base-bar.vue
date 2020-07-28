@@ -50,11 +50,18 @@
             <v-list-item-title>{{ $t('navigation.home') }}</v-list-item-title>
           </v-list-item>
 
+          <v-list-item :to="{ name: 'challenges' }">
+            <v-list-item-icon>
+              <v-icon>mdi-image-filter-hdr</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>{{ $tc('challenges.challenge', 2) }}</v-list-item-title>
+          </v-list-item>
+
           <v-list-item :to="{ name: 'teams' }">
             <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
+              <v-icon>mdi-account-supervisor-circle</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>{{ $t('navigation.teams') }}</v-list-item-title>
+            <v-list-item-title>{{ $tc('teams.team', 2) }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item :to="{ name: 'account' }">

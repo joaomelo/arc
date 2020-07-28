@@ -30,7 +30,8 @@
     "save": "Salvar"
   },
   "fields": {
-    "name": "Nome"
+    "name": "Nome",
+    "title": "Título"
   },
   "items": {
     "item-deleted": "Item excluído",
@@ -41,8 +42,7 @@
   "navigation": {
     "account": "Conta",
     "home": "Início",
-    "preferences": "Preferências",
-    "teams": "Times"
+    "preferences": "Preferências"
   },
   "profiles": {
     "language": "Idioma",
@@ -52,6 +52,9 @@
     "preferences-updated": "Preferências atualizadas",
     "public-email": "E-mail público",
     "update-preferences": "Atualizar preferências"
+  },
+  "challenges": {
+    "challenge": "Desafio | Desafios"
   },
   "teams": {
     "team": "Time | Times"
