@@ -1,5 +1,5 @@
 import BaseDialog from './base-dialog';
 import FormDialog from './form-dialog';
-import EnhancedDialog from './enhanced-dialog';
+import LoaderDialog from './loader-dialog';
 
-export { BaseDialog, FormDialog, EnhancedDialog };
+export { BaseDialog, FormDialog, LoaderDialog };

@@ -32,7 +32,7 @@
 
 <script>
 import { BaseButton } from '__cli/core/components';
-import { startLoading, showInfo, showError } from '__cli/core/busui';
+import { showInfo, showError } from '__cli/core/busui';
 
 export default {
   name: 'CardItem',
@@ -69,11 +69,11 @@ export default {
       this.$router.push({ name: this.editRoute, params: { id: this.item.id } });
     },
     del () {
-      const stop = startLoading();
+      // no loader is required since firestore
+      // will give a offline fast response
       this.collection.del(this.item.id)
         .then(() => showInfo(this.$t('items.item-deleted')))
-        .catch(error => showError(error.message))
-        .finally(() => stop());
+        .catch(error => showError(error.message));
     }
   }
 };

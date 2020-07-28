@@ -1,19 +1,20 @@
 <template>
-  <EnhancedDialog
+  <FormDialog
     v-bind="$attrs"
-    :action="() => save()"
-    :message="message"
+    @save="save"
+    @cancel="cancel"
   >
     <slot :itemClone="itemClone" />
-  </EnhancedDialog>
+  </FormDialog>
 </template>
 
 <script>
-import { EnhancedDialog } from '__cli/core/components';
+import { showSuccess, showError } from '__cli/core/busui';
+import { FormDialog } from '__cli/core/components';
 
 export default {
   name: 'PageItem',
-  components: { EnhancedDialog },
+  components: { FormDialog },
   props: {
     id: {
       type: String,
@@ -43,7 +44,13 @@ export default {
   },
   methods: {
     save () {
-      return this.collection[this.action](this.itemClone);
+      this.collection[this.action](this.itemClone)
+        .then(() => showSuccess(this.message))
+        .catch(error => showError(error.message));
+      this.$router.go(-1);
+    },
+    cancel () {
+      this.$router.go(-1);
     }
   }
 };

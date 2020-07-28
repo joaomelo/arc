@@ -8,7 +8,7 @@
       {{ $t('auth.email-current', { email: authState.userData && authState.userData.email }) }}<br>
       {{ $t('auth.account-update-below') }}
     </v-alert>
-    <EnhancedDialog
+    <LoaderDialog
       :title="$t('auth.email-update')"
       :action="() => updateEmailAccount()"
       :message="$t('auth.email-sent')"
@@ -23,8 +23,8 @@
         class="mt-3"
         :label="$t('auth.password-current')"
       />
-    </EnhancedDialog>
-    <EnhancedDialog
+    </LoaderDialog>
+    <LoaderDialog
       class="mt-8"
       :title="$t('auth.password-update')"
       :action="() => updatePasswordAccount()"
@@ -42,11 +42,11 @@
         class="mt-3"
         :label="$t('auth.password-current')"
       />
-    </EnhancedDialog>
+    </LoaderDialog>
   </div>
 </template>
 <script>
-import { EnhancedDialog } from '__cli/core/components';
+import { LoaderDialog } from '__cli/core/components';
 import { authState, updateEmail, updatePassword } from '../domain';
 import ControlEmail from './control-email';
 import ControlPassword from './control-password';
@@ -54,7 +54,7 @@ import ControlPassword from './control-password';
 export default {
   name: 'PageAccount',
   components: {
-    EnhancedDialog,
+    LoaderDialog,
     ControlEmail,
     ControlPassword
   },

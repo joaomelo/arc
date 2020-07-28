@@ -13,7 +13,7 @@ import { startLoading, showSuccess, showError } from '__cli/core/busui';
 import FormDialog from './form-dialog';
 
 export default {
-  name: 'EnhancedForm',
+  name: 'LoaderDialog',
   components: { FormDialog },
   props: {
     action: {

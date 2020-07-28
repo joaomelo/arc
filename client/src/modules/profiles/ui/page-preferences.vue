@@ -1,5 +1,5 @@
 <template>
-  <EnhancedDialog
+  <LoaderDialog
     :title="$t('profiles.update-preferences')"
     :action="() => updatePreferences()"
     :message="$t('profiles.preferences-updated')"
@@ -24,17 +24,17 @@
       :rules="[v => !!v || this.$t('profiles.language-required')]"
       required
     />
-  </EnhancedDialog>
+  </LoaderDialog>
 </template>
 
 <script>
-import { EnhancedDialog, ControlText } from '__cli/core/components';
+import { LoaderDialog, ControlText } from '__cli/core/components';
 import { supportedLocales } from '__cli/core/i18n';
 import { profilesCollection, getCurrentProfile } from '../domain';
 
 export default {
   name: 'PagePreferences',
-  components: { EnhancedDialog, ControlText },
+  components: { LoaderDialog, ControlText },
   data () {
     const { publicEmail, nickname, locale } = getCurrentProfile();
     return {
