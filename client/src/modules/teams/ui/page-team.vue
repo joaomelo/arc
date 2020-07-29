@@ -10,18 +10,18 @@
       :label="$t('fields.name')"
       is-required
     />
+    <ControlSelect
+      v-model="itemClone.managers"
+      :label="$t('fields.teams.managers')"
+      :is-multiple="true"
+      :is-object-driven="true"
+      :options="$store.getters.getOtherProfiles"
+    />
     <!-- <ControlText
       v-if="clone.owner"
       v-model="clone.owner.title"
       :label="$t('fields.teams.owner')"
       read-only
-    />
-    <ControlSelect
-      v-model="clone.managers"
-      :label="$t('fields.teams.managers')"
-      :is-multiple="true"
-      :is-object-driven="true"
-      :options="$store.getters.getOtherProfiles"
     />
     <ControlSelect
       v-model="clone.staff"
