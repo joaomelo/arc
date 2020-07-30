@@ -23,13 +23,17 @@ export default {
     collection: {
       type: Object,
       required: true
+    },
+    defaultItem: {
+      type: Object,
+      default: () => {}
     }
   },
   data () {
     const outfit = {
       add: {
         message: this.$t('items.successfully-added'),
-        itemClone: {},
+        itemClone: { ...this.defaultItem },
         action: 'add'
       },
       update: {

@@ -4,46 +4,40 @@
     :collection="teamsCollection"
     edit-route="team-edit"
   >
-    <!-- <template v-slot:details>
-      <ItemViewDetail
-        label="Admins"
-        :display="item.admins"
+    <template v-slot:details>
+      <CardItemDetail
+        v-model="item.owner"
+        :label="$t('teams.owner')"
+        item-text="publicEmail"
+        item-value="id"
+        :items="profilesCollection.items"
       />
-      <ItemViewDetail
-        label="Editors"
-        :display="item.editors"
+      <CardItemDetail
+        v-model="item.editors"
+        :label="$tc('teams.editors', 2)"
+        item-text="publicEmail"
+        item-value="id"
+        :items="profilesCollection.items"
       />
-      <ItemViewDetail
-        label="Members"
-        :display="item.members"
+      <CardItemDetail
+        v-model="item.members"
+        :label="$tc('teams.members', 2)"
+        item-text="publicEmail"
+        item-value="id"
+        :items="profilesCollection.items"
       />
     </template>
-    <template v-slot:actions>
-      <BaseButton
-        :disabled="!canEdit"
-        class="btn-secondary"
-        @click="$emit('edit')"
-      >
-        {{ $t('forms.edit') }}
-      </BaseButton>
-      <BaseButton
-        :disabled="!canEdit"
-        class="btn-secondary"
-        @click="$emit('del')"
-      >
-        {{ $t('forms.delete') }}
-      </BaseButton>
-    </template> -->
   </CardItem>
 </template>
 
 <script>
-import { CardItem } from '__cli/modules/items';
+import { CardItem, CardItemDetail } from '__cli/modules/items';
 import { teamsCollection } from '../domain';
+import { profilesCollection } from '__cli/modules/profiles';
 
 export default {
   name: 'CardTeam',
-  components: { CardItem },
+  components: { CardItem, CardItemDetail },
   props: {
     item: {
       type: Object,
@@ -52,7 +46,8 @@ export default {
   },
   data () {
     return {
-      teamsCollection
+      teamsCollection,
+      profilesCollection
     };
   }
 };

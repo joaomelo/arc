@@ -58,6 +58,8 @@
   },
   "teams": {
     "team": "Time | Times",
-    "editors": "Editor | Editores"
+    "owner": "Proprietário",
+    "editors": "Editor | Editores",
+    "members": "Membro | Membros"
   }
 }

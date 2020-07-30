@@ -58,6 +58,8 @@
   },
   "teams": {
     "team": "Team | Teams",
-    "editors": "Editor | Editors"
+    "owner": "Owner",
+    "editors": "Editor | Editors",
+    "members": "Member | Members"
   }
 }

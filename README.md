@@ -12,7 +12,7 @@ The system is built under few concepts streamlined from management methodologies
 
 Are the central places for the whole app. It groups any number of people, even one person is a perfect valid team setup, around a management environment with challenges and other work related items.
 
-Every team has at least one admin which defaults to the item creator, editors whom are users with limited data editing capabilities and members whom could see team data and edit data in work items delegated to them.
+Every team has a owner which defaults to the item creator, editors whom are users with some editing capabilities and members whom could see team data and edit data in work items delegated to them.
 
 ### Assets
 

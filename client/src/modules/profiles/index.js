@@ -1,4 +1,4 @@
 import './init';
 
-export { profilesCollection } from './domain';
+export { profilesCollection, getCurrentProfile } from './domain';
 export { PagePreferences } from './ui';

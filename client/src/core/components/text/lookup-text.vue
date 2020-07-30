@@ -9,15 +9,27 @@
 
 <script>
 export default {
-  name: 'ItemViewDetail',
+  name: 'LookupText',
   props: {
-    label: {
-      type: String,
-      default: ''
-    },
-    display: {
+    value: {
       type: [String, Number, Boolean, Array, Date],
       default: null
+    },
+    label: {
+      type: String,
+      default: null
+    },
+    text: {
+      type: String,
+      required: true
+    },
+    key: {
+      type: String,
+      required: true
+    },
+    items: {
+      type: Array,
+      required: true
     }
   },
   computed: {
