@@ -10,8 +10,10 @@ if (appEnviroment() === 'dev') {
     host: 'localhost:8080',
     ssl: false
   });
+} else {
+  // offline compatibility, if set with emulators
+  // cause firestore to point to cloud server
+  firedb.enablePersistence().catch(e => console.error(e));
 }
-// offline compatibility
-firedb.enablePersistence().catch(e => console.error(e));
 
 export { fireapp, fireauth, firedb };
