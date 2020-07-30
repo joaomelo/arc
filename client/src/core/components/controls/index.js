@@ -1,4 +1,4 @@
 import ControlText from './control-text';
-import ControlAutocomplete from './control-autocomplete';
+import ControlSelect from './control-select';
 
-export { ControlText, ControlAutocomplete };
+export { ControlText, ControlSelect };

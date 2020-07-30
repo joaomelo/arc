@@ -57,6 +57,7 @@
     "challenge": "Desafio | Desafios"
   },
   "teams": {
-    "team": "Time | Times"
+    "team": "Time | Times",
+    "editors": "Editor | Editores"
   }
 }

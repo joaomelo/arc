@@ -57,6 +57,7 @@
     "challenge": "Challenge | Challenges"
   },
   "teams": {
-    "team": "Team | Teams"
+    "team": "Team | Teams",
+    "editors": "Editor | Editors"
   }
 }
