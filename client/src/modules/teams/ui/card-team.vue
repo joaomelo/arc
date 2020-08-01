@@ -5,25 +5,25 @@
     edit-route="team-edit"
   >
     <template v-slot:details>
-      <CardItemDetail
-        v-model="item.owner"
+      <LookupText
+        :value="item.owner"
         :label="$t('teams.owner')"
-        item-text="publicEmail"
-        item-value="id"
+        text-field="publicEmail"
+        key-field="id"
         :items="profilesCollection.items"
       />
-      <CardItemDetail
-        v-model="item.editors"
+      <LookupText
+        :value="item.editors"
         :label="$tc('teams.editors', 2)"
-        item-text="publicEmail"
-        item-value="id"
+        text-field="publicEmail"
+        key-field="id"
         :items="profilesCollection.items"
       />
-      <CardItemDetail
-        v-model="item.members"
+      <LookupText
+        :value="item.members"
         :label="$tc('teams.members', 2)"
-        item-text="publicEmail"
-        item-value="id"
+        text-field="publicEmail"
+        key-field="id"
         :items="profilesCollection.items"
       />
     </template>
@@ -31,13 +31,14 @@
 </template>
 
 <script>
-import { CardItem, CardItemDetail } from '__cli/modules/items';
+import { LookupText } from '__cli/core/components';
+import { CardItem } from '__cli/modules/items';
 import { teamsCollection } from '../domain';
 import { profilesCollection } from '__cli/modules/profiles';
 
 export default {
   name: 'CardTeam',
-  components: { CardItem, CardItemDetail },
+  components: { CardItem, LookupText },
   props: {
     item: {
       type: Object,

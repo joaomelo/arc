@@ -1,29 +1,26 @@
 <template>
-  <p
-    v-if="display"
-    class="my-1 mx-0"
-  >
-    <strong v-if="label">{{ label }}: </strong> {{ displayValue }}
-  </p>
+  <BaseText
+    v-bind="$attrs"
+    :value="lookedupValue"
+  />
 </template>
 
 <script>
+import BaseText from './base-text';
+
 export default {
   name: 'LookupText',
+  components: { BaseText },
   props: {
     value: {
       type: [String, Number, Boolean, Array, Date],
       default: null
     },
-    label: {
-      type: String,
-      default: null
-    },
-    text: {
+    textField: {
       type: String,
       required: true
     },
-    key: {
+    keyField: {
       type: String,
       required: true
     },
@@ -33,14 +30,20 @@ export default {
     }
   },
   computed: {
-    displayValue () {
-      let result = this.display;
-      if (Array.isArray(this.display)) {
-        result = (this.display.length > 0)
-          ? this.display.map(d => d.title || d).join(', ')
-          : null;
+    lookedupValue () {
+      if (!this.value || (Array.isArray(this.value) && this.value.length <= 0)) return;
+
+      const getText = key => {
+        const item = this.items.find(i => i[this.keyField] === key);
+        const text = item[this.textField];
+        return text;
       };
-      return result;
+
+      const lookedupValue = Array.isArray(this.value)
+        ? this.value.map(getText)
+        : getText(this.value);
+
+      return lookedupValue;
     }
   }
 };
