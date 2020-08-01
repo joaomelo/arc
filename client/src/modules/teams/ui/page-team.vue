@@ -11,6 +11,11 @@
       :label="$t('fields.name')"
       is-required
     />
+    <ControlTextarea
+      v-model="itemClone.description"
+      :label="$t('fields.description')"
+      is-required
+    />
     <ControlSelect
       v-model="itemClone.owner"
       :label="$t('teams.owner')"
@@ -40,7 +45,7 @@
 </template>
 
 <script>
-import { ControlText, ControlSelect } from '__cli/core/components';
+import { ControlText, ControlTextarea, ControlSelect } from '__cli/core/components';
 import { PageItem } from '__cli/modules/items';
 import { profilesCollection, getCurrentProfile } from '__cli/modules/profiles';
 import { teamsCollection } from '../domain';
@@ -50,6 +55,7 @@ export default {
   components: {
     PageItem,
     ControlText,
+    ControlTextarea,
     ControlSelect
   },
   data () {

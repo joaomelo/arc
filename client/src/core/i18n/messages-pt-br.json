@@ -31,7 +31,8 @@
   },
   "fields": {
     "name": "Nome",
-    "title": "Título"
+    "title": "Título",
+    "description": "Descrição"
   },
   "items": {
     "item-deleted": "Item excluído",

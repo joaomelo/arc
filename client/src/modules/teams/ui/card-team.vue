@@ -26,19 +26,23 @@
         key-field="id"
         :items="profilesCollection.items"
       />
+      <BaseText
+        :value="item.description"
+        :label="$t('fields.description')"
+      />
     </template>
   </CardItem>
 </template>
 
 <script>
-import { LookupText } from '__cli/core/components';
+import { BaseText, LookupText } from '__cli/core/components';
 import { CardItem } from '__cli/modules/items';
 import { teamsCollection } from '../domain';
 import { profilesCollection } from '__cli/modules/profiles';
 
 export default {
   name: 'CardTeam',
-  components: { CardItem, LookupText },
+  components: { CardItem, BaseText, LookupText },
   props: {
     item: {
       type: Object,

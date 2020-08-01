@@ -81,18 +81,38 @@ class FirestoreAdapter {
     delete doc.collection;
     doc.isActive = true;
 
+    // remove fields passed as empty arrays
+    const firebase = this.collection.reference.firestore.app.firebase_;
+    const deleteField = firebase.firestore.FieldValue.delete();
+    for (const property in doc) {
+      if (Array.isArray(doc[property]) && doc[property].length <= 0) {
+        doc[property] = deleteField;
+      }
+    }
+
     return doc;
   }
 
   async checkAndVersion (docRef, payload, operation) {
     if (this.options.saveMode !== 'safe') return;
 
+    const copyPayload = { ...payload };
+
+    // clearing firestore field values objects from payload
+    // note that Fa is a key used by Firestore library
+    // it was captured by inspecting console log no docs where found about it
+    for (const property in copyPayload) {
+      if (copyPayload[property].Fa === 'FieldValue.delete') {
+        copyPayload[property] = 'FieldValue.delete';
+      }
+    }
+
     const app = this.collection.reference.firestore.app;
     const versionDoc = {
       when: app.firebase_.firestore.FieldValue.serverTimestamp(),
       who: app.auth().currentUser.uid,
       how: operation,
-      what: JSON.stringify(payload)
+      what: JSON.stringify(copyPayload)
     };
 
     return docRef

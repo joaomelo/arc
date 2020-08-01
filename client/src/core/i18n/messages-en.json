@@ -31,7 +31,8 @@
   },
   "fields": {
     "name": "Name",
-    "title": "Title"
+    "title": "Title",
+    "description": "Description"
   },
   "items": {
     "item-deleted": "Item deleted",

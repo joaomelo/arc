@@ -1,5 +1,5 @@
 import { BehaviorSubject, Subject } from 'rxjs';
-import { FirestoreAdapter } from './firestore-adapter';
+import { FirestoreAdapter } from './adapter';
 
 class Collection {
   constructor (name, options) {
