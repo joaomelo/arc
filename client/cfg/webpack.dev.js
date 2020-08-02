@@ -1,0 +1,25 @@
+'use strict';
+const Dotenv = require('dotenv-webpack');
+const { merge } = require('webpack-merge');
+
+const common = require('./webpack.common.js');
+
+module.exports = merge(common, {
+  mode: 'development',
+  output: {
+    filename: '[name].[hash].bundle.js'
+  },
+  devServer: {
+    hot: true,
+    port: 8080,
+    historyApiFallback: true,
+    noInfo: false,
+    stats: 'normal',
+    watchOptions: {
+      poll: true
+    }
+  },
+  plugins: [
+    new Dotenv({ path: './client/cfg/dev.env' })
+  ]
+});
