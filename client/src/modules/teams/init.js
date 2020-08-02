@@ -1,3 +1,3 @@
-import { plugCollection } from './domain';
+import { bindTeamsCollectionToAuth } from './domain';
 
-plugCollection();
+bindTeamsCollectionToAuth();

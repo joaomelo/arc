@@ -14,7 +14,6 @@
     <ControlTextarea
       v-model="itemClone.description"
       :label="$t('fields.description')"
-      is-required
     />
     <ControlSelect
       v-model="itemClone.owner"

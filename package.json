@@ -25,6 +25,7 @@
   "dependencies": {
     "@joaomelo/bus": "^1.1.5",
     "core-js": "^3.6.5",
+    "faker": "^4.1.0",
     "lodash-es": "^4.17.15",
     "moment": "^2.27.0",
     "regenerator-runtime": "^0.13.5",
