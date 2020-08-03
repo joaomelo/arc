@@ -2,7 +2,7 @@
   <v-btn
     v-bind="$attrs"
     :color="color"
-    :icon="icon && !text"
+    :icon="!!icon && !text"
     @click="$emit('click')"
   >
     <v-icon
