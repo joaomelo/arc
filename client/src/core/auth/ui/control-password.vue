@@ -1,7 +1,7 @@
 <template>
   <div>
     <ControlText
-      :value="primaryPassword"
+      :value="value"
       :label="label"
       prepend-icon="mdi-lock"
       :append-icon="showPassword ? 'mdi-eye': 'mdi-eye-off'"
@@ -45,9 +45,8 @@ export default {
   data () {
     return {
       showPassword: false,
-      primaryPassword: null,
       shadowPassword: null,
-      shadowRules: [v => this.primaryPassword === this.shadowPassword || this.$t('auth.password-match')]
+      shadowRules: [v => this.value === this.shadowPassword || this.$t('auth.password-match')]
     };
   },
   methods: {

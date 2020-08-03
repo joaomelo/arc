@@ -5,6 +5,7 @@
     :label="label"
     :rules="rules"
     @input="input"
+    @click:append="$emit('click:append')"
   />
 </template>
 <script>
