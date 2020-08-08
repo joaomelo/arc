@@ -5,6 +5,7 @@ module.exports = {
   ignorePatterns: ['*/dist/*'],
   rules: {
     semi: ['error', 'always'],
+    'no-console': ['warn', { allow: ['error'] }],
     'no-debugger': 'warn',
   },
   globals: {

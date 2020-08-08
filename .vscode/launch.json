@@ -2,15 +2,15 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "chrome",
+      "name": "chrome debug",
       "request": "launch",
-      "name": "launch Chrome",
+      "type": "chrome",
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}",
       "userDataDir": false,
       "runtimeArgs": [
-        "--profile-directory=debug-profile"
+        "--profile-directory=\"debug\""
       ]
-    }
+    },
   ]
 }

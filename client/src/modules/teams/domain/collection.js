@@ -1,6 +1,5 @@
 import { Collection } from '__cli/core/collection';
 import { AUTH_STATUSES, authStateChanged } from '__cli/core/auth';
-import { convertTeamToDoc } from './converter';
 
 const teamsCollection = new Collection('teams');
 
@@ -25,20 +24,12 @@ function plugCollection (userId) {
           field: 'isActive',
           operator: '==',
           value: true
-        },
-        {
-          field: '__readers',
-          operator: 'array-contains',
-          value: userId
         }
       ],
       orderBy: {
         field: 'name',
         sort: 'asc'
       }
-    },
-    converters: {
-      fromItemToDoc: convertTeamToDoc
     }
   };
 

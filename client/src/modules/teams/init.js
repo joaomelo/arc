@@ -1,3 +1,4 @@
-import { bindTeamsCollectionToAuth } from './domain';
+import { bindTeamsCollectionToAuth, bindTeamsFlowsToAuth } from './domain';
 
 bindTeamsCollectionToAuth();
+bindTeamsFlowsToAuth();
