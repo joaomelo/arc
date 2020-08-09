@@ -1,7 +1,7 @@
 <template>
   <PageItems
     :title="$tc('teams.team', 2)"
-    :items="teamsCollection.items"
+    :items="teams.items"
     @add="add"
   >
     <template v-slot:renderItem="{ item }">
@@ -15,7 +15,7 @@
 
 <script>
 import { PageItems } from '__cli/modules/items';
-import { teamsCollection } from '../domain';
+import { teams } from '../domain';
 import CardTeam from './card-team';
 
 export default {
@@ -24,7 +24,7 @@ export default {
   data () {
     return {
       CardTeam,
-      teamsCollection
+      teams
     };
   },
   methods: {

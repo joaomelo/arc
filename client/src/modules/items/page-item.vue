@@ -4,7 +4,7 @@
     @save="save"
     @cancel="cancel"
   >
-    <slot :itemClone="itemClone" />
+    <slot />
   </FormDialog>
 </template>
 
@@ -16,40 +16,20 @@ export default {
   name: 'PageItem',
   components: { FormDialog },
   props: {
-    id: {
-      type: String,
-      default: 'add'
-    },
-    collection: {
-      type: Object,
+    action: {
+      type: Function,
       required: true
     },
-    defaultItem: {
+    item: {
       type: Object,
-      default: () => {}
+      required: true
     }
-  },
-  data () {
-    const outfit = {
-      add: {
-        message: this.$t('items.successfully-added'),
-        itemClone: { ...this.defaultItem },
-        action: 'add'
-      },
-      update: {
-        message: this.$t('items.successfully-updated'),
-        itemClone: { ...this.collection.getItem(this.id) },
-        action: 'update'
-      }
-    };
-    const key = this.id === 'add' ? 'add' : 'update';
-
-    return outfit[key];
   },
   methods: {
     save () {
-      this.collection[this.action](this.itemClone)
-        .then(() => showSuccess(this.message))
+      const message = this.$t('items.successfully-saved');
+      this.action(this.item)
+        .then(() => showSuccess(message))
         .catch(error => showError(error.message));
       this.$router.go(-1);
     },

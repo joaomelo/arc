@@ -1,7 +1,7 @@
 <template>
   <CardItem
     :item="item"
-    :collection="teamsCollection"
+    :del="delTeam"
     edit-route="team-edit"
   >
     <template v-slot:details>
@@ -37,7 +37,7 @@
 <script>
 import { BaseText, LookupText } from '__cli/core/components';
 import { CardItem } from '__cli/modules/items';
-import { teamsCollection } from '../domain';
+import { delTeam } from '../domain';
 import { profilesCollection } from '__cli/modules/profiles';
 
 export default {
@@ -51,7 +51,7 @@ export default {
   },
   data () {
     return {
-      teamsCollection,
+      delTeam,
       profilesCollection
     };
   }

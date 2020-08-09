@@ -1,26 +1,26 @@
 import { AUTH_STATUSES, authStateChanged } from '__cli/core/auth';
 import { Stream, River } from '__cli/core/data';
 
-const myTeams = new River();
+const teams = new River();
 
 function bindTeamsFlowsToAuth () {
   return authStateChanged.subscribe(({ status, oldStatus, userData }) => {
     if (status === oldStatus) return;
 
     if (status === AUTH_STATUSES.SIGNEDIN) {
-      plugMyTeams(userData.uid);
+      plugTeams(userData.uid);
     } else {
-      myTeams.disconnect();
+      teams.disconnect();
     }
   });
 }
 
-function plugMyTeams (userId) {
+function plugTeams (userId) {
   const ownedTeams = new Stream(teamOption({ field: 'owner', operator: '==', value: userId }));
   const editedTeams = new Stream(teamOption({ field: 'editors', operator: 'array-contains', value: userId }));
   const memberedTeams = new Stream(teamOption({ field: 'members', operator: 'array-contains', value: userId }));
 
-  myTeams.connect(
+  teams.connect(
     [ownedTeams, editedTeams, memberedTeams],
     { type: 'or' }
   );
@@ -39,4 +39,4 @@ function teamOption (clause) {
   };
 };
 
-export { myTeams, bindTeamsFlowsToAuth };
+export { teams, bindTeamsFlowsToAuth };

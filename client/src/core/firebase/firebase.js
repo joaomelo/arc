@@ -17,4 +17,4 @@ const fireauth = fireapp.auth();
 const firedb = fireapp.firestore();
 firedb.enablePersistence().catch(e => console.error(e));
 
-export { fireapp, fireauth, firedb };
+export { firebase, fireapp, fireauth, firedb };

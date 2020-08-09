@@ -23,7 +23,7 @@
       />
       <BaseButton
         icon="mdi-delete"
-        @click="del"
+        @click="delItem"
       />
       <slot name="actions" />
     </v-card-actions>
@@ -42,8 +42,8 @@ export default {
       type: Object,
       required: true
     },
-    collection: {
-      type: Object,
+    del: {
+      type: Function,
       required: true
     },
     editRoute: {
@@ -68,10 +68,10 @@ export default {
     edit () {
       this.$router.push({ name: this.editRoute, params: { id: this.item.id } });
     },
-    del () {
+    delItem () {
       // no loader is required since firestore
       // will give a offline fast response
-      this.collection.del(this.item.id)
+      this.del(this.item.id)
         .then(() => showInfo(this.$t('items.item-deleted')))
         .catch(error => showError(error.message));
     }

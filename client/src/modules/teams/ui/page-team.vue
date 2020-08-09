@@ -1,22 +1,21 @@
 <template>
   <PageItem
-    v-slot="{ itemClone }"
     v-bind="$attrs"
     :title="$tc('teams.team', 1)"
-    :collection="teamsCollection"
-    :default-item="defaultTeam"
+    :item="team"
+    :action="action"
   >
     <ControlText
-      v-model="itemClone.name"
+      v-model="team.name"
       :label="$t('fields.name')"
       is-required
     />
     <ControlTextarea
-      v-model="itemClone.description"
+      v-model="team.description"
       :label="$t('fields.description')"
     />
     <ControlSelect
-      v-model="itemClone.owner"
+      v-model="team.owner"
       :label="$t('teams.owner')"
       item-text="publicEmail"
       item-value="id"
@@ -25,7 +24,7 @@
       readonly
     />
     <ControlSelect
-      v-model="itemClone.editors"
+      v-model="team.editors"
       :label="$tc('teams.editors', 2)"
       item-text="publicEmail"
       item-value="id"
@@ -33,7 +32,7 @@
       is-multiple
     />
     <ControlSelect
-      v-model="itemClone.members"
+      v-model="team.members"
       :label="$tc('teams.members', 2)"
       item-text="publicEmail"
       item-value="id"
@@ -47,7 +46,7 @@
 import { ControlText, ControlTextarea, ControlSelect } from '__cli/core/components';
 import { PageItem } from '__cli/modules/items';
 import { profilesCollection, getCurrentProfile } from '__cli/modules/profiles';
-import { teamsCollection } from '../domain';
+import { teams, addTeam, updateTeam } from '../domain';
 
 export default {
   name: 'PageTeam',
@@ -57,10 +56,17 @@ export default {
     ControlTextarea,
     ControlSelect
   },
+  props: {
+    id: {
+      type: String,
+      default: 'add'
+    }
+  },
   data () {
+    const isAdd = this.id === 'add';
     return {
-      teamsCollection,
-      defaultTeam: { owner: getCurrentProfile().id },
+      team: isAdd ? { owner: getCurrentProfile().id } : { ...teams.getItem(this.id) },
+      action: isAdd ? addTeam : updateTeam,
       profilesCollection
     };
   }

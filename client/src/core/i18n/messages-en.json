@@ -37,8 +37,7 @@
   "items": {
     "item-deleted": "Item deleted",
     "no-items-found": "No items found",
-    "successfully-added": "Successfully added",
-    "successfully-updated": "Successfully updated"
+    "successfully-saved": "Successfully saved"
   },
   "navigation": {
     "account": "Account",
