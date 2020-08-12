@@ -1,19 +1,21 @@
 module.exports = {
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    parser: 'babel-eslint'
-  },
+    tsconfigRootDir: 'server',
+    project: ['./tsconfig.json'],
+  },  
   ignorePatterns: ['*/dist/*'],
   rules: {
     semi: ['error', 'always'],
     'no-console': ['warn', { allow: ['error'] }],
     'no-debugger': 'warn',
   },
-  globals: {
-    firebase: 'readonly'
-  },
+  plugins: [
+    '@typescript-eslint',
+  ],  
   extends: [
-    'standard',
-    'plugin:vue/recommended',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
-  plugins: ['vue']
 };
