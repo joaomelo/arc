@@ -6,15 +6,11 @@
     "baseUrl": "./",
     "paths": {
       "__cli/*": [
-        "client/src/*"
+        "src/*"
       ],
-      "__ser/*": [
-        "server/src/*"
-      ]
     }
   },
   "exclude": [
-    "node_modules",
     "dist"
   ]
 }

@@ -8,6 +8,9 @@ class River extends Flow {
       case 'or':
         project = joinOr;
         break;
+      case 'left':
+        project = (...values) => joinLeft(values, join);
+        break;
       default:
         throw new Error('Unsupported join type argument');
     }
@@ -19,6 +22,12 @@ class River extends Flow {
 }
 
 function joinOr (...values) {
+  const combinedItems = values.flat();
+  return combinedItems;
+}
+
+function joinLeft (values, join) {
+  // const left = values[0];
   const combinedItems = values.flat();
   return combinedItems;
 }
