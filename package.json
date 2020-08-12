@@ -6,8 +6,9 @@
   "scripts": {
     "start": "npm run dev:client",
     "dev:client": "firebase use dev && webpack-dev-server --config client/cfg/webpack.dev.js",
-    "dev:server": "nodemon --config server/cfg/nodemon.json",
-    "prod:lint": "eslint --fix --ext .js,.vue client/src/",
+    "dev:server": "nodemon --config server/nodemon.json",
+    "lint:client": "eslint --fix --ext .js,.vue client/src/",
+    "lint:server": "eslint --fix --ext .ts server/src/",
     "prod:test": "npm run prod:lint",
     "prod:server:build": "tsc --project server/cfg/tsconfig.json",
     "prod:client:build": "rimraf client/dist/* && webpack --config client/cfg/webpack.prod.js"
