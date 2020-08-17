@@ -4,7 +4,9 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
-    "rootDir": "src"
-  },
-  "include": ["src/**/*"]
+    "rootDir": "src",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es2018", "esnext.asynciterable"]
+  }
 }

@@ -30,6 +30,10 @@ Challenges are pieces of work carved out from results and represent HOW work sho
 
 The app is still in early stages. I work at it as a solo developer in my spare time after my main job working hours. When a version more suitable to experimenting and contributing is available i will update this file with instructions for installing, deploying and contributing. 
 
+## Tooling
+
+Server and client code are separated at most tools except from npm. Stuff like eslint config is keep separated even with repeated configuration to garantee stack indepence.
+
 ## Versioning
 
 I try to use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/joaomelo/arc/tags). 
