@@ -1,5 +1,5 @@
 import { hash } from 'bcryptjs';
-import { Resolver, Query, Mutation, Arg, InputType, Field } from 'type-graphql';
+import { Resolver, Mutation, Arg, InputType, Field } from 'type-graphql';
 import { IsEmail, Min } from 'class-validator';
 import { User } from './user';
 
@@ -19,11 +19,6 @@ class RegisterInput {
 
 @Resolver()
 class RegisterResolver {
-  @Query(() => String)
-  users(): string {    
-    return "Hello world";
-  }
-
   @Mutation(() => User)
   async register(
     @Arg('input') { email, locale, password }: RegisterInput

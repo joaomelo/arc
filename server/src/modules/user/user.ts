@@ -1,20 +1,20 @@
 import { Entity, PrimaryColumn, Generated, Column, BaseEntity } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
 
-@ObjectType()
 @Entity()
+@ObjectType()
 class User extends BaseEntity {
-  @Field(() => ID)
   @PrimaryColumn()
   @Generated("uuid")
+  @Field(() => ID)
   id!: string;
 
-  @Field()
   @Column({ unique: true })
+  @Field()
   email!: string;
 
-  @Field()
   @Column()
+  @Field()
   locale!: string;
 
   @Column()
