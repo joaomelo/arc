@@ -1,3 +1,3 @@
-export { User } from './user';
-export { RegisterResolver } from './register';
+export { User, Locale } from './user';
+export { createUser } from './sign-services';
 export { UserResolver } from './user-resolver';

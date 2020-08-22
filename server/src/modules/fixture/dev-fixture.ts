@@ -1,18 +1,14 @@
 import { internet, company } from 'faker';
 
-import { User } from '../user';
+import { User, createUser } from '../user';
 import { Team, TeamMembership, Role } from '../team';
 
 async function loadDevFixture (): Promise<void> {
-  const userQt = 100;  
-  const teamsQt = userQt / 10;
+  const userQt = 20;  
+  const teamsQt = Math.round(userQt / 10);
 
   for (let i = 0; i <= userQt; i++) {
-    const user = new User();
-    user.email = internet.email();
-    user.locale = "en";
-    user.password = internet.password();
-    await user.save();
+    await createUser(internet.email(), "unsecure");
   }
 
   const users = await User.find();
