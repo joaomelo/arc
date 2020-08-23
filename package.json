@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "npm run dev:client",
-    "dev:client": "webpack-dev-server --config client/cfg/webpack.dev.js",
+    "dev:client": "webpack --watch --env dev --config client/webpack.config.js",
     "dev:server": "ts-node-dev --respawn --project server/tsconfig.json server/src/index.ts",
     "lint:client": "eslint --ext .ts,.vue client/src/",
     "lint:server": "eslint --ext .ts server/src/",

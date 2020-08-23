@@ -1,4 +1,5 @@
-import "reflect-metadata";
+import 'reflect-metadata';
+import { join } from 'path';
 import express from 'express';
 import { createDbConnection } from './core/db';
 import { applyGraphqlMiddleware } from './core/graphql';
@@ -11,18 +12,20 @@ async function main (): Promise<void> {
 
   const app: express.Application = express();
   const port = 3000;
-  
+
   await applyGraphqlMiddleware(app);
 
+  const staticRoot = join(__dirname, 'public');
+  app.use(express.static(staticRoot));
+
   app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.redirect('/index.html');
   });
-  
+
   app.listen(port, () => {
     console.log(`app listening at http://localhost:${port}`);
     console.log(`graphql at http://localhost:${port}/graphql`);
-  });  
+  });
 }
 
-void main();
-
+main().catch(e => console.error(e));

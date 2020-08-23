@@ -12,7 +12,7 @@
 
       <v-img
         alt="mt"
-        src="/static/logo.png"
+        src="/images/logo.png"
         max-height="32"
         max-width="32"
         class="mr-2"
