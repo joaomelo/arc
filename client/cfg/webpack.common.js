@@ -6,12 +6,12 @@ const { VueLoaderPlugin } = require('vue-loader');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 const path = require('path');
-const clientDist = path.resolve(__dirname, '../dist');
+const clientDist = path.resolve(__dirname, '../../server/src/static');
 const clientSrc = path.resolve(__dirname, '../src');
 
 module.exports = {
   devtool: 'source-map',
-  entry: `${clientSrc}/index.js`,
+  entry: `${clientSrc}/index.ts`,
   output: {
     publicPath: '/',
     path: clientDist
@@ -33,7 +33,7 @@ module.exports = {
     alias: {
       __cli: clientSrc
     },
-    extensions: ['.js', '.json', '.vue']
+    extensions: ['.ts', '.js', '.json', '.vue']
   },
   module: {
     rules: [
@@ -45,6 +45,11 @@ module.exports = {
       {
         test: /\.vue$/,
         use: 'vue-loader'
+      },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.js$/,

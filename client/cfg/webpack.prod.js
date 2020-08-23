@@ -1,5 +1,3 @@
-const Dotenv = require('dotenv-webpack');
-
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -7,8 +5,5 @@ module.exports = merge(common, {
   mode: 'production',
   output: {
     filename: '[name].[contenthash].bundle.js'
-  },
-  plugins: [
-    new Dotenv({ path: './client/cfg/prod.env' })
-  ]
+  }
 });

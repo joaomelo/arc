@@ -1,5 +1,4 @@
 'use strict';
-const Dotenv = require('dotenv-webpack');
 const { merge } = require('webpack-merge');
 
 const common = require('./webpack.common.js');
@@ -18,8 +17,5 @@ module.exports = merge(common, {
     watchOptions: {
       poll: true
     }
-  },
-  plugins: [
-    new Dotenv({ path: './client/cfg/dev.env' })
-  ]
+  }
 });

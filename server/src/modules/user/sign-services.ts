@@ -7,6 +7,7 @@ async function createUser(email: string, password: string): Promise<User> {
   //TODO: what if its a invalid email
   //TODO: what if the password is insecure
   //TODO: make en locale defaulted in the model class
+  //move hasing to hook? => https://typeorm.io/#/listeners-and-subscribers/beforeinsert
 
   const hashedPassword = await hash(password, 12);
 
@@ -28,7 +29,7 @@ async function signIn(email: string, password: string): Promise<string> {
   if (!isSamePassword) throw new Error("failed to sign user");
 
   const key = 'shouldbereplaced';
-  const exp = Math.floor(Date.now() / 1000) + (60 * 60 * 6); //expires in 6 hours
+  const exp = Math.floor(Date.now() / 1000) + (15 * 60); //expires in 15 minutes
   const token = sign(
     {
       exp,
