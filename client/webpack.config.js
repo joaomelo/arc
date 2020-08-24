@@ -13,7 +13,7 @@ module.exports = (env, argv) => {
   return {
     mode: env.prod ? 'production' : 'development',
     devtool: 'source-map',
-    entry: `${clientSrc}/index.ts`,
+    entry: `${clientSrc}/index.js`,
     output: {
       publicPath: '/',
       path: clientDist,
@@ -36,7 +36,7 @@ module.exports = (env, argv) => {
       alias: {
         __cli: clientSrc
       },
-      extensions: ['.ts', '.js', '.json', '.vue']
+      extensions: ['.js', '.json', '.vue']
     },
     module: {
       rules: [
@@ -48,11 +48,6 @@ module.exports = (env, argv) => {
         {
           test: /\.vue$/,
           use: 'vue-loader'
-        },
-        {
-          test: /\.ts$/,
-          use: 'ts-loader',
-          exclude: /node_modules/
         },
         {
           test: /\.js$/,
