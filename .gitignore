@@ -14,8 +14,9 @@ env/
 # database connection data
 ormconfig.json
 
-# Dist folder
+# dist and public folders
 dist/
+public/
 
 # Firebase cache
 .firebase/
