@@ -78,7 +78,7 @@
             <v-list-item-title>{{ $t('navigation.preferences') }}</v-list-item-title>
           </v-list-item>
 
-          <v-list-item @click="signOut">
+          <v-list-item @click="handleSignout">
             <v-list-item-icon>
               <v-icon>mdi-logout</v-icon>
             </v-list-item-icon>
@@ -92,7 +92,7 @@
 
 <script>
 import { appTitle } from '__cli/core/meta';
-import { signOut } from '__cli/core/auth';
+// import { signOut } from '__cli/core/auth';
 
 export default {
   name: 'BaseBar',
@@ -114,7 +114,9 @@ export default {
     };
   },
   methods: {
-    signOut
+    handleSignout () {
+      // signOut();
+    }
   }
 };
 </script>

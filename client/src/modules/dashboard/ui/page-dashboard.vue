@@ -1,9 +1,15 @@
 <template>
-  <h1>Dashboard</h1>
+  <div>
+    <h1>Dashboard</h1>
+    <ListTeams />
+  </div>
 </template>
 
 <script>
+import { ListTeams } from '__cli/modules/teams';
+
 export default {
-  name: 'PageDashboard'
+  name: 'PageDashboard',
+  components: { ListTeams }
 };
 </script>

@@ -1,3 +1,7 @@
-import './init';
+// import { bindTeamsFlowsToAuth } from './domain';
 
-export { PageTeams, PageTeam } from './ui';
+// bindTeamsFlowsToAuth();
+
+// export { PageTeams, PageTeam } from './ui';
+
+export { ListTeams } from './ui';
