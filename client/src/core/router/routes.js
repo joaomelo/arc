@@ -17,6 +17,7 @@ const routes = [
       // { path: '/unverified', name: 'unverified', component: PageUnverified }
     ]
   },
+  { path: '/test', name: 'test', component: PageDashboard },
   {
     path: '/desktop',
     component: LayoutDesktop,

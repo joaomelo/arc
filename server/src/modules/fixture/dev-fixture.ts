@@ -4,7 +4,7 @@ import { User, createUser } from '../user';
 import { Team, TeamMembership, Role } from '../team';
 
 async function loadDevFixture (): Promise<void> {
-  const userQt = 20;  
+  const userQt = 10;  
   const teamsQt = Math.round(userQt / 10);
 
   for (let i = 0; i <= userQt; i++) {
