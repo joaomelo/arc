@@ -41,6 +41,11 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
+          test: /\.(graphql|gql)$/,
+          exclude: /node_modules/,
+          loader: 'graphql-tag/loader'
+        },
+        {
           test: /\.(js|vue)$/,
           use: 'eslint-loader',
           enforce: 'pre'
@@ -97,6 +102,6 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({ template: clientSrc + '/index.html' }),
       new VueLoaderPlugin(),
       new VuetifyLoaderPlugin()
-    ]  
-  }
+    ]
+  };
 };

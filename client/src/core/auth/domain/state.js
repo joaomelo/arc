@@ -1,24 +1,15 @@
 import { BehaviorSubject } from 'rxjs';
+import jwtDecode from 'jwt-decode';
 import { AUTH_STATUSES, AUTH_EVENTS } from './types';
-import { authService, extractUserData } from './service';
 
 const authState = {
-  status: AUTH_STATUSES.UNSOLVED,
+  status: AUTH_STATUSES.SIGNEDOUT,
   userData: null
 };
 
-const authStateChanged = new BehaviorSubject({ ...authState, oldStatus: null, oldUserData: null });
+const authStateSubject = new BehaviorSubject({ ...authState, oldStatus: null, oldUserData: null });
 
-function startListeningToAuthService () {
-  authService.onAuthStateChanged(user => {
-    const AUTH_EVENT = user
-      ? AUTH_EVENTS.USER_SIGNEDIN
-      : AUTH_EVENTS.USER_SIGNEDOUT;
-    triggerAuthStateChanged(AUTH_EVENT, user);
-  });
-}
-
-function triggerAuthStateChanged (event, payload) {
+function triggerAuthStateChange (event, payload) {
   const oldStatus = authState.status;
   const oldUserData = authState.userData ? { ...authState.userData } : null;
 
@@ -30,11 +21,9 @@ function triggerAuthStateChanged (event, payload) {
     }
 
     case AUTH_EVENTS.USER_SIGNEDIN: {
-      const user = payload;
-      authState.status = user.emailVerified
-        ? AUTH_STATUSES.SIGNEDIN
-        : AUTH_STATUSES.PENDING;
-      authState.userData = extractUserData(user);
+      const jwtToken = payload;
+      authState.status = AUTH_STATUSES.SIGNEDIN;
+      authState.userData = extractUserData(jwtToken);
       break;
     }
 
@@ -45,11 +34,23 @@ function triggerAuthStateChanged (event, payload) {
     }
 
     default: {
-      throw new Error(`"triggerAuthStateChanged" was invoked with unknow event: ${event}`);
+      throw new Error(`"triggerAuthStateChange" was invoked with unknown event: ${event}`);
     }
   }
 
-  authStateChanged.next({ ...authState, oldStatus, oldUserData });
+  authStateSubject.next({ ...authState, oldStatus, oldUserData });
 }
 
-export { authState, authStateChanged, startListeningToAuthService, triggerAuthStateChanged };
+function extractUserData (jwtToken) {
+  const decoded = jwtDecode(jwtToken);
+
+  const userData = {
+    token: jwtToken,
+    id: decoded.data.id,
+    email: decoded.data.email
+  };
+
+  return userData;
+}
+
+export { authState, authStateSubject, triggerAuthStateChange };

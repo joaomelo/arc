@@ -27,7 +27,7 @@
         <BaseButton
           color="success"
           :text="outfit.button"
-          @click="runAuthAction"
+          @click="handleSignClick"
         />
       </template>
     </BaseDialog>
@@ -94,7 +94,7 @@ export default {
     }
   },
   methods: {
-    runAuthAction () {
+    handleSignClick () {
       if (this.$refs.form.validate()) {
         const stop = startLoading('authenticate');
         const action = this.outfit.action;

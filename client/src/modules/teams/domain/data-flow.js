@@ -1,10 +1,10 @@
-import { AUTH_STATUSES, authStateChanged } from '__cli/core/auth';
+import { AUTH_STATUSES, authStateSubject } from '__cli/core/auth';
 import { Stream, River } from '__cli/core/data';
 
 const teams = new River();
 
 function bindTeamsFlowsToAuth () {
-  return authStateChanged.subscribe(({ status, oldStatus, userData }) => {
+  return authStateSubject.subscribe(({ status, oldStatus, userData }) => {
     if (status === oldStatus) return;
 
     if (status === AUTH_STATUSES.SIGNEDIN) {

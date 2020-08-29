@@ -1,6 +1,5 @@
 import { LayoutDesktop, LayoutShell } from '__cli/core/layouts';
-import { PageSplash } from '__cli/core/pages';
-// import { PageAuth } from '__cli/core/auth';
+import { PageAuth } from '__cli/core/auth';
 // import { PageAuth, PageAccount, PageUnverified } from '__cli/core/auth';
 import { PageDashboard } from '__cli/modules/dashboard';
 // import { PagePreferences } from '__cli/modules/profiles';
@@ -12,12 +11,9 @@ const routes = [
     path: '/shell',
     component: LayoutShell,
     children: [
-      { path: '/loading', name: 'loading', component: PageSplash }
-      // { path: '/auth', name: 'auth', component: PageAuth }
-      // { path: '/unverified', name: 'unverified', component: PageUnverified }
+      { path: '/auth', name: 'auth', component: PageAuth }
     ]
   },
-  { path: '/test', name: 'test', component: PageDashboard },
   {
     path: '/desktop',
     component: LayoutDesktop,

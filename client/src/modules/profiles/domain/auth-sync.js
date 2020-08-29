@@ -1,10 +1,10 @@
 import { combineLatest } from 'rxjs';
 import { i18n } from '__cli/core/i18n';
-import { AUTH_STATUSES, authStateChanged } from '__cli/core/auth';
+import { AUTH_STATUSES, authStateSubject } from '__cli/core/auth';
 import { profilesCollection } from './collection';
 
 function plugProfileAuthSync () {
-  const combinedAuthAndProfiles = combineLatest(profilesCollection.collectionUpdated, authStateChanged);
+  const combinedAuthAndProfiles = combineLatest(profilesCollection.collectionUpdated, authStateSubject);
   combinedAuthAndProfiles.subscribe(checkAndSyncProfile);
 }
 

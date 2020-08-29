@@ -36,6 +36,7 @@
     "faker": "^4.1.0",
     "graphql": "^15.3.0",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
     "lodash-es": "^4.17.15",
     "moment": "^2.27.0",
     "reflect-metadata": "^0.1.13",

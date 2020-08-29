@@ -92,7 +92,7 @@
 
 <script>
 import { appTitle } from '__cli/core/meta';
-// import { signOut } from '__cli/core/auth';
+import { signOut } from '__cli/core/auth';
 
 export default {
   name: 'BaseBar',
@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     handleSignout () {
-      // signOut();
+      signOut();
     }
   }
 };

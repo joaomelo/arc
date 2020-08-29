@@ -1,5 +1,5 @@
 import { hash, compare } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
+import { sign as signToken} from 'jsonwebtoken';
 import { User, Locale } from './user';
 
 async function createUser(email: string, password: string): Promise<User> {
@@ -30,7 +30,7 @@ async function signIn(email: string, password: string): Promise<string> {
 
   const key = 'shouldbereplaced';
   const exp = Math.floor(Date.now() / 1000) + (15 * 60); //expires in 15 minutes
-  const token = sign(
+  const token = signToken(
     {
       exp,
       data: {
@@ -49,8 +49,5 @@ async function signUp(email: string, password: string): Promise<string> {
   const token = await signIn(email, password);
   return token;
 }
-
-// async function signOut(): Promise<void> {
-// }
 
 export { createUser, signUp, signIn };

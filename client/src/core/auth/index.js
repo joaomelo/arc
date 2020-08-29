@@ -1,18 +1,13 @@
-import { startListeningToAuthService } from './domain';
-
-// initialization
-startListeningToAuthService();
-
 export {
   AUTH_STATUSES,
   authState,
-  authStateChanged,
+  authStateSubject,
   signOut
 } from './domain';
 
 export {
-  ButtonLogout,
-  PageAuth,
-  PageAccount,
-  PageUnverified
+  // ButtonLogout,
+  PageAuth
+  // PageAccount,
+  // PageUnverified
 } from './ui';

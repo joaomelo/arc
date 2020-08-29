@@ -1,0 +1,7 @@
+mutation signInOperation ($input: SignInput!){
+  signIn(input: $input)
+}
+
+mutation signUpOperation ($input: SignInput!){
+  signUp(input: $input)
+}
