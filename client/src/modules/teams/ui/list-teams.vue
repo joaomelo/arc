@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-for="item in teams"
+      v-for="item in myTeams"
       :key="item.id"
       :item="item"
     >
@@ -15,15 +15,10 @@ import gql from 'graphql-tag';
 
 export default {
   name: 'ListTeams',
-  data () {
-    return {
-      items: [{ id: 1, name: 'my team' }]
-    };
-  },
   apollo: {
-    teams: gql`
-      query Teams {
-        teams {
+    myTeams: gql`
+      query MyTeams {
+        myTeams {
           id,
           name
         }

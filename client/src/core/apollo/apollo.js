@@ -9,7 +9,7 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = authState.userData.token;
+  const token = authState.userData ? authState.userData.token : null;
   return {
     headers: {
       ...headers,

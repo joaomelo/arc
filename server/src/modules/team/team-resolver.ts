@@ -5,7 +5,7 @@ import { Resolver, Query } from 'type-graphql';
 class TeamResolver {
 
   @Query(() => [Team])
-  async teams(): Promise<Team[]> {
+  async myTeams(): Promise<Team[]> {
     return await Team.find();
   }
 

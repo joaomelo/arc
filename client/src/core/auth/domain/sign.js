@@ -4,11 +4,11 @@ import { SignIn, SignUp } from './sign.gql';
 import { apolloClient } from '__cli/core/apollo';
 
 async function signUp (credentials) {
-  return sign(credentials, SignIn);
+  return sign(credentials, SignUp);
 }
 
 function signIn (credentials) {
-  return sign(credentials, SignUp);
+  return sign(credentials, SignIn);
 }
 
 async function sign ({ email, password }, mutation) {
