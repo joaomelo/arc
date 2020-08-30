@@ -24,8 +24,7 @@
   },
   "homepage": "https://github.com/joaomelo/arc#readme",
   "dependencies": {
-    "@joaomelo/bus": "^1.1.5",
-    "apollo-boost": "^0.4.9",
+    "@apollo/client": "^3.1.4",
     "apollo-server": "^2.16.1",
     "apollo-server-express": "^2.16.1",
     "bcryptjs": "^2.4.3",

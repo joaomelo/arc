@@ -22,7 +22,7 @@ export default {
   },
   apollo: {
     teams: gql`
-      query {
+      query Teams {
         teams {
           id,
           name

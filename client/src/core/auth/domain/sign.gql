@@ -1,7 +1,7 @@
-mutation signInOperation ($input: SignInput!){
+mutation SignIn ($input: SignInput!){
   signIn(input: $input)
 }
 
-mutation signUpOperation ($input: SignInput!){
+mutation SignUp ($input: SignInput!){
   signUp(input: $input)
 }

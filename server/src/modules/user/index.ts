@@ -1,3 +1,3 @@
 export { User, Locale } from './user';
-export { createUser } from './sign-services';
-export { UserResolver } from './user-resolver';
+export { createUser } from './sign';
+export { UserResolver } from './resolver';
