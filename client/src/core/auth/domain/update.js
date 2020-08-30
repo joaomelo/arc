@@ -1,31 +1,46 @@
-// import { authState } from './state';
+import { apolloClient } from '__cli/core/apollo';
+import { AUTH_STATUSES, authState, triggerAuthStateChange, extractUserData } from './state';
+import { UpdateEmail, UpdatePassword } from './update.gql';
 
-function updateEmail (newEmail, password) {
+async function updateEmail (newEmail, password) {
+  const currentEmail = authState.userData.email;
+
+  if (newEmail === currentEmail) return Promise.reject(new Error('New email must differ from current'));
+  if (!password) return Promise.reject(new Error('Must provide current password to confirm'));
+
   console.log({ newEmail, password });
-  return Promise.resolve();
-  // const currentEmail = authState.userData.email;
 
-  // if (newEmail === currentEmail) return Promise.reject(new Error('New email must differ from current'));
-  // if (!password) return Promise.reject(new Error('Must provide current password to confirm'));
+  const result = await apolloClient.mutate({
+    mutation: UpdateEmail,
+    variables: {
+      input: {
+        newEmail,
+        password
+      }
+    }
+  });
 
-  // return reauthenticate({ email: currentEmail, password })
-  //   .then(({ user }) => user.updateEmail(newEmail))
-  //   .then(() => {
-  //     triggerAuthStateChange(AUTH_EVENTS.USER_EMAIL_UPDATED, newEmail);
-  //     return sendEmailVerification();
-  //   });
+  console.log(result);
+
+  const jwtToken = result.data.updateEmail;
+  const newUserData = extractUserData(jwtToken);
+
+  triggerAuthStateChange(AUTH_STATUSES.SIGNEDIN, newUserData);
 }
 
-function updatePassword (newPassword, password) {
-  console.log({ newPassword, password });
-  return Promise.resolve();
-  // if (newPassword === password) return Promise.reject(new Error('New password must differ from current'));
-  // if (!password) return Promise.reject(new Error('Must provide current password to confirm'));
+async function updatePassword (newPassword, password) {
+  if (newPassword === password) return Promise.reject(new Error('New password must differ from current'));
+  if (!password) return Promise.reject(new Error('Must provide current password to confirm'));
 
-  // const email = authState.userData.email;
-
-  // return reauthenticate({ email, password })
-  //   .then(({ user }) => user.updatePassword(newPassword));
+  await apolloClient.mutate({
+    mutation: UpdatePassword,
+    variables: {
+      input: {
+        newPassword,
+        password
+      }
+    }
+  });
 }
 
 export {

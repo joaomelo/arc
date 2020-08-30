@@ -1,0 +1,7 @@
+mutation UpdateEmail ($input: UpdateEmailInput!){
+  updateEmail(input: $input)
+}
+
+mutation UpdatePassword ($input: UpdatePasswordInput!){
+  updatePassword(input: $input)
+}

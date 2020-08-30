@@ -1,5 +1,4 @@
-import jwtDecode from 'jwt-decode';
-import { AUTH_STATUSES, triggerAuthStateChange } from './state';
+import { AUTH_STATUSES, triggerAuthStateChange, extractUserData } from './state';
 import { SignIn, SignUp } from './sign.gql';
 import { apolloClient } from '__cli/core/apollo';
 
@@ -24,13 +23,7 @@ async function sign ({ email, password }, mutation) {
 
   // data propery name differs between signup and signin mutations
   const jwtToken = Object.values(result.data)[0];
-  const decodedJwtToken = jwtDecode(jwtToken);
-
-  const newUserData = {
-    token: jwtToken,
-    id: decodedJwtToken.data.id,
-    email: decodedJwtToken.data.email
-  };
+  const newUserData = extractUserData(jwtToken);
 
   triggerAuthStateChange(AUTH_STATUSES.SIGNEDIN, newUserData);
 }

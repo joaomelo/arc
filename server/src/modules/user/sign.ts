@@ -1,6 +1,7 @@
-import { hash, compare } from 'bcryptjs';
+import { hash } from 'bcryptjs';
 import { signToken } from '../../core/jwt';
 import { User, Locale } from './user';
+import { secureFindOrFailByEmail } from './secure-find';
 
 async function createUser(email: string, password: string): Promise<User> {
   //TODO: what if there alreay exists this email
@@ -22,17 +23,11 @@ async function createUser(email: string, password: string): Promise<User> {
 }
 
 async function signIn(email: string, password: string): Promise<string> {
-  //TODO study and implement better way to store JWT sign secret
-
-  const user = await User.findOneOrFail({ email });
-  const isSamePassword = await compare(password, user.password);
-  if (!isSamePassword) throw new Error("failed to sign user");
-
+  const user = await secureFindOrFailByEmail(email, password);
   const token = signToken({
     id: user.id,
     email: user.email  
   });
-
   return token;
 }
 

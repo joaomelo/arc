@@ -1,4 +1,5 @@
 import { BehaviorSubject } from 'rxjs';
+import jwtDecode from 'jwt-decode';
 
 const AUTH_STATUSES = {
   SIGNEDOUT: 'AUTH_STATUSES.SIGNEDOUT',
@@ -22,4 +23,14 @@ function triggerAuthStateChange (newStatus, newUserData = null) {
   authStateSubject.next({ ...authState, oldStatus, oldUserData });
 }
 
-export { AUTH_STATUSES, authState, authStateSubject, triggerAuthStateChange };
+function extractUserData (jwtToken) {
+  const decodedJwtToken = jwtDecode(jwtToken);
+  const userData = {
+    token: jwtToken,
+    id: decodedJwtToken.data.id,
+    email: decodedJwtToken.data.email
+  };
+  return userData;
+}
+
+export { AUTH_STATUSES, authState, authStateSubject, triggerAuthStateChange, extractUserData };

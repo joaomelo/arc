@@ -1,5 +1,6 @@
-import { Resolver, Query, Mutation, Arg, InputType, Field } from 'type-graphql';
+import { Resolver, Query, Mutation, Arg, InputType, Field, Ctx } from 'type-graphql';
 import { IsEmail } from 'class-validator';
+import { Context } from '../../core/graphql';
 import { User } from './user';
 import { signIn, signUp } from './sign';
 import { updateEmail, updatePassword } from './update';
@@ -53,15 +54,21 @@ class UserResolver {
     return token;
   }
 
-  @Mutation(() => String)
-  async updateEmail(@Arg("input") input: UpdateEmailInput): Promise<string> {
-    const token = await updateEmail('userId', input.newEmail, input.password);
+  @Mutation(() => String, { nullable: true })
+  async updateEmail(@Arg("input") input: UpdateEmailInput, @Ctx() ctx: Context): Promise<string | null> {
+    if (!ctx.userId) return null;
+    const userId = ctx.userId;
+    
+    const token = await updateEmail(userId, input.newEmail, input.password);
     return token;
   }
 
-  @Mutation(() => String)
-  async updatePassword(@Arg("input") input: UpdatePasswordInput): Promise<string> {
-    const token = await updatePassword('userId', input.newPassword, input.password);
+  @Mutation(() => String, { nullable: true })
+  async updatePassword(@Arg("input") input: UpdatePasswordInput, @Ctx() ctx: Context): Promise<string | null> {
+    if (!ctx.userId) return null;
+    const userId = ctx.userId;
+    
+    const token = await updatePassword(userId, input.newPassword, input.password);
     return token;
   }
 
