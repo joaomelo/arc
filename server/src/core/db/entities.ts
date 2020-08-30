@@ -1,10 +1,10 @@
 import { User } from '../../modules/user';
-import { Team, TeamMembership } from '../../modules/team';
+import { Team, Membership } from '../../modules/team';
 
 const entities = [
   User,
   Team,
-  TeamMembership
+  Membership
 ];
 
 export { entities };

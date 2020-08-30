@@ -1,6 +1,6 @@
 import { Entity, PrimaryColumn, Generated, Column, BaseEntity, OneToMany } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { TeamMembership } from './team-membership';
+import { Membership } from './membership';
 
 @Entity()
 @ObjectType()
@@ -19,15 +19,15 @@ class Team extends BaseEntity {
   description?: string;
 
   @OneToMany(
-    () => TeamMembership, 
+    () => Membership, 
     membership => membership.team,
     { 
       eager: true,
       cascade: true
     }  
   )
-  @Field(() => [TeamMembership])
-  memberships!: TeamMembership[];
+  @Field(() => [Membership])
+  memberships!: Membership[];
 }
 
 export { Team };

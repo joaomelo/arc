@@ -1,3 +1,3 @@
 export { Team } from './team';
-export { TeamMembership, Role } from './team-membership';
+export { Membership, Role } from './membership';
 export { TeamResolver } from './resolver';

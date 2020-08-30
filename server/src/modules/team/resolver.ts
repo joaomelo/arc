@@ -5,11 +5,19 @@ import { Team } from './team';
 @Resolver()
 class TeamResolver {
 
-  @Query(() => [Team])
-  async myTeams(@Ctx() ctx: Context): Promise<Team[]> {
-    console.log(ctx);
-    
-    return await Team.find();
+  @Query(() => [Team], { nullable: true })
+  async myTeams(@Ctx() ctx: Context): Promise<Team[] | null> {
+    if (!ctx.userId) return null;
+
+    const userId = ctx.userId;
+    const myTeams = await Team
+      .createQueryBuilder("team")
+      .innerJoinAndSelect("team.memberships", "membership", "membership.userId = :userId", { userId })
+      .getMany();
+
+    console.log({userId, myTeams});
+
+    return myTeams;
   }
 
 }

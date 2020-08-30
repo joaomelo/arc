@@ -1,7 +1,5 @@
-import { User } from '../../modules/user/user';
-
 interface Context {
-  user: User
+  userId: string
 }
 
 export { Context };

@@ -11,7 +11,7 @@ enum Role {
 
 @Entity()
 @ObjectType()
-class TeamMembership extends BaseEntity {
+class Membership extends BaseEntity {
   @PrimaryColumn()
   @Generated("uuid")  
   @Field(() => ID)
@@ -33,4 +33,4 @@ class TeamMembership extends BaseEntity {
   role!: Role;
 }
 
-export { TeamMembership, Role };
+export { Membership, Role };
