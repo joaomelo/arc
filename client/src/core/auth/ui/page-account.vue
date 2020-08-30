@@ -10,7 +10,7 @@
     </v-alert>
     <LoaderDialog
       :title="$t('auth.email-update')"
-      :action="() => updateEmailAccount()"
+      :action="() => handleUpdateEmail()"
       :message="$t('auth.email-sent')"
     >
       <ControlEmail
@@ -27,7 +27,7 @@
     <LoaderDialog
       class="mt-8"
       :title="$t('auth.password-update')"
-      :action="() => updatePasswordAccount()"
+      :action="() => handleUpdatePassword()"
       :message="$t('auth.password-updated')"
     >
       <ControlPassword
@@ -67,10 +67,10 @@ export default {
     };
   },
   methods: {
-    updateEmailAccount () {
+    handleUpdateEmail () {
       return updateEmail(this.newEmail, this.password);
     },
-    updatePasswordAccount () {
+    handleUpdatePassword () {
       return updatePassword(this.newPassword, this.password);
     }
   }

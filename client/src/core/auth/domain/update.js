@@ -2,6 +2,7 @@
 
 function updateEmail (newEmail, password) {
   console.log({ newEmail, password });
+  return Promise.resolve();
   // const currentEmail = authState.userData.email;
 
   // if (newEmail === currentEmail) return Promise.reject(new Error('New email must differ from current'));
@@ -17,6 +18,7 @@ function updateEmail (newEmail, password) {
 
 function updatePassword (newPassword, password) {
   console.log({ newPassword, password });
+  return Promise.resolve();
   // if (newPassword === password) return Promise.reject(new Error('New password must differ from current'));
   // if (!password) return Promise.reject(new Error('Must provide current password to confirm'));
 

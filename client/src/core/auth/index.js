@@ -7,7 +7,7 @@ export {
 
 export {
   // ButtonLogout,
-  PageAuth
-  // PageAccount,
+  PageAuth,
+  PageAccount
   // PageUnverified
 } from './ui';

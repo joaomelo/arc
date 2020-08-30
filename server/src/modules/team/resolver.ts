@@ -15,8 +15,6 @@ class TeamResolver {
       .innerJoinAndSelect("team.memberships", "membership", "membership.userId = :userId", { userId })
       .getMany();
 
-    console.log({userId, myTeams});
-
     return myTeams;
   }
 

@@ -9,6 +9,7 @@ async function loadDevFixture (): Promise<void> {
   const membersQt = Math.round(userQt / 10);
 
   const hashedPassword = await hash("unsecure", 12);
+  await createFixtureUser("d@d.dev", hashedPassword);
   for (let i = 0; i <= userQt; i++) {
     await createFixtureUser(internet.email(), hashedPassword);
   }
