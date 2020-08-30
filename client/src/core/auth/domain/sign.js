@@ -1,6 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import { AUTH_EVENTS, AUTH_STATUSES } from './types';
-import { triggerAuthStateChange } from './state';
+import { AUTH_STATUSES, triggerAuthStateChange } from './state';
 import { SignIn, SignUp } from './sign.gql';
 import { apolloClient } from '__cli/core/apollo';
 
@@ -37,7 +36,8 @@ async function sign ({ email, password }, mutation) {
 }
 
 function signOut () {
-  triggerAuthStateChange(AUTH_EVENTS.USER_SIGNEDOUT);
+  apolloClient.clearStore(); // clear apollo client cache
+  triggerAuthStateChange(AUTH_STATUSES.SIGNEDOUT);
 }
 
 export {

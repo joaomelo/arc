@@ -1,5 +1,9 @@
 import { BehaviorSubject } from 'rxjs';
-import { AUTH_STATUSES } from './types';
+
+const AUTH_STATUSES = {
+  SIGNEDOUT: 'AUTH_STATUSES.SIGNEDOUT',
+  SIGNEDIN: 'AUTH_STATUSES.SIGNEDIN'
+};
 
 const authState = {
   status: AUTH_STATUSES.SIGNEDOUT,
@@ -18,4 +22,4 @@ function triggerAuthStateChange (newStatus, newUserData = null) {
   authStateSubject.next({ ...authState, oldStatus, oldUserData });
 }
 
-export { authState, authStateSubject, triggerAuthStateChange };
+export { AUTH_STATUSES, authState, authStateSubject, triggerAuthStateChange };
