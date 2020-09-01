@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { join } from 'path';
+import { resolve } from 'path';
 import express from 'express';
 import history from 'connect-history-api-fallback';
 import { createDbConnection } from './core/db';
@@ -17,11 +17,12 @@ async function main (): Promise<void> {
 
   app.use(history());
 
-  const staticRoot = join(__dirname, 'public');
+  const staticRoot = resolve(__dirname, 'public');
   app.use(express.static(staticRoot));
-
+  
   app.listen(port, () => {
-    console.log(`app listening at http://localhost:${port}`);
+    console.log(`app running on ${process.env.NODE_ENV as string} mode`);
+    console.log(`http at http://localhost:${port}`);
     console.log(`graphql at http://localhost:${port}/graphql`);
   });
 }

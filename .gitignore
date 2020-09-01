@@ -15,6 +15,7 @@ env/
 ormconfig.json
 
 # dist and public folders
+build/
 dist/
 public/
 
