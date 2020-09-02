@@ -7,7 +7,7 @@ async function createDbConnection(): Promise<void> {
     type: "sqlite",
     database: ':memory:',
     synchronize: true,
-    logging: true,
+    logging: ["error"],
     entities
   });
 }

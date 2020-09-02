@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { resolve } from 'path';
 import express from 'express';
 import history from 'connect-history-api-fallback';
+import { logger } from './core/log';
 import { createDbConnection } from './core/db';
 import { loadDevFixture } from './modules/fixture';
 import { applyGraphqlMiddleware } from './core/graphql';
@@ -21,9 +22,9 @@ async function main (): Promise<void> {
   app.use(express.static(staticRoot));
   
   app.listen(port, () => {
-    console.log(`app running on ${process.env.NODE_ENV as string} mode`);
-    console.log(`http at http://localhost:${port}`);
-    console.log(`graphql at http://localhost:${port}/graphql`);
+    logger.info(`app running on ${process.env.NODE_ENV as string} mode`);
+    logger.info(`http at http://localhost:${port}`);
+    logger.info(`graphql at http://localhost:${port}/graphql`);
   });
 }
 

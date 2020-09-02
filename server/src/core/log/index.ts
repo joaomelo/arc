@@ -1,9 +1,11 @@
-// import { createLogger, format } from 'winston';
+import { createLogger, format, transports } from 'winston';
 
-// const logger = createLogger({
-//   level: 'info',
-//   format: format.simple(),
-//   tr
-// });
+const logger = createLogger({
+  level: 'info',
+  format: format.simple(),
+  transports: [
+    new transports.Console()
+  ]
+});
 
-// export { logger };
+export { logger };
