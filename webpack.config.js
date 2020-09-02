@@ -18,6 +18,7 @@ module.exports = (env, argv) => {
   const common = {
     mode: env.prod ? 'production' : 'development',
     watch: !env.prod,
+    devtool: 'source-map',
     resolve: {
       alias: {
         __cli: PATHS.CLIENT_SRC,
@@ -38,12 +39,11 @@ module.exports = (env, argv) => {
   const client = {
     ...common,
     target: "web",
-    devtool: 'source-map',
     entry: path.resolve(PATHS.CLIENT_SRC, 'index.js'),
     output: {
       publicPath: '/',
       path: PATHS.CLIENT_DIST,
-      filename: '[name].[contenthash].bundle.js'
+      filename: env.prod ? '[name].[contenthash].bundle.js' : '[name].bundle.js'
     },
     optimization: {
       moduleIds: 'hashed',

@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "start": "npm run dev:build",
-    "dev:build": "webpack --env dev --config webpack.config.js",
-    "dev:run": "nodemon build/server.js",
+    "dev:build": "rimraf build/* && webpack --env dev --config webpack.config.js",
+    "dev:run": "nodemon --enable-source-maps build/server.js",
     "lint:client": "eslint --ext .ts,.vue client/src/",
     "lint:server": "eslint --ext .ts server/src/",
     "prod:build": "rimraf build/* && webpack --env prod --config webpack.config.js",
