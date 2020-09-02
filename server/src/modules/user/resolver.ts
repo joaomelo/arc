@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Arg, InputType, Field, Ctx } from 'type-graphql';
 import { IsEmail } from 'class-validator';
-import { Context } from '../../core/graphql';
+import { Context } from '__ser/core/graphql';
 import { User } from './user';
 import { signIn, signUp } from './sign';
 import { updateEmail, updatePassword } from './update';
