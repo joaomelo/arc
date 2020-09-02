@@ -1,6 +1,6 @@
 import { Entity, PrimaryColumn, Generated, Column, BaseEntity, ManyToOne } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { User } from '../user';
+import { User } from '__ser/modules/user';
 import { Team } from './team';
 
 enum Role {

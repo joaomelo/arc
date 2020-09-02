@@ -1,6 +1,10 @@
 {
   "extends": "@tsconfig/node12/tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "__ser/*": ["src/*"]
+    },
     "sourceMap": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
