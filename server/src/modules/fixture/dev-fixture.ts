@@ -1,14 +1,14 @@
-import { hash } from 'bcryptjs';
+import { hash } from '__ser/core/crypt';
 import { internet, company } from 'faker';
-import { User, Locale } from '../user';
-import { Team, Membership, Role } from '../team';
+import { User } from '__ser/modules/user';
+import { Team, Membership, Role } from '__ser/modules/team';
 
 async function loadDevFixture (): Promise<void> {
   const userQt = 100;  
   const teamsQt = Math.round(userQt / 10);
   const membersQt = Math.round(userQt / 10);
 
-  const hashedPassword = await hash("unsecure", 12);
+  const hashedPassword = await hash("test");
   await createFixtureUser("d@d.dev", hashedPassword);
   for (let i = 0; i <= userQt; i++) {
     await createFixtureUser(internet.email(), hashedPassword);
@@ -44,11 +44,9 @@ async function loadDevFixture (): Promise<void> {
 }
 
 async function createFixtureUser(email: string, password: string): Promise<User> {
-  const user = User.create({
-    email,
-    password,
-    locale: Locale.en
-  });
+  const user = new User();
+  user.email = email;
+  user.password = password;
   await user.save();
 
   return user;

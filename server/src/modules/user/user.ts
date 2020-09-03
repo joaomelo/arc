@@ -1,5 +1,6 @@
 import { Entity, PrimaryColumn, Generated, Column, BaseEntity } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
+import { IsEmail } from 'class-validator';
 
 enum Locale {
   en = "en",
@@ -16,9 +17,10 @@ class User extends BaseEntity {
 
   @Column({ unique: true })
   @Field()
+  @IsEmail()
   email!: string;
 
-  @Column()
+  @Column({ default: Locale.en })
   @Field()
   locale!: Locale;
 

@@ -1,4 +1,4 @@
-import { compare } from 'bcryptjs';
+import { compare } from '__ser/core/crypt';
 import { User } from './user';
 
 async function secureFindOrFailByEmail (email: string, password: string): Promise<User> {
