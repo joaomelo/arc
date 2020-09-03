@@ -1,12 +1,24 @@
-import { AUTH_STATUSES, triggerAuthStateChange, extractUserData } from './state';
-import { SignIn, SignUp } from './sign.gql';
+import { gql } from '@apollo/client/core';
 import { apolloClient } from '__cli/core/apollo';
+import { AUTH_STATUSES, triggerAuthStateChange, extractUserData } from './state';
 
 async function signUp (credentials) {
+  const SignUp = gql`
+    mutation SignUp ($input: SignInput!){
+      signUp(input: $input)
+    }
+  `;
+
   return sign(credentials, SignUp);
 }
 
 function signIn (credentials) {
+  const SignIn = gql`
+    mutation SignIn ($input: SignInput!){
+      signIn(input: $input)
+    }
+  `;
+
   return sign(credentials, SignIn);
 }
 

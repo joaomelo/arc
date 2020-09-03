@@ -11,7 +11,7 @@
     <LoaderDialog
       :title="$t('auth.email-update')"
       :action="() => handleUpdateEmail()"
-      :message="$t('auth.email-sent')"
+      :message="$t('auth.email-updated')"
     >
       <ControlEmail
         v-model="newEmail"

@@ -1,6 +1,6 @@
+import { gql } from '@apollo/client/core';
 import { apolloClient } from '__cli/core/apollo';
 import { AUTH_STATUSES, authState, triggerAuthStateChange, extractUserData } from './state';
-import { UpdateEmail, UpdatePassword } from './update.gql';
 
 async function updateEmail (newEmail, password) {
   const currentEmail = authState.userData.email;
@@ -8,10 +8,12 @@ async function updateEmail (newEmail, password) {
   if (newEmail === currentEmail) return Promise.reject(new Error('New email must differ from current'));
   if (!password) return Promise.reject(new Error('Must provide current password to confirm'));
 
-  console.log({ newEmail, password });
-
   const result = await apolloClient.mutate({
-    mutation: UpdateEmail,
+    mutation: gql`
+      mutation UpdateEmail ($input: UpdateEmailInput!){
+        updateEmail(input: $input)
+      }    
+    `,
     variables: {
       input: {
         newEmail,
@@ -19,8 +21,6 @@ async function updateEmail (newEmail, password) {
       }
     }
   });
-
-  console.log(result);
 
   const jwtToken = result.data.updateEmail;
   const newUserData = extractUserData(jwtToken);
@@ -33,7 +33,11 @@ async function updatePassword (newPassword, password) {
   if (!password) return Promise.reject(new Error('Must provide current password to confirm'));
 
   await apolloClient.mutate({
-    mutation: UpdatePassword,
+    mutation: gql`
+      mutation UpdatePassword ($input: UpdatePasswordInput!){
+        updatePassword(input: $input)
+      }
+    `,
     variables: {
       input: {
         newPassword,
