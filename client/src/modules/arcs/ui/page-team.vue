@@ -1,22 +1,22 @@
 <template>
   <PageItem
     v-bind="$attrs"
-    :title="$tc('teams.team', 1)"
-    :item="team"
+    :title="$tc('arcs.arc', 1)"
+    :item="arc"
     :action="action"
   >
     <ControlText
-      v-model="team.name"
+      v-model="arc.name"
       :label="$t('fields.name')"
       is-required
     />
     <ControlTextarea
-      v-model="team.description"
+      v-model="arc.description"
       :label="$t('fields.description')"
     />
     <ControlSelect
-      v-model="team.owner"
-      :label="$t('teams.owner')"
+      v-model="arc.owner"
+      :label="$t('arcs.owner')"
       item-text="publicEmail"
       item-value="id"
       :items="profilesCollection.items"
@@ -24,16 +24,16 @@
       readonly
     />
     <ControlSelect
-      v-model="team.editors"
-      :label="$tc('teams.editors', 2)"
+      v-model="arc.editors"
+      :label="$tc('arcs.editors', 2)"
       item-text="publicEmail"
       item-value="id"
       :items="profilesCollection.items"
       is-multiple
     />
     <ControlSelect
-      v-model="team.members"
-      :label="$tc('teams.members', 2)"
+      v-model="arc.members"
+      :label="$tc('arcs.members', 2)"
       item-text="publicEmail"
       item-value="id"
       :items="profilesCollection.items"
@@ -46,10 +46,10 @@
 import { ControlText, ControlTextarea, ControlSelect } from '__cli/core/components';
 import { PageItem } from '__cli/modules/items';
 import { profilesCollection, getCurrentProfile } from '__cli/modules/profiles';
-import { teams, addTeam, updateTeam } from '../domain';
+import { arcs, addArc, updateArc } from '../domain';
 
 export default {
-  name: 'PageTeam',
+  name: 'PageArc',
   components: {
     PageItem,
     ControlText,
@@ -65,8 +65,8 @@ export default {
   data () {
     const isAdd = this.id === 'add';
     return {
-      team: isAdd ? { owner: getCurrentProfile().id } : { ...teams.getItem(this.id) },
-      action: isAdd ? addTeam : updateTeam,
+      arc: isAdd ? { owner: getCurrentProfile().id } : { ...arcs.getItem(this.id) },
+      action: isAdd ? addArc : updateArc,
       profilesCollection
     };
   }

@@ -1,20 +1,20 @@
 import { add, update, del } from '__cli/core/data';
 
 const options = {
-  collection: 'teams',
+  collection: 'arcs',
   isSafe: true
 };
 
-function addTeam (item) {
+function addArc (item) {
   return add(item, options);
 }
 
-function updateTeam (item) {
+function updateArc (item) {
   return update(item, options);
 }
 
-function delTeam (id) {
+function delArc (id) {
   return del(id, options);
 }
 
-export { addTeam, updateTeam, delTeam };
+export { addArc, updateArc, delArc };

@@ -1,11 +1,11 @@
 <template>
   <PageItems
-    :title="$tc('teams.team', 2)"
-    :items="teams.items"
+    :title="$tc('arcs.arc', 2)"
+    :items="arcs.items"
     @add="add"
   >
     <template v-slot:renderItem="{ item }">
-      <CardTeam
+      <CardArc
         class="mt-2"
         :item="item"
       />
@@ -15,21 +15,21 @@
 
 <script>
 import { PageItems } from '__cli/modules/items';
-import { teams } from '../domain';
-import CardTeam from './card-team';
+import { arcs } from '../domain';
+import CardArc from './card-arc';
 
 export default {
-  name: 'PageTeams',
-  components: { PageItems, CardTeam },
+  name: 'PageArcs',
+  components: { PageItems, CardArc },
   data () {
     return {
-      CardTeam,
-      teams
+      CardArc,
+      arcs
     };
   },
   methods: {
     add () {
-      this.$router.push({ name: 'team-add' });
+      this.$router.push({ name: 'arc-add' });
     }
   }
 };

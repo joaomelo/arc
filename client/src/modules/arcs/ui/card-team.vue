@@ -1,27 +1,27 @@
 <template>
   <CardItem
     :item="item"
-    :del="delTeam"
-    edit-route="team-edit"
+    :del="delArc"
+    edit-route="arc-edit"
   >
     <template v-slot:details>
       <LookupText
         :value="item.owner"
-        :label="$t('teams.owner')"
+        :label="$t('arcs.owner')"
         text-field="publicEmail"
         key-field="id"
         :items="profilesCollection.items"
       />
       <LookupText
         :value="item.editors"
-        :label="$tc('teams.editors', 2)"
+        :label="$tc('arcs.editors', 2)"
         text-field="publicEmail"
         key-field="id"
         :items="profilesCollection.items"
       />
       <LookupText
         :value="item.members"
-        :label="$tc('teams.members', 2)"
+        :label="$tc('arcs.members', 2)"
         text-field="publicEmail"
         key-field="id"
         :items="profilesCollection.items"
@@ -37,11 +37,11 @@
 <script>
 import { BaseText, LookupText } from '__cli/core/components';
 import { CardItem } from '__cli/modules/items';
-import { delTeam } from '../domain';
+import { delArc } from '../domain';
 import { profilesCollection } from '__cli/modules/profiles';
 
 export default {
-  name: 'CardTeam',
+  name: 'CardArc',
   components: { CardItem, BaseText, LookupText },
   props: {
     item: {
@@ -51,7 +51,7 @@ export default {
   },
   data () {
     return {
-      delTeam,
+      delArc,
       profilesCollection
     };
   }

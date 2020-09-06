@@ -15,11 +15,11 @@
       is-required
     />
     <ControlSelect
-      v-model="asset.team"
-      :label="$tc('collections.team', 1)"
+      v-model="asset.arc"
+      :label="$tc('collections.arc', 1)"
       :is-required="true"
       :is-object-driven="true"
-      :options="$store.getters.getMyWriteTeams"
+      :options="$store.getters.getMyWriteArcs"
     />
     <ControlStatus
       v-model="asset.status"

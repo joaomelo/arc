@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-for="item in myTeams"
+      v-for="item in myArcs"
       :key="item.id"
       :item="item"
     >
@@ -14,11 +14,11 @@
 import gql from 'graphql-tag';
 
 export default {
-  name: 'ListTeams',
+  name: 'ListArcs',
   apollo: {
-    myTeams: gql`
-      query MyTeams {
-        myTeams {
+    myArcs: gql`
+      query MyArcs {
+        myArcs {
           id,
           name
         }

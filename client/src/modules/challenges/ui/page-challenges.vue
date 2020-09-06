@@ -19,7 +19,7 @@ import { challengesCollection } from '../domain';
 import CardChallenge from './card-challenge';
 
 export default {
-  name: 'PageTeams',
+  name: 'PageArcs',
   components: { PageItems, CardChallenge },
   data () {
     return {

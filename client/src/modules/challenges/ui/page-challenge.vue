@@ -19,7 +19,7 @@ import { PageItem } from '__cli/modules/items';
 import { challengesCollection } from '../domain';
 
 export default {
-  name: 'TeamEdit',
+  name: 'ArcEdit',
   components: {
     PageItem,
     ControlText

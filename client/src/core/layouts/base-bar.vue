@@ -57,11 +57,11 @@
             <v-list-item-title>{{ $tc('challenges.challenge', 2) }}</v-list-item-title>
           </v-list-item>
 
-          <v-list-item :to="{ name: 'teams' }">
+          <v-list-item :to="{ name: 'arcs' }">
             <v-list-item-icon>
               <v-icon>mdi-account-supervisor-circle</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>{{ $tc('teams.team', 2) }}</v-list-item-title>
+            <v-list-item-title>{{ $tc('arcs.arc', 2) }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item :to="{ name: 'account' }">

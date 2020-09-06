@@ -2,12 +2,12 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { extractUserIdFromToken } from '../jwt';
-import { UserResolver } from '../../modules/user';
-import { TeamResolver } from '../../modules/team';
+import { UserResolver } from '__ser/modules/users';
+import { ArcResolver } from '__ser/modules/arcs';
 
 async function applyGraphqlMiddleware (app: express.Application): Promise<void> {
   const schema = await buildSchema({
-    resolvers: [TeamResolver, UserResolver],
+    resolvers: [ArcResolver, UserResolver],
   });
   const apolloServer = new ApolloServer({ 
     schema,

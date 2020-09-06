@@ -1,15 +1,15 @@
 <template>
   <div>
     <h1>Dashboard</h1>
-    <ListTeams />
+    <ListArcs />
   </div>
 </template>
 
 <script>
-import { ListTeams } from '__cli/modules/teams';
+import { ListArcs } from '__cli/modules/arcs';
 
 export default {
   name: 'PageDashboard',
-  components: { ListTeams }
+  components: { ListArcs }
 };
 </script>

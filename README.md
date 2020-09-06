@@ -8,23 +8,23 @@ ARC is an experimental web app that aims to help individuals, organizations, com
 
 The system is built under few concepts streamlined from management methodologies like OKR and Agile.
 
-# Teams
+# Arcs
 
-Are the central places for the whole app. It groups any number of people, even one person is a perfect valid team setup, around a management environment with challenges and other work related items.
+Are the central place to agregate managed work. An Arc groups any number of people, even one person is a perfect valid Arc setup, around a management environment composed of assets, results and challenges.
 
-Every team has a owner which defaults to the item creator, editors whom are users with some editing capabilities and members whom could see team data and edit data in work items delegated to them.
+Every Arc has a owner which defaults to its creator, editors whom are users with some writing capabilities and members whom could see the whole Arc data, but edit only work items delegated to them.
 
 ### Assets
 
-Assets are things the teamwork wants to maximize and represent WHY the work should be done. They are an alternative to goals. The main difference is that while a goal is some sort of scope the team should achieve in a given date, assets are qualitative or quantitative metrics the team is always trying to maximize in balance. Assets are a way to collect feedback from the real world and adjust the team working logic.
+Assets are things the arcwork wants to maximize and represent WHY the work should be done. They are an alternative to goals. The main difference is that while a goal is some sort of scope the arc should achieve in a given date, assets are qualitative or quantitative metrics the arc is always trying to maximize in balance. Assets are a way to collect feedback from the real world and adjust the arc working logic.
 
 ### Results
 
-Results represent WHAT work should be done. They are real deliverables or achievements that the team should reach. Results can stretch through a long period and need a clear declaration of done. They represent the high-level scope to be done.
+Results represent WHAT work should be done. They are real deliverables or achievements that the arc should reach. Results can stretch through a long period and need a clear declaration of done. They represent the high-level scope to be done.
 
 ### Challenges
 
-Challenges are pieces of work carved out from results and represent HOW work should be done. They have clear assigments and completed in a short time frame. Challenges are periodically created and assigned to the team in small time cycles. They should not be spam for more than one month of planned time.
+Challenges are pieces of work carved out from results and represent HOW work should be done. They have clear assigments and completed in a short time frame. Challenges are periodically created and assigned to the arc in small time cycles. They should not be spam for more than one month of planned time.
 
 ## Getting Started
 

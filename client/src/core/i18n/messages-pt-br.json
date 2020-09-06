@@ -56,8 +56,8 @@
   "challenges": {
     "challenge": "Desafio | Desafios"
   },
-  "teams": {
-    "team": "Time | Times",
+  "arcs": {
+    "arc": "Time | Times",
     "owner": "Proprietário",
     "editors": "Editor | Editores",
     "members": "Membro | Membros"

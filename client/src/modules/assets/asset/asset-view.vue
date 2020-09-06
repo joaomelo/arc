@@ -24,8 +24,8 @@ export default {
     details () {
       return [
         {
-          label: this.$tc('collections.team', 1),
-          display: this.item.team.title
+          label: this.$tc('collections.arc', 1),
+          display: this.item.arc.title
         },
         {
           label: this.$t('fields.status.status'),

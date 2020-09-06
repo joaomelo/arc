@@ -56,8 +56,8 @@
   "challenges": {
     "challenge": "Challenge | Challenges"
   },
-  "teams": {
-    "team": "Team | Teams",
+  "arcs": {
+    "arc": "Arc | Arcs",
     "owner": "Owner",
     "editors": "Editor | Editors",
     "members": "Member | Members"

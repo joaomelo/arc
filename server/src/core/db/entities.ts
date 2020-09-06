@@ -1,9 +1,9 @@
-import { User } from '../../modules/user';
-import { Team, Membership } from '../../modules/team';
+import { User } from '__ser/modules/users';
+import { Arc, Membership } from '__ser/modules/arcs';
 
 const entities = [
   User,
-  Team,
+  Arc,
   Membership
 ];
 

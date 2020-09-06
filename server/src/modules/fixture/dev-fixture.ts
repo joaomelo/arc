@@ -1,11 +1,11 @@
 import { hash } from '__ser/core/crypt';
 import { internet, company } from 'faker';
-import { User } from '__ser/modules/user';
-import { Team, Membership, Role } from '__ser/modules/team';
+import { User } from '__ser/modules/users';
+import { Arc, Membership, Role } from '__ser/modules/arcs';
 
 async function loadDevFixture (): Promise<void> {
   const userQt = 100;  
-  const teamsQt = Math.round(userQt / 10);
+  const arcsQt = Math.round(userQt / 10);
   const membersQt = Math.round(userQt / 10);
 
   const hashedPassword = await hash("test");
@@ -17,29 +17,29 @@ async function loadDevFixture (): Promise<void> {
   const users = await User.find();
   const randomUser = () => users[Math.round(Math.random() * userQt)];
 
-  for (let i = 0; i <= teamsQt; i++) {
-    const team = new Team();
+  for (let i = 0; i <= arcsQt; i++) {
+    const arc = new Arc();
 
-    team.name = company.companyName();
+    arc.name = company.companyName();
 
     const memberships: Membership[] = [];
 
     const ownership = new Membership();
-    ownership.team = team;
+    ownership.arc = arc;
     ownership.user = randomUser();
     ownership.role = Role.Owner;
     memberships.push(ownership);
 
     for (let j = 0; j < membersQt; j++) {
       const membership = new Membership();
-      membership.team = team;
+      membership.arc = arc;
       membership.user = randomUser();
       membership.role = Math.random() > 0.5 ? Role.Member : Role.Editor;
       memberships.push(membership);
     }
 
-    team.memberships = memberships;
-    await team.save();
+    arc.memberships = memberships;
+    await arc.save();
   }
 }
 
