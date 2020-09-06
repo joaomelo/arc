@@ -1,4 +1,5 @@
 import { hash } from '__ser/core/crypt';
+import { User, Locale } from './user';
 import { secureFindOrFailById } from './secure-find';
 import { signIn } from './sign';
 
@@ -18,7 +19,15 @@ async function updatePassword(userId: string, newPassword: string, password: str
   return token;
 }
 
+async function updateLocale(userId: string, locale: Locale): Promise<User> {
+  const user = await User.findOneOrFail(userId);
+  user.locale = locale;
+  await user.save();
+  return user;
+}
+
 export {
   updateEmail,
-  updatePassword
+  updatePassword,
+  updateLocale
 };

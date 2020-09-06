@@ -10,11 +10,17 @@
       readonly
       disabled
     />
-    <ControlText
-      v-model="nickname"
-      :label="$t('profiles.nickname')"
-      is-required
+
+    <ControlSelect
+      v-model="locale"
+      :label="$t('profiles.language')"
+      :items="supportedLocales"
+      item-text="title"
+      item-value="id"
+      :rules="[v => !!v || this.$t('profiles.language-required')]"
+      required
     />
+
     <v-select
       v-model="locale"
       :label="$t('profiles.language')"
@@ -28,19 +34,18 @@
 </template>
 
 <script>
-import { LoaderDialog, ControlText } from '__cli/core/components';
+import { LoaderDialog, ControlText, ControlSelect } from '__cli/core/components';
 import { supportedLocales } from '__cli/core/i18n';
 import { profilesCollection, getCurrentProfile } from '../domain';
 
 export default {
   name: 'PagePreferences',
-  components: { LoaderDialog, ControlText },
+  components: { LoaderDialog, ControlText, ControlSelect },
   data () {
-    const { publicEmail, nickname, locale } = getCurrentProfile();
+    const { publicEmail, locale } = getCurrentProfile();
     return {
       supportedLocales,
       publicEmail,
-      nickname,
       locale
     };
   },

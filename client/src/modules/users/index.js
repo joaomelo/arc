@@ -6,8 +6,7 @@ export {
 } from './domain';
 
 export {
-  // ButtonLogout,
   PageAuth,
-  PageAccount
-  // PageUnverified
+  PageAccount,
+  PagePreferences
 } from './ui';

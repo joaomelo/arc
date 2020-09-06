@@ -4,7 +4,7 @@
     :value="value"
     :label="label"
     :multiple="isMultiple"
-    :chips="true"
+    :chips="isMultiple"
     :deletable-chips="true"
     :hide-selected="true"
     :rules="rules"
