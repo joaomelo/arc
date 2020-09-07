@@ -8,7 +8,7 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "outDir": "../../dist/server",
+    "outDir": "../../build",
     "rootDir": "src",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

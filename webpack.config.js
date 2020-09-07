@@ -2,8 +2,6 @@
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const nodeExternals = require('webpack-node-externals');
 
 const path = require('path');
@@ -24,11 +22,11 @@ module.exports = (env, argv) => {
         __cli: PATHS.CLIENT_SRC,
         __ser: PATHS.SERVER_SRC
       },
-      extensions: ['.ts', '.js', '.json', '.vue']
+      extensions: ['.tsx', '.ts', '.js', '.json']
     },
   };
 
-  const sharedPlugins = [
+  const commonPlugins = [
     new CircularDependencyPlugin({
       exclude: /node_modules/,
       allowAsyncCycles: false,
@@ -36,10 +34,18 @@ module.exports = (env, argv) => {
     }),
   ];
   
+  const commonRules = [
+    {
+      test: /\.tsx?$/,
+      loader: 'ts-loader',
+      exclude: /node_modules/
+    }
+];
+  
   const client = {
     ...common,
     target: "web",
-    entry: path.resolve(PATHS.CLIENT_SRC, 'index.js'),
+    entry: path.resolve(PATHS.CLIENT_SRC, 'index.tsx'),
     output: {
       publicPath: '/',
       path: PATHS.CLIENT_DIST,
@@ -60,19 +66,16 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
+        ...commonRules,
         {
           test: /\.(graphql|gql)$/,
           exclude: /node_modules/,
           loader: 'graphql-tag/loader'
         },
         {
-          test: /\.(js|vue)$/,
+          test: /\.js$/,
           use: 'eslint-loader',
           enforce: 'pre'
-        },
-        {
-          test: /\.vue$/,
-          use: 'vue-loader'
         },
         {
           test: /\.js$/,
@@ -81,33 +84,26 @@ module.exports = (env, argv) => {
         {
           test: [/\.css$/],
           use: [
-            'vue-style-loader',
-            'style-loader',
-            'css-loader'
-          ]
-        },
-        {
-          test: [/\.s(c|a)ss$/],
-          use: [
-            'vue-style-loader',
             'style-loader',
             'css-loader',
             {
-              loader: 'sass-loader',
+              loader: 'postcss-loader',
               options: {
-                implementation: require('sass'),
-                sassOptions: {
-                  fiber: false,
-                  indentedSyntax: true
-                }
-              }
-            }
+                postcssOptions: {
+                  ident: 'postcss',
+                  plugins: [
+                    require('tailwindcss'),
+                    require('autoprefixer'),
+                  ],  
+                },                
+              },
+            },
           ]
-        }
+        },
       ]
     },    
     plugins: [
-      ...sharedPlugins,
+      ...commonPlugins,
       new CopyWebpackPlugin([
         {
           from: path.resolve(PATHS.CLIENT_SRC, 'images'),
@@ -116,8 +112,6 @@ module.exports = (env, argv) => {
         }
       ]),
       new HtmlWebpackPlugin({ template: path.resolve(PATHS.CLIENT_SRC, 'index.html') }),
-      new VueLoaderPlugin(),
-      new VuetifyLoaderPlugin()
     ]  
   };
 
@@ -136,15 +130,11 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
-        {
-          test: /\.ts$/,
-          loader: 'ts-loader',
-          exclude: /node_modules/
-        },
+        ...commonRules
       ]
     },
     plugins: [
-      ...sharedPlugins,
+      ...commonPlugins,
     ]      
   };
 
