@@ -1,7 +1,6 @@
 import { LayoutDesktop, LayoutShell } from '__cli/core/layouts';
-import { PageAuth, PageAccount } from '__cli/core/auth';
+import { PageAuth, PageAccount, PagePreferences } from '__cli/modules/users';
 import { PageDashboard } from '__cli/modules/dashboard';
-// import { PagePreferences } from '__cli/modules/profiles';
 // import { PageChallenges, PageChallenge } from '__cli/modules/challenges';
 // import { PageArcs, PageArc } from '__cli/modules/arcs';
 
@@ -24,8 +23,8 @@ const routes = [
       // { path: '/challenges/list', name: 'challenges', component: PageChallenges },
       // { path: '/challenges/add', name: 'challenge-add', component: PageChallenge },
       // { path: '/challenges/edit/:id', name: 'challenge-edit', component: PageChallenge, props: true },
-      { path: '/account/edit', name: 'account', component: PageAccount }
-      // { path: '/preferences/edit', name: 'preferences', component: PagePreferences }
+      { path: '/account/edit', name: 'account', component: PageAccount },
+      { path: '/preferences/edit', name: 'preferences', component: PagePreferences }
     ]
   }
 ];

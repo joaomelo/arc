@@ -53,10 +53,12 @@ class UserResolver {
   async currentUser(@Ctx() ctx: Context): Promise<User> {
     if (!ctx.userId) throw new Error("Impossible get current user");
     const userId = ctx.userId;
-    return await User.findOneOrFail({ 
+    const currentUser = await User.findOneOrFail({ 
       select: [ "id", "email", "locale" ],
-      where: { userId }
+      where: { id: userId }
     });
+
+    return currentUser;
   }
 
   @Mutation(() => String)

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueApollo from 'vue-apollo';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
-import { authState } from '__cli/core/auth/domain/state';
+import { authState } from '__cli/modules/users/domain/state';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3000/graphql'

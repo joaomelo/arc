@@ -1,4 +1,4 @@
-import { AUTH_STATUSES, authState, authStateSubject } from '__cli/core/auth';
+import { AUTH_STATUSES, authState, authStateSubject } from '__cli/modules/users';
 
 function fenceRoutes (router) {
   activateReactionToAuthState(router);
