@@ -15,6 +15,7 @@ module.exports = {
     semi: ['error', 'always'],
     'no-console': ['warn', { allow: ['error'] }],
     'no-debugger': 'warn',
+    'react/prop-types': 'off'
   },
   settings: {
     react: {

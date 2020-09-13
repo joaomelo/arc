@@ -1,8 +1,8 @@
 import React from 'react';
 import { DialogSignIn } from './dialog-signin';
 
-function PageAuth(){
-  return <DialogSignIn />
+function PageAuth () {
+  return <DialogSignIn />;
 }
 
-export { PageAuth }
+export { PageAuth };

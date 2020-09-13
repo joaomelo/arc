@@ -6,7 +6,7 @@
 // } from './domain';
 
 export {
-  PageAuth,
+  PageAuth
   // PageAccount,
   // PagePreferences
 } from './ui';

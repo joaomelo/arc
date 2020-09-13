@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
-import { 
+import {
   DialogBasic,
-  ControlEmail, 
-  ControlPassword, 
-  PrimaryButton 
+  ControlEmail,
+  ControlPassword,
+  PrimaryButton
 } from '__cli/core/components';
 
-function DialogSignIn(){
+function DialogSignIn () {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (data: object) => {
+  const handleSubmit = data => {
     console.log(data);
-  }
+  };
 
   return (
     <DialogBasic onSubmit={handleSubmit}>
       <ControlEmail label="Email" value={email} onChange={setEmail} />
-      <ControlPassword label="Password" value={email} onChange={setEmail} />
+      <ControlPassword label="Password" value={password} onChange={setPassword} />
       <PrimaryButton label="Sign In" />
     </DialogBasic>
-  )
+  );
 }
 
-export { DialogSignIn }
+export { DialogSignIn };
