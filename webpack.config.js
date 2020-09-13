@@ -22,7 +22,7 @@ module.exports = (env, argv) => {
         __cli: PATHS.CLIENT_SRC,
         __ser: PATHS.SERVER_SRC
       },
-      extensions: ['.tsx', '.ts', '.js', '.json']
+      extensions: ['.tsx', '.ts', '.js', '.jsx', '.json']
     },
   };
 
@@ -34,18 +34,12 @@ module.exports = (env, argv) => {
     }),
   ];
   
-  const commonRules = [
-    {
-      test: /\.tsx?$/,
-      loader: 'ts-loader',
-      exclude: /node_modules/
-    }
-];
+  const commonRules = [];
   
   const client = {
     ...common,
     target: "web",
-    entry: path.resolve(PATHS.CLIENT_SRC, 'index.tsx'),
+    entry: path.resolve(PATHS.CLIENT_SRC, 'index.jsx'),
     output: {
       publicPath: '/',
       path: PATHS.CLIENT_DIST,
@@ -73,12 +67,12 @@ module.exports = (env, argv) => {
           loader: 'graphql-tag/loader'
         },
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           use: 'eslint-loader',
           enforce: 'pre'
         },
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           use: 'babel-loader'
         },
         {
@@ -130,7 +124,12 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
-        ...commonRules
+        ...commonRules,
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
+          exclude: /node_modules/
+        }    
       ]
     },
     plugins: [

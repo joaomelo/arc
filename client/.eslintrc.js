@@ -1,12 +1,15 @@
 module.exports = {
   root: true,
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      jsx: true
+    }    
   },
-  plugins: ['vue'],
   extends: [
     'standard',
-    'plugin:vue/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
   ],
   rules: {
     semi: ['error', 'always'],
