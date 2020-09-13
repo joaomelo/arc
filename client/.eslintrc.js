@@ -16,4 +16,9 @@ module.exports = {
     'no-console': ['warn', { allow: ['error'] }],
     'no-debugger': 'warn',
   },
+  settings: {
+    react: {
+      version: "detect"
+    }
+  }
 };
