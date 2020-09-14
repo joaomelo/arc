@@ -10,7 +10,7 @@ const PATHS = {
   CLIENT_DIST: path.resolve(__dirname, 'build', 'public'),
   SERVER_SRC: path.resolve(__dirname, 'server', 'src'),
   SERVER_DIST: path.resolve(__dirname, 'build')
-}
+};
 
 module.exports = (env, argv) => {
   const common = {
@@ -23,7 +23,7 @@ module.exports = (env, argv) => {
         __ser: PATHS.SERVER_SRC
       },
       extensions: ['.js', '.jsx', '.json']
-    },
+    }
   };
 
   const commonPlugins = [
@@ -31,9 +31,9 @@ module.exports = (env, argv) => {
       exclude: /node_modules/,
       allowAsyncCycles: false,
       cwd: process.cwd()
-    }),
+    })
   ];
-  
+
   const commonRules = [
     {
       test: /\.(js|jsx)$/,
@@ -48,14 +48,14 @@ module.exports = (env, argv) => {
         loader: 'babel-loader',
         options: {
           presets: ['@babel/env', '@babel/preset-react']
-        }          
-      },
+        }
+      }
     }
   ];
-  
+
   const client = {
     ...common,
-    target: "web",
+    target: 'web',
     entry: path.resolve(PATHS.CLIENT_SRC, 'index.jsx'),
     output: {
       publicPath: '/',
@@ -90,15 +90,15 @@ module.exports = (env, argv) => {
                   ident: 'postcss',
                   plugins: [
                     require('tailwindcss'),
-                    require('autoprefixer'),
-                  ],  
-                },                
-              },
-            },
+                    require('autoprefixer')
+                  ]
+                }
+              }
+            }
           ]
-        },
+        }
       ]
-    },    
+    },
     plugins: [
       ...commonPlugins,
       new CopyWebpackPlugin([
@@ -108,13 +108,13 @@ module.exports = (env, argv) => {
           toType: 'dir'
         }
       ]),
-      new HtmlWebpackPlugin({ template: path.resolve(PATHS.CLIENT_SRC, 'index.html') }),
-    ]  
+      new HtmlWebpackPlugin({ template: path.resolve(PATHS.CLIENT_SRC, 'index.html') })
+    ]
   };
 
   const server = {
     ...common,
-    target: "node",
+    target: 'node',
     node: {
       __dirname: false
     },
@@ -131,9 +131,9 @@ module.exports = (env, argv) => {
       ]
     },
     plugins: [
-      ...commonPlugins,
-    ]      
+      ...commonPlugins
+    ]
   };
 
-  return [ client, server ];
+  return [client, server];
 };
