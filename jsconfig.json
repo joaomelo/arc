@@ -4,10 +4,9 @@
     "target": "es6",
     "checkJs": false,
     "baseUrl": "./",
-    "paths": {
-      "__cli/*": [
-        "src/*"
-      ],
+    "paths": { 
+      "__cli/*": [ "client/src/*" ],
+      "__ser/*": [ "server/src/*" ]
     }
   },
 }
