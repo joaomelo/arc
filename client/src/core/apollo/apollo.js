@@ -1,6 +1,4 @@
-import Vue from 'vue';
-import VueApollo from 'vue-apollo';
-import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { authState } from '__cli/modules/users/domain/state';
 
@@ -23,9 +21,4 @@ const apolloClient = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-Vue.use(VueApollo);
-const apolloProvider = new VueApollo({
-  defaultClient: apolloClient
-});
-
-export { apolloClient, apolloProvider };
+export { apolloClient };

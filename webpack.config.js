@@ -22,7 +22,7 @@ module.exports = (env, argv) => {
         __cli: PATHS.CLIENT_SRC,
         __ser: PATHS.SERVER_SRC
       },
-      extensions: ['.tsx', '.ts', '.js', '.jsx', '.json']
+      extensions: ['.js', '.jsx', '.json']
     },
   };
 
@@ -34,7 +34,24 @@ module.exports = (env, argv) => {
     }),
   ];
   
-  const commonRules = [];
+  const commonRules = [
+    {
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      use: 'eslint-loader',
+      enforce: 'pre'
+    },
+    {
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/env', '@babel/preset-react']
+        }          
+      },
+    }
+  ];
   
   const client = {
     ...common,
@@ -61,26 +78,6 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         ...commonRules,
-        {
-          test: /\.(graphql|gql)$/,
-          exclude: /node_modules/,
-          loader: 'graphql-tag/loader'
-        },
-        {
-          test: /\.(js|jsx)$/,
-          use: 'eslint-loader',
-          enforce: 'pre'
-        },
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/env', '@babel/preset-react']
-            }          
-          },
-        },
         {
           test: [/\.css$/],
           use: [
@@ -130,12 +127,7 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
-        ...commonRules,
-        {
-          test: /\.tsx?$/,
-          loader: 'ts-loader',
-          exclude: /node_modules/
-        }    
+        ...commonRules
       ]
     },
     plugins: [

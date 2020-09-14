@@ -1,13 +1,11 @@
 import React from 'react';
 import { ControlInput } from './control-input';
 
-function ControlPassword ({ label, value, setValue }) {
+function ControlPassword (props) {
   return (
     <ControlInput
-      label={ label }
       type="password"
-      value={ value }
-      setValue= { setValue }
+      { ...props }
     />
   );
 }
