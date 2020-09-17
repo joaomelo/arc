@@ -1,5 +1,3 @@
-// import 'core-js/stable';
-// import 'regenerator-runtime/runtime';
 import { resolve } from 'path';
 import express from 'express';
 import history from 'connect-history-api-fallback';

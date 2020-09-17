@@ -1,3 +1,2 @@
-// TODO move TO ENV FILE
-const jwtSecret = 'temporarysecret';
+const jwtSecret = process.env.SECRET;
 export { jwtSecret };
