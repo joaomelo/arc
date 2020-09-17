@@ -1,5 +1,5 @@
 import { verify } from 'jsonwebtoken';
-import { TokenData, TokenPayload, jwtSecret } from './common';
+import { jwtSecret } from './common';
 
 function verifyToken(token: string): TokenData {
   const payload = verify(token, jwtSecret) as TokenPayload;

@@ -1,28 +1,29 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import { resolve } from 'path';
 import express from 'express';
 import history from 'connect-history-api-fallback';
-import { logger } from './core/log';
-import { loadDevFixture } from './modules/fixture';
-import { applyGraphqlMiddleware } from './core/graphql';
+import { appTitle, isProduction, getMode, getPort, getAddress } from '__com/meta';
+import { logger, loggerJSON } from '__ser/core/log';
 
-async function main (): Promise<void> {
-  await createDbConnection();
-  await loadDevFixture();
+async function main () {
+  const app = express();
 
-  const app: express.Application = express();
-  const port = 3000;
-
-  await applyGraphqlMiddleware(app);
-
-  app.use(history());
+  app.use(express.json());
+  app.use(history({ verbose: !isProduction() }));
 
   const staticRoot = resolve(__dirname, 'public');
   app.use(express.static(staticRoot));
-  
-  app.listen(port, () => {
-    logger.info(`app running on ${process.env.NODE_ENV as string} mode`);
-    logger.info(`http at http://localhost:${port}`);
-    logger.info(`graphql at http://localhost:${port}/graphql`);
+
+  // TODO move route to users package
+  app.post('/users/signin', (req, res) => {
+    const data = req.body;
+    loggerJSON(data);
+    res.send('auth');
+  });
+
+  app.listen(getPort(), () => {
+    logger.info(`${appTitle()} is running on ${getMode()} mode at ${getAddress()}`);
   });
 }
 

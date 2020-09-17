@@ -1,4 +1,5 @@
 import * as data from '__cli/../../package.json';
+import { isProduction } from './env';
 
 function appName () {
   const title = data.default.name;
@@ -13,7 +14,7 @@ function appDescription () {
 function appVersion () {
   const rawVersion = data.default.version;
   const prefix = 'v';
-  const posfix = appEnviroment() === 'prod' ? '' : 'd';
+  const posfix = isProduction() ? '' : 'd';
   return prefix + rawVersion + posfix;
 }
 
@@ -22,9 +23,9 @@ function appTitle () {
   return title;
 }
 
-function appEnviroment () {
-  const result = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
-  return result;
-}
-
-export { appName, appVersion, appTitle, appDescription, appEnviroment };
+export {
+  appName,
+  appVersion,
+  appTitle,
+  appDescription
+};

@@ -1,4 +1,5 @@
 'use strict';
+const Dotenv = require('dotenv-webpack');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -6,6 +7,7 @@ const nodeExternals = require('webpack-node-externals');
 
 const path = require('path');
 const PATHS = {
+  COMMON_SRC: path.resolve(__dirname, 'common'),
   CLIENT_SRC: path.resolve(__dirname, 'client', 'src'),
   CLIENT_DIST: path.resolve(__dirname, 'build', 'public'),
   SERVER_SRC: path.resolve(__dirname, 'server', 'src'),
@@ -19,6 +21,7 @@ module.exports = (env, argv) => {
     devtool: 'source-map',
     resolve: {
       alias: {
+        __com: PATHS.COMMON_SRC,
         __cli: PATHS.CLIENT_SRC,
         __ser: PATHS.SERVER_SRC
       },
@@ -26,12 +29,14 @@ module.exports = (env, argv) => {
     }
   };
 
+  const envfile = `env${env.prod ? 'prod' : 'dev'}.env`;
   const commonPlugins = [
     new CircularDependencyPlugin({
       exclude: /node_modules/,
       allowAsyncCycles: false,
       cwd: process.cwd()
-    })
+    }),
+    new Dotenv({ path: path.resolve(__dirname, envfile) })
   ];
 
   const commonRules = [
@@ -119,7 +124,7 @@ module.exports = (env, argv) => {
       __dirname: false
     },
     externals: [nodeExternals()],
-    entry: path.resolve(PATHS.SERVER_SRC, 'index.ts'),
+    entry: path.resolve(PATHS.SERVER_SRC, 'index.js'),
     output: {
       publicPath: '/',
       path: PATHS.SERVER_DIST,

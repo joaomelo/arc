@@ -8,4 +8,8 @@ const logger = createLogger({
   ]
 });
 
-export { logger };
+function loggerJSON (payload) {
+  logger.info(JSON.stringify(payload));
+}
+
+export { logger, loggerJSON };
