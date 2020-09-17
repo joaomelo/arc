@@ -39,24 +39,7 @@ module.exports = (env, argv) => {
     new Dotenv({ path: path.resolve(__dirname, envfile) })
   ];
 
-  const commonRules = [
-    {
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      use: 'eslint-loader',
-      enforce: 'pre'
-    },
-    {
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/env', '@babel/preset-react']
-        }
-      }
-    }
-  ];
+  const commonRules = [];
 
   const client = {
     ...common,
@@ -83,6 +66,22 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         ...commonRules,
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: 'eslint-loader',
+          enforce: 'pre'
+        },
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/env', '@babel/preset-react']
+            }
+          }
+        },
         {
           test: [/\.css$/],
           use: [
