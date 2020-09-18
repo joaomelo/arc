@@ -1,2 +1,1 @@
-export { signToken } from './sign';
-// export { extractUserIdFromToken } from './extract';
+export { signToken, extractUserIdFromTokenOrFail } from './jwt';
