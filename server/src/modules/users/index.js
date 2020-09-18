@@ -1,4 +1,1 @@
-export {
-  // signUp,
-  signIn
-} from './sign';
+export { router } from './router';

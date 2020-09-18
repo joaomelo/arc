@@ -12,7 +12,7 @@ import { client } from '__cli/core/client';
 // }
 
 function signIn (credentials) {
-  const route = 'signin';
+  const route = 'sign-in';
   return sign(credentials, route);
 }
 
