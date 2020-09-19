@@ -1,0 +1,1 @@
+export { bootstrapDb } from './bootstrap';

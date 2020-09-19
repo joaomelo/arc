@@ -1,10 +1,10 @@
 import { hash as hashBcryptjs, compare as compareBcryptjs } from 'bcryptjs';
 
-async function hash(s: string): Promise<string> {
+async function hash (s) {
   return hashBcryptjs(s, 12);
 }
 
-async function compare(s: string, hashed: string): Promise<boolean> {
+async function compare (s, hashed) {
   return compareBcryptjs(s, hashed);
 }
 
