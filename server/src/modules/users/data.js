@@ -1,30 +1,26 @@
-// import { compare } from '__ser/core/crypt';
-// import { User } from './user';
+import { compare } from '__ser/core/crypt';
+import { db } from '__ser/core/db';
+
+const getUsers = () => db.collection('users');
 
 async function secureFindOrFailByEmail (email, password) {
-  // const user = await User.findOneOrFail({ email });
-  // await validate(user, password);
-  // return user;
-  return Promise.resolve(
-    {
-      id: '87981273918',
-      email: 'd@d.d'
-    }
-  );
+  const user = await getUsers().findOne({ email });
+  await validateOrFail(user, password);
+  return user;
 }
 
-// async function secureFindOrFailById (userId, password) {
-//   const user = await User.findOneOrFail(userId);
-//   await validate(user, password);
-//   return user;
-// }
+async function secureFindOrFailById (userId, password) {
+  const user = await getUsers().findOne({ _id: userId });
+  await validateOrFail(user, password);
+  return user;
+}
 
-// async function validate(user: User, password): Promise<void> {
-//   const isSamePassword = await compare(password, user.password);
-//   if (!isSamePassword) throw new Error("failed to validate user credentials");
-// }
+async function validateOrFail (user, password) {
+  const isSamePassword = await compare(password, user.password);
+  if (!isSamePassword) throw new Error('failed to validate user credentials');
+}
 
 export {
-  secureFindOrFailByEmail
-  // secureFindOrFailById
+  secureFindOrFailByEmail,
+  secureFindOrFailById
 };

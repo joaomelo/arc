@@ -1,1 +1,1 @@
-export { bootstrapDb } from './bootstrap';
+export { bootstrapDb, db } from './bootstrap';
