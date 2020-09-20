@@ -17,7 +17,7 @@ async function secureFindOrFailById (userId, password) {
 
 async function validateOrFail (user, password) {
   const isSamePassword = await compare(password, user.password);
-  if (!isSamePassword) throw new Error('failed to validate user credentials');
+  if (!isSamePassword) throw new Error('failed to validate user email, password');
 }
 
 export {

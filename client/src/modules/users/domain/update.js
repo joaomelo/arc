@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client/core';
 import { apolloClient } from '__cli/core/apollo';
-import { AUTH_STATUSES, authState, triggerAuthStateChange, extractUserData } from './state';
+import { AUTH_STATUSES, authState, updateAuthState, extractUserData } from './state';
 
 async function updateEmail (newEmail, password) {
   const currentEmail = authState.userData.email;
@@ -25,7 +25,7 @@ async function updateEmail (newEmail, password) {
   const jwtToken = result.data.updateEmail;
   const newUserData = extractUserData(jwtToken);
 
-  triggerAuthStateChange(AUTH_STATUSES.SIGNEDIN, newUserData);
+  updateAuthState(AUTH_STATUSES.SIGNEDIN, newUserData);
 }
 
 async function updatePassword (newPassword, password) {

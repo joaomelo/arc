@@ -1,42 +1,35 @@
+import jwtDecode from 'jwt-decode';
 import { client } from '__cli/core/client';
-// import { AUTH_STATUSES, triggerAuthStateChange, extractUserData } from './state';
 
-// async function signUp (credentials) {
-//   const SignUp = gql`
-//     mutation SignUp ($input: SignInput!){
-//       signUp(input: $input)
-//     }
-//   `;
-
-//   return sign(credentials, SignUp);
-// }
-
-function signIn (credentials) {
-  const route = 'sign-in';
-  return sign(credentials, route);
+function signUp (email, password) {
+  const route = 'sign-up';
+  return sign(route, email, password);
 }
 
-async function sign (credentials, route) {
+function signIn (email, password) {
+  const route = 'sign-in';
+  return sign(route, email, password);
+}
+
+async function sign (route, email, password) {
   const result = await client.post(
     `/users/${route}`,
-    credentials
+    { email, password }
   );
 
-  console.log(result);
+  if (result.status !== 200) throw new Error(result.statusText);
 
-  // data propery name differs between signup and signin mutations
-  // const jwtToken = Object.values(result.data)[0];
-  // const newUserData = extractUserData(jwtToken);
+  const jwtToken = jwtDecode(result.data);
+  const userData = {
+    token: jwtToken,
+    id: jwtToken.data.id,
+    email: jwtToken.data.email
+  };
 
-  // triggerAuthStateChange(AUTH_STATUSES.SIGNEDIN, newUserData);
+  return userData;
 }
 
-// function signOut () {
-//   triggerAuthStateChange(AUTH_STATUSES.SIGNEDOUT);
-// }
-
 export {
-  // signUp,
+  signUp,
   signIn
-  // signOut
 };
