@@ -1,5 +1,5 @@
 import express from 'express';
-import { signIn } from './services';
+import { signIn, signUp } from './services';
 
 const router = express.Router();
 
@@ -13,8 +13,10 @@ router.post('/sign-in', async (req, res) => {
   }
 });
 
-router.post('/sign-up', async (req, res) => {
-  res.sendStatus(503);
+router.post('/sign-up', async (req, res, next) => {
+  const { email, password } = req.body;
+  const token = await signUp(email, password);
+  res.json(token);
 });
 
 export { router };

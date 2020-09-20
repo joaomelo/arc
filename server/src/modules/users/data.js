@@ -3,6 +3,11 @@ import { db } from '__ser/core/db';
 
 const getUsers = () => db.collection('users');
 
+async function isEmailInUse (email) {
+  const user = await getUsers().findOne({ email });
+  return !!user;
+}
+
 async function secureFindOrFailByEmail (email, password) {
   const user = await getUsers().findOne({ email });
   await validateOrFail(user, password);
@@ -20,7 +25,13 @@ async function validateOrFail (user, password) {
   if (!isSamePassword) throw new Error('failed to validate user email, password');
 }
 
+async function createUser (userDoc) {
+  await getUsers().insertOne(userDoc);
+}
+
 export {
+  isEmailInUse,
   secureFindOrFailByEmail,
-  secureFindOrFailById
+  secureFindOrFailById,
+  createUser
 };

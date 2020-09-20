@@ -1,7 +1,11 @@
+import { LOCALES } from '__com/i18n';
 import { signToken } from '__ser/core/jwt';
-// import { hash } from '__ser/core/crypt';
-// import { User } from './user';
-import { secureFindOrFailByEmail } from './data';
+import { hash } from '__ser/core/crypt';
+import {
+  isEmailInUse,
+  secureFindOrFailByEmail,
+  createUser
+} from './data';
 
 async function signIn (email, password) {
   const user = await secureFindOrFailByEmail(email, password);
@@ -12,17 +16,22 @@ async function signIn (email, password) {
   return token;
 }
 
-// async function signUp(email: string, password: string): Promise<string> {
-//   const user = new User();
-//   user.email = email;
-//   user.password = await hash(password);
-//   await user.save();
+async function signUp (email, password) {
+  if (await isEmailInUse(email)) throw new Error('Email already in use');
 
-//   const token = await signIn(email, password);
-//   return token;
-// }
+  const user = {
+    email,
+    password: await hash(password),
+    locale: LOCALES.EN.value
+  };
+
+  await createUser(user);
+
+  const token = await signIn(email, password);
+  return token;
+}
 
 export {
-  // signUp,
+  signUp,
   signIn
 };

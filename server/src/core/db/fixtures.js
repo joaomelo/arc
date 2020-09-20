@@ -16,9 +16,10 @@ async function loadFixtures (db) {
   if (count > 0) return;
 
   const password = await hash('test');
-  const usersDocs = [{ email: 'd@d', password }];
+  const locale = 'en';
+  const usersDocs = [{ email: 'd@d', password, locale }];
   for (let i = 0; i <= userQt; i++) {
-    usersDocs.push({ email: internet.email(), password });
+    usersDocs.push({ email: internet.email(), password, locale });
   }
   await users.insertMany(usersDocs);
 
