@@ -4,13 +4,12 @@
   "description": "ARC is an experimental web app that aims to help individuals, organizations, communities and families to collaboratively organize their work pipeline using an impact driven mindset.",
   "main": "index.html",
   "scripts": {
-    "start": "npm run dev:build",
-    "dev:build": "rimraf build/* && webpack --env.dev --config webpack.config.js",
-    "dev:serve": "nodemon --enable-source-maps build/server.js",
-    "lint:client": "eslint --ext .js,.jsx client/src/",
-    "lint:server": "eslint --ext .ts server/src/",
-    "prod:build": "rimraf build/* && webpack --env.prod --config webpack.config.js",
-    "prod:test": "npm run prod:lint"
+    "start": "npm run watch",
+    "watch": "rimraf build/* && webpack --env.dev --config webpack.config.js",
+    "serve": "nodemon --enable-source-maps build/server.js",
+    "lint": "eslint --ext .js,.jsx client/src/ server/src/",
+    "test": "npm run prod:lint",
+    "build": "rimraf build/* && webpack --env.prod --config webpack.config.js"
   },
   "repository": {
     "type": "git",
