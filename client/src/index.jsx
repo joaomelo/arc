@@ -7,5 +7,5 @@ import './styles.css';
 
 ReactDOM.render(
   <App />,
-  document.getElementById('app')
+  document.getElementById('container')
 );
