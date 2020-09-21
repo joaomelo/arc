@@ -78,28 +78,13 @@ module.exports = (env, argv) => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/env', '@babel/preset-react']
+              presets: ['@babel/env', '@babel/preset-react', '@emotion/babel-preset-css-prop']
             }
           }
         },
         {
           test: [/\.css$/],
-          use: [
-            'style-loader',
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  ident: 'postcss',
-                  plugins: [
-                    require('tailwindcss'),
-                    require('autoprefixer')
-                  ]
-                }
-              }
-            }
-          ]
+          use: ['style-loader', 'css-loader']
         }
       ]
     },

@@ -1,18 +1,32 @@
 import React from 'react';
 import { camelCase } from 'lodash-es';
 
-function ControlInput ({ label, type, value, onChange }) {
+function ControlInput ({ label, type, value, onChange, required }) {
   return (
-    <label className="block text-gray-800 font-bold">
-      { label }
+    <div>
+      <label
+        css={{
+          fontWeight: 400
+        }}
+      >
+        {label}{required && '*'}
+      </label>
       <input
         name={ camelCase(label) }
         type={ type }
-        className="appearance-none shadow border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline"
         value={ value }
         onChange={ e => onChange(e.target.value) }
+        required={required}
+        css={{
+          display: 'block',
+          width: '100%',
+          boxSizing: 'border-box',
+          ':focus': {
+            outlineWidth: 'thick'
+          }
+        }}
       />
-    </label>
+    </div>
   );
 }
 
