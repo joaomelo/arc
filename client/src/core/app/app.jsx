@@ -1,37 +1,31 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { theme } from '__cli/core/design';
+import { NavBar } from '__cli/core/components';
 import { PageAuth } from '__cli/modules/users';
 
 function App () {
   return (
-    <div
-      id="app"
-      css={{
-        height: '100%',
-        backgroundColor: theme.colors.ligth,
-        display: 'grid',
-        gridTemplateRows: '40px 1fr'
-      }}
-    >
-      <nav
+    <Router>
+      <div
+        id="app"
         css={{
-          backgroundColor: theme.colors.secondary,
-          color: theme.colors.primary,
-          fontSize: '2em',
-          fontWeight: '700'
+          height: '100%',
+          backgroundColor: theme.colors.ligth,
+          display: 'grid',
+          gridTemplateRows: '40px 1fr'
         }}
       >
-        Arc
-      </nav>
-      <main
-        css={{
-          padding: 8
-        }}
-      >
-        <PageAuth />
-      </main>
-    </div>
-
+        <NavBar />
+        <main
+          css={{
+            padding: 8
+          }}
+        >
+          <PageAuth />
+        </main>
+      </div>
+    </Router>
   );
 }
 
