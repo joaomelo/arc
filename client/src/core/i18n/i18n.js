@@ -1,17 +1,21 @@
-import Vue from 'vue';
-import VueI18n from 'vue-i18n';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import { isProduction } from '__com/meta';
 import en from './messages-en';
 import br from './messages-pt-br';
 
-Vue.use(VueI18n);
+const resources = {
+  en: { translation: en },
+  pt_BR: { translation: br }
+};
 
-const i18n = new VueI18n({
-  locale: 'en',
-  fallbackLocale: 'en',
-  messages: {
-    en: en,
-    pt_BR: br
-  }
-});
+i18n
+  .use(initReactI18next)
+  .init({
+    debug: !isProduction(),
+    resources,
+    lng: 'en',
+    interpolation: { escapeValue: false }
+  });
 
 export { i18n };

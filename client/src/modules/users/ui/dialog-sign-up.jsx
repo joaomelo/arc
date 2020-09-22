@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   DialogBasic,
   ControlEmail,
@@ -7,14 +8,15 @@ import {
 } from '__cli/core/components';
 
 function DialogSignUp ({ onSignUp }) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <DialogBasic title="Sign Up" onSubmit={ e => onSignUp(email, password) }>
-      <ControlEmail label="Email" value={ email } onChange={ setEmail } />
-      <ControlPassword label="Password" value={ password } onChange={ setPassword } />
-      <PrimaryButton label="Sign Up" />
+    <DialogBasic title={t('auth.sign-up')} onSubmit={ e => onSignUp(email, password) }>
+      <ControlEmail value={ email } onChange={ setEmail } />
+      <ControlPassword value={ password } onChange={ setPassword } />
+      <PrimaryButton label={t('auth.sign-up')} />
     </DialogBasic>
   );
 }

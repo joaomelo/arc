@@ -1,11 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ControlInput } from './control-input';
 
-function ControlPassword (props) {
+function ControlPassword ({ label, ...rest }) {
+  const { t } = useTranslation();
+  const passwordLabel = label || t('auth.password');
+
   return (
     <ControlInput
+      label={passwordLabel}
       type="password"
-      { ...props }
+      { ...rest }
     />
   );
 }
