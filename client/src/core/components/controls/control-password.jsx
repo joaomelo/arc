@@ -4,7 +4,7 @@ import { ControlInput } from './control-input';
 
 function ControlPassword ({ label, ...rest }) {
   const { t } = useTranslation();
-  const passwordLabel = label || t('auth.password');
+  const passwordLabel = label || t('users.password');
 
   return (
     <ControlInput

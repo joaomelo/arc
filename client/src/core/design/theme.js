@@ -5,6 +5,13 @@ const theme = {
     secondary: '#1A535C',
     accent: '#FF6B6B'
   },
+  weight: {
+    w1: '300',
+    w2: '400',
+    w3: '500',
+    w4: '600',
+    w5: '700'
+  },
   spacing: {
     s1: '02px',
     s2: '04px',

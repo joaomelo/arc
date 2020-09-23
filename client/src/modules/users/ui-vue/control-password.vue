@@ -13,7 +13,7 @@
     <ControlText
       v-if="shouldMatch"
       v-model="shadowPassword"
-      :label="$t('auth.password-repeat')"
+      :label="$t('users.password-repeat')"
       prepend-icon="mdi-lock"
       :type="showPassword ? 'text': 'password'"
       is-required
@@ -46,7 +46,7 @@ export default {
     return {
       showPassword: false,
       shadowPassword: null,
-      shadowRules: [v => this.value === this.shadowPassword || this.$t('auth.password-match')]
+      shadowRules: [v => this.value === this.shadowPassword || this.$t('users.password-match')]
     };
   },
   methods: {

@@ -6,8 +6,8 @@
           v-model="tab"
           grow
         >
-          <v-tab>{{ $t('auth.sign-in') }}</v-tab>
-          <v-tab>{{ $t('auth.sign-up') }}</v-tab>
+          <v-tab>{{ $t('users.sign-in') }}</v-tab>
+          <v-tab>{{ $t('users.sign-up') }}</v-tab>
         </v-tabs>
         <v-form
           ref="form"
@@ -19,7 +19,7 @@
           <ControlPassword
             v-model="password"
             :should-match="outfit.shouldMatch"
-            :label="$t('auth.password')"
+            :label="$t('users.password')"
           />
         </v-form>
       </template>
@@ -78,13 +78,13 @@ export default {
       const options = {
         0: {
           mode: 'LOGIN',
-          button: this.$t('auth.sign-in'),
+          button: this.$t('users.sign-in'),
           action: signIn,
           shouldMatch: false
         },
         1: {
           mode: 'SIGNUP',
-          button: this.$t('auth.sign-up'),
+          button: this.$t('users.sign-up'),
           action: signUp,
           shouldMatch: true
         }

@@ -13,10 +13,10 @@ function DialogSignUp ({ onSignUp }) {
   const [password, setPassword] = useState('');
 
   return (
-    <DialogBasic title={t('auth.sign-up')} onSubmit={ e => onSignUp(email, password) }>
+    <DialogBasic title={t('users.sign-up')} onSubmit={ e => onSignUp(email, password) }>
       <ControlEmail value={ email } onChange={ setEmail } />
       <ControlPassword value={ password } onChange={ setPassword } />
-      <PrimaryButton label={t('auth.sign-up')} />
+      <PrimaryButton label={t('users.sign-up')} />
     </DialogBasic>
   );
 }

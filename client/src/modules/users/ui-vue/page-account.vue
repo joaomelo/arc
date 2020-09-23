@@ -5,42 +5,42 @@
       text
       class="mt-2 text-center"
     >
-      {{ $t('auth.email-current', { email: authState.userData && authState.userData.email }) }}<br>
-      {{ $t('auth.account-update-below') }}
+      {{ $t('users.email-current', { email: authState.userData && authState.userData.email }) }}<br>
+      {{ $t('users.account-update-below') }}
     </v-alert>
     <LoaderDialog
-      :title="$t('auth.email-update')"
+      :title="$t('users.email-update')"
       :action="() => handleUpdateEmail()"
-      :message="$t('auth.email-updated')"
+      :message="$t('users.email-updated')"
     >
       <ControlEmail
         v-model="newEmail"
         class="mt-3"
-        :label="$t('auth.email-new')"
+        :label="$t('users.email-new')"
       />
       <ControlPassword
         v-model="password"
         class="mt-3"
-        :label="$t('auth.password-current')"
+        :label="$t('users.password-current')"
       />
     </LoaderDialog>
     <LoaderDialog
       class="mt-8"
-      :title="$t('auth.password-update')"
+      :title="$t('users.password-update')"
       :action="() => handleUpdatePassword()"
-      :message="$t('auth.password-updated')"
+      :message="$t('users.password-updated')"
     >
       <ControlPassword
         v-model="newPassword"
         class="mt-3"
-        :label="$t('auth.password-new')"
+        :label="$t('users.password-new')"
         :should-match="true"
       />
       <v-divider class="my-5" />
       <ControlPassword
         v-model="password"
         class="mt-3"
-        :label="$t('auth.password-current')"
+        :label="$t('users.password-current')"
       />
     </LoaderDialog>
   </div>

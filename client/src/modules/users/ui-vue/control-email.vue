@@ -23,13 +23,13 @@ export default {
     },
     label: {
       type: String,
-      default: i18n.t('auth.email')
+      default: i18n.t('users.email')
     }
   },
   data () {
     return {
       emailRules: [
-        v => /.+@.+\..+/.test(v) || this.$t('auth.email-valid')
+        v => /.+@.+\..+/.test(v) || this.$t('users.email-valid')
       ]
     };
   },

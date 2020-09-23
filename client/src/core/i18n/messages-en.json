@@ -1,5 +1,30 @@
 {
-  "auth": {
+  "components": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "field": "Field",
+    "required": "{text} is required",
+    "save": "Save"
+  },
+  "fields": {
+    "name": "Name",
+    "title": "Title",
+    "description": "Description"
+  },
+  "items": {
+    "item-deleted": "Item deleted",
+    "no-items-found": "No items found",
+    "successfully-saved": "Successfully saved"
+  },
+  "users": {
+    "account": "Account",
+    "language": "Language",
+    "language-required": "Language is required",
+    "nickname": "Nickname",
+    "nickname-required": "Nickname is required",
+    "preferences-updated": "Preferences updated",
+    "public-email": "Public e-mail",
+    "update-preferences": "Update preferences",
     "account-update-below": "Below you can update both e-mail and password",
     "email": "E-mail",
     "email-check-spam": "If you don't the see the email in your inbox, make sure to check the spam folder",
@@ -20,44 +45,15 @@
     "password-updated": "Password updated",
     "sign-in": "Sign In",
     "sign-out": "Sign Out",
-    "sign-up": "Sign Up"
-  },
-  "components": {
-    "back": "Back",
-    "cancel": "Cancel",
-    "field": "Field",
-    "required": "{text} is required",
-    "save": "Save"
-  },
-  "fields": {
-    "name": "Name",
-    "title": "Title",
-    "description": "Description"
-  },
-  "items": {
-    "item-deleted": "Item deleted",
-    "no-items-found": "No items found",
-    "successfully-saved": "Successfully saved"
-  },
-  "navigation": {
-    "account": "Account",
-    "home": "Home",
-    "preferences": "Preferences"
-  },
-  "profiles": {
-    "language": "Language",
-    "language-required": "Language is required",
-    "nickname": "Nickname",
-    "nickname-required": "Nickname is required",
-    "preferences-updated": "Preferences updated",
-    "public-email": "Public e-mail",
-    "update-preferences": "Update preferences"
+    "sign-up": "Sign Up"  
   },
   "challenges": {
-    "challenge": "Challenge | Challenges"
+    "challenge": "Challenge",
+    "challenge_plural": "Challenges"
   },
   "arcs": {
-    "arc": "Arc | Arcs",
+    "arc": "Arc",
+    "arc_plural": "Arcs",
     "owner": "Owner",
     "editors": "Editor | Editors",
     "members": "Member | Members"

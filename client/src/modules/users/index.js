@@ -1,9 +1,7 @@
-// export {
-//   AUTH_STATUSES,
-//   authState,
-//   authStateSubject,
-//   signOut
-// } from './domain';
+export {
+  useAuthStore,
+  AUTH_STATUSES
+} from './domain';
 
 export {
   PageAuth

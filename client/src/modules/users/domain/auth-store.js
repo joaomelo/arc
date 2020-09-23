@@ -13,7 +13,7 @@ const initialAuthState = {
   email: null
 };
 
-const useAuthStore = create(set => ({
+const useAuthStore = create((set, get) => ({
   ...initialAuthState,
 
   signIn: async (email, password) => {

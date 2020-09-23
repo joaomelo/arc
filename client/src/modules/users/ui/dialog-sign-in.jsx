@@ -13,10 +13,10 @@ function DialogSignIn ({ onSignIn }) {
   const [password, setPassword] = useState('');
 
   return (
-    <DialogBasic title={t('auth.sign-in')} onSubmit={ e => onSignIn(email, password) }>
+    <DialogBasic title={t('users.sign-in')} onSubmit={ e => onSignIn(email, password) }>
       <ControlEmail value={ email } onChange={ setEmail } required />
       <ControlPassword value={ password } onChange={ setPassword } />
-      <PrimaryButton label={t('auth.sign-in')} />
+      <PrimaryButton label={t('users.sign-in')} />
     </DialogBasic>
   );
 }
