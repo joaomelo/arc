@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { theme } from '__cli/core/design';
 import { useAuthStore, AUTH_STATUSES } from '__cli/modules/users';
 import { NavLink } from './nav-link';
 
@@ -17,9 +16,6 @@ function NavLinks (props) {
       css={{
         display: 'flex',
         alignItems: 'center'
-        // display: 'grid',
-        // gridTemplateColumns: 'repeat(4, auto)',
-        // columnGap: theme.spacing.s3
       }}
       {...props}
     >

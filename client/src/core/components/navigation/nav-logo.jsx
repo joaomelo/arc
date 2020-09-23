@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { appName, appVersion } from '__com/meta';
+import { theme } from '__cli/core/design';
 
 function NavLogo (props) {
   return (
@@ -14,8 +15,8 @@ function NavLogo (props) {
       <Link to="/">
         <span
           css={{
-            fontSize: '1.75rem',
-            fontWeight: '500'
+            fontSize: theme.size.s5,
+            fontWeight: theme.weight.w3
           }}
         >
           {appName()}
@@ -23,7 +24,7 @@ function NavLogo (props) {
         <span>&nbsp;</span>
         <span
           css={{
-            fontSize: '0.75rem'
+            fontSize: theme.size.s2
           }}
         >
           {appVersion()}

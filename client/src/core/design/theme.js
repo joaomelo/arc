@@ -12,12 +12,19 @@ const theme = {
     w4: '600',
     w5: '700'
   },
-  spacing: {
+  space: {
     s1: '02px',
     s2: '04px',
     s3: '08px',
     s4: '16px',
     s5: '32px'
+  },
+  size: {
+    s1: '0.5rem',
+    s2: '0.75rem',
+    s3: '1rem',
+    s4: '1.5rem',
+    s5: '2rem'
   }
 };
 

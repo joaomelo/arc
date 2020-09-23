@@ -9,11 +9,11 @@ function NavBar () {
       css={{
         backgroundColor: theme.colors.secondary,
         color: theme.colors.primary,
-        paddingLeft: theme.spacing.s3,
-        paddingRight: theme.spacing.s3,
+        paddingLeft: theme.space.s3,
+        paddingRight: theme.space.s3,
         display: 'grid',
         gridTemplateColumns: 'auto 1fr auto',
-        columnGap: theme.spacing.s3
+        columnGap: theme.space.s3
       }}
     >
       <NavLogo css={{ gridColumn: '1 / 2' }} />

@@ -19,7 +19,7 @@ function App () {
         <NavBar />
         <main
           css={{
-            padding: theme.spacing.s3
+            padding: theme.space.s3
           }}
         >
           <PageAuth />
