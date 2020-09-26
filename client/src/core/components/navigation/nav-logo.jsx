@@ -5,13 +5,7 @@ import { theme } from '__cli/core/design';
 
 function NavLogo (props) {
   return (
-    <div
-      css={{
-        width: '100%',
-        height: '100%'
-      }}
-      {...props}
-    >
+    <div {...props}>
       <Link to="/">
         <span
           css={{

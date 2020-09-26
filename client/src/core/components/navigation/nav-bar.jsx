@@ -1,9 +1,8 @@
 import React from 'react';
 import { theme } from '__cli/core/design';
 import { NavLogo } from './nav-logo';
-import { NavLinks } from './nav-links';
 
-function NavBar () {
+function NavBar ({ children, linksCount, ...rest }) {
   return (
     <nav
       css={{
@@ -12,12 +11,14 @@ function NavBar () {
         paddingLeft: theme.space.s3,
         paddingRight: theme.space.s3,
         display: 'grid',
-        gridTemplateColumns: 'auto 1fr auto',
-        columnGap: theme.space.s3
+        gridTemplateColumns: `1fr ${linksCount > 0 ? `repeat(${linksCount}, max-content)}` : ''}`,
+        columnGap: theme.space.s3,
+        alignItems: 'center',
+        ...rest
       }}
     >
-      <NavLogo css={{ gridColumn: '1 / 2' }} />
-      <NavLinks css={{ gridColumn: '3 / 4' }} />
+      <NavLogo />
+      { children }
     </nav>
   );
 }
