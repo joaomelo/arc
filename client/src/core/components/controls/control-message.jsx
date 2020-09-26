@@ -11,7 +11,8 @@ function ControlMessage ({ validity, ...rest }) {
     <span
       css={{
         color: theme.colors.accent,
-        fontSize: theme.size.s1
+        fontSize: theme.size.s1,
+        fontWeight: theme.weight.w2
       }}
       {...rest}
     >

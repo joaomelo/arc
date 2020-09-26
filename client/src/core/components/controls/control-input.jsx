@@ -15,7 +15,8 @@ function ControlInput ({ label, type, value, onChange, required }) {
     <div>
       <label
         css={{
-          fontWeight: theme.weight.w2
+          fontWeight: theme.weight.w2,
+          color: validity.valid ? 'inherit' : theme.colors.accent
         }}
       >
         {label}{required && '*'}
