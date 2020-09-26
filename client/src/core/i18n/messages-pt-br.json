@@ -26,7 +26,8 @@
     "back": "Voltar",
     "cancel": "Cancelar",
     "field": "Campo",
-    "required": "{text} é orbigatório",
+    "input-required": "Entrada é obrigatória",
+    "input-invalid": "Entrada inválida",
     "save": "Salvar"
   },
   "fields": {

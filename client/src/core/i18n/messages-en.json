@@ -3,7 +3,8 @@
     "back": "Back",
     "cancel": "Cancel",
     "field": "Field",
-    "required": "{text} is required",
+    "input-required": "Input is required",
+    "input-invalid": "Input is invalid",
     "save": "Save"
   },
   "fields": {

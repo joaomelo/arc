@@ -9,6 +9,7 @@ function DialogBasic ({ onSubmit, title, children }) {
   return (
     <form
       onSubmit={ handleSubmit }
+      noValidate
       css={{
         padding: '8px',
         border: '1px solid',
@@ -16,7 +17,6 @@ function DialogBasic ({ onSubmit, title, children }) {
           marginTop: '8px'
         }
       }}
-      className="bg-white shadow-md rounded px-8 pt-6 pb-8 space-y-4"
     >
       {title && <h2>{title}</h2>}
       { children }

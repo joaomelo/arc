@@ -15,7 +15,7 @@ function DialogSignIn ({ onSignIn }) {
   return (
     <DialogBasic title={t('users.sign-in')} onSubmit={ e => onSignIn(email, password) }>
       <ControlEmail value={ email } onChange={ setEmail } required />
-      <ControlPassword value={ password } onChange={ setPassword } />
+      <ControlPassword value={ password } onChange={ setPassword } required />
       <PrimaryButton label={t('users.sign-in')} />
     </DialogBasic>
   );

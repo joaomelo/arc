@@ -20,10 +20,10 @@ const theme = {
     s5: '32px'
   },
   size: {
-    s1: '0.5rem',
-    s2: '0.75rem',
-    s3: '1rem',
-    s4: '1.5rem',
+    s1: '0.75rem',
+    s2: '1rem',
+    s3: '1.5rem',
+    s4: '1.75rem',
     s5: '2rem'
   }
 };

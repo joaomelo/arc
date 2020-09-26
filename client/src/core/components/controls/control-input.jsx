@@ -1,31 +1,40 @@
-import React from 'react';
-import { camelCase } from 'lodash-es';
+import React, { useState } from 'react';
+import { camelCase, upperFirst } from 'lodash-es';
+import { theme } from '__cli/core/design';
+import { ControlMessage } from './control-message';
 
 function ControlInput ({ label, type, value, onChange, required }) {
+  const [validity, setValidity] = useState({ valid: true });
+
+  const handleChange = e => {
+    setValidity(e.target.validity);
+    onChange(e.target.value);
+  };
+
   return (
     <div>
       <label
         css={{
-          fontWeight: 400
+          fontWeight: theme.weight.w2
         }}
       >
         {label}{required && '*'}
       </label>
       <input
-        name={ camelCase(label) }
-        type={ type }
-        value={ value }
-        onChange={ e => onChange(e.target.value) }
+        name={`control${upperFirst(camelCase(label))}`}
+        type={type}
+        value={value}
+        onChange={handleChange}
         required={required}
         css={{
           display: 'block',
           width: '100%',
-          boxSizing: 'border-box',
           ':focus': {
             outlineWidth: 'thick'
           }
         }}
       />
+      <ControlMessage validity={validity} />
     </div>
   );
 }
