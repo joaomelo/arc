@@ -1,19 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { DialogTabs } from '__cli/core/components';
 import { DialogSignIn } from './dialog-sign-in';
 import { DialogSignUp } from './dialog-sign-up';
 
 function MultipleSign ({ onSignIn, onSignUp }) {
+  const { t } = useTranslation();
+
   return (
-    <div
-      css={{
-        '> *': {
-          marginTop: '8px'
-        }
-      }}
-    >
-      <DialogSignIn onSignIn={onSignIn}/>
-      <DialogSignUp onSignUp={onSignUp}/>
-    </div>
+    <DialogTabs>
+      <DialogSignIn label={t('users.sign-in')} onSignIn={onSignIn}/>
+      <DialogSignUp label={t('users.sign-up')} onSignUp={onSignUp}/>
+    </DialogTabs>
   );
 }
 

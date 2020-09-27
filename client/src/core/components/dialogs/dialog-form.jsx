@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { theme } from '__cli/core/design';
 
-function DialogBasic ({ onSubmit, title, children }) {
+function DialogForm ({ onSubmit, title, children }) {
   const [message, setMessage] = useState('');
 
   const handleSubmit = async e => {
@@ -66,4 +66,4 @@ function DialogBasic ({ onSubmit, title, children }) {
   );
 }
 
-export { DialogBasic };
+export { DialogForm };
