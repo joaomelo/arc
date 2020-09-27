@@ -1,27 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { theme } from '__cli/core/design';
 
 function DialogBasic ({ onSubmit, title, children }) {
-  const handleSubmit = e => {
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!e.target.checkValidity()) return;
-    onSubmit(e);
+    try {
+      await onSubmit(e);
+    } catch (error) {
+      setMessage(error.message);
+    }
   };
 
   return (
-    <form
-      onSubmit={ handleSubmit }
-      noValidate
+    <div
       css={{
-        padding: '8px',
-        border: '1px solid',
-        '> *': {
-          marginTop: '8px'
-        }
+        padding: theme.space.s3,
+        borderRadius: theme.space.s3,
+        backgroundColor: theme.colors.primary
       }}
     >
-      {title && <h2>{title}</h2>}
-      { children }
-    </form>
+      {title &&
+        <h2
+          css={{
+            textAlign: 'center',
+            fontWeight: theme.weight.w4,
+            fontSize: theme.size.s3
+          }}
+        >
+          {title}
+        </h2>
+      }
+      <form
+        onSubmit={ handleSubmit }
+        noValidate
+        css={{
+          '> * + *': {
+            marginTop: theme.space.s3
+          }
+        }}
+      >
+        { children }
+      </form>
+      { message &&
+        <span
+          css={{
+            display: 'block',
+            textAlign: 'center',
+            color: theme.colors.primary,
+            backgroundColor: theme.colors.accent,
+            fontSize: theme.size.s2,
+            fontWeight: theme.weight.w2,
+            marginTop: theme.space.s3,
+            borderRadius: theme.space.s3,
+            padding: theme.space.s1,
+            widht: '100%'
+          }}
+        >
+          { message }
+        </span>
+      }
+    </div>
   );
 }
 
