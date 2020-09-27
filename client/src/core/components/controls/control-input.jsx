@@ -26,6 +26,7 @@ function ControlInput ({ label, type, value, onChange, required }) {
         type={type}
         value={value}
         onChange={handleChange}
+        onInvalid={e => setValidity(e.target.validity)}
         required={required}
         css={{
           display: 'block',

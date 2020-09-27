@@ -1,8 +1,9 @@
 import React from 'react';
 
 function DialogBasic ({ onSubmit, title, children }) {
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
+    if (!e.target.checkValidity()) return;
     onSubmit(e);
   };
 
