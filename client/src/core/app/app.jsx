@@ -22,7 +22,7 @@ function App () {
         <AppNav />
         <main
           css={{
-            padding: theme.space.s3
+            padding: `${theme.space.s5} ${theme.space.s3} ${theme.space.s3}`
           }}
         >
           <PrivateRoute exact path="/">

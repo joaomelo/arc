@@ -17,7 +17,7 @@ function DialogForm ({ onSubmit, title, children }) {
   return (
     <div
       css={{
-        padding: theme.space.s3,
+        padding: theme.space.s4,
         borderRadius: theme.space.s3,
         backgroundColor: theme.colors.primary
       }}
@@ -38,7 +38,7 @@ function DialogForm ({ onSubmit, title, children }) {
         noValidate
         css={{
           '> * + *': {
-            marginTop: theme.space.s3
+            marginTop: theme.space.s4
           }
         }}
       >
