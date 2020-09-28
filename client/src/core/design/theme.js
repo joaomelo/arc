@@ -1,8 +1,9 @@
 const theme = {
   colors: {
     primary: '#FFFFFF',
-    ligth: '#FAFAFA',
+    light: '#F8F5F2',
     secondary: '#1A535C',
+    dark: '#59344F',
     accent: '#FF6B6B'
   },
   weight: {

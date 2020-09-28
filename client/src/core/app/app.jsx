@@ -14,7 +14,7 @@ function App () {
         id="app"
         css={{
           height: '100%',
-          backgroundColor: theme.colors.ligth,
+          backgroundColor: theme.colors.light,
           display: 'grid',
           gridTemplateRows: 'max-content 1fr'
         }}
