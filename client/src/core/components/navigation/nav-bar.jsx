@@ -1,13 +1,13 @@
 import React from 'react';
-import { theme } from '__cli/core/design';
+import { theme, colors } from '__cli/core/design';
 import { NavLogo } from './nav-logo';
 
 function NavBar ({ children, linksCount, ...rest }) {
   return (
     <nav
       css={{
-        backgroundColor: theme.colors.secondary,
-        color: theme.colors.primary,
+        backgroundColor: colors.secondary,
+        color: colors.primary,
         paddingLeft: theme.space.s3,
         paddingRight: theme.space.s3,
         display: 'grid',

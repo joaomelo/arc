@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { theme } from '__cli/core/design';
+import { theme, colors } from '__cli/core/design';
 
 function DialogTabs ({ children }) {
   const [currentTab, setCurrentTab] = useState(children[0].props.label);
@@ -7,14 +7,14 @@ function DialogTabs ({ children }) {
     <div
       css={{
         borderRadius: theme.space.s3,
-        backgroundColor: theme.colors.primary,
+        backgroundColor: colors.primary,
         overflow: 'hidden'
       }}
     >
       <ol
         css={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${children.length}, 1fr)`,
+          gridTemplateColumns: `repeat(${children.length}, minmax(max-content, 1fr))`,
           listStyle: 'none',
           cursor: 'pointer'
         }}
@@ -30,11 +30,11 @@ function DialogTabs ({ children }) {
                 css={{
                   textAlign: 'center',
                   padding: theme.space.s3,
-                  backgroundColor: label === currentTab ? theme.colors.secondary : theme.colors.dark,
-                  color: label === currentTab ? theme.colors.primary : theme.colors.light,
+                  backgroundColor: label === currentTab ? colors.secondary : colors.dark,
+                  color: label === currentTab ? colors.primary : colors.light,
                   fontWeight: label === currentTab ? theme.weight.w3 : theme.weight.w2,
                   ':hover': {
-                    backgroundColor: theme.colors.accent
+                    backgroundColor: colors.accent
                   }
                 }}
               >

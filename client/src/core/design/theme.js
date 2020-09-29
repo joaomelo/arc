@@ -19,14 +19,24 @@ const theme = {
     s3: '08px',
     s4: '16px',
     s5: '32px'
-  },
-  size: {
-    s1: '0.75rem',
-    s2: '1rem',
-    s3: '1.5rem',
-    s4: '1.75rem',
-    s5: '2rem'
   }
 };
 
-export { theme };
+const colors = {
+  primary: '#FFFFFF',
+  light: '#F8F5F2',
+  secondary: '#1A535C',
+  dark: '#59344F',
+  accent: '#FF6B6B'
+};
+
+const sizes = {
+  sz1: '0.75rem',
+  sz2: '1rem',
+  sz3: '1.5rem',
+  sz4: '1.75rem',
+  sz5: '2rem',
+  sz6: '4rem'
+};
+
+export { theme, colors, sizes };

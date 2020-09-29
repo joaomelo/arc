@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
-import { theme } from '__cli/core/design';
+import { theme, sizes, colors } from '__cli/core/design';
+import { useLoading } from '../singletons';
 
 function DialogForm ({ onSubmit, title, children }) {
   const [message, setMessage] = useState('');
+  const toggleLoading = useLoading(state => state.toggleLoading);
 
   const handleSubmit = async e => {
     e.preventDefault();
     if (!e.target.checkValidity()) return;
     try {
+      toggleLoading();
       await onSubmit(e);
     } catch (error) {
       setMessage(error.message);
+    } finally {
+      setTimeout(() => toggleLoading(), 20000);
     }
   };
 
@@ -19,7 +24,7 @@ function DialogForm ({ onSubmit, title, children }) {
       css={{
         padding: theme.space.s4,
         borderRadius: theme.space.s3,
-        backgroundColor: theme.colors.primary
+        backgroundColor: colors.primary
       }}
     >
       {title &&
@@ -27,7 +32,7 @@ function DialogForm ({ onSubmit, title, children }) {
           css={{
             textAlign: 'center',
             fontWeight: theme.weight.w4,
-            fontSize: theme.size.s3
+            fontSize: sizes.sz3
           }}
         >
           {title}
@@ -49,9 +54,9 @@ function DialogForm ({ onSubmit, title, children }) {
           css={{
             display: 'block',
             textAlign: 'center',
-            color: theme.colors.primary,
-            backgroundColor: theme.colors.accent,
-            fontSize: theme.size.s2,
+            color: colors.primary,
+            backgroundColor: colors.accent,
+            fontSize: sizes.sz2,
             fontWeight: theme.weight.w2,
             marginTop: theme.space.s3,
             borderRadius: theme.space.s3,

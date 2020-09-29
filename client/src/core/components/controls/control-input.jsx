@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { camelCase, upperFirst } from 'lodash-es';
-import { theme } from '__cli/core/design';
+import { theme, colors } from '__cli/core/design';
 import { ControlMessage } from './control-message';
 
 function ControlInput ({ label, type, value, onChange, required }) {
@@ -16,7 +16,7 @@ function ControlInput ({ label, type, value, onChange, required }) {
       <label
         css={{
           fontWeight: theme.weight.w2,
-          color: validity.valid ? 'inherit' : theme.colors.accent
+          color: validity.valid ? 'inherit' : colors.accent
         }}
       >
         {label}{required && '*'}

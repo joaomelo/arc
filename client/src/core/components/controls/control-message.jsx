@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { theme } from '__cli/core/design';
+import { theme, sizes, colors } from '__cli/core/design';
 
 function ControlMessage ({ validity, ...rest }) {
   const { t } = useTranslation();
@@ -10,8 +10,8 @@ function ControlMessage ({ validity, ...rest }) {
   return (
     <span
       css={{
-        color: theme.colors.accent,
-        fontSize: theme.size.s1,
+        color: colors.accent,
+        fontSize: sizes.sz1,
         fontWeight: theme.weight.w2
       }}
       {...rest}
