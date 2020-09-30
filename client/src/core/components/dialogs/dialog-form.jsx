@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { theme, sizes, colors } from '__cli/core/design';
+import { weights, spaces, sizes } from '__cli/core/design';
+import { MessageError } from '../messages';
 import { useLoading } from '../singletons';
+import { DialogBase } from './dialog-base';
 
 function DialogForm ({ onSubmit, title, children }) {
   const [message, setMessage] = useState('');
@@ -20,19 +22,13 @@ function DialogForm ({ onSubmit, title, children }) {
   };
 
   return (
-    <div
-      css={{
-        padding: theme.space.s4,
-        borderRadius: theme.space.s3,
-        backgroundColor: colors.primary
-      }}
-    >
+    <DialogBase>
       {title &&
         <h2
           css={{
             textAlign: 'center',
-            fontWeight: theme.weight.w4,
-            fontSize: sizes.sz3
+            fontWeight: weights.bolder,
+            fontSize: sizes.big
           }}
         >
           {title}
@@ -43,31 +39,19 @@ function DialogForm ({ onSubmit, title, children }) {
         noValidate
         css={{
           '> * + *': {
-            marginTop: theme.space.s4
+            marginTop: spaces.sp4
           }
         }}
       >
         { children }
       </form>
-      { message &&
-        <span
-          css={{
-            display: 'block',
-            textAlign: 'center',
-            color: colors.primary,
-            backgroundColor: colors.accent,
-            fontSize: sizes.sz2,
-            fontWeight: theme.weight.w2,
-            marginTop: theme.space.s3,
-            borderRadius: theme.space.s3,
-            padding: theme.space.s1,
-            widht: '100%'
-          }}
-        >
-          { message }
-        </span>
-      }
-    </div>
+      <MessageError
+        message={message}
+        css={{
+          marginTop: spaces.sp3
+        }}
+      />
+    </DialogBase>
   );
 }
 

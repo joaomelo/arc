@@ -2,7 +2,7 @@ import React from 'react';
 import { sizes, colors } from '__cli/core/design';
 
 function LoadingSpinner () {
-  const { sz1, sz6 } = sizes;
+  const { small, biggest } = sizes;
   const { secondary, primary } = colors;
 
   return (
@@ -10,10 +10,10 @@ function LoadingSpinner () {
       css={{
         position: 999,
         borderRadius: '50%',
-        border: `${sz1} solid ${secondary}`,
-        borderTop: `${sz1} solid ${primary}`,
-        width: sz6,
-        height: sz6,
+        border: `${small} solid ${secondary}`,
+        borderTop: `${small} solid ${primary}`,
+        width: biggest,
+        height: biggest,
         animation: 'spin 2s linear infinite',
         '@keyframes spin': {
           '0%': { transform: 'rotate(0deg)' },

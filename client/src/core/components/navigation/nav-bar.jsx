@@ -1,5 +1,5 @@
 import React from 'react';
-import { theme, colors } from '__cli/core/design';
+import { spaces, colors } from '__cli/core/design';
 import { NavLogo } from './nav-logo';
 
 function NavBar ({ children, linksCount, ...rest }) {
@@ -8,11 +8,11 @@ function NavBar ({ children, linksCount, ...rest }) {
       css={{
         backgroundColor: colors.secondary,
         color: colors.primary,
-        paddingLeft: theme.space.s3,
-        paddingRight: theme.space.s3,
+        paddingLeft: spaces.sp3,
+        paddingRight: spaces.sp3,
         display: 'grid',
         gridTemplateColumns: `1fr ${linksCount > 0 ? `repeat(${linksCount}, max-content)}` : ''}`,
-        columnGap: theme.space.s3,
+        columnGap: spaces.sp3,
         alignItems: 'center',
         ...rest
       }}

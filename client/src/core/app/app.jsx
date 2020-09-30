@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import { theme, colors } from '__cli/core/design';
+import { spaces, colors } from '__cli/core/design';
 import { LoadingOverlay } from '__cli/core/components';
 import { useAuthStore, AUTH_STATUSES, PageAuth } from '__cli/modules/users';
 import { AppNav } from './app-nav';
@@ -25,7 +25,7 @@ function App () {
           <AppNav />
           <main
             css={{
-              padding: `${theme.space.s5} ${theme.space.s3} ${theme.space.s3}`
+              padding: `${spaces.sp5} ${spaces.sp3} ${spaces.sp3}`
             }}
           >
             <PrivateRoute exact path="/">
