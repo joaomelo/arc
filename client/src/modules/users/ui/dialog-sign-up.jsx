@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import {
   DialogForm,
   ControlEmail,
-  ControlPassword,
+  ControlPasswordWithConfirmation,
   PrimaryButton
 } from '__cli/core/components';
 
@@ -13,9 +13,9 @@ function DialogSignUp ({ onSignUp }) {
   const [password, setPassword] = useState('');
 
   return (
-    <DialogForm onSubmit={ e => onSignUp(email, password) }>
-      <ControlEmail value={ email } onChange={ setEmail } />
-      <ControlPassword value={ password } onChange={ setPassword } />
+    <DialogForm onSubmit={e => onSignUp(email, password)}>
+      <ControlEmail value={email} onChange={setEmail} required />
+      <ControlPasswordWithConfirmation value={password} onChange={setPassword} required />
       <PrimaryButton label={t('users.sign-up')} />
     </DialogForm>
   );

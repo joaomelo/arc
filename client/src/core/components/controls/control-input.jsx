@@ -1,42 +1,40 @@
 import React, { useState } from 'react';
 import { camelCase, upperFirst } from 'lodash-es';
-import { weights, colors } from '__cli/core/design';
-import { ControlMessage } from './control-message';
+import { weights, sizes, colors } from '__cli/core/design';
+import { BaseInput } from './base-input';
 
-function ControlInput ({ label, type, value, onChange, required }) {
-  const [validity, setValidity] = useState({ valid: true });
+function ControlInput ({ label, ...rest }) {
+  const [message, setMessage] = useState('');
 
-  const handleChange = e => {
-    setValidity(e.target.validity);
-    onChange(e.target.value);
-  };
+  const controlId = `control${upperFirst(camelCase(label))}`;
 
   return (
     <div>
       <label
+        htmlFor={controlId}
         css={{
           fontWeight: weights.bold,
-          color: validity.valid ? 'inherit' : colors.accent
+          color: message ? colors.accent : 'inherit'
         }}
       >
-        {label}{required && '*'}
+        {label}
       </label>
-      <input
-        name={`control${upperFirst(camelCase(label))}`}
-        type={type}
-        value={value}
-        onChange={handleChange}
-        onInvalid={e => setValidity(e.target.validity)}
-        required={required}
-        css={{
-          display: 'block',
-          width: '100%',
-          ':focus': {
-            outlineWidth: 'thick'
-          }
-        }}
+      < BaseInput
+        {...rest}
+        id={controlId}
+        onValidation={error => setMessage(error)}
       />
-      <ControlMessage validity={validity} />
+      { message &&
+        <p
+          css={{
+            color: colors.accent,
+            fontSize: sizes.small,
+            fontWeight: weights.bold
+          }}
+        >
+          {message}
+        </p>
+      }
     </div>
   );
 }
