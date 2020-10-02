@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ControlPassword } from './control-password';
 
-function ControlPasswordWithConfirmation ({ label, value, ...rest }) {
+function ControlPasswordConfirmed ({ label, value, ...rest }) {
   const { t } = useTranslation();
   const [confirmationPassword, setConfirmationPassword] = useState('');
 
   const rules = [
-    v => v !== value && 'passwords should match'
+    v => {
+      console.log(v, value);
+      return v !== value && 'passwords should match';
+    }
   ];
 
   return (
@@ -28,4 +31,4 @@ function ControlPasswordWithConfirmation ({ label, value, ...rest }) {
   );
 }
 
-export { ControlPasswordWithConfirmation };
+export { ControlPasswordConfirmed };
