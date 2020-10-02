@@ -4,11 +4,11 @@ import { spaces, colors } from '__cli/core/design';
 function DialogBase ({ header, children, ...rest }) {
   return (
     <div
+      {...rest}
       css={{
         borderRadius: spaces.sp3,
         backgroundColor: colors.primary,
-        overflow: 'hidden',
-        ...rest
+        overflow: 'hidden'
       }}
     >
       { header }

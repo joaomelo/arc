@@ -1,5 +1,35 @@
 {
-  "auth": {
+  "arcs": {
+    "arc": "Arc",
+    "arc_plural": "Arcs",
+    "editors": "Editor | Editores",
+    "members": "Membro | Membros",
+    "owner": "Proprietário"
+  },
+  "challenges": {
+    "challenge": "Desafio",
+    "challenge_plural": "Desafios"
+  },
+  "components": {
+    "back": "Voltar",
+    "cancel": "Cancelar",
+    "field": "Campo",
+    "input-invalid": "Entrada inválida",
+    "input-required": "Entrada é obrigatória",
+    "save": "Salvar"
+  },
+  "fields": {
+    "description": "Descrição",
+    "name": "Nome",
+    "title": "Título"
+  },
+  "items": {
+    "item-deleted": "Item excluído",
+    "no-items-found": "Nenhum item encontrado",
+    "successfully-saved": "Salvo com sucesso"
+  },
+  "users": {
+    "account": "Conta",
     "account-update-below": "Abaixo você pode atualizar seu e-mail and senha",
     "email": "E-mail",
     "email-check-spam": "Se você não encontrar o e-mail na sua caixa de entrada, confirme na pasta de spam",
@@ -11,6 +41,10 @@
     "email-update": "Atualização de e-mail",
     "email-updated": "E-mail atualizado",
     "email-valid": "E-mail tem de ser válido",
+    "language": "Idioma",
+    "language-required": "Idioma é obrigatório",
+    "nickname": "Apelido",
+    "nickname-required": "Apelido é obrigatório",
     "password": "Senha",
     "password-current": "Senha atual",
     "password-match": "As senhas devem ser iguais",
@@ -20,47 +54,7 @@
     "password-updated": "Senha atualizada",
     "sign-in": "Entrar",
     "sign-out": "Sair",
-    "sign-up": "Criar"
-  },
-  "components": {
-    "back": "Voltar",
-    "cancel": "Cancelar",
-    "field": "Campo",
-    "input-required": "Entrada é obrigatória",
-    "input-invalid": "Entrada inválida",
-    "save": "Salvar"
-  },
-  "fields": {
-    "name": "Nome",
-    "title": "Título",
-    "description": "Descrição"
-  },
-  "items": {
-    "item-deleted": "Item excluído",
-    "no-items-found": "Nenhum item encontrado",
-    "successfully-saved": "Salvo com sucesso"
-  },
-  "navigation": {
-    "account": "Conta",
-    "home": "Início",
-    "preferences": "Preferências"
-  },
-  "profiles": {
-    "language": "Idioma",
-    "language-required": "Idioma é obrigatório",
-    "nickname": "Apelido",
-    "nickname-required": "Apelido é obrigatório",
-    "preferences-updated": "Preferências atualizadas",
-    "public-email": "E-mail público",
+    "sign-up": "Criar",
     "update-preferences": "Atualizar preferências"
-  },
-  "challenges": {
-    "challenge": "Desafio | Desafios"
-  },
-  "arcs": {
-    "arc": "Time | Times",
-    "owner": "Proprietário",
-    "editors": "Editor | Editores",
-    "members": "Membro | Membros"
   }
 }

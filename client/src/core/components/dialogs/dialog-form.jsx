@@ -17,7 +17,7 @@ function DialogForm ({ onSubmit, title, children }) {
     } catch (error) {
       setMessage(error.message);
     } finally {
-      setTimeout(() => toggleLoading(), 20000);
+      toggleLoading();
     }
   };
 

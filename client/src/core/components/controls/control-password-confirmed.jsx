@@ -7,10 +7,7 @@ function ControlPasswordConfirmed ({ label, value, ...rest }) {
   const [confirmationPassword, setConfirmationPassword] = useState('');
 
   const rules = [
-    v => {
-      console.log(v, value);
-      return v !== value && 'passwords should match';
-    }
+    v => v !== value && 'passwords should match'
   ];
 
   return (

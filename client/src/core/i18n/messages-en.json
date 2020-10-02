@@ -1,16 +1,27 @@
 {
+  "arcs": {
+    "arc": "Arc",
+    "arc_plural": "Arcs",
+    "editors": "Editor | Editors",
+    "members": "Member | Members",
+    "owner": "Owner"
+  },
+  "challenges": {
+    "challenge": "Challenge",
+    "challenge_plural": "Challenges"
+  },
   "components": {
     "back": "Back",
     "cancel": "Cancel",
     "field": "Field",
-    "input-required": "Input is required",
     "input-invalid": "Input is invalid",
+    "input-required": "Input is required",
     "save": "Save"
   },
   "fields": {
+    "description": "Description",
     "name": "Name",
-    "title": "Title",
-    "description": "Description"
+    "title": "Title"
   },
   "items": {
     "item-deleted": "Item deleted",
@@ -19,13 +30,6 @@
   },
   "users": {
     "account": "Account",
-    "language": "Language",
-    "language-required": "Language is required",
-    "nickname": "Nickname",
-    "nickname-required": "Nickname is required",
-    "preferences-updated": "Preferences updated",
-    "public-email": "Public e-mail",
-    "update-preferences": "Update preferences",
     "account-update-below": "Below you can update both e-mail and password",
     "email": "E-mail",
     "email-check-spam": "If you don't the see the email in your inbox, make sure to check the spam folder",
@@ -37,6 +41,10 @@
     "email-update": "Update e-mail",
     "email-updated": "E-mail updated",
     "email-valid": "E-mail must be valid",
+    "language": "Language",
+    "language-required": "Language is required",
+    "nickname": "Nickname",
+    "nickname-required": "Nickname is required",
     "password": "Password",
     "password-current": "Current password",
     "password-match": "Passwords must match",
@@ -46,17 +54,7 @@
     "password-updated": "Password updated",
     "sign-in": "Sign In",
     "sign-out": "Sign Out",
-    "sign-up": "Sign Up"  
-  },
-  "challenges": {
-    "challenge": "Challenge",
-    "challenge_plural": "Challenges"
-  },
-  "arcs": {
-    "arc": "Arc",
-    "arc_plural": "Arcs",
-    "owner": "Owner",
-    "editors": "Editor | Editors",
-    "members": "Member | Members"
+    "sign-up": "Sign Up",
+    "update-preferences": "Update preferences"
   }
 }
