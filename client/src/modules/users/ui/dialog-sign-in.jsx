@@ -13,9 +13,9 @@ function DialogSignIn ({ onSignIn }) {
   const [password, setPassword] = useState('');
 
   return (
-    <DialogForm onSubmit={ e => onSignIn(email, password) }>
-      <ControlEmail value={ email } onChange={ setEmail } required />
-      <ControlPassword value={ password } onChange={ setPassword } required />
+    <DialogForm onSubmit={e => onSignIn(email, password)}>
+      <ControlEmail value={email} onChange={setEmail} required />
+      <ControlPassword value={password} onChange={setPassword} required />
       <PrimaryButton label={t('users.sign-in')} />
     </DialogForm>
   );
