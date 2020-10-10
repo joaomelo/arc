@@ -17,7 +17,7 @@ async function sign (route, email, password) {
     { email, password }
   );
 
-  if (result.status !== 200) throw new Error(result.statusText);
+  if (result.status !== 200) throw new Error(result.data);
 
   const jwtToken = jwtDecode(result.data);
   const userData = {

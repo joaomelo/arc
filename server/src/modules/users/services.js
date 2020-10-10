@@ -1,6 +1,8 @@
 import { LOCALES } from '__com/i18n';
 import { signToken } from '__ser/core/jwt';
 import { hash } from '__ser/core/crypt';
+import { AppError } from '__ser/core/error';
+import { USERS_ERRORS } from './errors';
 import {
   isEmailInUse,
   secureFindOrFailByEmail,
@@ -17,7 +19,7 @@ async function signIn (email, password) {
 }
 
 async function signUp (email, password) {
-  if (await isEmailInUse(email)) throw new Error('Email already in use');
+  if (await isEmailInUse(email)) throw new AppError({ ...USERS_ERRORS.EMAIL_ALREADY_IN_USE });
 
   const user = {
     email,

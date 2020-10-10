@@ -13,7 +13,7 @@ module.exports = {
   ],
   rules: {
     semi: ['error', 'always'],
-    'no-console': ['warn', { allow: ['error'] }],
+    'no-console': ['warn'],
     'no-debugger': 'warn',
     'react/prop-types': 'off'
   },

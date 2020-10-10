@@ -2,8 +2,9 @@ import { resolve } from 'path';
 import express from 'express';
 import history from 'connect-history-api-fallback';
 import { appTitle, isProduction, getMode, getPort, getAddress } from '__com/meta';
-import { logger } from '__ser/core/log';
 import { bootstrapDb } from '__ser/core/db';
+import { logger } from '__ser/core/log';
+import { errorMiddleware } from '__ser/core/error';
 import { router as userRouter } from './modules/users';
 
 async function main () {
@@ -19,9 +20,11 @@ async function main () {
 
   app.use('/users', userRouter);
 
+  app.use(errorMiddleware);
+
   app.listen(getPort(), () => {
     logger.info(`${appTitle()} is running on ${getMode()} mode at ${getAddress()}`);
   });
 }
 
-main().catch(e => console.error(e));
+main().catch(e => logger.error(e));
