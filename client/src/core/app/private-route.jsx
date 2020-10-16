@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuthStore, AUTH_STATUSES } from '__cli/modules/users';
+import { AUTH_STATUSES } from '__cli/modules/auth';
 
-function PrivateRoute ({ children, ...rest }) {
-  const status = useAuthStore(state => state.status);
+export function PrivateRoute ({ children, status, ...rest }) {
   const isSignedIn = status === AUTH_STATUSES.SIGNEDIN;
 
   return (
@@ -12,5 +11,3 @@ function PrivateRoute ({ children, ...rest }) {
     </Route>
   );
 }
-
-export { PrivateRoute };
