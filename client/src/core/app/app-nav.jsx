@@ -1,14 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { NavBar, NavLink } from '__cli/core/components';
+import { selectIsSignedIn, signOut } from '__cli/modules/auth';
 
-import { useAuthStore, AUTH_STATUSES } from '__cli/modules/users';
-
-function AppNav (props) {
+function AppNavView ({ isSignedIn, signOut }) {
   const { t } = useTranslation();
-  const signOut = useAuthStore(state => state.signOut);
-  const status = useAuthStore(state => state.status);
-  const isSignedIn = status === AUTH_STATUSES.SIGNEDIN;
 
   return !isSignedIn
     ? <NavBar linksCount={0} />
@@ -17,9 +14,11 @@ function AppNav (props) {
         <NavLink label={t('arcs.arc', { count: 2 })} to="#" />
         <NavLink label={t('challenges.challenge', { count: 2 })} to="#" />
         <NavLink label={t('users.account')} to="#" />
-        <NavLink label={t('users.sign-out')} to="#" onClick={signOut} />
+        <NavLink label={t('users.sign-out')} to="#" onClick={e => signOut()} />
       </NavBar>
     );
 }
 
-export { AppNav };
+const mapDispatch = { signOut };
+const mapState = state => ({ isSignedIn: selectIsSignedIn(state) });
+export const AppNav = connect(mapState, mapDispatch)(AppNavView);

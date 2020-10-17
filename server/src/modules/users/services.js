@@ -12,7 +12,7 @@ import {
 async function signIn (email, password) {
   const user = await secureFindOrFailByEmail(email, password);
   const token = signToken({
-    id: user.id,
+    id: user._id,
     email: user.email
   });
   return token;

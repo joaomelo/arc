@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { weights, spaces } from '__cli/core/design';
 
-function Welcome ({ user, onSignOut }) {
+function Welcome ({ email, onSignOut }) {
   const { t } = useTranslation();
 
   return (
@@ -17,7 +17,7 @@ function Welcome ({ user, onSignOut }) {
       <div>
         <p
           css={{ fontWeight: weights.bold }}
-        >{`${t('users.account')}: ${user}`}</p>
+        >{`${t('users.account')}: ${email}`}</p>
         <button
           onClick={onSignOut}
           css={{

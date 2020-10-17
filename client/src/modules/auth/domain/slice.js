@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, signIn } from './middleware';
+import { extractUserData } from './user-data';
 
 export const AUTH_STATUSES = {
   SIGNEDOUT: 'AUTH_STATUSES.SIGNEDOUT',
@@ -8,33 +8,34 @@ export const AUTH_STATUSES = {
 
 const initialState = {
   status: AUTH_STATUSES.SIGNEDOUT,
-  token: null,
-  id: null,
-  email: null
+  currentUser: null,
+  isLoading: false,
+  error: null
 };
 
-export const slice = createSlice({
+const slice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    signIn (state, action) {
-      const { email, password } = action.payload;
-      const userData = signIn(email, password);
-      return {
-        status: AUTH_STATUSES.SIGNEDIN,
-        ...userData
-      };
+    signStarted (state) {
+      state.isLoading = true;
+      state.error = '';
     },
-    signUp (state, action) {
-      const { email, password } = action.payload;
-      const userData = signUp(email, password);
-      return {
-        status: AUTH_STATUSES.SIGNEDIN,
-        ...userData
-      };
+    signSuccess (state, action) {
+      state.isLoading = false;
+      state.error = '';
+      state.status = AUTH_STATUSES.SIGNEDIN;
+      state.currentUser = extractUserData(action.payload);
     },
-    signOut (state, action) {
+    signFailed (state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    signOut () {
       return { ...initialState };
     }
   }
 });
+
+export const reducer = slice.reducer;
+export const { signStarted, signSuccess, signFailed, signOut } = slice.actions;

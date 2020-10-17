@@ -1,6 +1,5 @@
 export {
-  useAuthStore,
-  AUTH_STATUSES
+  useAuthStore
 } from './domain';
 
 export {

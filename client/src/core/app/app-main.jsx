@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { spaces, colors } from '__cli/core/design';
-import { AUTH_STATUSES, PageAuth } from '__cli/modules/auth';
+import { selectIsSignedIn, PageAuth } from '__cli/modules/auth';
 import { PrivateRoute } from './private-route';
 
-function AppMainView ({ status }) {
+function AppMainView ({ isSignedIn }) {
   return (
     <main
       css={{
@@ -13,22 +13,22 @@ function AppMainView ({ status }) {
         padding: `${spaces.sp5} ${spaces.sp3} ${spaces.sp3}`
       }}
     >
-      <PrivateRoute exact path="/" status={status}>
+      <PrivateRoute exact path="/" isSignedIn={isSignedIn}>
         <Redirect to="/arcs" />
       </PrivateRoute>
       <Route path="/auth">
         {
-          status === AUTH_STATUSES.SIGNEDIN
+          isSignedIn
             ? <Redirect to="/" />
             : <PageAuth />
         }
       </Route>
-      <PrivateRoute path="/arcs" status={status}>
+      <PrivateRoute path="/arcs" isSignedIn={isSignedIn}>
             Arcs
       </PrivateRoute>
     </main>
   );
 }
 
-const mapState = state => ({ status: state.auth.status });
+const mapState = state => ({ isSignedIn: selectIsSignedIn(state) });
 export const AppMain = connect(mapState, null)(AppMainView);

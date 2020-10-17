@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { slice as authSlice } from '__cli/modules/auth/domain/slice';
+import { reducer as authReducer } from '__cli/modules/auth';
 
 export const rootReducer = combineReducers({
-  auth: authSlice.reducer
+  auth: authReducer
 });

@@ -1,2 +1,2 @@
-export { AUTH_STATUSES, slice } from './domain';
+export { reducer, signOut, selectIsSignedIn } from './domain';
 export { PageAuth } from './ui';
