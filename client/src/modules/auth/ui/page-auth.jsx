@@ -6,7 +6,7 @@ import { Welcome } from './welcome';
 import { MultipleSign } from './multiple-sign';
 import { AuthDisclaimer } from './auth-disclaimer';
 
-function PageAuthPresenter ({ status, email, signIn, signUp, signOut }) {
+function PageAuthView ({ status, email, signIn, signUp, signOut }) {
   return (
     <div>
       {
@@ -23,4 +23,4 @@ const { signIn, signUp, signOut } = slice.actions;
 const mapDispatch = { signIn, signUp, signOut };
 const mapState = state => ({ status: state.auth.status, email: state.auth.email });
 
-export const PageAuth = connect(mapState, mapDispatch)(PageAuthPresenter);
+export const PageAuth = connect(mapState, mapDispatch)(PageAuthView);

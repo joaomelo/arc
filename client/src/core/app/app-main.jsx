@@ -5,7 +5,7 @@ import { spaces, colors } from '__cli/core/design';
 import { AUTH_STATUSES, PageAuth } from '__cli/modules/auth';
 import { PrivateRoute } from './private-route';
 
-function AppMainPresenter ({ status }) {
+function AppMainView ({ status }) {
   return (
     <main
       css={{
@@ -31,4 +31,4 @@ function AppMainPresenter ({ status }) {
 }
 
 const mapState = state => ({ status: state.auth.status });
-export const AppMain = connect(mapState, null)(AppMainPresenter);
+export const AppMain = connect(mapState, null)(AppMainView);
