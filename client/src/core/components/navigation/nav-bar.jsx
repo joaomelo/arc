@@ -2,7 +2,9 @@ import React from 'react';
 import { spaces, colors } from '__cli/core/design';
 import { NavLogo } from './nav-logo';
 
-function NavBar ({ children, linksCount, ...rest }) {
+function NavBar ({ children, ...rest }) {
+  const linksCount = React.Children.count(children);
+
   return (
     <nav
       css={{

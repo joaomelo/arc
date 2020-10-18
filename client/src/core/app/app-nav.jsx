@@ -8,9 +8,9 @@ function AppNavView ({ isSignedIn, signOut }) {
   const { t } = useTranslation();
 
   return !isSignedIn
-    ? <NavBar linksCount={0} />
+    ? <NavBar />
     : (
-      <NavBar linksCount={4}>
+      <NavBar>
         <NavLink label={t('arcs.arc', { count: 2 })} to="#" />
         <NavLink label={t('challenges.challenge', { count: 2 })} to="#" />
         <NavLink label={t('users.account')} to="#" />
