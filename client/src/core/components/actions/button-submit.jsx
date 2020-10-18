@@ -8,7 +8,7 @@ function ButtonSubmit (props) {
     <ButtonBase
       css={{
         backgroundColor: secondary,
-        ':hover, :focus': {
+        ':hover': {
           backgroundColor: accent
         },
         color: primary

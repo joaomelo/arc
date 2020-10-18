@@ -5,7 +5,6 @@ function MessageError ({ message, ...rest }) {
   return message
     ? (
       <p
-        {...rest}
         css={{
           textAlign: 'center',
           color: colors.primary,
@@ -13,8 +12,9 @@ function MessageError ({ message, ...rest }) {
           fontSize: sizes.normal,
           fontWeight: weights.bold,
           borderRadius: spaces.breathable,
-          padding: spaces.tight
+          padding: `${spaces.breathable} ${spaces.spacious}`
         }}
+        {...rest}
       >
         { message }
       </p>

@@ -10,7 +10,7 @@ function ButtonBase ({ label, ...rest }) {
         borderRadius: breathable,
         padding: `${breathable} ${spacious}`,
         backgroundColor: primary,
-        ':hover, :focus': {
+        ':hover': {
           backgroundColor: light
         },
         color: secondary,
