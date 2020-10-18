@@ -8,7 +8,7 @@ export const client = axios.create({
 export async function post (route, payload) {
   const result = await client.post(route, payload);
 
-  if (result.status !== 200) { throw new Error(result.data); }
+  if (result.status !== 200) throw new Error(result.data);
 
   return result.data;
 }

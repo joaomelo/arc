@@ -4,13 +4,13 @@ import { DialogTabs } from '__cli/core/components';
 import { DialogSignIn } from './dialog-sign-in';
 import { DialogSignUp } from './dialog-sign-up';
 
-function MultipleSign ({ onSignIn, onSignUp }) {
+function MultipleSign () {
   const { t } = useTranslation();
 
   return (
     <DialogTabs>
-      <DialogSignIn label={t('users.sign-in')} onSignIn={onSignIn}/>
-      <DialogSignUp label={t('users.sign-up')} onSignUp={onSignUp}/>
+      <DialogSignIn label={t('users.sign-in')}/>
+      <DialogSignUp label={t('users.sign-up')}/>
     </DialogTabs>
   );
 }

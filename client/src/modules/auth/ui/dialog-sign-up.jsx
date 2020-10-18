@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import {
   DialogForm,
@@ -6,14 +7,19 @@ import {
   ControlPasswordConfirmed,
   PrimaryButton
 } from '__cli/core/components';
+import { signUp } from '../domain';
 
-function DialogSignUp ({ onSignUp }) {
+function DialogSignUpView ({ onSignUp, isLoading, error }) {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <DialogForm onSubmit={e => onSignUp({ email, password })}>
+    <DialogForm
+      isLoading={isLoading}
+      error={error}
+      onSubmit={e => signUp({ email, password })}
+    >
       <ControlEmail value={email} onChange={setEmail} required />
       <ControlPasswordConfirmed value={password} onChange={setPassword} required />
       <PrimaryButton label={t('users.sign-up')} />
@@ -21,4 +27,9 @@ function DialogSignUp ({ onSignUp }) {
   );
 }
 
-export { DialogSignUp };
+const mapState = state => ({
+  isLoading: state.auth.isLoading,
+  error: state.auth.error
+});
+const mapDispatch = { signUp };
+export const DialogSignUp = connect(mapState, mapDispatch)(DialogSignUpView);

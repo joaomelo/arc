@@ -7,7 +7,8 @@ router.post('/sign-in', async (req, res, next) => {
   const { email, password } = req.body;
   try {
     const token = await signIn(email, password);
-    res.json(token);
+    setTimeout(() => res.send(res.json(token)), 2000);
+    // res.json(token);
   } catch (e) {
     next(e);
   }

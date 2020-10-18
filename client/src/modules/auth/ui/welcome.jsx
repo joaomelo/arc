@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { weights, spaces } from '__cli/core/design';
+import { signOut } from '../domain';
 
-function Welcome ({ email, onSignOut }) {
+function WelcomeView ({ email, signOut }) {
   const { t } = useTranslation();
 
   return (
@@ -19,7 +21,7 @@ function Welcome ({ email, onSignOut }) {
           css={{ fontWeight: weights.bold }}
         >{`${t('users.account')}: ${email}`}</p>
         <button
-          onClick={onSignOut}
+          onClick={e => signOut()}
           css={{
             display: 'block',
             margin: `${spaces.sp2} auto 0px`
@@ -32,4 +34,6 @@ function Welcome ({ email, onSignOut }) {
   );
 }
 
-export { Welcome };
+const mapState = state => ({ email: state.auth.currentUser.email });
+const mapDispatch = { signOut };
+export const Welcome = connect(mapState, mapDispatch)(WelcomeView);

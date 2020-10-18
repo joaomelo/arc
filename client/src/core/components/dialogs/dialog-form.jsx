@@ -1,29 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { weights, spaces, sizes } from '__cli/core/design';
 import { MessageError } from '../messages';
-import { useLoading } from '../singletons';
+import { LoadingOverlay } from '../loading';
 import { DialogBase } from './dialog-base';
 
-function DialogForm ({ onSubmit, title, children }) {
-  const [message, setMessage] = useState('');
-  const toggleLoading = useLoading(state => state.toggleLoading);
-
-  const handleSubmit = async e => {
+function DialogForm ({ onSubmit, title, isLoading, error, children }) {
+  const handleSubmit = e => {
     e.preventDefault();
     if (!e.target.checkValidity()) return;
-    try {
-      toggleLoading();
-      await onSubmit(e);
-    } catch (error) {
-      setMessage(error.message);
-    } finally {
-      toggleLoading();
-    }
+    onSubmit(e);
   };
 
   return (
-    <DialogBase>
-      {title &&
+    <>
+      <LoadingOverlay isLoading={isLoading}/>
+      <DialogBase>
+        {title &&
         <h2
           css={{
             textAlign: 'center',
@@ -33,25 +25,26 @@ function DialogForm ({ onSubmit, title, children }) {
         >
           {title}
         </h2>
-      }
-      <form
-        onSubmit={ handleSubmit }
-        noValidate
-        css={{
-          '> * + *': {
-            marginTop: spaces.sp4
-          }
-        }}
-      >
-        { children }
-      </form>
-      <MessageError
-        message={message}
-        css={{
-          marginTop: spaces.sp3
-        }}
-      />
-    </DialogBase>
+        }
+        <form
+          onSubmit={ handleSubmit }
+          noValidate
+          css={{
+            '> * + *': {
+              marginTop: spaces.sp4
+            }
+          }}
+        >
+          { children }
+        </form>
+        <MessageError
+          message={error}
+          css={{
+            marginTop: spaces.sp3
+          }}
+        />
+      </DialogBase>
+    </>
   );
 }
 
