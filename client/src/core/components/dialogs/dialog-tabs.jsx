@@ -25,7 +25,7 @@ function DialogTabs ({ children }) {
                   onClick={e => setCurrentTab(label)}
                   css={{
                     textAlign: 'center',
-                    padding: spaces.sp3,
+                    padding: spaces.breathable,
                     backgroundColor: label === currentTab ? colors.secondary : colors.dark,
                     color: label === currentTab ? colors.primary : colors.light,
                     fontWeight: label === currentTab ? weights.bolder : weights.bold,

@@ -12,8 +12,8 @@ function MessageError ({ message, ...rest }) {
           backgroundColor: colors.accent,
           fontSize: sizes.normal,
           fontWeight: weights.bold,
-          borderRadius: spaces.sp3,
-          padding: spaces.sp1
+          borderRadius: spaces.breathable,
+          padding: spaces.tight
         }}
       >
         { message }

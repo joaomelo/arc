@@ -5,7 +5,8 @@ import {
   DialogForm,
   ControlEmail,
   ControlPassword,
-  PrimaryButton
+  ButtonSubmit,
+  ButtonBase
 } from '__cli/core/components';
 import { signIn } from '../domain';
 
@@ -22,7 +23,7 @@ function DialogSignInView ({ signIn, isLoading, error }) {
     >
       <ControlEmail value={email} onChange={setEmail} required />
       <ControlPassword value={password} onChange={setPassword} required />
-      <PrimaryButton label={t('users.sign-in')} />
+      <ButtonSubmit label={t('users.sign-in')} />
     </DialogForm>
   );
 }

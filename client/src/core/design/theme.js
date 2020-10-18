@@ -15,11 +15,11 @@ const sizes = {
 };
 
 const spaces = {
-  sp1: '02px',
-  sp2: '04px',
-  sp3: '08px',
-  sp4: '16px',
-  sp5: '32px'
+  tight: '02px',
+  normal: '04px',
+  breathable: '08px',
+  spacious: '16px',
+  presumptuous: '32px'
 };
 
 const weights = {

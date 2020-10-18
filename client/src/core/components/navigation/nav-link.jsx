@@ -7,7 +7,7 @@ function NavLink ({ label, ...rest }) {
     <Link
       css={{
         fontWeight: weights.bolder,
-        padding: spaces.sp2,
+        padding: spaces.normal,
         ':hover': {
           color: colors.accent
         }

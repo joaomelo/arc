@@ -10,11 +10,11 @@ function NavBar ({ children, ...rest }) {
       css={{
         backgroundColor: colors.secondary,
         color: colors.primary,
-        paddingLeft: spaces.sp3,
-        paddingRight: spaces.sp3,
+        paddingLeft: spaces.breathable,
+        paddingRight: spaces.breathable,
         display: 'grid',
         gridTemplateColumns: `1fr ${linksCount > 0 ? `repeat(${linksCount}, max-content)}` : ''}`,
-        columnGap: spaces.sp3,
+        columnGap: spaces.breathable,
         alignItems: 'center',
         ...rest
       }}

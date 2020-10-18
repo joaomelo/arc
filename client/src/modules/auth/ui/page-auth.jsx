@@ -14,7 +14,7 @@ function PageAuthView ({ isSignedIn }) {
           ? <Welcome />
           : <MultipleSign />
       }
-      <AuthDisclaimer css={{ marginTop: spaces.sp5 }} />
+      <AuthDisclaimer css={{ marginTop: spaces.presumptuous }} />
     </div>
   );
 }

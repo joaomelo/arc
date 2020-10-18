@@ -9,13 +9,13 @@ function AuthDisclaimer (props) {
       <article
         css={{
           textAlign: 'justify',
-          padding: spaces.sp2,
+          padding: spaces.normal,
           '*': {
             fontWeight: weights.normal,
             fontSize: sizes.normal
           },
           '> * + *': {
-            marginTop: spaces.sp3
+            marginTop: spaces.breathable
           }
         }}
       >

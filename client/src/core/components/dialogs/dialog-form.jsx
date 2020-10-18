@@ -31,7 +31,7 @@ function DialogForm ({ onSubmit, title, isLoading, error, children }) {
           noValidate
           css={{
             '> * + *': {
-              marginTop: spaces.sp4
+              marginTop: spaces.spacious
             }
           }}
         >
@@ -40,7 +40,7 @@ function DialogForm ({ onSubmit, title, isLoading, error, children }) {
         <MessageError
           message={error}
           css={{
-            marginTop: spaces.sp3
+            marginTop: spaces.breathable
           }}
         />
       </DialogBase>

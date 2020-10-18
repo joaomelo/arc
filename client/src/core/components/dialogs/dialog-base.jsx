@@ -6,13 +6,13 @@ function DialogBase ({ header, children, ...rest }) {
     <div
       {...rest}
       css={{
-        borderRadius: spaces.sp3,
+        borderRadius: spaces.breathable,
         backgroundColor: colors.primary,
         overflow: 'hidden'
       }}
     >
       { header }
-      <div css={{ padding: spaces.sp3 }}>
+      <div css={{ padding: spaces.breathable }}>
         { children }
       </div>
     </div>

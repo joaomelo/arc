@@ -24,7 +24,7 @@ function WelcomeView ({ email, signOut }) {
           onClick={e => signOut()}
           css={{
             display: 'block',
-            margin: `${spaces.sp2} auto 0px`
+            margin: `${spaces.normal} auto 0px`
           }}
         >
           {t('users.sign-out')}

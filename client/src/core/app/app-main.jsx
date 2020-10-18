@@ -10,7 +10,7 @@ function AppMainView ({ isSignedIn }) {
     <main
       css={{
         backgroundColor: colors.light,
-        padding: `${spaces.sp5} ${spaces.sp3} ${spaces.sp3}`
+        padding: `${spaces.presumptuous} ${spaces.breathable} ${spaces.breathable}`
       }}
     >
       <PrivateRoute exact path="/" isSignedIn={isSignedIn}>
