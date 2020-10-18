@@ -5,8 +5,7 @@ import {
   DialogForm,
   ControlEmail,
   ControlPassword,
-  ButtonSubmit,
-  ButtonBase
+  ButtonSubmit
 } from '__cli/core/components';
 import { signIn } from '../domain';
 
