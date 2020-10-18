@@ -9,7 +9,7 @@ import {
 } from '__cli/core/components';
 import { signUp } from '../domain';
 
-function DialogSignUpView ({ onSignUp, isLoading, error }) {
+function DialogSignUpView ({ signUp, isLoading, error }) {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
