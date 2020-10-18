@@ -1,10 +1,10 @@
 import React from 'react';
-import { weights, spaces, sizes } from '__cli/core/design';
+import { spaces } from '__cli/core/design';
 import { MessageError } from '../messages';
 import { LoadingOverlay } from '../loading';
 import { DialogBase } from './dialog-base';
 
-function DialogForm ({ onSubmit, title, isLoading, error, children }) {
+function DialogForm ({ header, isLoading, error, onSubmit, children }) {
   const handleSubmit = e => {
     e.preventDefault();
     if (!e.target.checkValidity()) return;
@@ -14,18 +14,7 @@ function DialogForm ({ onSubmit, title, isLoading, error, children }) {
   return (
     <>
       <LoadingOverlay isLoading={isLoading}/>
-      <DialogBase>
-        {title &&
-        <h2
-          css={{
-            textAlign: 'center',
-            fontWeight: weights.bolder,
-            fontSize: sizes.big
-          }}
-        >
-          {title}
-        </h2>
-        }
+      <DialogBase header={header}>
         <form
           onSubmit={ handleSubmit }
           noValidate
