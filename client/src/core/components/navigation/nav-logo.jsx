@@ -18,7 +18,7 @@ function NavLogo (props) {
         <span>&nbsp;</span>
         <span
           css={{
-            fontSize: sizes.normal
+            fontSize: sizes.small
           }}
         >
           {appVersion()}

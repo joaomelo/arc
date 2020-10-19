@@ -1,20 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { weights, spaces, colors } from '__cli/core/design';
+import Icon from '@mdi/react';
+import { weights, spaces, colors, breakpoints } from '__cli/core/design';
 
-function NavLink ({ label, ...rest }) {
+function NavLink ({ label, path, ...rest }) {
   return (
     <Link
       css={{
-        fontWeight: weights.bolder,
+        display: 'flex',
+        alignItems: 'center',
         padding: spaces.normal,
         ':hover': {
           color: colors.accent
         }
       }}
-      { ...rest }
+      {...rest}
     >
-      { label }
+      <Icon
+        path={path}
+        size={1}
+        title={label}
+      />
+      <span
+        css={{
+          fontWeight: weights.bold,
+          [breakpoints.small]: {
+            display: 'none'
+          }
+        }}>
+        { label }
+      </span>
     </Link>
   );
 }

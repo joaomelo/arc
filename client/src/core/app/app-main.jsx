@@ -20,7 +20,13 @@ function AppMainView ({ isSignedIn }) {
         { isSignedIn ? <Redirect to="/" /> : <PageAuth /> }
       </Route>
       <PrivateRoute path="/arcs" isSignedIn={isSignedIn}>
-            Arcs
+        <p>Arcs</p>
+      </PrivateRoute>
+      <PrivateRoute path="/challenges" isSignedIn={isSignedIn}>
+        <p>Challenges</p>
+      </PrivateRoute>
+      <PrivateRoute path="/account" isSignedIn={isSignedIn}>
+        <p>Account</p>
       </PrivateRoute>
     </main>
   );

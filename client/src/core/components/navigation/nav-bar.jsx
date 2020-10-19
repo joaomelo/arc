@@ -1,26 +1,25 @@
 import React from 'react';
 import { spaces, colors } from '__cli/core/design';
 import { NavLogo } from './nav-logo';
+import { NavLinks } from './nav-links';
 
 function NavBar ({ children, ...rest }) {
-  const linksCount = React.Children.count(children);
-
   return (
     <nav
       css={{
-        backgroundColor: colors.secondary,
-        color: colors.primary,
-        paddingLeft: spaces.breathable,
-        paddingRight: spaces.breathable,
         display: 'grid',
-        gridTemplateColumns: `1fr ${linksCount > 0 ? `repeat(${linksCount}, max-content)}` : ''}`,
+        gridTemplateColumns: 'max-content 1fr',
         columnGap: spaces.breathable,
-        alignItems: 'center',
-        ...rest
+        padding: `0 ${spaces.breathable}`,
+        backgroundColor: colors.secondary,
+        color: colors.primary
       }}
+      {...rest}
     >
       <NavLogo />
-      { children }
+      <NavLinks>
+        { children }
+      </NavLinks>
     </nav>
   );
 }

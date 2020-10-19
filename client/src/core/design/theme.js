@@ -30,4 +30,8 @@ const weights = {
   boldess: '700'
 };
 
-export { colors, sizes, spaces, weights };
+const breakpoints = {
+  small: '@media (max-width: 600px)'
+};
+
+export { colors, sizes, spaces, weights, breakpoints };
