@@ -16,7 +16,6 @@ function DialogUpdateEmailView ({ updateEmail, email, isLoading, error }) {
 
   return (
     <DialogForm
-
       isLoading={isLoading}
       error={error}
       onSubmit={e => updateEmail({ newEmail, email, password })}

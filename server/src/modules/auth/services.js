@@ -46,10 +46,9 @@ async function updateEmail ({ newEmail, email, password }) {
 
 async function updatePassword ({ newPassword, email, password }) {
   const user = await secureFindOrFailByEmail(email, password);
-
-  const newHashedPassword = await hash(password);
+  const newHashedPassword = await hash(newPassword);
   await updateUser(user._id, { password: newHashedPassword });
-
+  console.log(newHashedPassword);
   const token = await signIn({ email, password: newPassword });
   return token;
 }
