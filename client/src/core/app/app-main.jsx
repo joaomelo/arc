@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { spaces, colors } from '__cli/core/design';
-import { selectIsSignedIn, PageAuth } from '__cli/modules/auth';
+import { selectIsSignedIn, PageAuth, PageAccount } from '__cli/modules/auth';
 import { PrivateRoute } from './private-route';
 
 function AppMainView ({ isSignedIn }) {
@@ -26,7 +26,7 @@ function AppMainView ({ isSignedIn }) {
         <p>Challenges</p>
       </PrivateRoute>
       <PrivateRoute path="/account" isSignedIn={isSignedIn}>
-        <p>Account</p>
+        <PageAccount />
       </PrivateRoute>
     </main>
   );

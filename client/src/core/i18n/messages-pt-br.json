@@ -28,7 +28,7 @@
     "no-items-found": "Nenhum item encontrado",
     "successfully-saved": "Salvo com sucesso"
   },
-  "users": {
+  "auth": {
     "account": "Conta",
     "account-update-below": "Abaixo você pode atualizar seu e-mail and senha",
     "email": "E-mail",

@@ -19,7 +19,7 @@ function ControlPasswordConfirmed ({ label, value, ...rest }) {
       />
       <ControlPassword
         {...rest}
-        label={t('users.password-repeat')}
+        label={t('auth.password-repeat')}
         value={confirmationPassword}
         onChange={setConfirmationPassword}
         rules={rules}

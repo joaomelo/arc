@@ -1,22 +1,18 @@
-import { apiSignIn, apiSignUp } from './api';
-import { signStarted, signSuccess, signFailed } from './slice';
+import { fetchStarted, fetchFailed, fetchSuccess, signSuccess } from './slice';
+import { post } from '__cli/core/api';
 
-export const signIn = payload => async dispatch => {
-  dispatch(signStarted());
+const createAuthThunk = route => payload => async dispatch => {
+  dispatch(fetchStarted());
   try {
-    const userData = await apiSignIn(payload);
-    dispatch(signSuccess(userData));
+    const data = await post(route, payload);
+    dispatch(fetchSuccess());
+    dispatch(signSuccess(data));
   } catch (error) {
-    dispatch(signFailed(error.message));
+    dispatch(fetchFailed(error.message));
   }
 };
 
-export const signUp = payload => async dispatch => {
-  dispatch(signStarted());
-  try {
-    const userData = await apiSignUp(payload);
-    dispatch(signSuccess(userData));
-  } catch (error) {
-    dispatch(signFailed(error.message));
-  }
-};
+export const signIn = createAuthThunk('/auth/sign-in');
+export const signUp = createAuthThunk('/auth/sign-up');
+export const updateEmail = createAuthThunk('auth/update-email');
+export const updatePassword = createAuthThunk('auth/update-password');

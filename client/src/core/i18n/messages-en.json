@@ -28,7 +28,7 @@
     "no-items-found": "No items found",
     "successfully-saved": "Successfully saved"
   },
-  "users": {
+  "auth": {
     "account": "Account",
     "account-update-below": "Below you can update both e-mail and password",
     "email": "E-mail",

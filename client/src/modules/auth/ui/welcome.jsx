@@ -19,7 +19,7 @@ function WelcomeView ({ email, signOut }) {
       <div>
         <p
           css={{ fontWeight: weights.bold }}
-        >{`${t('users.account')}: ${email}`}</p>
+        >{`${t('auth.account')}: ${email}`}</p>
         <button
           onClick={e => signOut()}
           css={{
@@ -27,7 +27,7 @@ function WelcomeView ({ email, signOut }) {
             margin: `${spaces.normal} auto 0px`
           }}
         >
-          {t('users.sign-out')}
+          {t('auth.sign-out')}
         </button>
       </div>
     </div>

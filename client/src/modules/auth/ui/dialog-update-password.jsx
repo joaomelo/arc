@@ -7,20 +7,20 @@ import {
   ControlPassword,
   ButtonSubmit
 } from '__cli/core/components';
-import { signIn } from '../domain';
+import { updatePassword } from '../domain';
 
-function DialogSignInView ({ signIn, isLoading, error }) {
+function DialogUpdatePasswordView ({ updatePassword, isLoading, error }) {
   const { t } = useTranslation();
-  const [email, setEmail] = useState('');
+  const [newEmail, setNewEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <DialogForm
       isLoading={isLoading}
       error={error}
-      onSubmit={e => signIn({ email, password })}
+      onSubmit={e => updatePassword({ newEmail, password })}
     >
-      <ControlEmail value={email} onChange={setEmail} required />
+      <ControlEmail value={newEmail} onChange={setNewEmail} required />
       <ControlPassword value={password} onChange={setPassword} required />
       <ButtonSubmit label={t('auth.sign-in')} />
     </DialogForm>
@@ -31,5 +31,5 @@ const mapState = state => ({
   isLoading: state.auth.isLoading,
   error: state.auth.error
 });
-const mapDispatch = { signIn };
-export const DialogSignIn = connect(mapState, mapDispatch)(DialogSignInView);
+const mapDispatch = { updatePassword };
+export const DialogUpdatePassword = connect(mapState, mapDispatch)(DialogUpdatePasswordView);

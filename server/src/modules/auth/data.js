@@ -37,9 +37,15 @@ async function createUser (userDoc) {
   await getUsers().insertOne(userDoc);
 }
 
+async function updateUser (_id, userDoc) {
+  const result = await getUsers().updateOne({ _id }, { $set: userDoc });
+  return result;
+}
+
 export {
   isEmailInUse,
   secureFindOrFailByEmail,
   secureFindOrFailById,
-  createUser
+  createUser,
+  updateUser
 };

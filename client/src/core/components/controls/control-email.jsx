@@ -4,7 +4,7 @@ import { ControlInput } from './control-input';
 
 function ControlEmail ({ label, ...rest }) {
   const { t } = useTranslation();
-  const emailLabel = label || t('users.email');
+  const emailLabel = label || t('auth.email');
   return (
     <ControlInput
       label={emailLabel}

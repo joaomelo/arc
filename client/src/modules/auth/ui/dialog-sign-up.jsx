@@ -22,7 +22,7 @@ function DialogSignUpView ({ signUp, isLoading, error }) {
     >
       <ControlEmail value={email} onChange={setEmail} required />
       <ControlPasswordConfirmed value={password} onChange={setPassword} required />
-      <ButtonSubmit label={t('users.sign-up')} />
+      <ButtonSubmit label={t('auth.sign-up')} />
     </DialogForm>
   );
 }
