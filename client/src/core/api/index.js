@@ -1,1 +1,1 @@
-export { useRequest } from './use-request';
+export { useRequest, useRequestDispatcher } from './hooks';

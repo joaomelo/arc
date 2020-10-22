@@ -1,35 +1,28 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import {
-  DialogForm,
-  ControlEmail,
-  ControlPassword,
-  ButtonSubmit
-} from '__cli/core/components';
-import { signIn } from '../domain';
+import { DialogForm, ControlEmail, ControlPassword, ButtonSubmit } from '__cli/core/components';
+import { useSignIn } from '../domain';
 
-function DialogSignInView ({ signIn, isLoading, error }) {
+export function DialogSignIn ({ signSuccess }) {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { request, loading, error, data } = useSignIn();
+
+  console.log({ loading, error, data });
 
   return (
-    <DialogForm
-      isLoading={isLoading}
-      error={error}
-      onSubmit={e => signIn({ email, password })}
-    >
-      <ControlEmail value={email} onChange={setEmail} required />
-      <ControlPassword value={password} onChange={setPassword} required />
-      <ButtonSubmit label={t('auth.sign-in')} />
-    </DialogForm>
+    <div>
+      <DialogForm
+        isLoading={loading}
+        error={error}
+        onSubmit={e => request({ email, password })}
+      >
+        <ControlEmail value={email} onChange={setEmail} required />
+        <ControlPassword value={password} onChange={setPassword} required />
+        <ButtonSubmit label={t('auth.sign-in')} />
+      </DialogForm>
+      <p>isLoading: {loading ? 'yes' : 'not'} - error: {error} - data: {JSON.stringify(data)}</p>
+    </div>
   );
 }
-
-const mapState = state => ({
-  isLoading: state.auth.isLoading,
-  error: state.auth.error
-});
-const mapDispatch = { signIn };
-export const DialogSignIn = connect(mapState, mapDispatch)(DialogSignInView);
