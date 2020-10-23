@@ -1,25 +1,17 @@
 import React from 'react';
-import { weights, spaces, sizes, colors } from '__cli/core/design';
+import { colors } from '__cli/core/design';
+import { MessageBase } from './message-base';
 
-function MessageError ({ message, ...rest }) {
-  return message
-    ? (
-      <p
-        css={{
-          textAlign: 'center',
-          color: colors.primary,
-          backgroundColor: colors.accent,
-          fontSize: sizes.normal,
-          fontWeight: weights.bold,
-          borderRadius: spaces.breathable,
-          padding: `${spaces.breathable} ${spaces.spacious}`
-        }}
-        {...rest}
-      >
-        { message }
-      </p>
-    )
-    : null;
+function MessageError ({ message }) {
+  return (
+    <MessageBase
+      message={message}
+      css={{
+        color: colors.primary,
+        backgroundColor: colors.accent
+      }}
+    />
+  );
 }
 
 export { MessageError };

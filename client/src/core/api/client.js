@@ -9,7 +9,7 @@ const client = axios.create({
 export async function request (method, route, payload) {
   if (!isProduction()) {
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-    await delay(5000);
+    await delay(500);
   }
 
   const result = await client[method](route, payload);

@@ -9,13 +9,14 @@ export const DialogUpdateEmail = () => {
   const email = useSelector(selectCurrentUserEmail);
   const [newEmail, setNewEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { request, pending, error } = useUpdateEmail();
+  const { request, pending, error, success } = useUpdateEmail();
 
   return (
     <DialogForm
+      onSubmit={e => request({ newEmail, email, password }, t('auth.email-updated'))}
       isLoading={pending}
       error={error}
-      onSubmit={e => request({ newEmail, email, password })}
+      success={success}
     >
       <ControlEmail
         label={t('auth.email-new')}

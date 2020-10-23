@@ -9,13 +9,14 @@ export const DialogUpdatePassword = () => {
   const email = useSelector(selectCurrentUserEmail);
   const [newPassword, setNewPassword] = useState('');
   const [password, setPassword] = useState('');
-  const { request, pending, error } = useUpdatePassword();
+  const { request, pending, error, success } = useUpdatePassword();
 
   return (
     <DialogForm
+      onSubmit={e => request({ newPassword, email, password }, t('auth.password-updated'))}
       isLoading={pending}
       error={error}
-      onSubmit={e => request({ newPassword, email, password })}
+      success={success}
     >
       <ControlPasswordConfirmed
         label={t('auth.password-new')}
