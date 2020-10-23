@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { store } from '__cli/core/redux';
 import { request as apiRequest } from './client';
 
@@ -6,19 +6,23 @@ export const useRequest = (method, route, callback) => {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
   const [data, setData] = useState({});
+  const isMounted = useRef(true);
+
+  useEffect(() => () => { isMounted.current = false; }, []);
 
   const request = async payload => {
+    if (pending) return;
     setPending(true);
     setData({});
     setError('');
     try {
       const result = await apiRequest(method, route, payload);
-      setData(result);
+      if (isMounted.current) setData(result);
       callback && callback(result);
     } catch (error) {
-      setError(error.message);
+      if (isMounted.current) setError(error.message);
     } finally {
-      setPending(false);
+      if (isMounted.current) setPending(false);
     }
   };
 
