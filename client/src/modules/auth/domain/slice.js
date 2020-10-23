@@ -8,9 +8,7 @@ export const AUTH_STATUSES = {
 
 const initialState = {
   status: AUTH_STATUSES.SIGNEDOUT,
-  currentUser: null,
-  isLoading: false,
-  error: null
+  currentUser: null
 };
 
 const slice = createSlice({

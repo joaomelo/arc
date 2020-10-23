@@ -1,35 +1,23 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import {
-  DialogForm,
-  ControlEmail,
-  ControlPasswordConfirmed,
-  ButtonSubmit
-} from '__cli/core/components';
-import { signUp } from '../domain';
+import { DialogForm, ControlEmail, ControlPasswordConfirmed, ButtonSubmit } from '__cli/core/components';
+import { useSignUp } from '../domain';
 
-function DialogSignUpView ({ signUp, isLoading, error }) {
+export const DialogSignUp = () => {
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { request, pending, error } = useSignUp();
 
   return (
     <DialogForm
-      isLoading={isLoading}
+      isLoading={pending}
       error={error}
-      onSubmit={e => signUp({ email, password })}
+      onSubmit={e => request({ email, password })}
     >
       <ControlEmail value={email} onChange={setEmail} required />
       <ControlPasswordConfirmed value={password} onChange={setPassword} required />
       <ButtonSubmit label={t('auth.sign-up')} />
     </DialogForm>
   );
-}
-
-const mapState = state => ({
-  isLoading: state.auth.isLoading,
-  error: state.auth.error
-});
-const mapDispatch = { signUp };
-export const DialogSignUp = connect(mapState, mapDispatch)(DialogSignUpView);
+};

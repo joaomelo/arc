@@ -1,11 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { weights, spaces } from '__cli/core/design';
-import { signOut } from '../domain';
+import { selectCurrentUserEmail, signOut } from '../domain';
 
-function WelcomeView ({ email, signOut }) {
+export const Welcome = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const email = useSelector(selectCurrentUserEmail);
 
   return (
     <div
@@ -21,7 +23,7 @@ function WelcomeView ({ email, signOut }) {
           css={{ fontWeight: weights.bold }}
         >{`${t('auth.account')}: ${email}`}</p>
         <button
-          onClick={e => signOut()}
+          onClick={e => dispatch(signOut())}
           css={{
             display: 'block',
             margin: `${spaces.normal} auto 0px`
@@ -32,8 +34,4 @@ function WelcomeView ({ email, signOut }) {
       </div>
     </div>
   );
-}
-
-const mapState = state => ({ email: state.auth.currentUser.email });
-const mapDispatch = { signOut };
-export const Welcome = connect(mapState, mapDispatch)(WelcomeView);
+};

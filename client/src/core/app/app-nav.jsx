@@ -1,12 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { mdiArchive, mdiTarget, mdiAccount, mdiLogout } from '@mdi/js';
 import { NavBar, NavLink } from '__cli/core/components';
 import { selectIsSignedIn, signOut } from '__cli/modules/auth';
 
-function AppNavView ({ isSignedIn, signOut }) {
+export const AppNav = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const isSignedIn = useSelector(selectIsSignedIn);
 
   return !isSignedIn
     ? <NavBar />
@@ -29,12 +31,8 @@ function AppNavView ({ isSignedIn, signOut }) {
           label={t('auth.sign-out')}
           path={mdiLogout }
           to="#"
-          onClick={e => signOut()}
+          onClick={e => dispatch(signOut())}
         />
       </NavBar>
     );
-}
-
-const mapDispatch = { signOut };
-const mapState = state => ({ isSignedIn: selectIsSignedIn(state) });
-export const AppNav = connect(mapState, mapDispatch)(AppNavView);
+};

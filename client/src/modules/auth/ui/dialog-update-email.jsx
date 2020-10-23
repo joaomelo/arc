@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import {
-  DialogForm,
-  ControlEmail,
-  ControlPassword,
-  ButtonSubmit
-} from '__cli/core/components';
-import { updateEmail } from '../domain';
+import { DialogForm, ControlEmail, ControlPassword, ButtonSubmit } from '__cli/core/components';
+import { selectCurrentUserEmail, useUpdateEmail } from '../domain';
 
-function DialogUpdateEmailView ({ updateEmail, email, isLoading, error }) {
+export const DialogUpdateEmail = () => {
   const { t } = useTranslation();
+  const email = useSelector(selectCurrentUserEmail);
   const [newEmail, setNewEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { request, pending, error } = useUpdateEmail();
 
   return (
     <DialogForm
-      isLoading={isLoading}
+      isLoading={pending}
       error={error}
-      onSubmit={e => updateEmail({ newEmail, email, password })}
+      onSubmit={e => request({ newEmail, email, password })}
     >
       <ControlEmail
         label={t('auth.email-new')}
@@ -34,12 +31,4 @@ function DialogUpdateEmailView ({ updateEmail, email, isLoading, error }) {
       <ButtonSubmit label={t('components.save')} />
     </DialogForm>
   );
-}
-
-const mapState = state => ({
-  email: state.auth.currentUser.email,
-  isLoading: state.auth.isLoading,
-  error: state.auth.error
-});
-const mapDispatch = { updateEmail };
-export const DialogUpdateEmail = connect(mapState, mapDispatch)(DialogUpdateEmailView);
+};

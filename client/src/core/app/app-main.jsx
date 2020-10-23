@@ -1,11 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { spaces, colors } from '__cli/core/design';
-import { selectIsSignedIn, PageAuth, PageAccount } from '__cli/modules/auth';
-import { PrivateRoute } from './private-route';
+import { PageAuth, PageAccount } from '__cli/modules/auth';
+import { RoutePrivate } from './route-private';
+import { RouteEntry } from './route-entry';
 
-function AppMainView ({ isSignedIn }) {
+export const AppMain = () => {
   return (
     <main
       css={{
@@ -13,24 +13,11 @@ function AppMainView ({ isSignedIn }) {
         padding: `${spaces.presumptuous} ${spaces.breathable} ${spaces.breathable}`
       }}
     >
-      <PrivateRoute exact path="/" isSignedIn={isSignedIn}>
-        <Redirect to="/arcs" />
-      </PrivateRoute>
-      <Route path="/auth">
-        { isSignedIn ? <Redirect to="/" /> : <PageAuth /> }
-      </Route>
-      <PrivateRoute path="/arcs" isSignedIn={isSignedIn}>
-        <p>Arcs</p>
-      </PrivateRoute>
-      <PrivateRoute path="/challenges" isSignedIn={isSignedIn}>
-        <p>Challenges</p>
-      </PrivateRoute>
-      <PrivateRoute path="/account" isSignedIn={isSignedIn}>
-        <PageAccount />
-      </PrivateRoute>
+      <RouteEntry path="/auth"><PageAuth /></RouteEntry>
+      <RoutePrivate exact path="/"><Redirect to="/arcs" /></RoutePrivate>
+      <RoutePrivate path="/arcs"><p>Arcs</p></RoutePrivate>
+      <RoutePrivate path="/challenges"><p>Challenges</p></RoutePrivate>
+      <RoutePrivate path="/account"><PageAccount /></RoutePrivate>
     </main>
   );
-}
-
-const mapState = state => ({ isSignedIn: selectIsSignedIn(state) });
-export const AppMain = connect(mapState, null)(AppMainView);
+};
