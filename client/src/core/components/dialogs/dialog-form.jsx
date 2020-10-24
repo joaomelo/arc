@@ -1,10 +1,11 @@
 import React from 'react';
 import { spaces } from '__cli/core/design';
-import { MessageError, MessageInfo } from '../text';
-import { LoadingOverlay } from '../loading';
+import { MessageMulti } from '../text';
 import { DialogBase } from './dialog-base';
 
-function DialogForm ({ onSubmit, header, isLoading, error, success, children }) {
+export const DialogForm = ({ onSubmit, error, success, children, ...rest }) => {
+  const { breathable, spacious } = spaces;
+
   const handleSubmit = e => {
     e.preventDefault();
     if (!e.target.checkValidity()) return;
@@ -12,27 +13,23 @@ function DialogForm ({ onSubmit, header, isLoading, error, success, children }) 
   };
 
   return (
-    <>
-      <LoadingOverlay isLoading={isLoading}/>
-      <DialogBase header={header}>
-        <form
-          onSubmit={ handleSubmit }
-          noValidate
-          css={{
-            '> * + *': {
-              marginTop: spaces.spacious
-            }
-          }}
-        >
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+    >
+      <DialogBase {...rest}>
+        <div css={{
+          padding: `${spacious} ${breathable}`,
+          '> * + *': { marginTop: breathable }
+        }}>
           { children }
-        </form>
-        <div css={{ marginTop: spaces.breathable }}>
-          <MessageError message={error}/>
-          <MessageInfo message={success}/>
+          <MessageMulti
+            error={error}
+            info={success}
+            css={{ marginTop: spacious }}
+          />
         </div>
       </DialogBase>
-    </>
+    </form>
   );
-}
-
-export { DialogForm };
+};

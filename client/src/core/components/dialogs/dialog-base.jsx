@@ -1,22 +1,22 @@
 import React from 'react';
 import { spaces, colors } from '__cli/core/design';
-import { HeaderBase } from '../text';
+import { HeaderSection, ActionsSection } from '../sections';
 
-function DialogBase ({ header, children, ...rest }) {
+function DialogBase ({ header, actions, children, ...rest }) {
+  const { breathable } = spaces;
   return (
-    <div
+    <section
       css={{
-        borderRadius: spaces.breathable,
+        borderRadius: breathable,
         backgroundColor: colors.primary,
         overflow: 'hidden'
       }}
       {...rest}
     >
-      {typeof header === 'string' ? <HeaderBase text={header} /> : header }
-      <div css={{ padding: spaces.breathable }}>
-        { children }
-      </div>
-    </div>
+      <HeaderSection header={header} />
+      {children}
+      <ActionsSection actions={actions} />
+    </section>
   );
 }
 

@@ -10,16 +10,14 @@ export const DialogSignIn = () => {
   const { request, pending, error } = useSignIn();
 
   return (
-    <div>
-      <DialogForm
-        isLoading={pending}
-        error={error}
-        onSubmit={e => request({ email, password })}
-      >
-        <ControlEmail value={email} onChange={setEmail} required />
-        <ControlPassword value={password} onChange={setPassword} required />
-        <ButtonSubmit label={t('auth.sign-in')} />
-      </DialogForm>
-    </div>
+    <DialogForm
+      isLoading={pending}
+      error={error}
+      onSubmit={e => request({ email, password })}
+      actions={<ButtonSubmit label={t('auth.sign-in')} />}
+    >
+      <ControlEmail value={email} onChange={setEmail} required />
+      <ControlPassword value={password} onChange={setPassword} required />
+    </DialogForm>
   );
 };

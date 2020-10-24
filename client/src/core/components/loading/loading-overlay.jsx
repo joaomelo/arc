@@ -2,11 +2,12 @@ import React from 'react';
 import { LoadingSpinner } from './loading-spinner';
 
 function LoadingOverlay ({ isLoading }) {
+  if (!isLoading) return null;
   return (
-    <div
+    <span
       css={{
         cursor: 'wait',
-        display: isLoading ? 'flex' : 'none',
+        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
@@ -19,7 +20,7 @@ function LoadingOverlay ({ isLoading }) {
       }}
     >
       <LoadingSpinner />
-    </div>
+    </span>
   );
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { colors } from '__cli/core/design';
 import { MessageBase } from './message-base';
 
-function MessageError ({ message }) {
+function MessageError ({ message, ...rest }) {
   return (
     <MessageBase
       message={message}
@@ -10,6 +10,7 @@ function MessageError ({ message }) {
         color: colors.primary,
         backgroundColor: colors.accent
       }}
+      {...rest}
     />
   );
 }

@@ -1,50 +1,47 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import { weights, spaces, colors } from '__cli/core/design';
 import { DialogBase } from './dialog-base';
 
-function DialogTabs ({ children }) {
-  const [currentTab, setCurrentTab] = useState(children[0].props.header);
+export const NavTab = ({ label, current, setCurrent }) => (
+  <li
+    onClick={e => setCurrent(label)}
+    css={{
+      textAlign: 'center',
+      padding: spaces.breathable,
+      backgroundColor: label === current ? colors.secondary : colors.dark,
+      color: label === current ? colors.primary : colors.light,
+      fontWeight: label === current ? weights.bolder : weights.bold,
+      ':hover': {
+        backgroundColor: colors.accent
+      }
+    }}
+  >
+    {label}
+  </li>
+);
+
+export const NavTabs = ({ labels, ...rest }) => (
+  <ol
+    css={{
+      display: 'grid',
+      gridTemplateColumns: `repeat(${labels.length}, minmax(max-content, 1fr))`,
+      listStyle: 'none',
+      cursor: 'pointer'
+    }}
+  >
+    {labels.map(label => <NavTab key={label} label={label} {...rest}/>)}
+  </ol>
+);
+
+export const DialogTabs = ({ children }) => {
+  const childrenArray = Children.toArray(children);
+  const labels = childrenArray.map(child => child.props.header);
+  const [currentTab, setCurrentTab] = useState(labels[0]);
   return (
     <DialogBase
-      header={
-        <ol
-          css={{
-            display: 'grid',
-            gridTemplateColumns: `repeat(${children.length}, minmax(max-content, 1fr))`,
-            listStyle: 'none',
-            cursor: 'pointer'
-          }}
-        >
-          {
-            children.map(child => {
-              const { header } = child.props;
-              return (
-                <li
-                  key={header}
-                  label={header}
-                  onClick={e => setCurrentTab(header)}
-                  css={{
-                    textAlign: 'center',
-                    padding: spaces.breathable,
-                    backgroundColor: header === currentTab ? colors.secondary : colors.dark,
-                    color: header === currentTab ? colors.primary : colors.light,
-                    fontWeight: header === currentTab ? weights.bolder : weights.bold,
-                    ':hover': {
-                      backgroundColor: colors.accent
-                    }
-                  }}
-                >
-                  {header}
-                </li>
-              );
-            })
-          }
-        </ol>
-      }
+      header={<NavTabs labels={labels} current={currentTab} setCurrent={setCurrentTab} />}
     >
-      { children.map(child => child.props.header === currentTab ? child : null) }
+      { childrenArray.find(child => child.props.header === currentTab) }
     </DialogBase>
   );
-}
-
-export { DialogTabs };
+};
