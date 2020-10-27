@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { store } from '__cli/core/redux';
 import { request as apiRequest } from './client';
 
-export const useRequest = (method, route, callback) => {
+export const useRequest = ({ method, route, message, callback }) => {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -11,7 +11,7 @@ export const useRequest = (method, route, callback) => {
 
   useEffect(() => () => { isMounted.current = false; }, []);
 
-  const request = async (payload, successMessage) => {
+  const request = async payload => {
     if (pending) return;
     setPending(true);
     setData({});
@@ -21,7 +21,7 @@ export const useRequest = (method, route, callback) => {
       const result = await apiRequest(method, route, payload);
       if (isMounted.current) {
         setData(result);
-        setSuccess(successMessage || 'The request was a success');
+        setSuccess(message || 'The request was a success');
       };
       callback && callback(result);
     } catch (error) {
@@ -34,4 +34,15 @@ export const useRequest = (method, route, callback) => {
   return { request, pending, error, data, success };
 };
 
-export const useRequestDispatcher = (method, route, action) => useRequest(method, route, payload => store.dispatch(action(payload)));
+export const useRequestDispatcher = ({ method, route, message, callback }) => {
+  const dispatch = payload => store.dispatch(callback(payload));
+
+  const config = {
+    method,
+    route,
+    message,
+    callback: dispatch
+  };
+
+  return useRequest(config);
+};

@@ -1,7 +1,30 @@
-import { sign } from './slice';
+import { i18n } from '__cli/core/i18n';
 import { useRequestDispatcher } from '__cli/core/api';
+import { sign } from './slice';
 
-export const useSignIn = () => useRequestDispatcher('post', '/auth/sign-in', sign);
-export const useSignUp = () => useRequestDispatcher('post', '/auth/sign-up', sign);
-export const useUpdateEmail = () => useRequestDispatcher('post', 'auth/update-email', sign);
-export const useUpdatePassword = () => useRequestDispatcher('post', 'auth/update-password', sign);
+const config = {
+  method: 'post',
+  callback: sign
+};
+
+export const useSignIn = () => useRequestDispatcher({
+  ...config,
+  route: '/auth/sign-in'
+});
+
+export const useSignUp = () => useRequestDispatcher({
+  ...config,
+  route: '/auth/sign-up'
+});
+
+export const useUpdateEmail = () => useRequestDispatcher({
+  ...config,
+  route: 'auth/update-email',
+  message: i18n.t('auth.email-updated')
+});
+
+export const useUpdatePassword = () => useRequestDispatcher({
+  ...config,
+  route: 'auth/update-password',
+  message: i18n.t('auth.password-updated')
+});
