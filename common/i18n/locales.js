@@ -1,4 +1,4 @@
-const LOCALES = {
+export const LOCALES = {
   EN: {
     value: 'en',
     label: 'english'
@@ -8,5 +8,3 @@ const LOCALES = {
     label: 'português'
   }
 };
-
-export { LOCALES };
