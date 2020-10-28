@@ -23,7 +23,7 @@ async function main () {
   app.use(errorMiddleware);
 
   app.listen(getPort(), () => {
-    logger.info(`${appTitle()} is running on ${getMode()} mode at ${getAddress()}`);
+    logger.info(`${appTitle()} is running baby! on ${getMode()} mode at ${getAddress()}`);
   });
 }
 

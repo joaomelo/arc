@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { spaces, colors } from '__cli/core/design';
 import { PageAuth, PageAccount } from '__cli/modules/auth';
+import { PagePreferences } from '__cli/modules/preferences';
 import { RoutePrivate } from './route-private';
 import { RouteEntry } from './route-entry';
 
@@ -18,6 +19,7 @@ export const AppMain = () => {
       <RoutePrivate path="/arcs"><p>Arcs</p></RoutePrivate>
       <RoutePrivate path="/challenges"><p>Challenges</p></RoutePrivate>
       <RoutePrivate path="/account"><PageAccount /></RoutePrivate>
+      <RoutePrivate path="/preferences"><PagePreferences /></RoutePrivate>
     </main>
   );
 };

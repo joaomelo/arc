@@ -6,6 +6,32 @@
     "members": "Member | Members",
     "owner": "Owner"
   },
+  "auth": {
+    "account": "Account",
+    "account-update-below": "Below you can update both e-mail and password",
+    "email": "E-mail",
+    "email-check-spam": "If you don't the see the email in your inbox, make sure to check the spam folder",
+    "email-confirmation": "E-mail confirmation",
+    "email-confirmation-pledge": "Please confirm the {email} e-mail address by clicking in the message link we sent to you",
+    "email-current": "Your current e-mail is {email}",
+    "email-new": "New e-mail",
+    "email-resend": "Send e-mail verification",
+    "email-update": "Update e-mail",
+    "email-updated": "E-mail updated",
+    "email-valid": "E-mail must be valid",
+    "nickname": "Nickname",
+    "nickname-required": "Nickname is required",
+    "password": "Password",
+    "password-current": "Current password",
+    "password-match": "Passwords must match",
+    "password-new": "New password",
+    "password-repeat": "Repeat password",
+    "password-update": "Update password",
+    "password-updated": "Password updated",
+    "sign-in": "Sign In",
+    "sign-out": "Sign Out",
+    "sign-up": "Sign Up"
+  },
   "challenges": {
     "challenge": "Challenge",
     "challenge_plural": "Challenges"
@@ -28,33 +54,10 @@
     "no-items-found": "No items found",
     "successfully-saved": "Successfully saved"
   },
-  "auth": {
-    "account": "Account",
-    "account-update-below": "Below you can update both e-mail and password",
-    "email": "E-mail",
-    "email-check-spam": "If you don't the see the email in your inbox, make sure to check the spam folder",
-    "email-confirmation": "E-mail confirmation",
-    "email-confirmation-pledge": "Please confirm the {email} e-mail address by clicking in the message link we sent to you",
-    "email-current": "Your current e-mail is {email}",
-    "email-new": "New e-mail",
-    "email-resend": "Send e-mail verification",
-    "email-update": "Update e-mail",
-    "email-updated": "E-mail updated",
-    "email-valid": "E-mail must be valid",
+  "users": {
     "language": "Language",
     "language-required": "Language is required",
-    "nickname": "Nickname",
-    "nickname-required": "Nickname is required",
-    "password": "Password",
-    "password-current": "Current password",
-    "password-match": "Passwords must match",
-    "password-new": "New password",
-    "password-repeat": "Repeat password",
-    "password-update": "Update password",
-    "password-updated": "Password updated",
-    "sign-in": "Sign In",
-    "sign-out": "Sign Out",
-    "sign-up": "Sign Up",
+    "preferences": "Preferences",
     "update-preferences": "Update preferences"
   }
 }

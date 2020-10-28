@@ -6,6 +6,32 @@
     "members": "Membro | Membros",
     "owner": "Proprietário"
   },
+  "auth": {
+    "account": "Conta",
+    "account-update-below": "Abaixo você pode atualizar seu e-mail and senha",
+    "email": "E-mail",
+    "email-check-spam": "Se você não encontrar o e-mail na sua caixa de entrada, confirme na pasta de spam",
+    "email-confirmation": "Confirmação de e-mail",
+    "email-confirmation-pledge": "Por favor, confirme o endereço de e-mail {email} clicando no link da mensagem enviada",
+    "email-current": "Seu e-mail atual é {email}",
+    "email-new": "Novo e-mail",
+    "email-resend": "Enviar mensagem de verificação",
+    "email-update": "Atualização de e-mail",
+    "email-updated": "E-mail atualizado",
+    "email-valid": "E-mail tem de ser válido",
+    "nickname": "Apelido",
+    "nickname-required": "Apelido é obrigatório",
+    "password": "Senha",
+    "password-current": "Senha atual",
+    "password-match": "As senhas devem ser iguais",
+    "password-new": "Nova senha",
+    "password-repeat": "Confirmar senha",
+    "password-update": "Atualização de senha",
+    "password-updated": "Senha atualizada",
+    "sign-in": "Entrar",
+    "sign-out": "Sair",
+    "sign-up": "Criar"
+  },
   "challenges": {
     "challenge": "Desafio",
     "challenge_plural": "Desafios"
@@ -28,33 +54,10 @@
     "no-items-found": "Nenhum item encontrado",
     "successfully-saved": "Salvo com sucesso"
   },
-  "auth": {
-    "account": "Conta",
-    "account-update-below": "Abaixo você pode atualizar seu e-mail and senha",
-    "email": "E-mail",
-    "email-check-spam": "Se você não encontrar o e-mail na sua caixa de entrada, confirme na pasta de spam",
-    "email-confirmation": "Confirmação de e-mail",
-    "email-confirmation-pledge": "Por favor, confirme o endereço de e-mail {email} clicando no link da mensagem enviada",
-    "email-current": "Seu e-mail atual é {email}",
-    "email-new": "Novo e-mail",
-    "email-resend": "Enviar mensagem de verificação",
-    "email-update": "Atualização de e-mail",
-    "email-updated": "E-mail atualizado",
-    "email-valid": "E-mail tem de ser válido",
+  "users": {
     "language": "Idioma",
     "language-required": "Idioma é obrigatório",
-    "nickname": "Apelido",
-    "nickname-required": "Apelido é obrigatório",
-    "password": "Senha",
-    "password-current": "Senha atual",
-    "password-match": "As senhas devem ser iguais",
-    "password-new": "Nova senha",
-    "password-repeat": "Confirmar senha",
-    "password-update": "Atualização de senha",
-    "password-updated": "Senha atualizada",
-    "sign-in": "Entrar",
-    "sign-out": "Sair",
-    "sign-up": "Criar",
+    "preferences": "Preferências",
     "update-preferences": "Atualizar preferências"
   }
 }
