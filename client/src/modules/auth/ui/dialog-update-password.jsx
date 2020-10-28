@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { DialogCommand, ControlPasswordConfirmed, ControlPassword, ButtonSubmit } from '__cli/core/components';
+import { DialogCommand, ControlPasswordConfirmed, ControlPassword, SaveBack } from '__cli/core/components';
 import { useCurrentUserEmail, useUpdatePassword } from '../domain';
 
 export const DialogUpdatePassword = () => {
@@ -13,7 +13,7 @@ export const DialogUpdatePassword = () => {
     <DialogCommand
       useCommand={useUpdatePassword}
       payload={{ newPassword, email, password }}
-      actions={<ButtonSubmit label={t('auth.sign-in')} />}
+      actions={<SaveBack />}
     >
       <ControlPasswordConfirmed
         label={t('auth.password-new')}

@@ -1,15 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { spaces } from '__cli/core/design';
-import { ButtonSubmit } from './button-submit';
-import { ButtonSecondary } from './button-secondary';
+import { useHistory } from 'react-router-dom';
+import { SaveCancel } from './save-cancel';
 
-export const SaveBack = ({ saveLabel, backLabel }) => {
+export const SaveBack = () => {
   const { t } = useTranslation();
+  const history = useHistory();
   return (
     <SaveCancel
-      label={cancelLabel || t('components.cancel')}
-      onClick={onCancel}
+      cancelLabel={t('components.back')}
+      onCancel={() => history.goBack()}
     />
   );
 };

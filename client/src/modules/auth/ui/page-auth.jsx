@@ -1,7 +1,7 @@
 import React from 'react';
 import { spaces } from '__cli/core/design';
 import { useIsSignedIn } from '../domain';
-import { DialogWelcome } from './welcome';
+import { DialogWelcome } from './dialog-welcome';
 import { DialogSign } from './dialog-sign';
 import { ContentDisclaimer } from './content-disclaimer';
 
