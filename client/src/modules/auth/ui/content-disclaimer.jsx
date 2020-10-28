@@ -2,7 +2,7 @@ import React from 'react';
 import { appDescription } from '__com/meta';
 import { DialogBase, ArticleBase } from '__cli/core/components';
 
-function AuthDisclaimer (props) {
+export const ContentDisclaimer = (props) => {
   return (
     <DialogBase {...props}>
       <ArticleBase>
@@ -12,6 +12,4 @@ function AuthDisclaimer (props) {
       </ArticleBase>
     </DialogBase>
   );
-}
-
-export { AuthDisclaimer };
+};

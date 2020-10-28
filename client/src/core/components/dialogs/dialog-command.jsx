@@ -2,8 +2,8 @@ import React from 'react';
 import { LoadingOverlay } from '../loading';
 import { DialogForm } from './dialog-form';
 
-export const DialogRequest = ({ useRequest, payload, children, ...rest }) => {
-  const { request, pending, error, success } = useRequest();
+export const DialogCommand = ({ useCommand, payload, children, ...rest }) => {
+  const { request, pending, error, success } = useCommand();
 
   return (
     <>

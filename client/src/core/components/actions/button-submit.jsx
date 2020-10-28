@@ -1,22 +1,11 @@
 import React from 'react';
-import { colors } from '__cli/core/design';
-import { ButtonBase } from './button-base';
+import { ButtonPrimary } from './button-primary';
 
-function ButtonSubmit (props) {
-  const { primary, secondary, accent } = colors;
+export const ButtonSubmit = props => {
   return (
-    <ButtonBase
-      css={{
-        backgroundColor: secondary,
-        ':hover': {
-          backgroundColor: accent
-        },
-        color: primary
-      }}
+    <ButtonPrimary
       type="submit"
       {...props}
     />
   );
-}
-
-export { ButtonSubmit };
+};

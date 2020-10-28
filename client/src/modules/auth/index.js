@@ -1,2 +1,2 @@
-export { reducer, signOut, selectIsSignedIn } from './domain';
+export { reducer, useSignOut, useIsSignedIn } from './domain';
 export { PageAuth, PageAccount } from './ui';

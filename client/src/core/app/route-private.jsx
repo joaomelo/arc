@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsSignedIn } from '__cli/modules/auth';
+import { useIsSignedIn } from '__cli/modules/auth';
 
 export function RoutePrivate ({ children, ...rest }) {
-  const isSignedIn = useSelector(selectIsSignedIn);
+  const isSignedIn = useIsSignedIn();
 
   return (
     <Route {...rest}>

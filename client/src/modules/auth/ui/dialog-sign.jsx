@@ -4,7 +4,7 @@ import { DialogTabs } from '__cli/core/components';
 import { DialogSignIn } from './dialog-sign-in';
 import { DialogSignUp } from './dialog-sign-up';
 
-function MultipleSign () {
+export const DialogSign = () => {
   const { t } = useTranslation();
 
   return (
@@ -13,6 +13,4 @@ function MultipleSign () {
       <DialogSignUp header={t('auth.sign-up')}/>
     </DialogTabs>
   );
-}
-
-export { MultipleSign };
+};

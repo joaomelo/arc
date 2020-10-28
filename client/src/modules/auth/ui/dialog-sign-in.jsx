@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { DialogRequest, ControlEmail, ControlPassword, ButtonSubmit } from '__cli/core/components';
+import { DialogCommand, ControlEmail, ControlPassword, ButtonSubmit } from '__cli/core/components';
 import { useSignIn } from '../domain';
 
 export const DialogSignIn = () => {
@@ -9,13 +9,13 @@ export const DialogSignIn = () => {
   const [password, setPassword] = useState('');
 
   return (
-    <DialogRequest
-      useRequest={useSignIn}
+    <DialogCommand
+      useCommand={useSignIn}
       payload={{ email, password }}
       actions={<ButtonSubmit label={t('auth.sign-in')} />}
     >
       <ControlEmail value={email} onChange={setEmail} required />
       <ControlPassword value={password} onChange={setPassword} required />
-    </DialogRequest>
+    </DialogCommand>
   );
 };

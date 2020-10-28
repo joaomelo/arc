@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { DialogRequest, ControlEmail, ControlPassword, ButtonSubmit } from '__cli/core/components';
-import { selectCurrentUserEmail, useUpdateEmail } from '../domain';
+import { DialogCommand, ControlEmail, ControlPassword, SaveBack } from '__cli/core/components';
+import { useCurrentUserEmail, useUpdateEmail } from '../domain';
 
 export const DialogUpdateEmail = () => {
   const { t } = useTranslation();
-  const email = useSelector(selectCurrentUserEmail);
+  const email = useCurrentUserEmail();
   const [newEmail, setNewEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <DialogRequest
-      useRequest={useUpdateEmail}
+    <DialogCommand
+      useCommand={useUpdateEmail}
       payload={{ newEmail, email, password }}
-      actions={<ButtonSubmit label={t('components.save')} />}
+      actions={<SaveBack />}
     >
       <ControlEmail
         label={t('auth.email-new')}
@@ -28,6 +27,6 @@ export const DialogUpdateEmail = () => {
         onChange={setPassword}
         required
       />
-    </DialogRequest>
+    </DialogCommand>
   );
 };

@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { store } from '__cli/core/redux';
 import { request as apiRequest } from './client';
 
 export const useRequest = ({ method, route, message, callback }) => {
@@ -32,17 +31,4 @@ export const useRequest = ({ method, route, message, callback }) => {
   };
 
   return { request, pending, error, data, success };
-};
-
-export const useRequestDispatcher = ({ method, route, message, callback }) => {
-  const dispatch = payload => store.dispatch(callback(payload));
-
-  const config = {
-    method,
-    route,
-    message,
-    callback: dispatch
-  };
-
-  return useRequest(config);
 };
