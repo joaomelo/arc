@@ -58,6 +58,7 @@
     "language": "Idioma",
     "language-required": "Idioma é obrigatório",
     "preferences": "Preferências",
-    "update-preferences": "Atualizar preferências"
+    "update-preferences": "Atualizar preferências",
+    "preferences-updated": "Preferências Atualizadas"
   }
 }

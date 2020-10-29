@@ -1,3 +1,3 @@
 export { reducer } from './slice';
 export { useIsSignedIn, useCurrentUserEmail } from './queries';
-export { useSignIn, useSignUp, useUpdateEmail, useUpdatePassword, useSignOut } from './commands';
+export { signInCommand, signUpCommand, updateEmailCommand, updatePasswordCommand, signOutCommand } from './commands';

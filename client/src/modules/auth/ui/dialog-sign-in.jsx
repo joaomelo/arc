@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DialogCommand, ControlEmail, ControlPassword, ButtonSubmit } from '__cli/core/components';
-import { useSignIn } from '../domain';
+import { signInCommand } from '../domain';
 
 export const DialogSignIn = () => {
   const { t } = useTranslation();
@@ -10,7 +10,7 @@ export const DialogSignIn = () => {
 
   return (
     <DialogCommand
-      useCommand={useSignIn}
+      myCommand={signInCommand}
       payload={{ email, password }}
       actions={<ButtonSubmit label={t('auth.sign-in')} />}
     >

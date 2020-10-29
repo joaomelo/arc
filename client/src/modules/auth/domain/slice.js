@@ -15,9 +15,9 @@ const slice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    sign (state, action) {
+    sign (state, { payload }) {
       state.status = AUTH_STATUSES.SIGNEDIN;
-      state.currentUser = extractUserData(action.payload);
+      state.currentUser = extractUserData(payload);
     },
     signOut () {
       return { ...initialState };

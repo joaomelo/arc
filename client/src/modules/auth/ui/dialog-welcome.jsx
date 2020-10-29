@@ -1,12 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { weights, spaces } from '__cli/core/design';
-import { useCurrentUserEmail, useSignOut } from '../domain';
+import { useCommand } from '__cli/core/commands';
+import { useCurrentUserEmail, signOutCommand } from '../domain';
 
 export const DialogWelcome = () => {
   const { t } = useTranslation();
   const email = useCurrentUserEmail;
-  const { request } = useSignOut();
+  const { command } = useCommand(signOutCommand);
 
   return (
     <div
@@ -22,7 +23,7 @@ export const DialogWelcome = () => {
           css={{ fontWeight: weights.bold }}
         >{`${t('auth.account')}: ${email}`}</p>
         <button
-          onClick={e => request()}
+          onClick={e => command()}
           css={{
             display: 'block',
             margin: `${spaces.normal} auto 0px`

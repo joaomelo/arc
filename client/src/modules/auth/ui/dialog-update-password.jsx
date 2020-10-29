@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DialogCommand, ControlPasswordConfirmed, ControlPassword, SaveBack } from '__cli/core/components';
-import { useCurrentUserEmail, useUpdatePassword } from '../domain';
+import { useCurrentUserEmail, updateEmailCommand } from '../domain';
 
 export const DialogUpdatePassword = () => {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ export const DialogUpdatePassword = () => {
 
   return (
     <DialogCommand
-      useCommand={useUpdatePassword}
+      myCommand={updateEmailCommand}
       payload={{ newPassword, email, password }}
       actions={<SaveBack />}
     >

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DialogCommand, ControlSelect, SaveBack } from '__cli/core/components';
-import { useUpdatePreferences, usePreferences } from '../domain';
+import { updatePreferencesCommand, usePreferences } from '../domain';
 
 export const PagePreferences = () => {
   const preferences = usePreferences();
@@ -8,7 +8,7 @@ export const PagePreferences = () => {
 
   return (
     <DialogCommand
-      useCommand={useUpdatePreferences}
+      myCommand={updatePreferencesCommand}
       payload={{ locale: newLocale }}
       actions={<SaveBack />}
     >

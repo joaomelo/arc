@@ -4,7 +4,7 @@ export const LOCALES = {
     label: 'english'
   },
   PT_BR: {
-    value: 'pt_BR',
+    value: 'pt-BR',
     label: 'português'
   }
 };

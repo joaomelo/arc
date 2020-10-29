@@ -1,3 +1,3 @@
 export { reducer } from './slice';
-export { useUpdatePreferences } from './commands';
+export { updatePreferencesCommand } from './commands';
 export { usePreferences } from './queries';

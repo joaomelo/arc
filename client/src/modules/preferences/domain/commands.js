@@ -1,9 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { i18n } from '__cli/core/i18n';
 import { updatePreferences } from './slice';
 
-export const useUpdatePreferences = () => {
-  const dispatch = useDispatch();
-  return {
-    request: payload => dispatch(updatePreferences(payload))
-  };
+export const updatePreferencesCommand = async (payload, { dispatch }) => {
+  // await request...
+  dispatch(updatePreferences(payload));
+  return i18n.t('users.preferences-updated');
 };

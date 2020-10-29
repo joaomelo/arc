@@ -2,12 +2,13 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { mdiArchive, mdiTarget, mdiAccount, mdiLogout, mdiCogs } from '@mdi/js';
 import { NavBar, NavLink } from '__cli/core/components';
-import { useIsSignedIn, useSignOut } from '__cli/modules/auth';
+import { useCommand } from '__cli/core/commands';
+import { useIsSignedIn, signOutCommand } from '__cli/modules/auth';
 
 export const AppNav = () => {
   const { t } = useTranslation();
   const isSignedIn = useIsSignedIn();
-  const { request } = useSignOut();
+  const { command } = useCommand(signOutCommand);
 
   return !isSignedIn
     ? <NavBar />
@@ -34,7 +35,7 @@ export const AppNav = () => {
           label={t('auth.sign-out')}
           path={mdiLogout }
           to="#"
-          onClick={e => request()}
+          onClick={e => command()}
         />
       </NavBar>
     );
