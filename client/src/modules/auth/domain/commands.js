@@ -2,12 +2,12 @@ import { i18n } from '__cli/core/i18n';
 import { sign, signOut } from './slice';
 
 export const signInCommand = async (payload, { dispatch, request }) => {
-  const token = await request('post', '/auth/sign-in', payload);
+  const token = await request('post', '/users/sign-in', payload);
   dispatch(sign(token));
 };
 
 export const signUpCommand = async (payload, { dispatch, request }) => {
-  const token = await request('post', '/auth/sign-up', payload);
+  const token = await request('post', '/users/sign-up', payload);
   dispatch(sign(token));
 };
 

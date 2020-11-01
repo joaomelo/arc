@@ -10,7 +10,7 @@ const client = axios.create({
 client.interceptors.request.use(config => {
   const token = queryToken();
   if (token) {
-    config.headers.Authorization = `Baerer ${token}`;
+    config.headers.authorization = `Baerer ${token}`;
   }
   return config;
 });

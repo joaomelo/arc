@@ -2,7 +2,7 @@ import { sign, verify } from 'jsonwebtoken';
 
 const jwtSecret = process.env.SECRET;
 
-function signToken (tokenData) {
+export function signToken (tokenData) {
   const exp = Math.floor(Date.now() / 1000) + (15 * 60); // expires in 15 minutes
   const token = sign(
     {
@@ -17,13 +17,10 @@ function signToken (tokenData) {
   return token;
 }
 
-function extractUserIdFromTokenOrFail (token) {
-  // returns the payload decoded if the signature is valid. if not, it will throw the error.
+export function extractDataFromTokenOrFail (token) {
+  // returns the payload decoded if the signature is valid.
+  // if not, it will throw the error.
   const payload = verify(token, jwtSecret);
-
   const tokenData = payload.data;
-  const userId = tokenData.id;
-  return userId;
+  return tokenData;
 }
-
-export { signToken, extractUserIdFromTokenOrFail };

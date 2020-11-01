@@ -5,12 +5,12 @@ import { USERS_ERRORS } from './errors';
 
 const getUsers = () => db.collection('users');
 
-async function isEmailInUse (email) {
+export async function isEmailInUse (email) {
   const user = await getUsers().findOne({ email });
   return !!user;
 }
 
-async function secureFindOrFailByEmail (email, password) {
+export async function secureFindOrFailByEmail (email, password) {
   const user = await getUsers().findOne({ email });
   if (!user) throw new AppError({ ...USERS_ERRORS.INVALID_CREDENTIALS });
 
@@ -19,7 +19,7 @@ async function secureFindOrFailByEmail (email, password) {
   return user;
 }
 
-async function secureFindOrFailById (userId, password) {
+export async function secureFindOrFailById (userId, password) {
   const user = await getUsers().findOne({ _id: userId });
   if (!user) throw new AppError({ ...USERS_ERRORS.INVALID_CREDENTIALS });
 
@@ -28,24 +28,16 @@ async function secureFindOrFailById (userId, password) {
   return user;
 }
 
-async function validateOrFail (user, password) {
+export async function validateOrFail (user, password) {
   const isSamePassword = await compare(password, user.password);
   if (!isSamePassword) throw new AppError({ ...USERS_ERRORS.INVALID_CREDENTIALS });
 }
 
-async function createUser (userDoc) {
+export async function createUser (userDoc) {
   await getUsers().insertOne(userDoc);
 }
 
-async function updateUser (_id, userDoc) {
+export async function updateUser (_id, userDoc) {
   const result = await getUsers().updateOne({ _id }, { $set: userDoc });
   return result;
 }
-
-export {
-  isEmailInUse,
-  secureFindOrFailByEmail,
-  secureFindOrFailById,
-  createUser,
-  updateUser
-};

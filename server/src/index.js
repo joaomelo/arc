@@ -5,7 +5,7 @@ import { appTitle, isProduction, getMode, getPort, getAddress } from '__com/meta
 import { bootstrapDb } from '__ser/core/db';
 import { logger } from '__ser/core/log';
 import { errorMiddleware } from '__ser/core/error';
-import { router as authRouter } from './modules/auth';
+import { router as authRouter, authenticateTokenHandler } from './modules/users';
 
 async function main () {
   await bootstrapDb();
@@ -18,7 +18,9 @@ async function main () {
   const staticRoot = resolve(__dirname, 'public');
   app.use(express.static(staticRoot));
 
-  app.use('/auth', authRouter);
+  app.use(authenticateTokenHandler);
+
+  app.use('/users', authRouter);
 
   app.use(errorMiddleware);
 
