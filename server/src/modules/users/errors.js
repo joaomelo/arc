@@ -1,5 +1,4 @@
-
-const USERS_ERRORS = {
+export const USERS_ERRORS = {
   EMAIL_ALREADY_IN_USE: {
     code: 'EMAIL_ALREADY_IN_USE',
     message: "Can't create or update a user with an e-mail already in use",
@@ -19,5 +18,3 @@ const USERS_ERRORS = {
     isOperational: true
   }
 };
-
-export { USERS_ERRORS };

@@ -5,7 +5,7 @@ import { appTitle, isProduction, getMode, getPort, getAddress } from '__com/meta
 import { bootstrapDb } from '__ser/core/db';
 import { logger } from '__ser/core/log';
 import { errorMiddleware } from '__ser/core/error';
-import { router as authRouter, authenticateTokenHandler } from './modules/users';
+import { router as usersRouter, authenticateTokenHandler } from './modules/users';
 
 async function main () {
   await bootstrapDb();
@@ -20,12 +20,12 @@ async function main () {
 
   app.use(authenticateTokenHandler);
 
-  app.use('/users', authRouter);
+  app.use('/users', usersRouter);
 
   app.use(errorMiddleware);
 
   app.listen(getPort(), () => {
-    logger.info(`${appTitle()} is running baby! on ${getMode()} mode at ${getAddress()}`);
+    logger.info(`${appTitle()} is running on ${getMode()} mode at ${getAddress()}`);
   });
 }
 
