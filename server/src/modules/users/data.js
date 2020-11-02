@@ -1,9 +1,9 @@
 import { compare } from '__ser/core/crypt';
-import { db } from '__ser/core/db';
+import { getCollection } from '__ser/core/db';
 import { AppError } from '__ser/core/error';
 import { USERS_ERRORS } from './errors';
 
-const getUsers = () => db.collection('users');
+const getUsers = () => getCollection('users');
 
 export async function isEmailInUse (email) {
   const user = await getUsers().findOne({ email });
