@@ -1,1 +1,1 @@
-export { createServiceHandler } from './service-handler';
+export { createApp } from './app';

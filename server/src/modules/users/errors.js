@@ -10,11 +10,5 @@ export const USERS_ERRORS = {
     message: "User's email does not exist or failed to validate password",
     httpStatus: 401,
     isOperational: true
-  },
-  INVALID_TOKEN: {
-    code: 'INVALID_TOKEN',
-    message: 'The token is invalid or experied',
-    httpStatus: 401,
-    isOperational: true
   }
 };

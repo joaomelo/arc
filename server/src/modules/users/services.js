@@ -1,5 +1,5 @@
 import { LOCALES } from '__com/i18n';
-import { signToken, extractDataFromTokenOrFail } from '__ser/core/jwt';
+import { signToken } from '__ser/core/jwt';
 import { hash } from '__ser/core/crypt';
 import { AppError } from '__ser/core/error';
 import { USERS_ERRORS } from './errors';
@@ -45,16 +45,6 @@ export async function updatePassword ({ newPassword, email, password }) {
   await updateUser(user._id, { password: newHashedPassword });
   const token = await signIn({ email, password: newPassword });
   return token;
-}
-
-export function authenticateToken ({ token }) {
-  try {
-    const tokenData = extractDataFromTokenOrFail(token);
-    const userId = tokenData.id;
-    return userId;
-  } catch {
-    throw new AppError({ ...USERS_ERRORS.INVALID_TOKEN });
-  }
 }
 
 export async function updatePreferences (payload, context) {

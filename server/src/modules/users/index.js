@@ -1,2 +1,1 @@
-export { router } from './router';
-export { authenticateTokenHandler } from './middlewares';
+export { feature } from './feature';
