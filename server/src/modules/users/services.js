@@ -47,6 +47,6 @@ export async function updatePassword ({ newPassword, email, password }) {
   return token;
 }
 
-export async function updatePreferences (payload, context) {
-  console.log(context);
+export async function updatePreferences ({ locale }, { userId }) {
+  await updateUser(userId, { locale });
 }
