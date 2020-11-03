@@ -1,48 +1,14 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useValidation } from './use-validation';
 
-function BaseInput ({ type, value, onChange, onValidation, rules, ...rest }) {
-  const { t } = useTranslation();
-
-  const handleChange = e => {
-    onChange(e.target.value);
-    applyCustomValidation(e);
-  };
-
-  const applyCustomValidation = e => {
-    const control = e.target;
-    const { valueMissing, typeMismatch } = control.validity;
-    let error = '';
-
-    if (valueMissing) {
-      error = t('components.input-required');
-    }
-
-    if (!error && typeMismatch) {
-      error = t('components.input-invalid');
-    }
-
-    if (!error && Array.isArray(rules)) {
-      for (const rule of rules) {
-        const ruleError = rule(control.value);
-        if (ruleError) {
-          error = ruleError;
-          break;
-        }
-      }
-    };
-
-    control.setCustomValidity(error);
-    onValidation(error);
-  };
+export const BaseInput = ({ type, onChange, onValidation, rules, ...rest }) => {
+  const { handleChange, handleValidation } = useValidation({ onChange, onValidation, rules });
 
   return (
     <input
-      {...rest}
       type={type || 'text'}
-      value={value}
       onChange={handleChange}
-      onInvalid={applyCustomValidation}
+      onInvalid={handleValidation}
       css={{
         display: 'block',
         width: '100%',
@@ -50,8 +16,7 @@ function BaseInput ({ type, value, onChange, onValidation, rules, ...rest }) {
           outlineWidth: 'thick'
         }
       }}
+      {...rest}
     />
   );
-}
-
-export { BaseInput };
+};
