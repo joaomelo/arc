@@ -1,10 +1,5 @@
 import React from 'react';
-import { ControlInput } from './control-input';
+import { ControlGroup } from './control-group';
+import { BaseSelect } from './base-select';
 
-export const ControlSelect = (props) => {
-  return (
-    <ControlInput
-      { ...props }
-    />
-  );
-};
+export const ControlSelect = props => <ControlGroup baseControl={BaseSelect} {...props} />;
