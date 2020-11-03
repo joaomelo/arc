@@ -1,14 +1,20 @@
 import { i18n } from '__cli/core/i18n';
-import { sign, signOut } from './slice';
+import { extractUserDataFromToken } from './token';
+import { sign, signOut, updatePreferences } from './slice';
 
 export const signInCommand = async (payload, { dispatch, request }) => {
   const token = await request('post', 'users/sign-in', payload);
-  dispatch(sign(token));
+  const userData = extractUserDataFromToken(token);
+  dispatch(sign(userData));
+
+  const preferences = await request('get', 'users/preferences');
+  dispatch(updatePreferences(preferences));
 };
 
 export const signUpCommand = async (payload, { dispatch, request }) => {
   const token = await request('post', 'users/sign-up', payload);
-  dispatch(sign(token));
+  const userData = extractUserDataFromToken(token);
+  dispatch(sign(userData));
 };
 
 export const signOutCommand = async (payload, { dispatch }) => {
@@ -17,12 +23,20 @@ export const signOutCommand = async (payload, { dispatch }) => {
 
 export const updateEmailCommand = async (payload, { dispatch, request }) => {
   const token = await request('post', 'users/update-email', payload);
-  dispatch(sign(token));
+  const userData = extractUserDataFromToken(token);
+  dispatch(sign(userData));
   return i18n.t('auth.email-updated');
 };
 
 export const updatePasswordCommand = async (payload, { dispatch, request }) => {
   const token = await request('post', 'users/update-password', payload);
-  dispatch(sign(token));
+  const userData = extractUserDataFromToken(token);
+  dispatch(sign(userData));
   return i18n.t('auth.password-updated');
+};
+
+export const updatePreferencesCommand = async (payload, { dispatch, request }) => {
+  await request('post', 'users/update-preferences', payload);
+  dispatch(updatePreferences(payload));
+  return i18n.t('users.preferences-updated');
 };

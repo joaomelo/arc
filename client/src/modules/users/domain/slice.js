@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { extractUserData } from './user-data';
+import { LOCALES } from '__com/i18n/locales';
 
 export const AUTH_STATUSES = {
   SIGNEDOUT: 'AUTH_STATUSES.SIGNEDOUT',
@@ -8,19 +8,25 @@ export const AUTH_STATUSES = {
 
 const initialState = {
   status: AUTH_STATUSES.SIGNEDOUT,
-  currentUser: null
+  currentUser: null,
+  preferences: {
+    locale: LOCALES.EN.value
+  }
 };
 
 const slice = createSlice({
-  name: 'auth',
+  name: 'users',
   initialState,
   reducers: {
     sign (state, { payload }) {
       state.status = AUTH_STATUSES.SIGNEDIN;
-      state.currentUser = extractUserData(payload);
+      state.currentUser = payload;
     },
     signOut () {
       return { ...initialState };
+    },
+    updatePreferences (state, { payload }) {
+      state.preferences.locale = payload.locale;
     }
   }
 });
@@ -28,5 +34,6 @@ const slice = createSlice({
 export const reducer = slice.reducer;
 export const {
   sign,
-  signOut
+  signOut,
+  updatePreferences
 } = slice.actions;

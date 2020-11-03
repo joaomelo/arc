@@ -1,4 +1,4 @@
-import { signIn, signUp, updateEmail, updatePassword, updatePreferences } from './services';
+import { signIn, signUp, updateEmail, updatePassword, updatePreferences, getPreferences } from './services';
 
 export const feature = {
   name: 'users',
@@ -29,6 +29,11 @@ export const feature = {
       method: 'post',
       path: '/update-preferences',
       service: updatePreferences
+    },
+    {
+      method: 'get',
+      path: '/preferences',
+      service: getPreferences
     }
   ]
 };

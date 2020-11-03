@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 
-export function extractUserData (token) {
+export function extractUserDataFromToken (token) {
   const jwtToken = jwtDecode(token);
 
   const userData = {

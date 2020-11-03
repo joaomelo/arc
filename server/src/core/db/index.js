@@ -1,2 +1,2 @@
 export { bootstrapDb } from './bootstrap';
-export { getCollection } from './collection';
+export { getCollection, getDocById, updateDocById } from './utils';

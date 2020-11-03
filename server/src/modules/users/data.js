@@ -1,9 +1,12 @@
 import { compare } from '__ser/core/crypt';
-import { getCollection } from '__ser/core/db';
+import { getCollection, getDocById, updateDocById } from '__ser/core/db';
 import { AppError } from '__ser/core/error';
 import { USERS_ERRORS } from './errors';
 
 const getUsers = () => getCollection('users');
+
+export const getUserById = id => getDocById(getUsers(), id);
+export const updateUserById = (id, doc) => updateDocById(getUsers(), id, doc);
 
 export async function isEmailInUse (email) {
   const user = await getUsers().findOne({ email });
@@ -35,9 +38,4 @@ export async function validateOrFail (user, password) {
 
 export async function createUser (userDoc) {
   await getUsers().insertOne(userDoc);
-}
-
-export async function updateUser (_id, userDoc) {
-  const result = await getUsers().updateOne({ _id }, { $set: userDoc });
-  return result;
 }
