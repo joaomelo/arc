@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { DialogCommand, ControlSelect, SaveBack } from '__cli/core/components';
+import { DialogCommand, SaveBack } from '__cli/core/components';
 import { updatePreferencesCommand, usePreferences } from '../domain';
+import { SelectLocale } from './select-locale';
 
 export const PagePreferences = () => {
   const preferences = usePreferences();
@@ -12,7 +13,7 @@ export const PagePreferences = () => {
       payload={{ locale: newLocale }}
       actions={<SaveBack />}
     >
-      <ControlSelect label='locale' value={newLocale} onChange={setNewLocale} required/>
+      <SelectLocale value={newLocale} onChange={setNewLocale} required/>
     </DialogCommand>
   );
 };
