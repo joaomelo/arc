@@ -23,6 +23,7 @@
   "homepage": "https://github.com/joaomelo/arc#readme",
   "dependencies": {
     "@emotion/core": "^10.0.35",
+    "@exodus/schemasafe": "^1.0.0-rc.3",
     "@mdi/js": "^5.5.55",
     "@mdi/react": "^1.4.0",
     "@reduxjs/toolkit": "^1.4.0",

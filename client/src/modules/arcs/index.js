@@ -1,7 +1,1 @@
-// import { bindArcsFlowsToAuth } from './domain';
-
-// bindArcsFlowsToAuth();
-
-// export { PageArcs, PageArc } from './ui';
-
-export { ListArcs } from './ui';
+export { PageArcs } from './ui';
