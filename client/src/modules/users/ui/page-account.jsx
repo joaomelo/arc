@@ -9,8 +9,8 @@ export function PageAccount () {
 
   return (
     <DialogTabs>
-      <DialogUpdateEmail header={t('auth.email-update')}/>
-      <DialogUpdatePassword header={t('auth.password-update')}/>
+      <DialogUpdateEmail header={t('users.email-update')}/>
+      <DialogUpdatePassword header={t('users.password-update')}/>
     </DialogTabs>
   );
 }

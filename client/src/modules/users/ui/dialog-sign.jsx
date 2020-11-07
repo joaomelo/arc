@@ -9,8 +9,8 @@ export const DialogSign = () => {
 
   return (
     <DialogTabs>
-      <DialogSignIn header={t('auth.sign-in')}/>
-      <DialogSignUp header={t('auth.sign-up')}/>
+      <DialogSignIn header={t('users.sign-in')}/>
+      <DialogSignUp header={t('users.sign-up')}/>
     </DialogTabs>
   );
 };

@@ -12,7 +12,7 @@ export const DialogSignUp = () => {
     <DialogCommand
       myCommand={signUpCommand}
       payload={{ email, password }}
-      actions={<ButtonSubmit label={t('auth.sign-up')} />}
+      actions={<ButtonSubmit label={t('users.sign-up')} />}
     >
       <ControlEmail value={email} onChange={setEmail} required />
       <ControlPasswordConfirmed value={password} onChange={setPassword} required />

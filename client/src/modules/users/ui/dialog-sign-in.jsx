@@ -12,7 +12,7 @@ export const DialogSignIn = () => {
     <DialogCommand
       myCommand={signInCommand}
       payload={{ email, password }}
-      actions={<ButtonSubmit label={t('auth.sign-in')} />}
+      actions={<ButtonSubmit label={t('users.sign-in')} />}
     >
       <ControlEmail value={email} onChange={setEmail} required />
       <ControlPassword value={password} onChange={setPassword} required />

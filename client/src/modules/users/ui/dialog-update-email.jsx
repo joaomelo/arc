@@ -16,13 +16,13 @@ export const DialogUpdateEmail = () => {
       actions={<SaveBack />}
     >
       <ControlEmail
-        label={t('auth.email-new')}
+        label={t('users.email-new')}
         value={newEmail}
         onChange={setNewEmail}
         required
       />
       <ControlPassword
-        label={t('auth.password-current')}
+        label={t('users.password-current')}
         value={password}
         onChange={setPassword}
         required

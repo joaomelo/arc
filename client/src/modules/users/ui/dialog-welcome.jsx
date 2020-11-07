@@ -21,7 +21,7 @@ export const DialogWelcome = () => {
       <div>
         <p
           css={{ fontWeight: weights.bold }}
-        >{`${t('auth.account')}: ${email}`}</p>
+        >{`${t('users.account')}: ${email}`}</p>
         <button
           onClick={e => command()}
           css={{
@@ -29,7 +29,7 @@ export const DialogWelcome = () => {
             margin: `${spaces.normal} auto 0px`
           }}
         >
-          {t('auth.sign-out')}
+          {t('users.sign-out')}
         </button>
       </div>
     </div>
