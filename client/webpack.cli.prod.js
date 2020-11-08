@@ -1,7 +1,7 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 const Dotenv = require('dotenv-webpack');
-const client = require('./webpack.cli.common');
+const clientCommon = require('./webpack.cli.common');
 
 const clientProd = {
   mode: 'production',
@@ -13,4 +13,4 @@ const clientProd = {
   ]
 };
 
-module.exports = merge(client, clientProd);
+module.exports = merge(clientCommon, clientProd);
