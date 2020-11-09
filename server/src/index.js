@@ -7,8 +7,13 @@ async function main () {
   await bootstrapDb();
 
   const app = createApp();
+
+  const tagline = `${appTitle()} is running on ${getMode()} mode at ${getAddress()}`;
+
+  app.get('/', (req, res) => res.type('text/plain').status(200).send(tagline));
+
   app.listen(getPort(), () => {
-    logger.info(`${appTitle()} is running on ${getMode()} mode at ${getAddress()}`);
+    logger.info(tagline);
   });
 }
 

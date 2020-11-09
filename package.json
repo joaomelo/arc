@@ -5,12 +5,10 @@
   "main": "index.html",
   "scripts": {
     "start": "npm run dev",
-    "dev": "concurrently --handle-input -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"npm:ser:run\" \"npm:ser:watch\" \"npm:cli:dev\"",
+    "dev": "concurrently --handle-input -c \"bgMagenta.bold,bgGreen.bold\" \"npm:ser:dev\" \"npm:cli:dev\"",
     "cli:dev": "webpack serve --config client/webpack.cli.dev.js",
     "cli:build": "rimraf client/build/* && webpack --config client/webpack.cli.prod.js",
-    "ser:dev": "concurrently --handle-input -c \"bgBlue.bold,bgMagenta.bold\" \"npm:ser:run\" \"npm:ser:watch\"",
-    "ser:watch": "rimraf server/build/* && webpack --config server/webpack.ser.dev.js",
-    "ser:run": "nodemon --enable-source-maps server/build/server.js",
+    "ser:dev": "rimraf server/build/* && webpack --config server/webpack.ser.dev.js",
     "ser:build": "rimraf server/build/* && webpack --config server/webpack.ser.prod.js",
     "lint": "eslint --ext .js,.jsx client/src/ server/src/",
     "test": "npm run prod:lint"
@@ -76,7 +74,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "eslint-plugin-standard": "^4.0.1",
     "html-webpack-plugin": "^4.3.0",
-    "nodemon": "^2.0.4",
+    "nodemon-webpack-plugin": "^4.3.2",
     "rimraf": "^3.0.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
