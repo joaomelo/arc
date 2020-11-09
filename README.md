@@ -30,9 +30,11 @@ Challenges are pieces of work carved out from results and represent HOW work sho
 
 The app is still in early stages. I work at it as a solo developer in my spare time after my main job working hours. When a version more suitable to experimenting and contributing is available i will update this file with instructions for installing, deploying and contributing. 
 
-## Tooling
+## Developing
 
-Server and client code are separated at most tools except from npm. Stuff like eslint config is keep separated even with repeated configuration to garantee stack indepence.
+Server and client separated apps sitting at the same monorepo. Both use ES6 code and are built to the target runtime with Webpack to make code sharing during development enabled.
+
+At development time the client app is served from webpack-server and not by the server app. This aims to aproximate towards production since the client app can be delivery by specialized hosting services like netfly or firebase hosting. The server app is more like a universal webservice.
 
 ## Versioning
 
