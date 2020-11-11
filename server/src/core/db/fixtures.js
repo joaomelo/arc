@@ -15,9 +15,9 @@ async function loadFixtures (db) {
   const count = await cursor.count();
   if (count > 0) return;
 
-  const password = await hash('test');
+  const password = await hash('12345678');
   const locale = 'en';
-  const usersDocs = [{ email: 'd@d', password, preferences: { locale } }];
+  const usersDocs = [{ email: 'd@d.net', password, preferences: { locale } }];
   for (let i = 0; i <= userQt; i++) {
     usersDocs.push({ email: internet.email(), password, preferences: { locale } });
   }
