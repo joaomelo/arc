@@ -24,4 +24,6 @@ This [CodesandBox](https://codesandbox.io/s/misty-fog-z4zf3?file=/src/App.js) il
 
 Another route is to forget the control level and treat everything at form level. Pass a schema to the form, somehow we need to programatically mount the data object that will be dealt by the schema, pehaps during form submission, than validate. The error messages that came from the schema will be the same link system be passed to controls to proper show the error message.
 
-By this mechanism complexlity will reside in the form and the control will only receive a error message by prop.
+By this mechanism complexlity will reside in the form and the control will only receive a error message by prop. The simpler candidate approcach would be the programmer name every control as the corresponding field in the schema.
+
+That would tigth every validation to be at form level and by schema. So the tradeoff is to lose the isolation approach of componentization on validation vertical aspect. Seems ok?!
