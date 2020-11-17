@@ -13,7 +13,7 @@ export const DialogUpdateEmail = () => {
     <DialogCommand
       myCommand={updateEmailCommand}
       payload={{ newEmail, email, password }}
-      actions={<SaveBack />}
+      footer={<SaveBack />}
     >
       <ControlEmail
         label={t('users.email-new')}

@@ -29,6 +29,7 @@
     "@mdi/js": "^5.5.55",
     "@mdi/react": "^1.4.0",
     "@reduxjs/toolkit": "^1.4.0",
+    "ajv": "^6.10.2",
     "axios": "^0.20.0",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.6.5",

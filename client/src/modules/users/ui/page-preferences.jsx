@@ -11,7 +11,7 @@ export const PagePreferences = () => {
     <DialogCommand
       myCommand={updatePreferencesCommand}
       payload={{ locale: newLocale }}
-      actions={<SaveBack />}
+      footer={<SaveBack />}
     >
       <SelectLocale value={newLocale} onChange={setNewLocale} required/>
     </DialogCommand>

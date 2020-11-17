@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DialogCommand, ControlEmail, ControlPassword, ButtonSubmit } from '__cli/core/components';
 import { signInCommand } from '../domain';
+import { validateCredentials } from '__com/users';
 
 export const DialogSignIn = () => {
   const { t } = useTranslation();
@@ -12,10 +13,11 @@ export const DialogSignIn = () => {
     <DialogCommand
       myCommand={signInCommand}
       payload={{ email, password }}
-      actions={<ButtonSubmit label={t('users.sign-in')} />}
+      validate={ validateCredentials }
+      footer={<ButtonSubmit label={t('users.sign-in')} />}
     >
-      <ControlEmail value={email} onChange={setEmail} required />
-      <ControlPassword value={password} onChange={setPassword} required />
+      <ControlEmail name="email" value={email} onChange={setEmail} />
+      <ControlPassword name="password" value={password} onChange={setPassword} />
     </DialogCommand>
   );
 };

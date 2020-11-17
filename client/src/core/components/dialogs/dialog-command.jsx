@@ -1,6 +1,8 @@
 import React from 'react';
+import { spaces } from '__cli/core/design';
 import { useCommand } from '__cli/core/commands';
 import { LoadingOverlay } from '../loading';
+import { MessageMulti } from '../text';
 import { DialogForm } from './dialog-form';
 
 export const DialogCommand = ({ myCommand, payload, children, ...rest }) => {
@@ -10,12 +12,15 @@ export const DialogCommand = ({ myCommand, payload, children, ...rest }) => {
     <>
       <LoadingOverlay isLoading={pending}/>
       <DialogForm
-        onSubmit={e => command(payload)}
-        error={error}
-        success={success}
+        onSubmit={command}
         {...rest}
       >
         {children}
+        <MessageMulti
+          error={error}
+          info={success}
+          css={{ marginTop: spaces.spacious }}
+        />
       </DialogForm>
     </>
   );

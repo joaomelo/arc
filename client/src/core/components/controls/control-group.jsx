@@ -21,6 +21,7 @@ export const ControlGroup = ({ label, baseControl, ...rest }) => {
       </label>
       <Control
         id={controlId}
+        name={controlId}
         onValidation={error => setMessage(error)}
         {...rest}
       />

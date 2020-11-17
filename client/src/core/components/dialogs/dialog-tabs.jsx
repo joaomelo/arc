@@ -1,6 +1,6 @@
 import React, { Children, useState } from 'react';
 import { weights, spaces, colors } from '__cli/core/design';
-import { DialogBase } from './dialog-base';
+import { Card } from './card';
 
 export const NavTab = ({ label, current, setCurrent }) => (
   <li
@@ -37,11 +37,18 @@ export const DialogTabs = ({ children }) => {
   const childrenArray = Children.toArray(children);
   const labels = childrenArray.map(child => child.props.header);
   const [currentTab, setCurrentTab] = useState(labels[0]);
+
   return (
-    <DialogBase
-      header={<NavTabs labels={labels} current={currentTab} setCurrent={setCurrentTab} />}
+    <Card
+      header={
+        <NavTabs
+          labels={labels}
+          current={currentTab}
+          setCurrent={setCurrentTab}
+        />
+      }
     >
       { childrenArray.find(child => child.props.header === currentTab) }
-    </DialogBase>
+    </Card>
   );
 };
