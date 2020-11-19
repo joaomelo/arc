@@ -1,14 +1,10 @@
 import React from 'react';
-import { useValidation } from './use-validation';
 
-export const BaseInput = ({ type, onChange, onValidation, rules, ...rest }) => {
-  const { handleChange, handleValidation } = useValidation({ onChange, onValidation, rules });
-
+export const BaseInput = ({ type, defaultValue, ...rest }) => {
   return (
     <input
       type={type || 'text'}
-      onChange={handleChange}
-      onInvalid={handleValidation}
+      defaultValue={defaultValue}
       css={{
         display: 'block',
         width: '100%',

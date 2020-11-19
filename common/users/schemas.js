@@ -9,7 +9,7 @@ const userSchema = {
     id: { type: 'string' },
     email: { type: 'string' },
     password: { type: 'string' },
-    locale: { type: 'string' }
+    locale: { type: 'string', default: 'en' }
   },
   required: ['id', 'email']
 };
@@ -24,7 +24,8 @@ const credentialsSchema = {
   additionalProperties: false,
   properties: {
     email: { type: 'string' },
-    password: { type: 'string' }
+    password: { type: 'string' },
+    test: { type: 'string', default: 'foo' }
   },
   required: ['email', 'password']
 };

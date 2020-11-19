@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { camelCase, upperFirst } from 'lodash-es';
 import { weights, sizes, colors } from '__cli/core/design';
 
-export const ControlGroup = ({ label, baseControl, ...rest }) => {
-  const [message, setMessage] = useState('');
-
+export const ControlGroup = ({ label, name, baseControl, errors, ...rest }) => {
   const Control = baseControl;
   const controlId = `control${upperFirst(camelCase(label))}`;
+
+  const message = errors[name];
+  console.log({ errors, name, message });
 
   return (
     <div>
@@ -21,8 +22,7 @@ export const ControlGroup = ({ label, baseControl, ...rest }) => {
       </label>
       <Control
         id={controlId}
-        name={controlId}
-        onValidation={error => setMessage(error)}
+        name={name}
         {...rest}
       />
       { message &&

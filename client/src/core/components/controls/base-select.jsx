@@ -1,9 +1,6 @@
 import React from 'react';
-import { useValidation } from './use-validation';
 
-export const BaseSelect = ({ onChange, onValidation, rules, options, ...rest }) => {
-  const { handleChange, handleValidation } = useValidation({ onChange, onValidation, rules });
-
+export const BaseSelect = ({ defaultValue, options, ...rest }) => {
   const stdOptions = options.map(option => {
     return {
       value: typeof option === 'string' ? option : option.value,
@@ -13,8 +10,7 @@ export const BaseSelect = ({ onChange, onValidation, rules, options, ...rest }) 
 
   return (
     <select
-      onChange={handleChange}
-      onInvalid={handleValidation}
+      defaultValue={defaultValue}
       css={{
         display: 'block',
         width: '100%',

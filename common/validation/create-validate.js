@@ -1,5 +1,4 @@
 import Ajv from 'ajv';
-import { isProduction } from '__com/meta';
 
 let ajv;
 
@@ -7,19 +6,19 @@ export function createValidate (schema) {
   if (!ajv) {
     ajv = new Ajv({
       allErrors: true,
-      verbose: !isProduction(),
+      verbose: false,
       removeAdditional: true,
       useDefaults: 'empty'
     });
   }
 
-  const pureValidate = ajv.compile(schema);
+  const vanillaValidate = ajv.compile(schema);
 
   const validate = schema => {
-    const success = pureValidate(schema);
+    const success = vanillaValidate(schema);
     return {
       success,
-      errors: pureValidate.errors
+      errors: [...vanillaValidate.errors]
     };
   };
 
