@@ -11,7 +11,7 @@ export const DialogForm = ({ onSubmit, onValidate, children, ...rest }) => {
   };
 
   const handleChange = e => {
-    onValidate(e.target);
+    onValidate(e.target.form);
   };
 
   return (
