@@ -7,7 +7,6 @@ export const ControlGroup = ({ label, name, baseControl, errors, ...rest }) => {
   const controlId = `control${upperFirst(camelCase(label))}`;
 
   const message = errors[name];
-  console.log({ errors, name, message });
 
   return (
     <div>
