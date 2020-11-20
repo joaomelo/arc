@@ -23,9 +23,8 @@ const credentialsSchema = {
   type: 'object',
   additionalProperties: false,
   properties: {
-    email: { type: 'string' },
-    password: { type: 'string' },
-    test: { type: 'string', default: 'foo' }
+    email: { type: 'string', format: 'email' },
+    password: { type: 'string', minLength: 8, maxLength: 50 }
   },
   required: ['email', 'password']
 };
