@@ -26,7 +26,9 @@ export const useValidation = validate => {
     // reestructure the errors list to make it transparent to components
     const refinedErrors = {};
     errors.forEach(error => {
-      const fieldName = error.params.missingProperty;
+      const fieldName = error.dataPath
+        ? error.dataPath.substring(1)
+        : error.params.missingProperty;
       refinedErrors[fieldName] = error.message;
     });
 
