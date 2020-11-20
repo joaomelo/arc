@@ -8,7 +8,8 @@ export function createValidate (schema) {
       allErrors: true,
       verbose: false,
       removeAdditional: true,
-      useDefaults: 'empty'
+      useDefaults: 'empty',
+      format: 'full'
     });
   }
 
@@ -18,7 +19,7 @@ export function createValidate (schema) {
     const success = vanillaValidate(schema);
     return {
       success,
-      errors: [...vanillaValidate.errors]
+      errors: success ? [] : [...vanillaValidate.errors]
     };
   };
 
