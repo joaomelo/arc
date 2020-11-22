@@ -1,29 +1,19 @@
 module.exports = {
   root: true,
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      jsx: true
-    }    
+    parser: '@babel/eslint-parser',
   },
   extends: [
     'standard',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
+    'plugin:vue/recommended'
   ],
   rules: {
     semi: ['error', 'always'],
     'no-console': ['warn'],
-    'no-debugger': 'warn',
-    'react/prop-types': 'off'
-  },
-  settings: {
-    react: {
-      version: "detect"
-    }
+    'no-debugger': 'warn'
   },
   env: {
-    browser: true,
-    node: true
+    browser: true
   }  
 };
