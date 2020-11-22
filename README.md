@@ -26,24 +26,36 @@ Results represent WHAT work should be done. They are real deliverables or achiev
 
 Challenges are pieces of work carved out from results and represent HOW work should be done. They have clear assigments and completed in a short time frame. Challenges are periodically created and assigned to the arc in small time cycles. They should not be spam for more than one month of planned time.
 
-## Getting Started
+# Getting Started
 
 The app is still in early stages. I work at it as a solo developer in my spare time after my main job working hours. When a version more suitable to experimenting and contributing is available i will update this file with instructions for installing, deploying and contributing. 
 
-## Developing
+# Main Technical Decisions
 
-Server and client separated apps sitting at the same monorepo. Both use ES6 code and are built to the target runtime with Webpack to make code sharing during development enabled.
+## Serverless
 
-At development time the client app is served from webpack-server and not by the server app. This aims to aproximate towards production since the client app can be delivery by specialized hosting services like netfly or firebase hosting. The server app is more like a universal webservice.
+Full stack solo development is hard. A project to be sustainable need (among many other things) consistency. So one must provide predicable environment behavior both at development and runtime.
 
-## Versioning
+The way to go would be select popular open source projects (e.g. react, mongo and node)and containerize client, server and db with Docker. Then provide orchestration combining stuff like Webpack, Docker Compose and Kubernetes.
+
+At the moment, this is to much to manage alone. The option is to start using Firebase and with it encapsulate most of the full stack complexity at the tradeoff of a possible lock-in.
+
+## Vue Ecosystem
+
+All the main front-end framework and libraries are just great. React, Vue, Angular and Svelte do an amazing job bringing ergonomics to the client UI development with the component and declarative approaches.
+
+Vue was chosen to this project mainly for personal preferences regarding it's explicit syntax for things like slots and events. Any of the other the three options would also be great.
+
+Since Vue was the choice, come with it other ecosystem libraries: Vuex, Vue-Router and Vuetify.
+
+# Versioning
 
 I try to use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/joaomelo/arc/tags). 
 
-## Author
+# Author
 
 [João Melo](https://www.linkedin.com/in/joaomelo81/?locale=en_US)
 
-## License
+# License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details

@@ -4,7 +4,7 @@ import { internet } from 'faker';
 // import { User } from '__ser/modules/users';
 // import { Arc, Membership, Role } from '__ser/modules/arcs';
 
-const userQt = 1000;
+const userQt = 20;
 // const arcsQt = Math.round(userQt / 10);
 // const membersQt = Math.round(userQt / 10);
 
