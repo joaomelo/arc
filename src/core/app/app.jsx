@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { store } from '__cli/core/redux';
+import { store } from '@/core/redux';
 import { AppNav } from './app-nav';
 import { AppMain } from './app-main';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { DialogTabs } from '__cli/core/components';
+import { DialogTabs } from '@/core/components';
 import { DialogUpdateEmail } from './dialog-update-email';
 import { DialogUpdatePassword } from './dialog-update-password';
 

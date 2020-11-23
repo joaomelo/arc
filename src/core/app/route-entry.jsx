@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useIsSignedIn } from '__cli/modules/users';
+import { useIsSignedIn } from '@/modules/users';
 
 export function RouteEntry ({ children, ...rest }) {
   const isSignedIn = useIsSignedIn();

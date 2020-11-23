@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { CardItem } from '__cli/modules/items';
+import { CardItem } from '@/modules/items';
 import { challengesCollection } from '../domain';
 
 export default {

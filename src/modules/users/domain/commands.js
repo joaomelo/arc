@@ -1,4 +1,4 @@
-import { i18n } from '__cli/core/i18n';
+import { i18n } from '@/core/i18n';
 import { extractUserDataFromToken } from './token';
 import { sign, signOut, updatePreferences } from './slice';
 

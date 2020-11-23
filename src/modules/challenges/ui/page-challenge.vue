@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import { ControlText } from '__cli/core/components';
-import { PageItem } from '__cli/modules/items';
+import { ControlText } from '@/core/components';
+import { PageItem } from '@/modules/items';
 import { challengesCollection } from '../domain';
 
 export default {

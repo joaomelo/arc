@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { ListArcs } from '__cli/modules/arcs';
+import { ListArcs } from '@/modules/arcs';
 
 export default {
   name: 'PageDashboard',

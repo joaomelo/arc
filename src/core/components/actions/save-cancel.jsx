@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { spaces } from '__cli/core/design';
+import { spaces } from '@/core/design';
 import { ButtonSubmit } from './button-submit';
 import { ButtonSecondary } from './button-secondary';
 

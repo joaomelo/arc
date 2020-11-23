@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { weights, spaces } from '__cli/core/design';
-import { useCommand } from '__cli/core/commands';
+import { weights, spaces } from '@/core/design';
+import { useCommand } from '@/core/commands';
 import { useCurrentUserEmail, signOutCommand } from '../domain';
 
 export const DialogWelcome = () => {

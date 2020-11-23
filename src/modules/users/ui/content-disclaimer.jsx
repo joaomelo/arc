@@ -1,6 +1,6 @@
 import React from 'react';
 import { appDescription } from '__com/meta';
-import { Card, ArticleBase } from '__cli/core/components';
+import { Card, ArticleBase } from '@/core/components';
 
 export const ContentDisclaimer = (props) => {
   return (

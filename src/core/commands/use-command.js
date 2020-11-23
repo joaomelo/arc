@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { request } from '__cli/core/api';
+import { request } from '@/core/api';
 
 export const useCommand = myCommand => {
   const [pending, setPending] = useState(false);

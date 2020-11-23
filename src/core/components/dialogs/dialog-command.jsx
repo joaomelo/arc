@@ -1,6 +1,6 @@
 import React from 'react';
-import { spaces } from '__cli/core/design';
-import { useCommand } from '__cli/core/commands';
+import { spaces } from '@/core/design';
+import { useCommand } from '@/core/commands';
 import { LoadingOverlay } from '../loading';
 import { MessageMulti } from '../text';
 import { DialogForm } from './dialog-form';

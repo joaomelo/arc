@@ -1,4 +1,4 @@
-import { AUTH_STATUSES, authStateSubject } from '__cli/core/auth';
+import { AUTH_STATUSES, authStateSubject } from '@/core/auth';
 
 function bindCollectionToAuth (collection, options) {
   return authStateSubject.subscribe(({ status, oldStatus }) => {

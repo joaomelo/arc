@@ -1,5 +1,5 @@
 import React from 'react';
-import { spaces, colors } from '__cli/core/design';
+import { spaces, colors } from '@/core/design';
 
 export const Divider = props => (
   <hr

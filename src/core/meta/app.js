@@ -1,4 +1,4 @@
-import * as data from '__cli/../../package.json';
+import * as data from '@/../../package.json';
 import { isProduction } from './env';
 
 function appName () {

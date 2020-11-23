@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import { showSuccess, showError } from '__cli/core/busui';
-import { FormDialog } from '__cli/core/components';
+import { showSuccess, showError } from '@/core/busui';
+import { FormDialog } from '@/core/components';
 
 export default {
   name: 'PageItem',

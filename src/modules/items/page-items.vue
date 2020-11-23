@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { BtnAdd } from '__cli/core/components';
+import { BtnAdd } from '@/core/components';
 
 export default {
   name: 'PageItems',

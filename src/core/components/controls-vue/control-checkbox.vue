@@ -23,7 +23,7 @@
 
 <script>
 import ControlWrapper from './control-wrapper.vue';
-import { p } from '__cli/common/components-helpers';
+import { p } from '@/common/components-helpers';
 
 export default {
   name: 'ControlCheckbox',

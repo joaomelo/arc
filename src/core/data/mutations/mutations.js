@@ -1,4 +1,4 @@
-import { firebase, firedb, fireauth } from '__cli/core/firebase';
+import { firebase, firedb, fireauth } from '@/core/firebase';
 
 function add (item, options) {
   const col = firedb.collection(options.collection);

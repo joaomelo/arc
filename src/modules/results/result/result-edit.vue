@@ -43,15 +43,15 @@
 </template>
 
 <script>
-import { p } from '__cli/common/components-helpers';
-import ItemEdit from '__cli/components/item/item-edit.vue';
-import ControlText from '__cli/components/forms/control-text.vue';
-import ControlTextarea from '__cli/components/forms/control-textarea.vue';
-import ControlSelect from '__cli/components/forms/control-select.vue';
-import ControlStatus from '__cli/components/forms/control-status.vue';
-import ControlTag from '__cli/components/forms/control-tag.vue';
-import ControlCheckbox from '__cli/components/forms/control-checkbox.vue';
-import ControlDaterange from '__cli/components/forms/control-daterange.vue';
+import { p } from '@/common/components-helpers';
+import ItemEdit from '@/components/item/item-edit.vue';
+import ControlText from '@/components/forms/control-text.vue';
+import ControlTextarea from '@/components/forms/control-textarea.vue';
+import ControlSelect from '@/components/forms/control-select.vue';
+import ControlStatus from '@/components/forms/control-status.vue';
+import ControlTag from '@/components/forms/control-tag.vue';
+import ControlCheckbox from '@/components/forms/control-checkbox.vue';
+import ControlDaterange from '@/components/forms/control-daterange.vue';
 
 export default {
   name: 'ResultEdit',

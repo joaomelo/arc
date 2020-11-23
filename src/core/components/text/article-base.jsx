@@ -1,5 +1,5 @@
 import React from 'react';
-import { spaces, weights, sizes } from '__cli/core/design';
+import { spaces, weights, sizes } from '@/core/design';
 
 function ArticleBase ({ children, ...rest }) {
   return (

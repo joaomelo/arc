@@ -35,10 +35,10 @@
 </template>
 
 <script>
-import { BaseText, LookupText } from '__cli/core/components';
-import { CardItem } from '__cli/modules/items';
+import { BaseText, LookupText } from '@/core/components';
+import { CardItem } from '@/modules/items';
 import { delArc } from '../domain';
-import { profilesCollection } from '__cli/modules/profiles';
+import { profilesCollection } from '@/modules/profiles';
 
 export default {
   name: 'CardArc',

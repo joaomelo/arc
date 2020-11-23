@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors } from '__cli/core/design';
+import { colors } from '@/core/design';
 import { ButtonBase } from './button-base';
 
 export const ButtonSecondary = (props) => {

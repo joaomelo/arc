@@ -1,4 +1,4 @@
-import { store } from '__cli/core/redux';
+import { store } from '@/core/redux';
 
 const selectLocale = state => state.users.preferences.locale;
 export let currentLocale = selectLocale(store.getState());

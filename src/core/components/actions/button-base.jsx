@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors, spaces, weights } from '__cli/core/design';
+import { colors, spaces, weights } from '@/core/design';
 
 function ButtonBase ({ label, ...rest }) {
   const { primary, light, secondary } = colors;

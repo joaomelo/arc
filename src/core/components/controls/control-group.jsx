@@ -1,6 +1,6 @@
 import React from 'react';
 import { camelCase, upperFirst } from 'lodash-es';
-import { weights, sizes, colors } from '__cli/core/design';
+import { weights, sizes, colors } from '@/core/design';
 
 export const ControlGroup = ({ label, name, baseControl, errors, ...rest }) => {
   const Control = baseControl;

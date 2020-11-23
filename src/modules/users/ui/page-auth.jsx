@@ -1,5 +1,5 @@
 import React from 'react';
-import { spaces } from '__cli/core/design';
+import { spaces } from '@/core/design';
 import { useIsSignedIn } from '../domain';
 import { DialogWelcome } from './dialog-welcome';
 import { DialogSign } from './dialog-sign';

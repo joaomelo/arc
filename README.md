@@ -32,6 +32,8 @@ The app is still in early stages. I work at it as a solo developer in my spare t
 
 # Main Technical Decisions
 
+The main driver is how to get the app into the hands of the user as needed.
+
 ## Serverless
 
 Full stack solo development is hard. A project to be sustainable need (among many other things) consistency. So one must provide predicable environment behavior both at development and runtime.

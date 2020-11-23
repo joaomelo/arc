@@ -1,5 +1,5 @@
 import React from 'react';
-import { weights, spaces, sizes, colors } from '__cli/core/design';
+import { weights, spaces, sizes, colors } from '@/core/design';
 
 export const MessageBase = ({ message, ...rest }) => {
   if (!message) return null;

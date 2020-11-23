@@ -1,5 +1,5 @@
-import { AUTH_STATUSES, authStateSubject } from '__cli/core/auth';
-import { Stream, River } from '__cli/core/data';
+import { AUTH_STATUSES, authStateSubject } from '@/core/auth';
+import { Stream, River } from '@/core/data';
 
 const arcs = new River();
 

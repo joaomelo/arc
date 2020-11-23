@@ -1,4 +1,4 @@
-import { firedb } from '__cli/core/firebase';
+import { firedb } from '@/core/firebase';
 import { Flow } from './flow';
 
 class Stream extends Flow {

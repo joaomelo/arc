@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { store } from '__cli/core/redux';
+import { store } from '@/core/redux';
 import { AUTH_STATUSES } from './slice';
 
 const selectToken = state => state.users.currentUser ? state.users.currentUser.token : null;

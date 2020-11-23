@@ -1,5 +1,5 @@
 import React, { Children, useState } from 'react';
-import { weights, spaces, colors } from '__cli/core/design';
+import { weights, spaces, colors } from '@/core/design';
 import { Card } from './card';
 
 export const NavTab = ({ label, current, setCurrent }) => (

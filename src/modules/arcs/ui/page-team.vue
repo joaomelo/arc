@@ -43,9 +43,9 @@
 </template>
 
 <script>
-import { ControlText, ControlTextarea, ControlSelect } from '__cli/core/components';
-import { PageItem } from '__cli/modules/items';
-import { profilesCollection, getCurrentProfile } from '__cli/modules/profiles';
+import { ControlText, ControlTextarea, ControlSelect } from '@/core/components';
+import { PageItem } from '@/modules/items';
+import { profilesCollection, getCurrentProfile } from '@/modules/profiles';
 import { arcs, addArc, updateArc } from '../domain';
 
 export default {

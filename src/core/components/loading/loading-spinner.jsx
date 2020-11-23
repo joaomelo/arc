@@ -1,5 +1,5 @@
 import React from 'react';
-import { sizes, colors } from '__cli/core/design';
+import { sizes, colors } from '@/core/design';
 
 function LoadingSpinner () {
   const { small, biggest } = sizes;

@@ -1,4 +1,4 @@
-import { Collection, bindCollectionToAuth } from '__cli/core/collection';
+import { Collection, bindCollectionToAuth } from '@/core/collection';
 
 const challengesCollection = new Collection('challenges');
 

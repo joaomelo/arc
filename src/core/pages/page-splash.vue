@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { BaseDialog } from '__cli/core/components';
+import { BaseDialog } from '@/core/components';
 
 export default {
   name: 'PageSplash',

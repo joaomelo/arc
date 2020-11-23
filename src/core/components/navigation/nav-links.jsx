@@ -1,5 +1,5 @@
 import React from 'react';
-import { spaces } from '__cli/core/design';
+import { spaces } from '@/core/design';
 
 function NavLinks ({ children }) {
   return (

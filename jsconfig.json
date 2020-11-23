@@ -5,9 +5,7 @@
     "checkJs": false,
     "baseUrl": "./",
     "paths": { 
-      "__cli/*": [ "client/src/*" ],
-      "__ser/*": [ "server/src/*" ],
-      "__com/*": [ "common/*" ]
+      "@/*": [ "src/*" ],
     }
   },
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-// import { colors } from '__cli/core/design';
+// import { colors } from '@/core/design';
 import { MessageBase } from './message-base';
 
 function MessageInfo ({ message }) {

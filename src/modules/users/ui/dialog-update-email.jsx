@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { DialogCommand, ControlEmail, ControlPassword, SaveBack } from '__cli/core/components';
+import { DialogCommand, ControlEmail, ControlPassword, SaveBack } from '@/core/components';
 import { useCurrentUserEmail, updateEmailCommand } from '../domain';
 
 export const DialogUpdateEmail = () => {

@@ -5,6 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 const PATHS = {
   SRC: path.resolve(__dirname, 'src'),
@@ -20,7 +21,7 @@ module.exports = env => {
     devtool: 'source-map',
     resolve: {
       alias: {
-        __cli: PATHS.SRC
+        '@': PATHS.SRC
       },
       extensions: ['.js', '.vue', '.json']
     },
@@ -66,13 +67,31 @@ module.exports = env => {
           }
         },
         {
-          test: [/\.css$/],
-          use: ['vue-style-loader', 'style-loader', 'css-loader']
+          test: [/\.s(c|a)ss$/],
+          use: [
+            'vue-style-loader',
+            'style-loader',
+            'css-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                implementation: require('sass'),
+                sassOptions: {
+                  indentedSyntax: true
+                }
+              }
+            }
+          ]
         }
       ]
     },
     plugins: [
       new ESLintPlugin({ extensions: ['js', 'vue'], fix: true }),
+      new CircularDependencyPlugin({
+        exclude: /node_modules/,
+        allowAsyncCycles: false,
+        cwd: process.cwd()
+      }),
       new CopyWebpackPlugin([
         {
           from: path.resolve(PATHS.SRC, 'images'),
@@ -81,13 +100,9 @@ module.exports = env => {
         }
       ]),
       new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'index.html') }),
-      new VueLoaderPlugin(),
       new Dotenv({ path: path.resolve(__dirname, `env-${isProd ? 'prod' : 'dev'}.env`) }),
-      new CircularDependencyPlugin({
-        exclude: /node_modules/,
-        allowAsyncCycles: false,
-        cwd: process.cwd()
-      })
+      new VueLoaderPlugin(),
+      new VuetifyLoaderPlugin()
     ]
   };
 };

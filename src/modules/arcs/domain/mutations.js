@@ -1,4 +1,4 @@
-import { add, update, del } from '__cli/core/data';
+import { add, update, del } from '@/core/data';
 
 const options = {
   collection: 'arcs',

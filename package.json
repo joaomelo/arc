@@ -22,8 +22,6 @@
   },
   "homepage": "https://github.com/joaomelo/arc#readme",
   "dependencies": {
-    "@mdi/js": "^5.5.55",
-    "@mdi/react": "^1.4.0",
     "ajv": "^6.10.2",
     "core-js": "^3.6.5",
     "faker": "^4.1.0",
@@ -58,10 +56,13 @@
     "eslint-webpack-plugin": "^2.4.0",
     "html-webpack-plugin": "^4.3.0",
     "rimraf": "^3.0.2",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
     "style-loader": "^1.2.1",
     "vue-eslint-parser": "^7.1.1",
     "vue-loader": "^15.9.5",
     "vue-template-compiler": "^2.6.12",
+    "vuetify-loader": "^1.6.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"

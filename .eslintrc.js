@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: '@babel/eslint-parser',
+    parser: '@babel/eslint-parser'
   },
   extends: [
     'standard',
@@ -15,5 +15,8 @@ module.exports = {
   },
   env: {
     browser: true
-  }  
+  },
+  globals: {
+    firebase: 'readonly'
+  }
 };

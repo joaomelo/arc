@@ -1,5 +1,5 @@
 import React from 'react';
-import { weights, sizes } from '__cli/core/design';
+import { weights, sizes } from '@/core/design';
 
 export const HeaderText = ({ text }) => {
   if (!text) return null;

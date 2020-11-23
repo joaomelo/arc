@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import { BaseButton } from '__cli/core/components';
-import { showInfo, showError } from '__cli/core/busui';
+import { BaseButton } from '@/core/components';
+import { showInfo, showError } from '@/core/busui';
 
 export default {
   name: 'CardItem',
