@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 import Vue from 'vue';
 import { vuetify } from './core/vuetify';
 import { App } from './core/app';
+import '@/core/firebase';
 
 // Don't warn about using the dev version of Vue in development.
 // Vue.config.productionTip = process.env.NODE_ENV === 'production'

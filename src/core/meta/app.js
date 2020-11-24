@@ -1,4 +1,4 @@
-import * as data from '@/../../package.json';
+import * as data from '@/../package.json';
 import { isProduction } from './env';
 
 function appName () {
@@ -14,8 +14,8 @@ function appDescription () {
 function appVersion () {
   const rawVersion = data.default.version;
   const prefix = 'v';
-  const posfix = isProduction() ? '' : 'd';
-  return prefix + rawVersion + posfix;
+  const postfix = isProduction() ? '' : 'd';
+  return prefix + rawVersion + postfix;
 }
 
 function appTitle () {

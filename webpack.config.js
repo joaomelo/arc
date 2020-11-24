@@ -19,6 +19,7 @@ module.exports = env => {
     target: 'web',
     mode: isProd ? 'production' : 'development',
     devtool: 'source-map',
+    watch: !isProd,
     resolve: {
       alias: {
         '@': PATHS.SRC
@@ -30,12 +31,6 @@ module.exports = env => {
       publicPath: '/',
       path: PATHS.BUILD,
       filename: `[name]${isProd ? '.[contenthash]' : ''}.bundle.js`
-    },
-    devServer: {
-      contentBase: PATHS.BUILD,
-      historyApiFallback: true,
-      port: 8080,
-      hot: true
     },
     optimization: {
       moduleIds: 'hashed',

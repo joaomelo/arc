@@ -14,11 +14,7 @@
 </template>
 
 <script>
-import { fb, auth, firestore } from '@/core/firebase';
 export default {
-  name: 'App',
-  created () {
-    console.log({ fb, auth, firestore });
-  }
+  name: 'App'
 };
 </script>

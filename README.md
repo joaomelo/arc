@@ -40,11 +40,11 @@ Full stack solo development is hard. A project to be sustainable need (among man
 
 The way to go would be select popular open source projects (e.g. react, mongo and node)and containerize client, server and db with Docker. Then provide orchestration combining stuff like Webpack, Docker Compose and Kubernetes.
 
-At the moment, this is to much to manage alone. The option is to start using Firebase and with it encapsulate most of the full stack complexity at the tradeoff of a possible lock-in.
+At the moment, this is to much to manage alone. The option is to start using Firebase services: Hosting, Auth and Firestore, and with it abstract most of the full stack and devops complexity at the tradeoff of a possible lock-in.
 
 ## Vue Ecosystem
 
-All the main front-end framework and libraries are just great. React, Vue, Angular and Svelte do an amazing job bringing ergonomics to the client UI development with the component and declarative approaches.
+All the main front-end framework and libraries are just great. React, Vue, Angular and Svelte do an amazing job bringing ergonomics to the client UI development combining component and declarative approaches.
 
 Vue was chosen to this project mainly for personal preferences regarding it's explicit syntax for things like slots and events. Any of the other the three options would also be great.
 
