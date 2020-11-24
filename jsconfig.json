@@ -5,7 +5,7 @@
     "checkJs": false,
     "baseUrl": "./",
     "paths": { 
-      "@/*": [ "src/*" ],
+      "@/*": [ "web/*" ],
     }
   },
 }

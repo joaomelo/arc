@@ -1,4 +1,4 @@
 {
-  "i18n-ally.localesPaths": "client/src/core/i18n",
+  "i18n-ally.localesPaths": "web/core/i18n",
   "i18n-ally.keystyle": "nested"
 }

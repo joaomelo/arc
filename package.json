@@ -10,7 +10,7 @@
     "dev:serve": "firebase emulators:start",
     "build": "rimraf build/* && webpack --env prod --config webpack.config.js",
     "deploy": "npm run build && firebase deploy",
-    "lint": "eslint --ext .js,.vue src/",
+    "lint": "eslint --ext .js,.vue web/",
     "test": "npm run lint"
   },
   "repository": {
