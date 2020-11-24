@@ -32,5 +32,13 @@ export const store = {
     updatePreferences (state, payload) {
       state.preferences.locale = payload.locale;
     }
+  },
+  actions: {
+    commandSignIn ({ commit }, payload) {
+      commit('sign', payload);
+    },
+    commandSignOut ({ commit }) {
+      commit('signOut');
+    }
   }
 };
