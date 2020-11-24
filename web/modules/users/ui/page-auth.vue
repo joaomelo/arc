@@ -1,25 +1,20 @@
 <template>
   <div>
-    <h1>Auth</h1>
-    <button
-      v-if="!isSignedIn"
-      @click="commandSignIn({ name: 'joão' })"
-    >
-      Sign In
-    </button>
+    <DialogWelcome v-if="isSignedIn" />
+    <DialogSign v-else />
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
+import DialogSign from './dialog-sign';
+import DialogWelcome from './dialog-welcome';
 
 export default {
   name: 'PageAuth',
+  components: { DialogSign, DialogWelcome },
   computed: {
     ...mapGetters('usersStore', ['isSignedIn'])
-  },
-  methods: {
-    ...mapActions('usersStore', ['commandSignIn'])
   }
 };
 </script>

@@ -19,7 +19,8 @@ export const store = {
     ...initialState
   },
   getters: {
-    isSignedIn: state => state.status === AUTH_STATUSES.SIGNED_IN
+    isSignedIn: state => state.status === AUTH_STATUSES.SIGNED_IN,
+    currentUserEmail: state => state.currentUser && state.currentUser.email
   },
   mutations: {
     sign (state, payload) {
