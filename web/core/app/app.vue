@@ -2,12 +2,7 @@
   <v-app>
     <v-main>
       <v-container fluid>
-        <!-- <router-view /> -->
-        <v-btn
-          elevation="2"
-        >
-          Hi
-        </v-btn>
+        <router-view />
       </v-container>
     </v-main>
   </v-app>
