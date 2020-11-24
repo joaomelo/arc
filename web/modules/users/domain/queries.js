@@ -5,7 +5,7 @@ import { AUTH_STATUSES } from './slice';
 const selectToken = state => state.users.currentUser ? state.users.currentUser.token : null;
 export const queryToken = () => selectToken(store.getState());
 
-const selectIsSignedIn = state => state.users.status === AUTH_STATUSES.SIGNEDIN;
+const selectIsSignedIn = state => state.users.status === AUTH_STATUSES.SIGNED_IN;
 export const useIsSignedIn = () => useSelector(selectIsSignedIn);
 
 const selectCurrentUserEmail = state => state.users.currentUser ? state.users.currentUser.email : null;

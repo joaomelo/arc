@@ -7,7 +7,7 @@ function bindArcsFlowsToAuth () {
   return authStateSubject.subscribe(({ status, oldStatus, userData }) => {
     if (status === oldStatus) return;
 
-    if (status === AUTH_STATUSES.SIGNEDIN) {
+    if (status === AUTH_STATUSES.SIGNED_IN) {
       plugArcs(userData.uid);
     } else {
       arcs.disconnect();

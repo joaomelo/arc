@@ -5,6 +5,7 @@ import { vuetify } from './core/vuetify';
 import { isProduction } from './core/meta';
 import { App } from './core/app';
 import { router } from './core/router';
+import { store } from './core/store';
 
 // don't warn about dev version in development mode.
 Vue.config.productionTip = isProduction();
@@ -12,7 +13,7 @@ Vue.config.productionTip = isProduction();
 const app = new Vue({
   router,
   vuetify,
-  // store,
+  store,
   render: h => h(App)
 });
 app.$mount('#container');
