@@ -10,14 +10,9 @@
 
 <script>
 import { mapActions } from 'vuex';
-// import { uiWidget } from '@/core/firebase';
 
 export default {
   name: 'FirebaseUi',
-  // data () {
-  //   console.log(uiWidget);
-  //   return { uiWidget };
-  // },
   methods: {
     ...mapActions('usersStore', ['commandSignIn'])
   }
