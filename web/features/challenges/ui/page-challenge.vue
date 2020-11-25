@@ -15,7 +15,7 @@
 
 <script>
 import { ControlText } from '@/core/components';
-import { PageItem } from '@/modules/items';
+import { PageItem } from '@/features/items';
 import { challengesCollection } from '../domain';
 
 export default {

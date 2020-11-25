@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { mdiArchive, mdiTarget, mdiAccount, mdiLogout, mdiCogs } from '@mdi/js';
 import { NavBar, NavLink } from '@/core/components';
 import { useCommand } from '@/core/commands';
-import { useIsSignedIn, signOutCommand } from '@/modules/users';
+import { useIsSignedIn, signOutCommand } from '@/features/users';
 
 export const AppNav = () => {
   const { t } = useTranslation();

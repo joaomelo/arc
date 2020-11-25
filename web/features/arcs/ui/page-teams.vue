@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { PageItems } from '@/modules/items';
+import { PageItems } from '@/features/items';
 import { arcs } from '../domain';
 import CardArc from './card-arc';
 

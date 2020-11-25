@@ -1,8 +1,8 @@
 import { hash } from '__ser/core/crypt';
 import { internet } from 'faker';
 // import { internet, company } from 'faker';
-// import { User } from '__ser/modules/users';
-// import { Arc, Membership, Role } from '__ser/modules/arcs';
+// import { User } from '__ser/features/users';
+// import { Arc, Membership, Role } from '__ser/features/arcs';
 
 const userQt = 20;
 // const arcsQt = Math.round(userQt / 10);

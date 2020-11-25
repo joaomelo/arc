@@ -44,8 +44,8 @@
 
 <script>
 import { ControlText, ControlTextarea, ControlSelect } from '@/core/components';
-import { PageItem } from '@/modules/items';
-import { profilesCollection, getCurrentProfile } from '@/modules/profiles';
+import { PageItem } from '@/features/items';
+import { profilesCollection, getCurrentProfile } from '@/features/profiles';
 import { arcs, addArc, updateArc } from '../domain';
 
 export default {

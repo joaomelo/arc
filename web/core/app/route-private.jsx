@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useIsSignedIn } from '@/modules/users';
+import { useIsSignedIn } from '@/features/users';
 
 export function RoutePrivate ({ children, ...rest }) {
   const isSignedIn = useIsSignedIn();

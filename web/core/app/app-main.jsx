@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { spaces, colors } from '@/core/design';
-import { PageAuth, PageAccount, PagePreferences } from '@/modules/users';
-import { PageArcs } from '@/modules/arcs';
+import { PageAuth, PageAccount, PagePreferences } from '@/features/users';
+import { PageArcs } from '@/features/arcs';
 
 import { RoutePrivate } from './route-private';
 import { RouteEntry } from './route-entry';

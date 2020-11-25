@@ -36,9 +36,9 @@
 
 <script>
 import { BaseText, LookupText } from '@/core/components';
-import { CardItem } from '@/modules/items';
+import { CardItem } from '@/features/items';
 import { delArc } from '../domain';
-import { profilesCollection } from '@/modules/profiles';
+import { profilesCollection } from '@/features/profiles';
 
 export default {
   name: 'CardArc',

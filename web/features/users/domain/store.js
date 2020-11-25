@@ -1,12 +1,13 @@
 import { LOCALES } from '@/core/i18n/locales';
 
 export const AUTH_STATUSES = {
+  UNDEFINED: 'AUTH_STATUSES.UNDEFINED',
   SIGNED_OUT: 'AUTH_STATUSES.SIGNED_OUT',
   SIGNED_IN: 'AUTH_STATUSES.SIGNED_IN'
 };
 
 const initialState = {
-  status: AUTH_STATUSES.SIGNED_OUT,
+  status: AUTH_STATUSES.UNDEFINED,
   currentUser: null,
   preferences: {
     locale: LOCALES.EN.value
@@ -19,6 +20,7 @@ export const store = {
     ...initialState
   },
   getters: {
+    isUndefined: state => state.status === AUTH_STATUSES.UNDEFINED,
     isSignedIn: state => state.status === AUTH_STATUSES.SIGNED_IN,
     currentUserEmail: state => state.currentUser && state.currentUser.email
   },

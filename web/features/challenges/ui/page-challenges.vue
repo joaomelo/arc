@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { PageItems } from '@/modules/items';
+import { PageItems } from '@/features/items';
 import { challengesCollection } from '../domain';
 import CardChallenge from './card-challenge';
 
