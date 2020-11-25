@@ -50,6 +50,15 @@ Vue was chosen to this project mainly for personal preferences regarding it's ex
 
 Since Vue was the choice, come with it other ecosystem libraries: Vuex, Vue-Router and Vuetify.
 
+# Development 
+
+The development move by selecting use cases to implement and the made in the following steps:
+- Write of the use case in a README inside the business module with focus on flow.
+- The external components (e.g. Page and Monitor) are layed in dummy versions.
+- The flow between components is mocked.
+- Business feature are introduced.
+- The UI in implemented.
+
 # Versioning
 
 I try to use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/joaomelo/arc/tags). 
