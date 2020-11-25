@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { DialogCommand, ControlEmail, ControlPasswordConfirmed, ButtonSubmit } from '@/core/components';
+import { DialogCommand, ControlEmail, ControlPasswordConfirmed, ButtonSubmit } from '@/shared/components';
 import { signUpCommand } from '../domain';
 
 export const DialogSignUp = () => {

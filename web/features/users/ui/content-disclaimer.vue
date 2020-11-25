@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { appDescription } from '@/core/meta';
+import { appDescription } from '@/shared/meta';
 
 export default {
   name: 'ContentDisclaimer',

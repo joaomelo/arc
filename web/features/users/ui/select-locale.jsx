@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { LOCALES } from '__com/i18n';
-import { ControlSelect } from '@/core/components';
+import { ControlSelect } from '@/shared/components';
 
 export const SelectLocale = (props) => {
   const { t } = useTranslation();

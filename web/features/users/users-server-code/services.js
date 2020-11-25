@@ -1,8 +1,8 @@
 import { LOCALES } from '__com/i18n';
 import { credentialsSchema, EMAIL_ALREADY_IN_USE, CREDENTIALS_INVALID } from '__com/users';
-import { signToken } from '__ser/core/jwt';
-import { hash } from '__ser/core/crypt';
-import { AppError } from '__ser/core/error';
+import { signToken } from '__ser/shared/jwt';
+import { hash } from '__ser/shared/crypt';
+import { AppError } from '__ser/shared/error';
 import { isEmailInUse, secureFindOrFailByEmail, insertDoc, updateDocById, getDocById } from './data';
 
 export async function signIn (credentials) {

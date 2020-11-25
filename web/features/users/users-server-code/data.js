@@ -1,7 +1,7 @@
 import { CREDENTIALS_UNRECOGNIZED } from '__com/users';
-import { compare } from '__ser/core/crypt';
-import { createDataFunctions } from '__ser/core/db';
-import { AppError } from '__ser/core/error';
+import { compare } from '__ser/shared/crypt';
+import { createDataFunctions } from '__ser/shared/db';
+import { AppError } from '__ser/shared/error';
 
 export const { insertDoc, updateDocById, getDocById, getDocByQuery } = createDataFunctions('users');
 

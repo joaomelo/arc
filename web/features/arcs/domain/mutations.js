@@ -1,4 +1,4 @@
-import { add, update, del } from '@/core/data';
+import { add, update, del } from '@/shared/data';
 
 const options = {
   collection: 'arcs',

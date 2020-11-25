@@ -2,22 +2,25 @@
 
 The module takes care of the auth flow, account and preferences management and profiles exposure to other modules.
 
-They are together because all operate mainly in the user entity data. Every attempt to separate this modules bumped in the intricacy of operations.
+Those features are grouped together because all of them operate mainly over user entity data. Every previous attempt to separate this modules pieces bumped in the intricacy of use cases.
 
 # App Onboarding
 
-App onboarding is done in three components **PageAuth**, **PageSignUp** and **PageSignIn**. Every one of the with an corresponding route **auth**, **sign-up** and **sign-in**.
+App onboarding is done in three components **PageAuth**, **PageSignUp** and **PageSignIn**. Every one of them at the corresponding route **auth**, **sign-up** and **sign-in**.
 
-When the user attempt to access any route explicitly public without been **signed in**, the app will redirect him do **PageAuth**. But the other two routes could be accessed directly. 
+When an user attempt to access any route that is not explicitly public without been SIGNED_IN, the app will redirect to **auth**. But any of three routes can be accessed directly by an external link or typing in the address bar. 
 
-**PageAuth** is a loading screen running until the auth status is resolved. If it resolves to SIGNED_OUT it will redirect to **sign-up**. If auth status resolves to SIGNED_IN the route is redirected to **home**.
+The app tries to auto login returning users, so **PageAuth** shows a loading screen signaling that the auth status is been resolved. When auth status resolves, it will redirect to **sign-up** if SIGNED_OUT or to **home** if SIGNED_IN.
 
-At **PageSignUp** and **PageSignIn**, nothing will happen if the auth status changes to SIGN_OUT. If auth status change to SIGNED_IN the user will be redirect to **home**.
+**PageSignUp** and **PageSignIn** are those traditional forms. Nothing will happen if the auth status changes to SIGN_OUT at that routes. If auth status change to SIGNED_IN, we assume the form completed its function and the user will be redirect to **home**.
 
 # Auth Status and Route Management
 
 The redirect behavior expected from the state change on auth status has both local component and app global aspects.
 
-Globally, for example, if a user sign outs at any page, we want the app to redirect to **PageSignIn**. But if that happens at **PageAuth** we need a reroute to **PageSignUp**.
+Globally, for example, if a user sign outs at any private page, we want the app to redirect to **PageSignIn** immediately. But if that happens at **PageAuth** we have a different context and need now a reroute to **PageSignUp**.
 
-To tackle that, every component that needs to change the auth status will only dispatch actions to the store and all redirect will be managed by a **MonitorAuthStatus** component that will sit at app level and operate like a state machine observing the auth store and current route. 
+To tackle that, every component that needs to change the auth status will only dispatch actions to the store and all route guardianship will be managed by **MonitorAuthStatus** component. It will sit at app level and observe auth status and route activity, doing proper activation or blocking of route changes when needed.
+
+# Firabase Auth
+

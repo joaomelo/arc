@@ -1,5 +1,5 @@
-import { AUTH_STATUSES, authStateSubject } from '@/core/auth';
-import { Stream, River } from '@/core/data';
+import { AUTH_STATUSES, authStateSubject } from '@/shared/auth';
+import { Stream, River } from '@/shared/data';
 
 const arcs = new River();
 

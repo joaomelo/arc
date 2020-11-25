@@ -1,4 +1,4 @@
-import { Collection, bindCollectionToAuth } from '@/core/collection';
+import { Collection, bindCollectionToAuth } from '@/shared/collection';
 
 const challengesCollection = new Collection('challenges');
 

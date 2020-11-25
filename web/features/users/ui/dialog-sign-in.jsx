@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { DialogCommand, ControlEmail, ControlPassword, ButtonSubmit, useValidation } from '@/core/components';
+import { DialogCommand, ControlEmail, ControlPassword, ButtonSubmit, useValidation } from '@/shared/components';
 import { signInCommand } from '../domain';
 import { validateCredentials } from '__com/users';
 

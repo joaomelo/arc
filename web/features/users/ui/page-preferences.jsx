@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DialogCommand, SaveBack } from '@/core/components';
+import { DialogCommand, SaveBack } from '@/shared/components';
 import { updatePreferencesCommand, usePreferences } from '../domain';
 import { SelectLocale } from './select-locale';
 

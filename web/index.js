@@ -1,11 +1,11 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import Vue from 'vue';
-import { vuetify } from './core/vuetify';
-import { isProduction } from './core/meta';
-import { App } from './core/app';
-import { router } from './core/router';
-import { store } from './core/store';
+import { vuetify } from './shared/vuetify';
+import { isProduction } from './shared/meta';
+import { App } from './shared/app';
+import { router } from './shared/router';
+import { store } from './shared/store';
 
 // don't warn about dev version in development mode.
 Vue.config.productionTip = isProduction();

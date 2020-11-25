@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { ControlText } from '@/core/components';
+import { ControlText } from '@/shared/components';
 import { PageItem } from '@/features/items';
 import { challengesCollection } from '../domain';
 

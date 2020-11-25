@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { ControlText, ControlTextarea, ControlSelect } from '@/core/components';
+import { ControlText, ControlTextarea, ControlSelect } from '@/shared/components';
 import { PageItem } from '@/features/items';
 import { profilesCollection, getCurrentProfile } from '@/features/profiles';
 import { arcs, addArc, updateArc } from '../domain';
