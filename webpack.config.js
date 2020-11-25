@@ -89,8 +89,8 @@ module.exports = env => {
       }),
       new CopyWebpackPlugin([
         {
-          from: path.resolve(PATHS.SRC, 'images'),
-          to: path.resolve(PATHS.BUILD, 'images'),
+          from: path.resolve(PATHS.SRC, 'public'),
+          to: path.resolve(PATHS.BUILD, 'public'),
           toType: 'dir'
         }
       ]),

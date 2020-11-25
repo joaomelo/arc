@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { isProduction } from '__com/meta';
-import { queryToken } from '@/features/users/domain/queries';
+import { queryToken } from '@/business/users/domain/queries';
 
 const client = axios.create({
   baseURL: 'http://localhost:3000',
