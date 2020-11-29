@@ -30,9 +30,9 @@ Challenges are pieces of work carved out from results and represent HOW work sho
 
 The app is still in early stages. I work at it as a solo developer in my spare time after my main job working hours. When a version more suitable to experimenting and contributing is available i will update this file with instructions for installing, deploying and contributing. 
 
-# Main Technical Decisions
+# Tech Stack
 
-The main driver is how to get the app into the hands of the user as needed.
+The main driver is how to get the app out there as early as possible and with least maintenance effort as possible.
 
 ## Serverless
 
@@ -52,6 +52,8 @@ Since Vue was the choice, come with it other ecosystem libraries: Vuex, Vue-Rout
 
 # Development 
 
+## Process
+
 The development move by selecting a use case to implement and do the following steps:
 - If first of a family, write a  broad view of the use cases in a README inside the business module with focus on entities and flow.
 - Review for the specific use case in the same README, if needed.
@@ -59,6 +61,14 @@ The development move by selecting a use case to implement and do the following s
 - The flow between components is done with stubs.
 - Business feature are introduced.
 - The UI in implemented.
+
+## Architecture
+
+Every module is develop with this mindset: 'How can this module be decoupled so it could be exported as-is to do the same job in another app?'
+
+The purpose is not to be able to do that literarily, but push the code to be maintainable.
+
+Take notice that, it is not to do a generic job to multiple apps with different requirements. Just the same job. The point is not to do a cow factory, just a cow that can live in any farm.
 
 # Versioning
 

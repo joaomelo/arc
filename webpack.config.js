@@ -8,7 +8,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 const PATHS = {
-  SRC: path.resolve(__dirname, 'web'),
+  SRC: path.resolve(__dirname, 'src'),
   BUILD: path.resolve(__dirname, 'build')
 };
 

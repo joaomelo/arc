@@ -1,1 +1,0 @@
-export { initAndInjectFirebaseServices } from './inject';
