@@ -1,4 +1,8 @@
 export const LOCALES = {
+  DEFAULT: {
+    value: 'en',
+    label: 'english'
+  },
   EN: {
     value: 'en',
     label: 'english'

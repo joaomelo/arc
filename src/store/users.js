@@ -10,11 +10,11 @@ const initialState = {
   status: AUTH_STATUSES.UNDEFINED,
   currentUser: null,
   preferences: {
-    locale: LOCALES.EN.value
+    locale: LOCALES.DEFAULT.value
   }
 };
 
-export const storeConfig = {
+export const usersStoreConfig = {
   store: {
     namespaced: true,
     state: {
@@ -31,6 +31,7 @@ export const storeConfig = {
         state.currentUser = payload;
       },
       signOut (state) {
+        // todo: reset the store state no just the module
         state = { ...initialState };
       },
       updatePreferences (state, payload) {
@@ -46,7 +47,7 @@ export const storeConfig = {
       }
     }
   },
-  afterCreate: [
-    // subscribe to authChanges by invoking some action
-  ]
+  afterCreate (store) {
+    console.log('afterCreate', store.$authService);
+  }
 };

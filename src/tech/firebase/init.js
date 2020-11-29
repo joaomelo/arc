@@ -1,10 +1,9 @@
 import { connectToFirebaseServices } from './connect';
-import { injectFirebaseIntoStore } from './inject';
 
-export function initFirebase ({ config, emulators, store }) {
+export function initFirebase ({ config, emulators }) {
   const { auth, firestore } = connectToFirebaseServices({ config, emulators });
-  injectFirebaseIntoStore(store, {
+  return {
     authService: auth,
     dbService: firestore
-  });
+  };
 };

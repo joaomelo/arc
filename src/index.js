@@ -5,16 +5,14 @@ import 'regenerator-runtime/runtime';
 import { isProduction } from '@/shared/meta';
 import { initFirebase } from '@/tech/firebase';
 // vue ecosystem
+import { initStore } from '@/store';
 import { initUi } from './tech/vue';
 import { initVuetify } from '@/tech/vuetify';
-import { initStore } from '@/app/store';
 import { initRouter } from '@/app/router';
 // root element
 import { AppShell } from '@/app/shell';
 
 function main () {
-  const store = initStore();
-
   // firebase
   let emulators = null;
   if (!isProduction()) {
@@ -33,7 +31,10 @@ function main () {
     appId: process.env.APP_ID,
     measurementId: process.env.MEASUREMENT_ID
   };
-  initFirebase({ store, config, emulators });
+  const { authService, dbService } = initFirebase({ config, emulators });
+
+  // store
+  const store = initStore({ authService, dbService });
 
   // vue
   const vuetify = initVuetify();

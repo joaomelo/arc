@@ -1,0 +1,1 @@
+export { initStore } from './vuex';
