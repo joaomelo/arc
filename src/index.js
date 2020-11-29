@@ -1,16 +1,16 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-// firebase initialization
+// firebase
 import { isProduction } from '@/shared/meta';
 import { initFirebase } from '@/tech/firebase';
-// vue ecosystem
+// state management
 import { initStore } from '@/store';
-import { initUi } from './tech/vue';
-import { initVuetify } from '@/tech/vuetify';
-import { initRouter } from '@/app/router';
-// root element
-import { AppShell } from '@/app/shell';
+// web ui
+import { initUi } from '@/web/vue';
+import { initVuetify } from '@/web/vuetify';
+import { initRouter } from '@/web/router';
+import { AppShell } from '@/web/shell';
 
 function main () {
   // firebase
@@ -33,10 +33,10 @@ function main () {
   };
   const { authService, dbService } = initFirebase({ config, emulators });
 
-  // store
+  // state management
   const store = initStore({ authService, dbService });
 
-  // vue
+  // web ui
   const vuetify = initVuetify();
   const router = initRouter(store);
   initUi({

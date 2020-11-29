@@ -1,5 +1,5 @@
-import { PageHome, Page404 } from '@/app/pages';
-import { PageAuth, PageSignUp, PageSignIn } from '@/business/users';
+import { PageHome, Page404 } from '@/web/pages';
+import { PageAuth, PageSignUp, PageSignIn } from '@/web/users';
 
 export const routes = [
   {

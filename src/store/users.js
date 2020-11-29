@@ -16,7 +16,6 @@ const initialState = {
 
 export const usersStoreConfig = {
   store: {
-    namespaced: true,
     state: {
       ...initialState
     },
@@ -31,8 +30,11 @@ export const usersStoreConfig = {
         state.currentUser = payload;
       },
       signOut (state) {
-        // todo: reset the store state no just the module
-        state = { ...initialState };
+        state = {
+          ...initialState,
+          status: AUTH_STATUSES.SIGNED_OUT
+        };
+        console.log(state);
       },
       updatePreferences (state, payload) {
         state.preferences.locale = payload.locale;
@@ -40,14 +42,22 @@ export const usersStoreConfig = {
     },
     actions: {
       commandSignIn ({ commit }, payload) {
-        commit('sign', payload);
       },
       commandSignOut ({ commit }) {
-        commit('signOut');
+      },
+      subscribeToAuthState ({ commit }) {
+        this.$authService.onAuthStateChanged(user => {
+          if (user) {
+            commit('sign', { ...user });
+          } else {
+            // todo: reset the whole store state no just the module
+            commit('signOut');
+          }
+        });
       }
     }
   },
   afterCreate (store) {
-    console.log('afterCreate', store.$authService);
+    store.dispatch('subscribeToAuthState');
   }
 };
