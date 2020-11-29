@@ -1,6 +1,6 @@
 <template>
   <div>
-    Trying to login...
+    Loading user...
   </div>
 </template>
 
@@ -10,10 +10,22 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'PageAuth',
   computed: {
-    ...mapGetters('usersStore', ['isUndefined'])
+    ...mapGetters(['isUndefined', 'isSignedIn'])
   },
-  created () {
-    setTimeout(() => this.$router.push({ name: 'signUp' }), 1000);
+  watch: {
+    isUndefined: {
+      handler (value) {
+        // still solving auth status
+        if (value) return;
+
+        if (this.isSignedIn) {
+          this.$router.push({ name: 'home' });
+        } else {
+          this.$router.push({ name: 'signUp' });
+        }
+      },
+      immediate: true
+    }
   }
 };
 </script>

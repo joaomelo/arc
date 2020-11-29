@@ -1,8 +1,7 @@
-export const createBlockPrivateRoutes = (store) => (to, from, next) => {
-  const isSignedIn = store.getters['usersStore/isSignedIn'];
+export const createBlockPrivateRoutes = (isSignedIn) => (to, from, next) => {
   const isPrivate = !to.meta.isPublic;
 
-  if (isPrivate && !isSignedIn) {
+  if (isPrivate && !isSignedIn()) {
     next({ name: 'auth' });
   } else {
     next();

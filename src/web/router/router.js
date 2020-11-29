@@ -11,7 +11,8 @@ export function initRouter (store) {
     routes
   });
 
-  const blockPrivateRoutes = createBlockPrivateRoutes(store);
+  const isSignedIn = () => store.getters.isSignedIn;
+  const blockPrivateRoutes = createBlockPrivateRoutes(isSignedIn);
   router.beforeEach(blockPrivateRoutes);
 
   return router;

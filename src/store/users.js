@@ -30,11 +30,9 @@ export const usersStoreConfig = {
         state.currentUser = payload;
       },
       signOut (state) {
-        state = {
-          ...initialState,
-          status: AUTH_STATUSES.SIGNED_OUT
-        };
-        console.log(state);
+        state.status = AUTH_STATUSES.SIGNED_OUT;
+        state.currentUser = initialState.currentUser;
+        state.preferences = { ...initialState.preferences };
       },
       updatePreferences (state, payload) {
         state.preferences.locale = payload.locale;

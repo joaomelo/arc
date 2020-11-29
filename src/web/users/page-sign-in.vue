@@ -13,7 +13,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'PageSignIn',
   computed: {
-    ...mapGetters('usersStore', ['isSignedIn'])
+    ...mapGetters(['isSignedIn'])
   }
 };
 </script>
