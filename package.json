@@ -11,7 +11,7 @@
     "build": "rimraf build/* && webpack --env prod --config webpack.config.js",
     "deploy": "npm run build && firebase deploy",
     "lint": "eslint --ext .js,.vue src/",
-    "test": "npm run lint"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -58,6 +58,8 @@
     "eslint-plugin-vue": "^7.1.0",
     "eslint-webpack-plugin": "^2.4.0",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.6.3",
+    "playwright": "^1.6.2",
     "rimraf": "^3.0.2",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
