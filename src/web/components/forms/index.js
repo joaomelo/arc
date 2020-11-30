@@ -1,6 +1,9 @@
-// export { ControlSelect } from './control-select';
+import FormBase from './form-base';
 import ControlEmail from './control-email';
-// export { ControlPassword } from './control-password';
-// export { ControlPasswordConfirmed } from './control-password-confirmed';
+import ControlPassword from './control-password';
 
-export { ControlEmail };
+export {
+  FormBase,
+  ControlEmail,
+  ControlPassword
+};

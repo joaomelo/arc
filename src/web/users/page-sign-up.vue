@@ -1,7 +1,12 @@
 <template>
   <div>
     <p>Sing Up</p>
-    <ControlEmail />
+    <FormBase>
+      <ControlEmail />
+      <ControlPassword />
+      <ControlPassword />
+      <ButtonPrimary label="Sign Up" />
+    </FormBase>
     <router-link :to="{name: 'signIn'}">
       Has a account? Go to SignIn
     </router-link>
@@ -10,11 +15,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { ControlEmail } from '@/web/components';
+import { FormBase, ControlEmail, ControlPassword, ButtonPrimary } from '@/web/components';
 
 export default {
   name: 'PageSignUp',
-  components: { ControlEmail },
+  components: { FormBase, ControlEmail, ControlPassword, ButtonPrimary },
   computed: {
     ...mapGetters(['isSignedIn'])
   }

@@ -1,7 +1,7 @@
 <template>
   <ControlText
     :label="label"
-    type="email"
+    type="password"
   />
 </template>
 
@@ -14,7 +14,7 @@ export default {
   props: {
     label: {
       type: String,
-      default: 'E-mail'
+      default: 'Password'
     }
   }
 };
