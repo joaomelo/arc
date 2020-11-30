@@ -1,0 +1,1 @@
+export { initValidation } from './init';

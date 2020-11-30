@@ -9,7 +9,7 @@
 import ControlText from './control-text';
 
 export default {
-  name: 'ControlEmail',
+  name: 'ControlPassword',
   components: { ControlText },
   props: {
     label: {

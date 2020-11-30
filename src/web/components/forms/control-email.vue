@@ -1,7 +1,10 @@
 <template>
   <ControlText
-    :label="label"
     type="email"
+    :label="label"
+    :rules="emailRules"
+    v-bind="$attrs"
+    v-on="$listeners"
   />
 </template>
 
@@ -15,6 +18,16 @@ export default {
     label: {
       type: String,
       default: 'E-mail'
+    },
+    rules: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    emailRules () {
+      const outerRules = this.rules ? `|${this.rules}` : '';
+      return `email${outerRules}`;
     }
   }
 };

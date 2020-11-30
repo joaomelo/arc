@@ -8,6 +8,7 @@ import { initFirebase } from '@/tech/firebase';
 import { initStore } from '@/store';
 // web ui
 import { initUi } from '@/web/vue';
+import { initValidation } from '@/web/validation';
 import { initVuetify } from '@/web/vuetify';
 import { initRouter } from '@/web/router';
 import { AppShell } from '@/web/shell';
@@ -37,6 +38,7 @@ function main () {
   const store = initStore({ authService, dbService });
 
   // web ui
+  initValidation();
   const vuetify = initVuetify();
   const router = initRouter(store);
   initUi({

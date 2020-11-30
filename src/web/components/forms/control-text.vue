@@ -1,26 +1,22 @@
 <template>
-  <v-text-field
-    :id="controlId"
-    :label="label"
+  <ControlWrapper
+    :control="control"
+    v-bind="$attrs"
+    v-on="$listeners"
   />
 </template>
 
 <script>
-import { camelCase, upperFirst } from 'lodash-es';
+import ControlWrapper from './control-wrapper';
+import TextBase from './text-base';
 
 export default {
   name: 'ControlText',
-  props: {
-    label: {
-      type: String,
-      required: true
-    }
-  },
-  computed: {
-    controlId () {
-      const computerLabel = upperFirst(camelCase(this.label));
-      return `control${computerLabel}`;
-    }
+  components: { ControlWrapper },
+  data () {
+    return {
+      control: TextBase
+    };
   }
 };
 </script>
