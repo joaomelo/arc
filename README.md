@@ -57,10 +57,11 @@ Since Vue was the choice, come with it other ecosystem libraries: Vuex, Vue-Rout
 The development move by selecting a use case to implement and do the following steps:
 - If first of a family, write a  broad view of the use cases in a README inside the business module with focus on entities and flow.
 - Review for the specific use case in the same README, if needed.
-- One or more failing tests for the use case is written.
 - Simple components and flow between components are done with mocks.
-- Business features are introduced.
+- Real features are introduced.
+- i18n is provided.
 - The UI in implemented.
+
 
 ## Architecture
 
