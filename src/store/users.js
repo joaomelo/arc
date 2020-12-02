@@ -1,4 +1,5 @@
 import { LOCALES } from '@/shared/i18n/locales';
+import { signUp } from '@/business/users';
 
 export const AUTH_STATUSES = {
   UNDEFINED: 'AUTH_STATUSES.UNDEFINED',
@@ -25,37 +26,43 @@ export const usersStoreConfig = {
       currentUserEmail: state => state.currentUser && state.currentUser.email
     },
     mutations: {
-      sign (state, payload) {
+      signMutation (state, payload) {
         state.status = AUTH_STATUSES.SIGNED_IN;
         state.currentUser = payload;
       },
-      signOut (state) {
+      signOutMutation (state) {
         state.status = AUTH_STATUSES.SIGNED_OUT;
         state.currentUser = initialState.currentUser;
         state.preferences = { ...initialState.preferences };
       },
-      updatePreferences (state, payload) {
+      updatePreferencesMutation (state, payload) {
         state.preferences.locale = payload.locale;
       }
     },
     actions: {
-      commandSignIn ({ commit }, payload) {
+      signUpAction (context, { email, password }) {
+        return signUp({ email, password }, { authService: this.$authService });
       },
-      commandSignOut ({ commit }) {
+      signInAction ({ commit }, payload) {
       },
-      subscribeToAuthState ({ commit }) {
+      signOutAction ({ commit }) {
+      },
+      subscribeToAuthStateAction ({ commit }) {
         this.$authService.onAuthStateChanged(user => {
           if (user) {
-            commit('sign', { ...user });
+            const userData = {
+              email: user.email
+            };
+            commit('signMutation', userData);
           } else {
             // todo: reset the whole store state no just the module
-            commit('signOut');
+            commit('signOutMutation');
           }
         });
       }
     }
   },
   afterCreate (store) {
-    store.dispatch('subscribeToAuthState');
+    store.dispatch('subscribeToAuthStateAction');
   }
 };

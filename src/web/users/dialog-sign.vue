@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      @click="commandSignIn({ email: 'joao@email.com' })"
+      @click="signInAction({ email: 'joao@email.com' })"
     >
       Sign In
     </button>
@@ -14,7 +14,7 @@ import { mapActions } from 'vuex';
 export default {
   name: 'FirebaseUi',
   methods: {
-    ...mapActions('usersStore', ['commandSignIn'])
+    ...mapActions('usersStore', ['signInAction'])
   }
 };
 </script>

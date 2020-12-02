@@ -1,7 +1,10 @@
 <template>
   <ControlText
-    :label="label"
     type="password"
+    :label="label"
+    :rules="passwordRules"
+    v-bind="$attrs"
+    v-on="$listeners"
   />
 </template>
 
@@ -15,6 +18,16 @@ export default {
     label: {
       type: String,
       default: 'Password'
+    },
+    rules: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    passwordRules () {
+      const outerRules = this.rules ? `|${this.rules}` : '';
+      return `min:8${outerRules}`;
     }
   }
 };
