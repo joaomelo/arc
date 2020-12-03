@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "npm run dev",
-    "dev": "concurrently --handle-input -c \"bgMagenta.bold,bgGreen.bold,bgBlue.bold\" \"npm:dev:watch\" \"npm:dev:serve\" \"npm:dev:test\"",
+    "dev": "concurrently --handle-input -c \"bgMagenta.bold,bgGreen.bold,bgBlue.bold\" \"npm:dev:watch\" \"npm:dev:serve\" \"npm:dev:tests\"",
     "dev:watch": "rimraf build/* && webpack --env dev --config webpack.config.js",
     "dev:serve": "firebase emulators:start",
     "dev:tests": "cypress open",
