@@ -3,7 +3,7 @@ import 'regenerator-runtime/runtime';
 
 // firebase
 import { isProduction } from '@/shared/meta';
-import { initFirebase } from '@/tech/firebase';
+import { initFirebase } from '@/db/firebase';
 // state management
 import { initStore } from '@/store';
 // web ui
@@ -46,6 +46,9 @@ function main () {
     root: AppShell,
     globals: { router, store, vuetify }
   });
+
+  // store exposed for test suite
+  window.$store = store;
 }
 
 main();

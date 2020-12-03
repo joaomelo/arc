@@ -11,4 +11,6 @@ export function initUi ({ el, root, globals }) {
   });
 
   app.$mount(el);
+
+  return app;
 }

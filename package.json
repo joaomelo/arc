@@ -5,13 +5,13 @@
   "main": "index.html",
   "scripts": {
     "start": "npm run dev",
-    "dev": "concurrently --handle-input -c \"bgMagenta.bold,bgGreen.bold\" \"npm:dev:watch\" \"npm:dev:serve\"",
+    "dev": "concurrently --handle-input -c \"bgMagenta.bold,bgGreen.bold,bgBlue.bold\" \"npm:dev:watch\" \"npm:dev:serve\" \"npm:dev:test\"",
     "dev:watch": "rimraf build/* && webpack --env dev --config webpack.config.js",
     "dev:serve": "firebase emulators:start",
+    "dev:tests": "cypress open",
     "build": "rimraf build/* && webpack --env prod --config webpack.config.js",
     "deploy": "npm run build && firebase deploy",
-    "lint": "eslint --ext .js,.vue src/",
-    "test": "cypress open"
+    "lint": "eslint --ext .js,.vue src/"
   },
   "repository": {
     "type": "git",
