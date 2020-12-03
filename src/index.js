@@ -8,6 +8,7 @@ import { initFirebase } from '@/db/firebase';
 import { initStore } from '@/store';
 // web ui
 import { initUi } from '@/web/vue';
+import { initVueI18n } from '@/web/vue-i18n';
 import { initValidation } from '@/web/validation';
 import { initVuetify } from '@/web/vuetify';
 import { initRouter } from '@/web/router';
@@ -39,12 +40,13 @@ function main () {
 
   // web ui
   initValidation();
+  const i18n = initVueI18n();
   const vuetify = initVuetify();
   const router = initRouter(store);
   initUi({
     el: '#container',
     root: AppShell,
-    globals: { router, store, vuetify }
+    globals: { i18n, router, store, vuetify }
   });
 
   // store exposed for test suite

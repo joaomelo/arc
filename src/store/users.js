@@ -1,4 +1,4 @@
-import { LOCALES } from '@/shared/i18n/locales';
+import { defaultLocale } from '@/business/i18n/locales';
 import { signUp } from '@/business/users';
 
 export const AUTH_STATUSES = {
@@ -11,7 +11,7 @@ const initialState = {
   status: AUTH_STATUSES.UNDEFINED,
   currentUser: null,
   preferences: {
-    locale: LOCALES.DEFAULT.value
+    locale: defaultLocale
   }
 };
 
