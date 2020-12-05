@@ -6,5 +6,7 @@ beforeEach(() => {
     headers: {
       Authorization: 'Bearer owner'
     }
-  });
+  })
+    .its('status')
+    .should('eq', 200);
 });

@@ -1,5 +1,25 @@
 describe('auth routing', () => {
-  it('protected routes cascade redirects to sign-up when there is no user signed', () => {
+  it('redirects to "/auth" when in unsolved status', () => {
+    cy.visit('/');
+    cy.window()
+      .its('$store')
+      .as('store');
+
+    // mock the isUndefined vuex getter to force a eternal undefined state
+    cy.get('@store')
+      .then(store => {
+        Object.defineProperty(store, 'getters', {
+          get: () => ({ isUndefined: true })
+        });
+      });
+
+    cy.visit('/sign-up');
+
+    cy.location('pathname')
+      .should('equal', '/auth');
+  });
+
+  it('protected routes redirects to sign-up when there is no user signed', () => {
     cy.visit('/');
 
     cy.location('pathname')
@@ -7,11 +27,7 @@ describe('auth routing', () => {
   });
 
   it('after successful sign-up, redirects to home', () => {
-    // since we are testing the reroute, move the signup to a command
-    cy.visit('/sign-up');
-    cy.get('#controlEMail').type('test@test.test');
-    cy.get('#controlPassword').type('12345678');
-    cy.get('#actionSignUp').click();
+    cy.signUpDefault();
 
     cy.location('pathname')
       .should('equal', '/');

@@ -1,9 +1,7 @@
 <template>
   <div>
     <h1>Home</h1>
-    <p id="textGreeting">
-      Welcome {{ currentUserEmail }}
-    </p>
+    <p>Welcome {{ currentUserEmail }}</p>
   </div>
 </template>
 

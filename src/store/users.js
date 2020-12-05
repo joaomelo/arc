@@ -27,10 +27,12 @@ export const usersStoreConfig = {
     },
     mutations: {
       signMutation (state, payload) {
+        console.log('signMutation', Date.now());
         state.status = AUTH_STATUSES.SIGNED_IN;
         state.currentUser = payload;
       },
       signOutMutation (state) {
+        console.log('signOutMutation', Date.now());
         state.status = AUTH_STATUSES.SIGNED_OUT;
         state.currentUser = initialState.currentUser;
         state.preferences = { ...initialState.preferences };
@@ -48,6 +50,7 @@ export const usersStoreConfig = {
       signOutAction ({ commit }) {
       },
       subscribeToAuthStateAction ({ commit }) {
+        console.log('subscribeToAuthStateAction', Date.now());
         this.$authService.onAuthStateChanged(user => {
           if (user) {
             const userData = {
@@ -63,6 +66,7 @@ export const usersStoreConfig = {
     }
   },
   afterCreate (store) {
+    console.log('afterCreate', Date.now());
     store.dispatch('subscribeToAuthStateAction');
   }
 };
