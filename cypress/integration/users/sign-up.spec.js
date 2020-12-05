@@ -1,5 +1,5 @@
 describe('sign up routing', () => {
-  it('protected routes cascade redirects to sign-up if there is no user signed', () => {
+  it('protected routes cascade redirects to sign-up when there is no user signed', () => {
     cy.visit('/');
 
     cy.location('pathname')
@@ -20,6 +20,4 @@ describe('sign up routing', () => {
     cy.location('pathname')
       .should('equal', '/');
   });
-
-  // is there a command to clear firebase auth after every test?
 });

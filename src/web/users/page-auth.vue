@@ -1,7 +1,5 @@
 <template>
-  <div>
-    Loading user...
-  </div>
+  <p>{{ $t("users.loading") }}...</p>
 </template>
 
 <script>

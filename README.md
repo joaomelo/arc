@@ -59,7 +59,11 @@ The development move by selecting a use case to implement and do the following s
 - Review for the specific use case in the same README, if needed.
 - One or more tests are written to represent the use case's spec.
 - Core features are introduced with simple components.
-- Aspects (i18n, error, log, validation) are crafted.
+- Aspects are crafted with new tests if needed
+  - i18n
+  - error
+  - log
+  - validation
 - The UI in implemented.
 
 ## Architecture

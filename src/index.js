@@ -8,11 +8,13 @@ import { initFirebase } from '@/db/firebase';
 import { initStore } from '@/store';
 // web ui
 import { initUi } from '@/web/vue';
-import { initVueI18n } from '@/web/vue-i18n';
 import { initValidation } from '@/web/validation';
 import { initVuetify } from '@/web/vuetify';
 import { initRouter } from '@/web/router';
 import { AppShell } from '@/web/shell';
+// i18n
+import { defaultLocale, messages } from '@/business/i18n';
+import { initVueI18n } from '@/web/vue-i18n';
 
 function main () {
   // firebase
@@ -40,7 +42,7 @@ function main () {
 
   // web ui
   initValidation();
-  const i18n = initVueI18n();
+  const i18n = initVueI18n(defaultLocale, messages);
   const vuetify = initVuetify();
   const router = initRouter(store);
   initUi({

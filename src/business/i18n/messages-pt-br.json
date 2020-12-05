@@ -29,6 +29,7 @@
     "successfully-saved": "Salvo com sucesso"
   },
   "users": {
+    "loading": "Carregando usuário",
     "account": "Conta",
     "email": "E-mail",
     "email-new": "Novo e-mail",

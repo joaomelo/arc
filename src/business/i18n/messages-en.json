@@ -29,6 +29,7 @@
     "successfully-saved": "Successfully saved"
   },
   "users": {
+    "loading": "Loading user",
     "account": "Account",
     "email": "E-mail",
     "email-new": "New e-mail",
