@@ -60,11 +60,12 @@ The development move by selecting a use case to implement and do the following s
 - One or more tests are written to represent the use case's spec.
 - Core features are introduced with simple components.
 - Aspects are crafted with new tests if needed
-  - i18n
   - error
   - log
   - validation
+  - i18n
 - The UI in implemented.
+- Reusability is assessed and implemented.
 
 ## Architecture
 

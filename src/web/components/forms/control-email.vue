@@ -1,7 +1,6 @@
 <template>
   <ControlText
     type="email"
-    :label="label"
     :rules="emailRules"
     v-bind="$attrs"
     v-on="$listeners"
@@ -15,10 +14,6 @@ export default {
   name: 'ControlEmail',
   components: { ControlText },
   props: {
-    label: {
-      type: String,
-      default: 'E-mail'
-    },
     rules: {
       type: String,
       default: ''

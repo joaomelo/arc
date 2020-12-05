@@ -7,10 +7,12 @@
       <template #default>
         <ControlEmail
           v-model="email"
+          label="E-mail"
           rules="required"
         />
-        <ControlPassword
+        <ControlPasswordWithConfirmation
           v-model="password"
+          :labels="['Password', 'Repeat password']"
           rules="required"
         />
       </template>
@@ -26,11 +28,16 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import { FormBase, ControlEmail, ControlPassword, ButtonPrimary } from '@/web/components';
+import {
+  FormBase,
+  ControlEmail,
+  ControlPasswordWithConfirmation,
+  ButtonPrimary
+} from '@/web/components';
 
 export default {
   name: 'PageSignUp',
-  components: { FormBase, ControlEmail, ControlPassword, ButtonPrimary },
+  components: { FormBase, ControlEmail, ControlPasswordWithConfirmation, ButtonPrimary },
   data () {
     return {
       email: '',

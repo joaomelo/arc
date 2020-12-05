@@ -1,7 +1,6 @@
 <template>
   <ControlText
     type="password"
-    :label="label"
     :rules="passwordRules"
     v-bind="$attrs"
     v-on="$listeners"
@@ -15,10 +14,6 @@ export default {
   name: 'ControlPassword',
   components: { ControlText },
   props: {
-    label: {
-      type: String,
-      default: 'Password'
-    },
     rules: {
       type: String,
       default: ''
