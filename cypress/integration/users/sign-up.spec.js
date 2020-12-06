@@ -12,10 +12,10 @@ describe('sign up', () => {
 
   it('do not allow another user with same email', () => {
     cy.signUpDefault();
-    cy.location('pathname').should('equal', '/');
+    cy.get('#actionSignOut').click();
 
     cy.signUpDefault();
-    cy.get('data-error-id=users.same-user-error');
+    cy.get('[data-error="EMAIL_ALREADY_IN_USE"]');
   });
 
   it.skip('do not accept invalid or empty email', () => {
@@ -30,7 +30,15 @@ describe('sign up', () => {
     cy.get('div').then(() => expect(false).to.be.true);
   });
 
-  it.skip('have working link to sign in', () => {
+  it.skip('the page have working link to sign in', () => {
+    cy.get('div').then(() => expect(false).to.be.true);
+  });
+
+  it.skip('create a user profile with default preferences', () => {
+    cy.get('div').then(() => expect(false).to.be.true);
+  });
+
+  it.skip('only allow profile creation when signing up new user', () => {
     cy.get('div').then(() => expect(false).to.be.true);
   });
 });

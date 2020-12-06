@@ -46,6 +46,10 @@
     "preferences-updated": "Preferences updated",
     "sign-in": "Sign In",
     "sign-out": "Sign Out",
-    "sign-up": "Sign Up"
+    "sign-up": "Sign Up",
+    "errors": {
+      "email-already-in-use": "Can't create or update a user with an e-mail already in use",
+      "credentials-unrecognized": "User's email does not exist or failed to validate password"
+    }
   }
 }

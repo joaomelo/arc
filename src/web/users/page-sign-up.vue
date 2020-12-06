@@ -20,6 +20,10 @@
         <ButtonPrimary label="Sign Up" />
       </template>
     </FormBase>
+    <MessageError
+      :error="error"
+      class="mt-2"
+    />
     <router-link :to="{name: 'signIn'}">
       Has a account? Go to SignIn
     </router-link>
@@ -32,22 +36,28 @@ import {
   FormBase,
   ControlEmail,
   ControlPasswordWithConfirmation,
-  ButtonPrimary
+  ButtonPrimary,
+  MessageError
 } from '@/web/components';
 
 export default {
   name: 'PageSignUp',
-  components: { FormBase, ControlEmail, ControlPasswordWithConfirmation, ButtonPrimary },
+  components: { FormBase, ControlEmail, ControlPasswordWithConfirmation, ButtonPrimary, MessageError },
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: null
     };
   },
   methods: {
     ...mapActions(['signUpAction']),
-    handleSubmit () {
-      this.signUpAction({ email: this.email, password: this.password });
+    async handleSubmit () {
+      try {
+        await this.signUpAction({ email: this.email, password: this.password });
+      } catch (error) {
+        this.error = { ...error };
+      }
     }
   }
 };

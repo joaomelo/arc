@@ -1,12 +1,10 @@
-class AppError extends Error {
-  constructor ({ code, message, httpStatus, isOperational }, runtimeContext = null) {
-    super(message);
+export class AppError extends Error {
+  constructor ({ code, description, isOperational, runtimeContext }) {
+    super(code);
     this.code = code;
+    this.description = description;
     this.isOperational = isOperational;
-    this.httpStatus = httpStatus;
-    this.runtimeContext = runtimeContext;
+    this.runtimeContext = runtimeContext || null;
     Error.captureStackTrace(this, AppError);
   }
 }
-
-export { AppError };

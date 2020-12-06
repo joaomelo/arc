@@ -46,6 +46,10 @@
     "preferences-updated": "Preferências Atualizadas",
     "sign-in": "Entrar",
     "sign-out": "Sair",
-    "sign-up": "Criar"
+    "sign-up": "Criar",
+    "errors": {
+      "email-already-in-use": "Não é possível criar ou atualizar um usuário com um e-mail já em uso.",
+      "credentials-unrecognized": "Email não reconhecido ou senha inválida."
+    }
   }
 }

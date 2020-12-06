@@ -1,5 +1,5 @@
 import { defaultLocale } from '@/business/i18n/locales';
-import { AUTH_STATUSES, signUp } from '@/business/users';
+import { AUTH_STATUSES, signUp, signOut } from '@/business/users';
 
 const initialState = {
   status: AUTH_STATUSES.UNSOLVED,
@@ -39,7 +39,8 @@ export const usersStoreConfig = {
       },
       signInAction ({ commit }, payload) {
       },
-      signOutAction ({ commit }) {
+      signOutAction (context) {
+        return signOut(null, { authService: this.$authService });
       },
       subscribeToAuthStateAction ({ commit }) {
         this.$authService.onAuthStateChanged(user => {
