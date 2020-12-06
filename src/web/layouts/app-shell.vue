@@ -1,5 +1,6 @@
 <template>
   <div>
+    <MonitorAuth />
     <v-app>
       <v-main>
         <v-container fluid>
@@ -11,7 +12,10 @@
 </template>
 
 <script>
+import { MonitorAuth } from '@/web/users';
+
 export default {
-  name: 'AppShell'
+  name: 'AppShell',
+  components: { MonitorAuth }
 };
 </script>

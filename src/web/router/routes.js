@@ -1,5 +1,5 @@
 import { PageHome, Page404 } from '@/web/pages';
-import { PageAuth, PageSignUp, PageSignIn } from '@/web/users';
+import { PageUnsolved, PageSignUp, PageSignIn } from '@/web/users';
 
 export const routes = [
   {
@@ -8,28 +8,24 @@ export const routes = [
     component: PageHome
   },
   {
-    name: 'auth',
-    path: '/auth',
-    component: PageAuth,
-    meta: { isPublic: true }
+    name: 'unsolved',
+    path: '/unsolved',
+    component: PageUnsolved
   },
   {
     name: 'signUp',
     path: '/sign-up',
-    component: PageSignUp,
-    meta: { isPublic: true }
+    component: PageSignUp
   },
   {
     name: 'signIn',
     path: '/sign-in',
-    component: PageSignIn,
-    meta: { isPublic: true }
+    component: PageSignIn
   },
   {
     name: '404',
     path: '/404',
-    component: Page404,
-    meta: { isPublic: true }
+    component: Page404
   },
   {
     path: '*',

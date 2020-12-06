@@ -1,12 +1,8 @@
 describe('auth routing', () => {
-  it('redirects to "/auth" when in unsolved status', () => {
+  it('redirects to "/unsolved" when in unsolved status', () => {
     cy.visit('/');
     cy.window()
       .its('$store')
-      .as('store');
-
-    // mock the isUndefined vuex getter to force a eternal undefined state
-    cy.get('@store')
       .then(store => {
         Object.defineProperty(store, 'getters', {
           get: () => ({ isUndefined: true })
@@ -16,7 +12,7 @@ describe('auth routing', () => {
     cy.visit('/sign-up');
 
     cy.location('pathname')
-      .should('equal', '/auth');
+      .should('equal', '/unsolved');
   });
 
   it('protected routes redirects to sign-up when there is no user signed', () => {
@@ -32,7 +28,7 @@ describe('auth routing', () => {
     cy.location('pathname')
       .should('equal', '/');
 
-    cy.visit('/auth');
+    cy.visit('/unsolved');
 
     cy.location('pathname')
       .should('equal', '/');

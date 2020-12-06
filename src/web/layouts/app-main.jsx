@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { spaces, colors } from '@/shared/design';
-import { PageAuth, PageAccount, PagePreferences } from '@/business/users';
+import { PageUnsolved, PageAccount, PagePreferences } from '@/business/users';
 import { PageArcs } from '@/business/arcs';
 
 import { RoutePrivate } from './route-private';
@@ -15,7 +15,7 @@ export const AppMain = () => {
         padding: `${spaces.presumptuous} ${spaces.breathable} ${spaces.breathable}`
       }}
     >
-      <RouteEntry path="/auth"><PageAuth /></RouteEntry>
+      <RouteEntry path="/auth"><PageUnsolved /></RouteEntry>
       <RoutePrivate exact path="/"><Redirect to="/arcs" /></RoutePrivate>
       <RoutePrivate path="/arcs"><PageArcs /></RoutePrivate>
       <RoutePrivate path="/challenges"><p>Challenges</p></RoutePrivate>

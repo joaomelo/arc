@@ -1,14 +1,8 @@
 import { defaultLocale } from '@/business/i18n/locales';
-import { signUp } from '@/business/users';
-
-export const AUTH_STATUSES = {
-  UNDEFINED: 'AUTH_STATUSES.UNDEFINED',
-  SIGNED_OUT: 'AUTH_STATUSES.SIGNED_OUT',
-  SIGNED_IN: 'AUTH_STATUSES.SIGNED_IN'
-};
+import { AUTH_STATUSES, signUp } from '@/business/users';
 
 const initialState = {
-  status: AUTH_STATUSES.UNDEFINED,
+  status: AUTH_STATUSES.UNSOLVED,
   currentUser: null,
   preferences: {
     locale: defaultLocale
@@ -21,18 +15,16 @@ export const usersStoreConfig = {
       ...initialState
     },
     getters: {
-      isUndefined: state => state.status === AUTH_STATUSES.UNDEFINED,
+      status: state => state.status,
       isSignedIn: state => state.status === AUTH_STATUSES.SIGNED_IN,
       currentUserEmail: state => state.currentUser && state.currentUser.email
     },
     mutations: {
       signMutation (state, payload) {
-        console.log('signMutation', Date.now());
         state.status = AUTH_STATUSES.SIGNED_IN;
         state.currentUser = payload;
       },
       signOutMutation (state) {
-        console.log('signOutMutation', Date.now());
         state.status = AUTH_STATUSES.SIGNED_OUT;
         state.currentUser = initialState.currentUser;
         state.preferences = { ...initialState.preferences };
@@ -50,7 +42,6 @@ export const usersStoreConfig = {
       signOutAction ({ commit }) {
       },
       subscribeToAuthStateAction ({ commit }) {
-        console.log('subscribeToAuthStateAction', Date.now());
         this.$authService.onAuthStateChanged(user => {
           if (user) {
             const userData = {
@@ -66,7 +57,6 @@ export const usersStoreConfig = {
     }
   },
   afterCreate (store) {
-    console.log('afterCreate', Date.now());
     store.dispatch('subscribeToAuthStateAction');
   }
 };

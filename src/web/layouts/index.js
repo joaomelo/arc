@@ -1,4 +1,3 @@
-import LayoutShell from './layout-shell';
-import LayoutDesktop from './layout-desktop';
+import AppShell from './app-shell';
 
-export { LayoutShell, LayoutDesktop };
+export { AppShell };

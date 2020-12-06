@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 import {
   FormBase,
   ControlEmail,
@@ -43,16 +43,6 @@ export default {
       email: '',
       password: ''
     };
-  },
-  computed: {
-    ...mapGetters(['isSignedIn'])
-  },
-  watch: {
-    isSignedIn: {
-      handler (value) {
-        if (value) this.$router.push({ name: 'home' });
-      }
-    }
   },
   methods: {
     ...mapActions(['signUpAction']),

@@ -11,7 +11,7 @@ import { initUi } from '@/web/vue';
 import { initValidation } from '@/web/validation';
 import { initVuetify } from '@/web/vuetify';
 import { initRouter } from '@/web/router';
-import { AppShell } from '@/web/shell';
+import { AppShell } from '@/web/layouts';
 // i18n
 import { defaultLocale, messages } from '@/business/i18n';
 import { initVueI18n } from '@/web/vue-i18n';
@@ -44,7 +44,7 @@ function main () {
   initValidation();
   const i18n = initVueI18n(defaultLocale, messages);
   const vuetify = initVuetify();
-  const router = initRouter(store);
+  const router = initRouter();
   initUi({
     el: '#container',
     root: AppShell,
