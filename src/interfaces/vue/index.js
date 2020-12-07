@@ -1,20 +1,14 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-// firebase
-import { isProduction } from '@/shared/meta';
-import { initFirebase } from '@/db/firebase';
-// state management
-import { initStore } from '@/store';
-// web ui
-import { initUi } from '@/web/vue';
-import { initValidation } from '@/web/validation';
-import { initVuetify } from '@/web/vuetify';
-import { initRouter } from '@/web/router';
-import { AppShell } from '@/web/layouts';
-// i18n
+import { isProduction } from '@/app/meta';
 import { defaultLocale, messages } from '@/business/i18n';
 import { initVueI18n } from '@/web/vue-i18n';
+import { initVuex } from '@/app/store';
+import { initValidation } from '@/interfaces/validation';
+import { initFirestore } from '@/interfaces/db';
+import { initFireauth } from '@/interfaces/auth';
+import { initVue } from '@/interfaces/views';
 
 function main () {
   // firebase

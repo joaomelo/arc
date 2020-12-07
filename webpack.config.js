@@ -26,7 +26,7 @@ module.exports = env => {
       },
       extensions: ['.js', '.vue', '.json']
     },
-    entry: path.resolve(PATHS.SRC, 'index.js'),
+    entry: path.resolve(PATHS.SRC, 'main', 'vue-firebase', 'index.js'),
     output: {
       publicPath: '/',
       path: PATHS.BUILD,
@@ -89,12 +89,12 @@ module.exports = env => {
       }),
       new CopyWebpackPlugin([
         {
-          from: path.resolve(PATHS.SRC, 'public'),
+          from: path.resolve(PATHS.SRC, 'app', 'images'),
           to: path.resolve(PATHS.BUILD, 'public'),
           toType: 'dir'
         }
       ]),
-      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'index.html') }),
+      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'interfaces', 'vue', 'index.html') }),
       new Dotenv({ path: path.resolve(__dirname, `env-${isProd ? 'prod' : 'dev'}.env`) }),
       new VueLoaderPlugin(),
       new VuetifyLoaderPlugin()
