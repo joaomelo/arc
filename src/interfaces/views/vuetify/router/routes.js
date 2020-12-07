@@ -1,5 +1,5 @@
-import { PageHome, Page404 } from '@/web/pages';
-import { PageUnsolved, PageSignUp, PageSignIn } from '@/web/users';
+import { PageHome, Page404 } from '../pages';
+import { PageUnsolved, PageSignUp, PageSignIn } from '../users';
 
 export const routes = [
   {

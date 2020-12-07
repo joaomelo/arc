@@ -7,7 +7,7 @@ import { initVuetify } from '@/interfaces/views';
 import { isProduction } from '@/app/meta';
 import { initVuex } from '@/app/store';
 import { initVeeValidate } from '@/app/validation';
-import { initVueI18n } from '@/domain/i18n';
+import { initVueI18n } from '@/app/i18n';
 
 function main () {
   let emulators = null;

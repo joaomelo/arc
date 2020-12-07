@@ -1,5 +1,5 @@
-import { defaultLocale } from '@/business/i18n/locales';
-import { AUTH_STATUSES, signUp, signOut } from '@/business/users';
+import { defaultLocale } from '@/app/i18n';
+import { AUTH_STATUSES, signUp, signOut } from '@/domain/users';
 
 const initialState = {
   status: AUTH_STATUSES.UNSOLVED,

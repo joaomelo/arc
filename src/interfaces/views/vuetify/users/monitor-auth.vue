@@ -4,7 +4,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { AUTH_STATUSES } from '@/business/users';
+import { AUTH_STATUSES } from '@/domain/users';
 
 export default {
   name: 'MonitorAuth',

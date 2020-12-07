@@ -94,7 +94,7 @@ module.exports = env => {
           toType: 'dir'
         }
       ]),
-      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'interfaces', 'views', 'vue', 'index.html') }),
+      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'interfaces', 'views', 'vuetify', 'index.html') }),
       new Dotenv({ path: path.resolve(__dirname, `env-${isProd ? 'prod' : 'dev'}.env`) }),
       new VueLoaderPlugin(),
       new VuetifyLoaderPlugin()

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { MonitorAuth } from '@/web/users';
+import { MonitorAuth } from '../users';
 
 export default {
   name: 'AppShell',

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { usersStoreConfig } from './users';
+import { usersStoreConfig } from './users-store';
 
-export function initStore (globals) {
+export function initVuex (globals) {
   Vue.use(Vuex);
   const store = new Vuex.Store({
     modules: {

@@ -1,1 +1,1 @@
-export { initStore } from './vuex';
+export * from './vuex';

@@ -1,2 +1,1 @@
-export * from './init';
-export * from './messages';
+export * from './vee-validate';

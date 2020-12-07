@@ -38,7 +38,7 @@ import {
   ControlPasswordWithConfirmation,
   ButtonPrimary,
   MessageError
-} from '@/web/components';
+} from '../components';
 
 export default {
   name: 'PageSignUp',
