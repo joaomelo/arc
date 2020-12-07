@@ -56,10 +56,10 @@ Since Vue was the choice, come with it other ecosystem libraries: Vuex, Vue-Rout
 
 The development move by selecting a use case to implement and do the following steps:
 - If first of a family, write a  broad view of the use cases in a README inside the business module with focus on entities and flow.
-- Review for the specific use case in the same README, if needed.
-- One or more tests are written to represent the use case's spec.
-- Core features are introduced with simple components.
-- Aspects are crafted with new tests if needed
+- Review the docs in contrast for the specific use case in the same README, if needed.
+- Brainstorm test headlines to circumvent the use case (happy path, exception, security etc).
+- Iterate over the testes cases implementing first the test and then the feature.
+- Aspects are review with new tests if needed
   - error
   - log
   - validation

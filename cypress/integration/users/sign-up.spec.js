@@ -18,8 +18,16 @@ describe('sign up', () => {
     cy.get('[data-error="EMAIL_ALREADY_IN_USE"]');
   });
 
-  it.skip('do not accept invalid or empty email', () => {
-    cy.get('div').then(() => expect(false).to.be.true);
+  it('only accept valid emails', () => {
+    cy.visit('/sign-up');
+    cy.get('#actionSignUp').click();
+    cy.get('[data-error="EMAIL_INVALID"]');
+
+    cy.get('#controlEMail').type('test');
+    cy.get('[data-error="EMAIL_INVALID"]');
+
+    cy.get('#controlEMail').type('test@test.test');
+    cy.get('[data-error="EMAIL_INVALID"]').should('not.exist');
   });
 
   it.skip('do not accept small or empty password', () => {
