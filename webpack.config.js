@@ -26,7 +26,7 @@ module.exports = env => {
       },
       extensions: ['.js', '.vue', '.json']
     },
-    entry: path.resolve(PATHS.SRC, 'main', 'vue-firebase', 'index.js'),
+    entry: path.resolve(PATHS.SRC, 'main', 'vuetify-firebase.js'),
     output: {
       publicPath: '/',
       path: PATHS.BUILD,
@@ -94,7 +94,7 @@ module.exports = env => {
           toType: 'dir'
         }
       ]),
-      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'interfaces', 'vue', 'index.html') }),
+      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'interfaces', 'views', 'vue', 'index.html') }),
       new Dotenv({ path: path.resolve(__dirname, `env-${isProd ? 'prod' : 'dev'}.env`) }),
       new VueLoaderPlugin(),
       new VuetifyLoaderPlugin()
