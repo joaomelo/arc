@@ -3,10 +3,9 @@ import 'regenerator-runtime/runtime';
 
 import { initFirestore } from '@/interfaces/db';
 import { initFireauth } from '@/interfaces/auth';
-import { initVuetify } from '@/interfaces/views';
+import { initVuetifyApp } from '@/interfaces/views';
 import { isProduction } from '@/app/meta';
 import { initVuex } from '@/app/store';
-import { initVeeValidate } from '@/app/validation';
 import { initVueI18n } from '@/app/i18n';
 
 function main () {
@@ -33,10 +32,10 @@ function main () {
   const store = initVuex({ authService, dbService });
   window.$store = store; // store exposed for test suite;
 
-  initVeeValidate();
   const i18n = initVueI18n();
 
-  initVuetify({ i18n, store });
+  const mount = initVuetifyApp({ i18n, store });
+  mount();
 }
 
 main();

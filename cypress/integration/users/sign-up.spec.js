@@ -19,15 +19,18 @@ describe('sign up', () => {
   });
 
   it('only accept valid emails', () => {
+    const invalidEmailSelector = '[data-error="EMAIL_INVALID"]';
+
     cy.visit('/sign-up');
+
     cy.get('#actionSignUp').click();
-    cy.get('[data-error="EMAIL_INVALID"]');
+    cy.get(invalidEmailSelector);
 
     cy.get('#controlEMail').type('test');
-    cy.get('[data-error="EMAIL_INVALID"]');
+    cy.get(invalidEmailSelector);
 
     cy.get('#controlEMail').type('test@test.test');
-    cy.get('[data-error="EMAIL_INVALID"]').should('not.exist');
+    cy.get(invalidEmailSelector).should('not.exist');
   });
 
   it.skip('do not accept small or empty password', () => {
