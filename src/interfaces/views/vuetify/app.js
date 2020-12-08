@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
-import { initVeeValidate } from '@/app/validation';
 import { initRouter } from './router';
 import { AppShell } from './layouts';
 
@@ -24,10 +23,9 @@ function initVue ({ el, root, globals, components }) {
   return mount;
 }
 
-export function initVuetifyApp (globals) {
+export function initVuetifyApp ({ globals, components }) {
   const vuetify = initVuetify();
   const router = initRouter();
-  const validationComponents = initVeeValidate();
 
   const mount = initVue({
     el: '#container',
@@ -37,9 +35,7 @@ export function initVuetifyApp (globals) {
       vuetify,
       ...globals
     },
-    components: {
-      ...validationComponents
-    }
+    components
   });
 
   return mount;

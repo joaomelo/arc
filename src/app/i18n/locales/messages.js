@@ -1,8 +1,8 @@
-import { locales } from '../locales';
+import { locales } from './locales';
 import en from './messages-en';
 import ptBR from './messages-pt-br';
 
-export function mountMessages (extraMessages = {}) {
+export function agreganteMessages (extraMessages = {}) {
   const messages = {
     [locales.en.code]: {
       ...en,
