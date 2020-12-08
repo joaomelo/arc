@@ -1,17 +1,23 @@
+import { root } from '../root';
 import { locales } from './locales';
-import en from './messages-en';
-import ptBR from './messages-pt-br';
 
-export function agreganteMessages (extraMessages = {}) {
+function extractLocale (modules, key) {
+  const messages = {};
+  for (const module in modules) {
+    messages[module] = modules[module][key];
+  }
+  return messages;
+}
+
+export function aggregateMessages (modules = {}) {
+  const allModules = {
+    ...root,
+    ...modules
+  };
+
   const messages = {
-    [locales.en.code]: {
-      ...en,
-      ...extraMessages[en]
-    },
-    [locales.ptBR.code]: {
-      ...ptBR,
-      ...extraMessages[ptBR]
-    }
+    [locales.en.code]: extractLocale(allModules, 'en'),
+    [locales.ptBR.code]: extractLocale(allModules, 'ptBR')
   };
 
   return messages;

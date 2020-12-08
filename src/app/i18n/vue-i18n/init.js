@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import { defaultLocale, agreganteMessages } from '../locales';
+import { defaultLocale, aggregateMessages } from '../locales';
 
 export function initVueI18n (extraMessages) {
-  const messages = agreganteMessages(extraMessages);
+  const messages = aggregateMessages(extraMessages);
 
   Vue.use(VueI18n);
   const vueI18n = new VueI18n({

@@ -33,10 +33,16 @@ function main () {
   const store = initVuex({ authService, dbService });
   window.$store = store; // store exposed for test suite;
 
+  // validation
   const { validationComponents, validationMessages } = initVeeValidate();
 
-  const i18n = initVueI18n(validationMessages);
+  // i18n
+  const modules = {
+    validation: validationMessages
+  };
+  const i18n = initVueI18n(modules);
 
+  // view
   const mount = initVuetifyApp({
     globals: { i18n, store },
     components: validationComponents
