@@ -1,4 +1,4 @@
-import { root } from '../root';
+import { usersMessages } from '@/domain/users';
 import { locales } from './locales';
 
 function extractLocale (modules, key) {
@@ -9,10 +9,10 @@ function extractLocale (modules, key) {
   return messages;
 }
 
-export function aggregateMessages (modules = {}) {
+export function aggregateMessages (dynamicModules = {}) {
   const allModules = {
-    ...root,
-    ...modules
+    users: usersMessages,
+    ...dynamicModules
   };
 
   const messages = {

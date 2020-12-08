@@ -1,0 +1,22 @@
+{
+  "loading": "Loading user",
+  "account": "Account",
+  "email": "E-mail",
+  "email-new": "New e-mail",
+  "email-update": "Update e-mail",
+  "email-updated": "E-mail updated",
+  "language": "Language",
+  "password": "Password",
+  "password-current": "Current password",
+  "password-new": "New password",
+  "password-repeat": "Repeat password",
+  "password-update": "Update password",
+  "password-updated": "Password updated",
+  "preferences": "Preferences",
+  "preferences-updated": "Preferences updated",
+  "sign-in": "Sign In",
+  "sign-out": "Sign Out",
+  "sign-up": "Sign Up",
+  "email-already-in-use": "Can't create or update a user with an e-mail already in use",
+  "credentials-unrecognized": "User's email does not exist or failed to validate password"
+} 

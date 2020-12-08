@@ -1,7 +1,7 @@
 import en from './messages-en';
 import ptBR from './messages-pt-br';
 
-export const root = {
+export const usersMessages = {
   en,
   ptBR
 };
