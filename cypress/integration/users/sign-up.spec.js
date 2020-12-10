@@ -1,10 +1,16 @@
 describe('sign up', () => {
+  const controlEMailId = '#controlEMail';
+  const controlPasswordId = '#controlPassword';
+  const controlRepeatPasswordId = '#controlRepeatPassword';
+  const actionSignUpId = '#actionSignUp';
+  const actionSignOutId = '#actionSignOut';
+
   it('show home page with greeting after success', () => {
     cy.visit('/sign-up');
-    cy.get('#controlEMail').type('test@test.test');
-    cy.get('#controlPassword').type('12345678');
-    cy.get('#controlRepeatPassword').type('12345678');
-    cy.get('#actionSignUp').click();
+    cy.get(controlEMailId).type('test@test.test');
+    cy.get(controlPasswordId).type('12345678');
+    cy.get(controlRepeatPasswordId).type('12345678');
+    cy.get(actionSignUpId).click();
 
     cy.location('pathname').should('equal', '/');
     cy.contains('test@test.test');
@@ -12,33 +18,46 @@ describe('sign up', () => {
 
   it('do not allow another user with same email', () => {
     cy.signUpDefault();
-    cy.get('#actionSignOut').click();
+    cy.get(actionSignOutId).click();
 
     cy.signUpDefault();
     cy.get('[data-error="EMAIL_ALREADY_IN_USE"]');
   });
 
   it('only accept valid emails', () => {
-    const invalidEmailSelector = '[data-error="EMAIL_INVALID"]';
-
     cy.visit('/sign-up');
 
-    cy.get('#actionSignUp').click();
-    cy.get(invalidEmailSelector);
+    cy.get(actionSignUpId).click();
+    cy.get(controlEMailId).should('not.have.attr', 'data-has-passed');
 
-    cy.get('#controlEMail').type('test');
-    cy.get(invalidEmailSelector);
+    cy.get(controlEMailId).type('test');
+    cy.get(controlEMailId).should('not.have.attr', 'data-has-passed');
 
-    cy.get('#controlEMail').type('test@test.test');
-    cy.get(invalidEmailSelector).should('not.exist');
+    cy.get(controlEMailId).type('test@test.test');
+    cy.get(controlEMailId).should('have.attr', 'data-has-passed');
   });
 
-  it.skip('do not accept small or empty password', () => {
-    cy.get('div').then(() => expect(false).to.be.true);
-  });
+  it('do not accept small, empty or unrepeated password', () => {
+    const badPassword = '123457';
+    const goodPassword = '12345678';
 
-  it.skip('do not accept a different repeated password', () => {
-    cy.get('div').then(() => expect(false).to.be.true);
+    cy.get(actionSignUpId).click();
+    cy.get(controlPasswordId).should('not.have.attr', 'data-has-passed');
+
+    cy.get(controlPasswordId).type(badPassword);
+    cy.get(controlPasswordId).should('not.have.attr', 'data-has-passed');
+
+    cy.get(controlPasswordId).type(goodPassword);
+    cy.get(controlPasswordId).should('have.attr', 'data-has-passed');
+
+    cy.get(actionSignUpId).click();
+    cy.get(controlRepeatPasswordId).should('not.have.attr', 'data-has-passed');
+
+    cy.get(controlRepeatPasswordId).type(badPassword);
+    cy.get(controlRepeatPasswordId).should('not.have.attr', 'data-has-passed');
+
+    cy.get(controlRepeatPasswordId).type(goodPassword);
+    cy.get(controlRepeatPasswordId).should('have.attr', 'data-has-passed');
   });
 
   it.skip('the page have working link to sign in', () => {

@@ -22,7 +22,7 @@ describe('auth routing', () => {
       .should('include', '/sign-up');
   });
 
-  it('after successful sign-up, redirects to home', () => {
+  it('after successful sign up, redirects to home', () => {
     cy.signUpDefault();
 
     cy.location('pathname')
@@ -32,5 +32,14 @@ describe('auth routing', () => {
 
     cy.location('pathname')
       .should('equal', '/');
+  });
+
+  it('after successful sign out, redirects to sign-up', () => {
+    cy.signUpDefault();
+
+    cy.get('#actionSignOut').click();
+
+    cy.location('pathname')
+      .should('equal', '/sign-up');
   });
 });

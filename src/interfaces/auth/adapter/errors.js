@@ -21,3 +21,13 @@ export class CredentialsUnrecognizedError extends AppError {
     Error.captureStackTrace(this, CredentialsUnrecognizedError);
   }
 }
+
+export class UnsupportedAuthServiceError extends AppError {
+  constructor () {
+    super({
+      code: 'UNSUPPORTED_AUTH_SERVICE',
+      isOperational: false
+    });
+    Error.captureStackTrace(this, UnsupportedAuthServiceError);
+  }
+}

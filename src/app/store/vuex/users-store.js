@@ -34,8 +34,8 @@ export const usersStoreConfig = {
       }
     },
     actions: {
-      signUpAction (context, { email, password }) {
-        return signUp({ email, password }, { authService: this.$authService });
+      signUpAction (context, payload) {
+        return signUp(payload, { authService: this.$authService });
       },
       signInAction ({ commit }, payload) {
       },

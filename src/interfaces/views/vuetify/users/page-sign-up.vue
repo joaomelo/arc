@@ -54,7 +54,9 @@ export default {
     ...mapActions(['signUpAction']),
     async handleSubmit () {
       try {
-        await this.signUpAction({ email: this.email, password: this.password });
+        const service = 'email';
+        const credentials = { email: this.email, password: this.password };
+        await this.signUpAction({ service, credentials });
       } catch (error) {
         this.error = { ...error };
       }

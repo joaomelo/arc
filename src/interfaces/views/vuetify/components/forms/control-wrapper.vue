@@ -5,8 +5,9 @@
     :rules="rules"
   >
     <!-- ValidationProvider requires a v-model. That's why bellow we -->
-    <!-- don't relly on the effect of using v-bind and v-on and also -->
-    <!-- opted out from slots and went with the vue 'component' -->
+    <!-- don't rely on the effect of using v-bind and v-on and also -->
+    <!-- opted out from slots and went with the vue 'component'. -->
+    <!-- The attribute data-has-passed is intended to be used by test suites -->
     <component
       :is="control"
       :id="id"
@@ -14,6 +15,7 @@
       :label="label"
       :errors="errors"
       :success="passed"
+      :data-has-passed="passed"
       v-bind="$attrs"
       v-on="$listeners"
     />

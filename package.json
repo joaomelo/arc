@@ -4,8 +4,8 @@
   "description": "ARC is an experimental web app that aims to help individuals, organizations, communities and families to collaboratively organize their work pipeline using an impact driven mindset.",
   "main": "index.html",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "concurrently --handle-input -c \"bgMagenta.bold,bgGreen.bold,bgBlue.bold\" \"npm:dev:watch\" \"npm:dev:serve\" \"npm:dev:tests\"",
+    "start": "npm run dev:all",
+    "dev:all": "concurrently --handle-input -c \"bgMagenta.bold,bgGreen.bold,bgBlue.bold\" \"npm:dev:watch\" \"npm:dev:serve\" \"npm:dev:tests\"",
     "dev:watch": "rimraf build/* && webpack --env dev --config webpack.config.js",
     "dev:serve": "firebase emulators:start",
     "dev:tests": "cypress open",

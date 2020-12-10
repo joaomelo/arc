@@ -2,7 +2,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import { initFirestore } from '@/interfaces/db';
-import { initFireauth } from '@/interfaces/auth';
+import { initAdaptedFireauth } from '@/interfaces/auth';
 import { initVuetifyApp } from '@/interfaces/views';
 import { initVeeValidate } from '@/app/validation';
 import { isProduction } from '@/app/meta';
@@ -28,7 +28,7 @@ function main () {
     measurementId: process.env.MEASUREMENT_ID
   };
   const dbService = initFirestore({ config, emulators });
-  const authService = initFireauth({ config, emulators });
+  const authService = initAdaptedFireauth({ config, emulators });
 
   const store = initVuex({ authService, dbService });
   window.$store = store; // store exposed for test suite;
