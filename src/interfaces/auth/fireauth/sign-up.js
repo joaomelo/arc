@@ -1,4 +1,5 @@
 import { UnsupportedAuthServiceError, EmailAlreadyInUseError } from '../adapter';
+import { extractUser } from './extract-user';
 
 export function fireauthSignUp ({ service, credentials }, fireauth) {
   switch (service) {
@@ -11,8 +12,8 @@ export function fireauthSignUp ({ service, credentials }, fireauth) {
 
 async function fireauthEmailSignUp ({ email, password }, fireauth) {
   try {
-    const user = await fireauth.createUserWithEmailAndPassword(email, password);
-    return user;
+    const userCredential = await fireauth.createUserWithEmailAndPassword(email, password);
+    return extractUser(userCredential.user);
   } catch (error) {
     switch (error.code) {
       case 'auth/email-already-in-use':

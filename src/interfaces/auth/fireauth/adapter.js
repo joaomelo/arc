@@ -1,9 +1,9 @@
 import { fireauthSignUp } from './sign-up';
-import { fireauthSolveStatus } from './status';
+import { fireauthSolveUser } from './status';
 
 export function initFireauthAdapter (fireauth) {
   const adapter = {
-    solveStatus: () => fireauthSolveStatus(fireauth),
+    solveUser: () => fireauthSolveUser(fireauth),
     signUp: payload => fireauthSignUp(payload, fireauth),
     signOut: () => fireauth.signOut()
   };

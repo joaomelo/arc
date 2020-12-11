@@ -20,9 +20,9 @@ export const usersStoreConfig = {
       currentUserEmail: state => state.currentUser && state.currentUser.email
     },
     mutations: {
-      signMutation (state, payload) {
+      signMutation (state, { email }) {
         state.status = AUTH_STATUSES.SIGNED_IN;
-        state.currentUser = payload;
+        state.currentUser = { email };
       },
       signOutMutation (state) {
         state.status = AUTH_STATUSES.SIGNED_OUT;
@@ -34,30 +34,27 @@ export const usersStoreConfig = {
       }
     },
     actions: {
-      signUpAction (context, payload) {
-        return signUp(payload, { authService: this.$authService });
+      async signUpAction ({ commit }, payload) {
+        const user = await signUp(payload, { authService: this.$authService });
+        commit('signMutation', user);
       },
       signInAction ({ commit }, payload) {
       },
-      signOutAction (context) {
-        return signOut(null, { authService: this.$authService });
+      async signOutAction ({ commit }) {
+        await signOut(null, { authService: this.$authService });
+        commit('signOutMutation');
       },
-      subscribeToAuthStateAction ({ commit }) {
-        this.$authService.onAuthStateChanged(user => {
-          if (user) {
-            const userData = {
-              email: user.email
-            };
-            commit('signMutation', userData);
-          } else {
-            // todo: reset the whole store state no just the module
-            commit('signOutMutation');
-          }
-        });
+      async loadAuthServiceStateAction ({ commit }) {
+        const user = await this.$authService.solveUser();
+        if (user) {
+          commit('signMutation', user);
+        } else {
+          commit('signOutMutation');
+        }
       }
     }
   },
   afterCreate (store) {
-    store.dispatch('subscribeToAuthStateAction');
+    store.dispatch('loadAuthServiceStateAction');
   }
 };
