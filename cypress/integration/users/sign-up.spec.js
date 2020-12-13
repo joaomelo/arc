@@ -37,26 +37,35 @@ describe('sign up', () => {
     cy.get(controlEMailId).should('have.attr', 'data-has-passed');
   });
 
-  it('do not accept small, empty or unrepeated password', () => {
-    const badPassword = '123457';
+  it('do not accept empty or small passwords', () => {
+    cy.visit('/sign-up');
+
+    const smallPassword = '123457';
     const goodPassword = '12345678';
 
     cy.get(actionSignUpId).click();
     cy.get(controlPasswordId).should('not.have.attr', 'data-has-passed');
 
-    cy.get(controlPasswordId).type(badPassword);
+    cy.get(controlPasswordId).type(smallPassword);
     cy.get(controlPasswordId).should('not.have.attr', 'data-has-passed');
 
-    cy.get(controlPasswordId).type(goodPassword);
+    cy.get(controlPasswordId).clear().type(goodPassword);
     cy.get(controlPasswordId).should('have.attr', 'data-has-passed');
+  });
 
-    cy.get(actionSignUpId).click();
+  it('do not accept unrepeated password', () => {
+    cy.visit('/sign-up');
+
+    const goodPassword = '12345678';
+    const goodButDifferentPassword = '123456789';
+
     cy.get(controlRepeatPasswordId).should('not.have.attr', 'data-has-passed');
 
-    cy.get(controlRepeatPasswordId).type(badPassword);
+    cy.get(controlPasswordId).type(goodPassword);
+    cy.get(controlRepeatPasswordId).type(goodButDifferentPassword);
     cy.get(controlRepeatPasswordId).should('not.have.attr', 'data-has-passed');
 
-    cy.get(controlRepeatPasswordId).type(goodPassword);
+    cy.get(controlRepeatPasswordId).clear().type(goodPassword);
     cy.get(controlRepeatPasswordId).should('have.attr', 'data-has-passed');
   });
 

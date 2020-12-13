@@ -4,13 +4,15 @@
     :name="label"
     :rules="rules"
   >
-    <!-- ValidationProvider requires a v-model. That's why bellow we -->
-    <!-- don't rely on the effect of using v-bind and v-on and also -->
-    <!-- opted out from slots and went with the vue 'component'. -->
-    <!-- The attribute data-has-passed is intended to be used by test suites -->
+    <!--
+      ValidationProvider requires a v-model. That's why bellow we
+      don't rely on the effect of using v-bind and v-on and also
+      opted out from slots and went with the vue 'component'.
+      The attribute data-has-passed is intended to be used by test suites
+    -->
     <component
       :is="control"
-      :id="id"
+      :id="controlId"
       v-model="innerValue"
       :label="label"
       :errors="errors"
@@ -51,7 +53,7 @@ export default {
     };
   },
   computed: {
-    id () {
+    controlId () {
       const computerLabel = upperFirst(camelCase(this.label));
       return `control${computerLabel}`;
     }
