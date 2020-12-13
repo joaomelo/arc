@@ -2,6 +2,7 @@
   <div>
     <ValidationObserver>
       <ControlPassword
+        :id="ids[0]"
         :value="password"
         :label="labels[0]"
         :rules="rules"
@@ -9,6 +10,7 @@
         @input="$emit('input', $event)"
       />
       <ControlPassword
+        :id="ids[1]"
         v-model="confirmationPassword"
         :label="labels[1]"
         :rules="passwordConfirmationRules"
@@ -26,6 +28,10 @@ export default {
   props: {
     value: {
       type: String,
+      required: true
+    },
+    ids: {
+      type: Array,
       required: true
     },
     labels: {

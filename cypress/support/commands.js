@@ -2,10 +2,10 @@
 
 Cypress.Commands.add('signUp', (email, password) => {
   cy.visit('/sign-up');
-  cy.get('#controlEMail').type(email);
-  cy.get('#controlPassword').type(password);
-  cy.get('#controlRepeatPassword').type(password);
-  cy.get('#actionSignUp').click();
+  cy.get('#control-email').type(email);
+  cy.get('#control-password').type(password);
+  cy.get('#control-repeat-password').type(password);
+  cy.get('#action-sign-up').click();
 });
 
 Cypress.Commands.add('signUpDefault', () => {

@@ -1,9 +1,17 @@
 describe('sign up', () => {
-  const controlEMailId = '#controlEMail';
-  const controlPasswordId = '#controlPassword';
-  const controlRepeatPasswordId = '#controlRepeatPassword';
-  const actionSignUpId = '#actionSignUp';
-  const actionSignOutId = '#actionSignOut';
+  const controlEMailId = '#control-email';
+  const controlPasswordId = '#control-password';
+  const controlRepeatPasswordId = '#control-repeat-password';
+  const actionSignInId = '#action-sign-in';
+  const actionSignUpId = '#action-sign-up';
+  const actionSignOutId = '#action-sign-out';
+
+  it('has a working link to sign in', () => {
+    cy.visit('/sign-up');
+
+    cy.get(actionSignInId).click();
+    cy.location('pathname').should('include', '/sign-in');
+  });
 
   it('show home page with greeting after success', () => {
     cy.visit('/sign-up');
@@ -67,10 +75,6 @@ describe('sign up', () => {
 
     cy.get(controlRepeatPasswordId).clear().type(goodPassword);
     cy.get(controlRepeatPasswordId).should('have.attr', 'data-has-passed');
-  });
-
-  it.skip('the page have working link to sign in', () => {
-    cy.get('div').then(() => expect(false).to.be.true);
   });
 
   it.skip('create a user profile with default preferences', () => {

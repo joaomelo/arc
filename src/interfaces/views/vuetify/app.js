@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
+import { textToElementId } from '../common';
 import { initRouter } from './router';
 import { AppShell } from './layouts';
 
@@ -10,6 +11,8 @@ function initVuetify () {
 }
 
 function initVue ({ el, root, globals, components }) {
+  Vue.filter('elementId', textToElementId);
+
   for (const name in components) {
     Vue.component(name, components[name]);
   }

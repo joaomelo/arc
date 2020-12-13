@@ -6,27 +6,33 @@
     >
       <template #default>
         <ControlEmail
+          id="email"
           v-model="email"
           label="E-mail"
           rules="required"
         />
         <ControlPasswordWithConfirmation
           v-model="password"
-          :labels="['Password', 'Repeat password']"
+          :ids="['password','repeat-password']"
+          :labels="['Password','Repeat password']"
           rules="required"
         />
       </template>
       <template #footer>
-        <ButtonPrimary label="Sign Up" />
+        <ButtonPrimary
+          id="sign-up"
+          label="Sign Up"
+        />
       </template>
     </FormBase>
     <MessageError
       :error="error"
       class="mt-2"
     />
-    <router-link :to="{name: 'signIn'}">
-      Has a account? Go to SignIn
-    </router-link>
+    <LinkBase
+      route-name="signIn"
+      text="Have a account? Go to SignIn"
+    />
   </div>
 </template>
 
@@ -37,12 +43,20 @@ import {
   ControlEmail,
   ControlPasswordWithConfirmation,
   ButtonPrimary,
+  LinkBase,
   MessageError
 } from '../components';
 
 export default {
   name: 'PageSignUp',
-  components: { FormBase, ControlEmail, ControlPasswordWithConfirmation, ButtonPrimary, MessageError },
+  components: {
+    FormBase,
+    ControlEmail,
+    ControlPasswordWithConfirmation,
+    ButtonPrimary,
+    MessageError,
+    LinkBase
+  },
   data () {
     return {
       email: '',

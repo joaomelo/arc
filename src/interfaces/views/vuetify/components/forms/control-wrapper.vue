@@ -12,7 +12,7 @@
     -->
     <component
       :is="control"
-      :id="controlId"
+      :id="id | elementId('control')"
       v-model="innerValue"
       :label="label"
       :errors="errors"
@@ -25,13 +25,15 @@
 </template>
 
 <script>
-import { camelCase, upperFirst } from 'lodash-es';
-
 export default {
   name: 'ControlWrapper',
   props: {
     control: {
       type: Object,
+      required: true
+    },
+    id: {
+      type: String,
       required: true
     },
     label: {
@@ -51,12 +53,6 @@ export default {
     return {
       innerValue: this.value
     };
-  },
-  computed: {
-    controlId () {
-      const computerLabel = upperFirst(camelCase(this.label));
-      return `control${computerLabel}`;
-    }
   },
   watch: {
     innerValue (newValue) {

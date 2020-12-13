@@ -1,28 +1,24 @@
 <template>
-  <v-btn
-    :id="id | elementId('action')"
-    type="submit"
+  <router-link
+    :id="routeName | elementId('action')"
+    :to="{name: routeName}"
   >
-    {{ label }}
-  </v-btn>
+    {{ text }}
+  </router-link>
 </template>
 
 <script>
 export default {
-  name: 'ButtonPrimary',
+  name: 'LinkBase',
   props: {
-    id: {
+    routeName: {
       type: String,
       required: true
     },
-    label: {
+    text: {
       type: String,
       required: true
     }
   }
 };
 </script>
-
-<style>
-
-</style>

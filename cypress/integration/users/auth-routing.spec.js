@@ -37,7 +37,7 @@ describe('auth routing', () => {
   it('after successful sign out, redirects to sign-up', () => {
     cy.signUpDefault();
 
-    cy.get('#actionSignOut').click();
+    cy.get('#action-sign-out').click();
 
     cy.location('pathname')
       .should('equal', '/sign-up');
