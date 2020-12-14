@@ -1,5 +1,5 @@
 <template>
-  <p>{{ $t("users.loading") }}...</p>
+  <p>{{ $t('auth.loading') }}...</p>
 </template>
 
 <script>

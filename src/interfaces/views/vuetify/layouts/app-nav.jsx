@@ -24,15 +24,15 @@ export const AppNav = () => {
           path={mdiTarget }
           to="/challenges" />
         <NavLink
-          label={t('users.account')}
+          label={t('auth.account')}
           path={mdiAccount}
           to="/account" />
         <NavLink
-          label={t('users.preferences')}
+          label={t('auth.preferences')}
           path={mdiCogs}
           to="/preferences" />
         <NavLink
-          label={t('users.sign-out')}
+          label={t('auth.sign-out')}
           path={mdiLogout }
           to="#"
           onClick={e => command()}

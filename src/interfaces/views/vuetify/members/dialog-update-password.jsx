@@ -16,13 +16,13 @@ export const DialogUpdatePassword = () => {
       footer={<SaveBack />}
     >
       <ControlPasswordConfirmed
-        label={t('users.password-new')}
+        label={t('auth.password-new')}
         value={newPassword}
         onChange={setNewPassword}
         required
       />
       <ControlPassword
-        label={t('users.password-current')}
+        label={t('auth.password-current')}
         value={password}
         onChange={setPassword}
         required

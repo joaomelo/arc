@@ -13,7 +13,7 @@ export const DialogSignIn = () => {
       myCommand={signInCommand}
       payload={validity.payload}
       onValidate={refreshValidity}
-      footer={<ButtonSubmit label={t('users.sign-in')} />}
+      footer={<ButtonSubmit label={t('auth.sign-in')} />}
     >
       <ControlEmail name="email" errors={validity.errors}/>
       <ControlPassword name="password" errors={validity.errors}/>

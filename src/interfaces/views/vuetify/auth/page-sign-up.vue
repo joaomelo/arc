@@ -1,27 +1,27 @@
 <template>
   <div>
     <FormBase
-      :title="$t('users.sign-up')"
+      :title="$t('auth.sign-up')"
       @submit="handleSubmit"
     >
       <template #default>
         <ControlEmail
           id="email"
           v-model="email"
-          :label="$t('users.email')"
+          :label="$t('auth.email')"
           rules="required"
         />
         <ControlPasswordWithConfirmation
           v-model="password"
           :ids="['password','repeat-password']"
-          :labels="[$t('users.password'),$t('users.password-repeat')]"
+          :labels="[$t('auth.password'),$t('auth.password-repeat')]"
           rules="required"
         />
       </template>
       <template #footer>
         <ButtonPrimary
           id="sign-up"
-          :label="$t('users.sign-up')"
+          :label="$t('auth.sign-up')"
         />
       </template>
     </FormBase>
@@ -31,7 +31,7 @@
     />
     <LinkBase
       route-name="signIn"
-      :text="$t('users.go-sign-in')"
+      :text="$t('auth.go-sign-in')"
     />
   </div>
 </template>

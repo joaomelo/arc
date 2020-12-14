@@ -7,7 +7,7 @@ import { initVuetifyApp } from '@/interfaces/views';
 import { initVeeValidate } from '@/app/validation';
 import { isProduction } from '@/app/meta';
 import { initVuex } from '@/app/store';
-import { initVueI18n } from '@/app/i18n';
+import { initAdaptedVueI18n } from '@/app/i18n';
 
 function main () {
   let emulators = null;
@@ -37,14 +37,18 @@ function main () {
   const { validationComponents, validationMessages } = initVeeValidate();
 
   // i18n
-  const modules = {
+  const dynamicModules = {
     validation: validationMessages
   };
-  const i18n = initVueI18n(modules);
+  const i18n = initAdaptedVueI18n(dynamicModules);
+  window.$i18n = i18n; // i18n service exposed for test suite;
 
   // view
   const mount = initVuetifyApp({
-    globals: { i18n, store },
+    globals: {
+      i18n: i18n.service,
+      store
+    },
     components: validationComponents
   });
   mount();

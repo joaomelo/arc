@@ -1,15 +1,11 @@
-import { defaultLocale } from '@/app/i18n';
-import { AUTH_STATUSES, signUp, signOut } from '@/domain/users';
+import { AUTH_STATUSES, signUp, signOut } from '@/domain/auth';
 
 const initialState = {
   status: AUTH_STATUSES.UNSOLVED,
-  currentUser: null,
-  preferences: {
-    locale: defaultLocale
-  }
+  currentUser: null
 };
 
-export const usersStoreConfig = {
+export const authStoreConfig = {
   store: {
     state: {
       ...initialState
@@ -27,10 +23,6 @@ export const usersStoreConfig = {
       signOutMutation (state) {
         state.status = AUTH_STATUSES.SIGNED_OUT;
         state.currentUser = initialState.currentUser;
-        state.preferences = { ...initialState.preferences };
-      },
-      updatePreferencesMutation (state, payload) {
-        state.preferences.locale = payload.locale;
       }
     },
     actions: {

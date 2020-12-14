@@ -2,20 +2,20 @@
 //   const token = await request('post', 'users/update-email', payload);
 //   const userData = extractUserDataFromToken(token);
 //   dispatch(sign(userData));
-//   return i18n.t('users.email-updated');
+//   return i18n.t('auth.email-updated');
 // };
 
 // export const updatePasswordCommand = async (payload, { dispatch, request }) => {
 //   const token = await request('post', 'users/update-password', payload);
 //   const userData = extractUserDataFromToken(token);
 //   dispatch(sign(userData));
-//   return i18n.t('users.password-updated');
+//   return i18n.t('auth.password-updated');
 // };
 
 // export const updatePreferencesCommand = async (payload, { dispatch, request }) => {
 //   await request('post', 'users/update-preferences', payload);
 //   dispatch(updatePreferences(payload));
-//   return i18n.t('users.preferences-updated');
+//   return i18n.t('auth.preferences-updated');
 // };
 
 // export async function updateEmail ({ newEmail, email, password }) {

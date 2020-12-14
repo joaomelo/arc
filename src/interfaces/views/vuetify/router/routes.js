@@ -1,5 +1,5 @@
 import { PageHome, Page404 } from '../pages';
-import { PageUnsolved, PageSignUp, PageSignIn } from '../users';
+import { PageUnsolved, PageSignUp, PageSignIn } from '../auth';
 
 export const routes = [
   {

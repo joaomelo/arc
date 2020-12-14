@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { usersStoreConfig } from './users-store';
+import { authStoreConfig } from './auth-store';
 
 export function initVuex (globals) {
   Vue.use(Vuex);
   const store = new Vuex.Store({
     modules: {
-      usersStore: usersStoreConfig.store
+      usersStore: authStoreConfig.store
     }
   });
 
@@ -16,7 +16,7 @@ export function initVuex (globals) {
   }
 
   // call every afterCreate hooks
-  const configs = [usersStoreConfig];
+  const configs = [authStoreConfig];
   configs.forEach(config => config.afterCreate(store));
 
   return store;

@@ -13,7 +13,10 @@ describe('i18n engine minimal test at sign up', () => {
   });
 
   it('proper pt-BR messages for some labels', () => {
-    cy.window().its('$i18n').then(i18n => i18n.updateLocale('pt-BR'));
+    cy.window().its('$i18n').then(i18n => {
+      i18n.updateLocale('pt-BR');
+      console.log(i18n.currentLocale);
+    });
 
     cy.contains('Criar');
     cy.contains('Confirmar senha');

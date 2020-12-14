@@ -11,5 +11,5 @@ export const SelectLocale = (props) => {
     return { value, label };
   });
 
-  return <ControlSelect label={t('users.language')} options={options} {...props} />;
+  return <ControlSelect label={t('auth.language')} options={options} {...props} />;
 };

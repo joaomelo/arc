@@ -19,7 +19,7 @@ export function initVeeValidate () {
     },
     validationMessages: {
       en: en.messages,
-      ptBR: ptBR.messages
+      'pt-BR': ptBR.messages
     }
   };
 }
