@@ -11,5 +11,7 @@ export function initVueI18n (extraMessages) {
     messages
   });
 
+  console.log(messages);
+
   return vueI18n;
 }
