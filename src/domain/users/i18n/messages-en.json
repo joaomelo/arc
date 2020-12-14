@@ -1,11 +1,13 @@
 {
-  "loading": "Loading user",
   "account": "Account",
   "email": "E-mail",
   "email-new": "New e-mail",
   "email-update": "Update e-mail",
   "email-updated": "E-mail updated",
+  "error-credentials-unrecognized": "User's email does not exist or failed to validate password",
+  "error-email-already-in-use": "Can't create or update a user with an e-mail already in use",
   "language": "Language",
+  "loading": "Loading user",
   "password": "Password",
   "password-current": "Current password",
   "password-new": "New password",
@@ -14,9 +16,8 @@
   "password-updated": "Password updated",
   "preferences": "Preferences",
   "preferences-updated": "Preferences updated",
-  "sign-in": "Sign In",
-  "sign-out": "Sign Out",
-  "sign-up": "Sign Up",
-  "email-already-in-use": "Can't create or update a user with an e-mail already in use",
-  "credentials-unrecognized": "User's email does not exist or failed to validate password"
-} 
+  "go-sign-in": "Already have a account? Go to sign in",
+  "sign-in": "Sign in",
+  "sign-out": "Sign out",
+  "sign-up": "Sign up"
+}

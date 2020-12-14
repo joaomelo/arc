@@ -76,12 +76,4 @@ describe('sign up', () => {
     cy.get(controlRepeatPasswordId).clear().type(goodPassword);
     cy.get(controlRepeatPasswordId).should('have.attr', 'data-has-passed');
   });
-
-  it.skip('create a user profile with default preferences', () => {
-    cy.get('div').then(() => expect(false).to.be.true);
-  });
-
-  it.skip('only allow profile creation when signing up new user', () => {
-    cy.get('div').then(() => expect(false).to.be.true);
-  });
 });

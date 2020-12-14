@@ -1,11 +1,13 @@
 {
-  "loading": "Carregando usuário",
   "account": "Conta",
   "email": "E-mail",
   "email-new": "Novo e-mail",
   "email-update": "Atualização de e-mail",
   "email-updated": "E-mail atualizado",
+  "error-credentials-unrecognized": "Email não reconhecido ou senha inválida.",
+  "error-email-already-in-use": "Não é possível criar ou atualizar um usuário com um e-mail já em uso.",
   "language": "Idioma",
+  "loading": "Carregando usuário",
   "password": "Senha",
   "password-current": "Senha atual",
   "password-new": "Nova senha",
@@ -14,9 +16,8 @@
   "password-updated": "Senha atualizada",
   "preferences": "Preferências",
   "preferences-updated": "Preferências Atualizadas",
+  "go-sign-in": "Já possui uma conta? Clique aqui para entrar",
   "sign-in": "Entrar",
   "sign-out": "Sair",
-  "sign-up": "Criar",
-  "email-already-in-use": "Não é possível criar ou atualizar um usuário com um e-mail já em uso.",
-  "credentials-unrecognized": "Email não reconhecido ou senha inválida."
+  "sign-up": "Criar"
 }
