@@ -1,10 +1,10 @@
 <template>
   <v-alert
-    v-if="error"
+    v-if="errorMessage"
     type="error"
-    :data-error="error.code"
+    :data-error="errorMessage.code"
   >
-    {{ $t(error.description) }}
+    {{ errorMessage.text }}
   </v-alert>
 </template>
 
@@ -12,7 +12,7 @@
 export default {
   name: 'MessageError',
   props: {
-    error: {
+    errorMessage: {
       type: Object,
       default: null
     }

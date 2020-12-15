@@ -26,7 +26,7 @@
       </template>
     </FormBase>
     <MessageError
-      :error="error"
+      :error-message="errorMessage"
       class="mt-2"
     />
     <LinkBase
@@ -61,18 +61,25 @@ export default {
     return {
       email: '',
       password: '',
-      error: null
+      errorMessage: null
     };
   },
   methods: {
     ...mapActions(['signUpAction']),
     async handleSubmit () {
       try {
-        const service = 'email';
+        const method = 'email';
         const credentials = { email: this.email, password: this.password };
-        await this.signUpAction({ service, credentials });
+        await this.signUpAction({ method, credentials });
       } catch (error) {
-        this.error = { ...error };
+        if (error.isOperational) {
+          this.errorMessage = {
+            code: error.code,
+            text: this.$t(error.description)
+          };
+        } else {
+          throw error;
+        }
       }
     }
   }

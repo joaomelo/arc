@@ -1,12 +1,12 @@
-import { UnsupportedAuthServiceError, EmailAlreadyInUseError } from '../adapter';
+import { UnsupportedSignMethod, EmailAlreadyInUseError } from '@/domain/auth';
 import { extractUser } from './extract-user';
 
-export function fireauthSignUp ({ service, credentials }, fireauth) {
-  switch (service) {
+export function fireauthSignUp ({ method, credentials }, fireauth) {
+  switch (method) {
     case 'email':
       return fireauthEmailSignUp(credentials, fireauth);
     default:
-      throw new UnsupportedAuthServiceError();
+      throw new UnsupportedSignMethod();
   }
 };
 

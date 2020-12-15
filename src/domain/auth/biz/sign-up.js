@@ -1,3 +1,3 @@
-export async function signUp (payload, { authService }) {
+export function signUp (payload, { authService }) {
   return authService.signUp(payload);
 }
