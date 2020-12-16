@@ -26,6 +26,7 @@ import { DialogCard } from '../dialogs';
 export default {
   name: 'FormBase',
   components: { DialogCard },
+  inheritAttrs: false,
   methods: {
     innerHandleSubmit () {
       this.$emit('submit');

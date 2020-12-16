@@ -1,10 +1,16 @@
 <template>
-  <v-card>
-    <v-card-title>{{ title }}</v-card-title>
+  <v-card
+    v-bind="$attrs"
+  >
+    <v-card-title>
+      <slot name="header" />
+    </v-card-title>
+
     <v-card-text>
       <slot />
     </v-card-text>
-    <v-card-actions>
+
+    <v-card-actions class="justify-end">
       <slot name="footer" />
     </v-card-actions>
   </v-card>
@@ -12,12 +18,6 @@
 
 <script>
 export default {
-  name: 'DialogCard',
-  props: {
-    title: {
-      type: String,
-      default: ''
-    }
-  }
+  name: 'DialogCard'
 };
 </script>

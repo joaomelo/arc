@@ -1,9 +1,22 @@
 <template>
-  <div>
-    <FormBase
-      :title="$t('auth.sign-up')"
-      @submit="handleSubmit"
-    >
+  <div
+    :style="{ maxWidth: '400px' }"
+    class="mx-auto"
+  >
+    <FormBase @submit="handleSubmit">
+      <template #header>
+        <div>
+          <p class="mb-0">
+            {{ $t('auth.sign-up-to-arc') }}
+          </p>
+          <LinkBase
+            route-name="signIn"
+            :text="$t('auth.go-sign-in')"
+            class="text-subtitle-2"
+          />
+        </div>
+      </template>
+
       <template #default>
         <ControlEmail
           id="email"
@@ -18,6 +31,7 @@
           rules="required"
         />
       </template>
+
       <template #footer>
         <ButtonPrimary
           id="sign-up"
@@ -28,10 +42,6 @@
     <MessageError
       :error-message="errorMessage"
       class="mt-2"
-    />
-    <LinkBase
-      route-name="signIn"
-      :text="$t('auth.go-sign-in')"
     />
   </div>
 </template>

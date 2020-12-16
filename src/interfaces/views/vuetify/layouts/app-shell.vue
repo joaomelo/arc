@@ -3,8 +3,15 @@
     <MonitorAuth />
     <v-app>
       <v-main>
-        <v-container fluid>
-          <router-view />
+        <v-container
+          fluid
+          fill-height
+        >
+          <v-row>
+            <v-col>
+              <router-view />
+            </v-col>
+          </v-row>
         </v-container>
       </v-main>
     </v-app>

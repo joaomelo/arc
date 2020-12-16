@@ -1,5 +1,7 @@
 <template>
-  <p>{{ $t('auth.loading') }}...</p>
+  <p class="text-center">
+    {{ $t('auth.loading') }}...
+  </p>
 </template>
 
 <script>
