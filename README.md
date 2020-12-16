@@ -60,8 +60,7 @@ The development move by selecting a use case to implement and do the following s
 - Brainstorm test headlines to circumvent the use case (happy path, exception, security etc).
 - Iterate over the testes cases implementing first the test and then the feature.
 - Aspects are review with new tests if needed
-  - error
-  - log
+  - exceptions
   - validation
   - i18n
 - The UI in implemented.

@@ -10,3 +10,4 @@ export const locales = {
 };
 
 export const defaultLocale = locales.en.code;
+// export const defaultLocale = locales['pt-BR'].code;

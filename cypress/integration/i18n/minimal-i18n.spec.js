@@ -21,6 +21,12 @@ describe('i18n engine minimal test at sign up', () => {
     cy.contains('Confirmar senha');
   });
 
+  it('when locale changes, reflects the correct one on labels', () => {
+    cy.contains('Sign up');
+    cy.window().its('$i18n').then(i18n => i18n.updateLocale('pt-BR'));
+    cy.contains('Criar');
+  });
+
   it('proper en messages for some field validation', () => {
     cy.get(controlEMailId).type('notAnEMail');
     cy.get(actionSignUpId).click();
@@ -34,6 +40,19 @@ describe('i18n engine minimal test at sign up', () => {
 
     cy.get(controlEMailId).type('notAnEMail');
     cy.get(actionSignUpId).click();
+
+    cy.contains('deve ser um email válido');
+    cy.contains('é obrigatório');
+  });
+
+  it('when locale changes, reflects the correct one on field validation', () => {
+    cy.get(controlEMailId).type('notAnEMail');
+    cy.get(actionSignUpId).click();
+
+    cy.contains('must be a valid email');
+    cy.contains('field is required');
+
+    cy.window().its('$i18n').then(i18n => i18n.updateLocale('pt-BR'));
 
     cy.contains('deve ser um email válido');
     cy.contains('é obrigatório');
