@@ -13,9 +13,11 @@
   "password-repeat": "Repeat password",
   "password-update": "Update password",
   "password-updated": "Password updated",
+  "go-sign-up": "Don't have a account? Go to sign up",
   "go-sign-in": "Already have a account? Go to sign in",
   "sign-in": "Sign in",
   "sign-out": "Sign out",
   "sign-up": "Sign up",
-  "sign-up-to-arc": "Sign up to ARC"
+  "sign-up-to-arc": "Sign up to ARC",
+  "sign-in-to-arc": "Sign in to ARC"
 }

@@ -13,9 +13,11 @@
   "password-repeat": "Confirmar senha",
   "password-update": "Atualização de senha",
   "password-updated": "Senha atualizada",
+  "go-sign-up": "Ainda não possui uma conta? Clique para registrar-se",
   "go-sign-in": "Já possui uma conta? Clique aqui para entrar",
   "sign-in": "Entrar",
   "sign-out": "Sair",
   "sign-up": "Criar",
-  "sign-up-to-arc": "Registre-se em ARC"
+  "sign-up-to-arc": "Registre-se em ARC",
+  "sign-in-to-arc": "Entre em ARC"
 }
