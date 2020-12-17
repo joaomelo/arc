@@ -9,6 +9,9 @@ describe('i18n engine minimal test at sign up', () => {
   const actionSignUpId = '#action-sign-up';
   const actionSignOutId = '#action-sign-out';
 
+  const email = 'test@test.test';
+  const password = '12345678';
+
   it('proper en messages for some labels', () => {
     cy.contains('Sign up');
     cy.contains('Repeat password');
@@ -58,23 +61,21 @@ describe('i18n engine minimal test at sign up', () => {
     cy.contains('é obrigatório');
   });
 
-  it('proper en error messages for exceptions', () => {
-    cy.signUpDefault();
+  it('proper "en" error messages for exceptions', () => {
+    cy.signUpManual(email, password);
     cy.get(actionSignOutId).click();
 
-    cy.signUpDefault();
+    cy.signUpManual(email, password);
     cy.contains("Can't create or update a user with an e-mail already in use");
   });
 
   it('proper pt-BR error messages for exceptions', () => {
-    const email = 'default@default.default';
-    const password = '12345678';
-
-    cy.signUp(email, password);
+    cy.signUpManual(email, password);
     cy.get(actionSignOutId).click();
 
     cy.visit('/sign-up');
     cy.window().its('$i18n').then(i18n => i18n.updateLocale('pt-BR'));
+
     cy.get(controlEMailId).type(email);
     cy.get(controlPasswordId).type(password);
     cy.get(controlRepeatPasswordId).type(password);

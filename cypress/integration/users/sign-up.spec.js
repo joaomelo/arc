@@ -25,10 +25,10 @@ describe('sign up', () => {
   });
 
   it('do not allow another user with same email', () => {
-    cy.signUpDefault();
+    cy.signUpManual('teste@test.test', '12345678');
     cy.get(actionSignOutId).click();
 
-    cy.signUpDefault();
+    cy.signUpManual('teste@test.test', '12345678');
     cy.get('[data-error="EMAIL_ALREADY_IN_USE"]');
   });
 

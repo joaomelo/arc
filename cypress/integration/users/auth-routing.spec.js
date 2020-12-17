@@ -23,7 +23,7 @@ describe('auth routing', () => {
   });
 
   it('after successful sign up, redirects to home', () => {
-    cy.signUpDefault();
+    cy.signUpManual('teste@test.test', '12345678');
 
     cy.location('pathname')
       .should('equal', '/');
@@ -35,7 +35,7 @@ describe('auth routing', () => {
   });
 
   it('after successful sign out, redirects to sign-up', () => {
-    cy.signUpDefault();
+    cy.signUpManual('teste@test.test', '12345678');
 
     cy.get('#action-sign-out').click();
 

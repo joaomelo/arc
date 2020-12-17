@@ -31,11 +31,9 @@ function main () {
   const authService = initAdaptedFireauth({ config, emulators });
 
   const store = initVuex({ authService, dbService });
-  window.$store = store; // store exposed for test suite;
 
   // i18n
   const i18n = initAdaptedVueI18n();
-  window.$i18n = i18n; // i18n service exposed for test suite;
 
   // validation
   const { validationComponents } = initVeeValidate(i18n);
@@ -48,6 +46,11 @@ function main () {
     },
     components: validationComponents
   });
+
+  // globas exposed to be used by the e2e test suite;
+  window.$store = store;
+  window.$i18n = i18n;
+
   mount();
 }
 
