@@ -8,6 +8,11 @@ import { AUTH_STATUSES } from '@/domain/auth';
 
 export default {
   name: 'MonitorAuth',
+  data () {
+    return {
+      userAttemptedRoute: ''
+    };
+  },
   computed: {
     ...mapGetters(['status'])
   },
@@ -16,28 +21,32 @@ export default {
       handler: 'handleStateChange',
       immediate: true
     },
-    $route: {
+    '$route.name': {
       handler: 'handleStateChange',
       immediate: true
     }
   },
   methods: {
-    handleStateChange () {
+    handleStateChange (newValue, oldValue) {
       const status = this.status;
       const routeName = this.$route.name;
 
-      if (status === AUTH_STATUSES.UNSOLVED && routeName !== 'unsolved') {
+      const isUnsolvedAllowed = name => name === 'unsolved';
+      if (status === AUTH_STATUSES.UNSOLVED && !isUnsolvedAllowed(routeName)) {
+        this.userAttemptedRoute = routeName;
         return this.$router.push({ name: 'unsolved' });
       };
 
-      const isSignOutAllowedRoute = ['signUp', 'signIn', '404'].includes(routeName);
-      if (status === AUTH_STATUSES.SIGNED_OUT && !isSignOutAllowedRoute) {
-        return this.$router.push({ name: 'signUp' });
+      const isSignOutAllowed = name => ['signUp', 'signIn', '404'].includes(name);
+      if (status === AUTH_STATUSES.SIGNED_OUT && !isSignOutAllowed(routeName)) {
+        const name = isSignOutAllowed(this.userAttemptedRoute) ? this.userAttemptedRoute : 'signUp';
+        return this.$router.push({ name });
       };
 
-      const isSignInBlockedRoute = ['signUp', 'signIn', 'unsolved'].includes(routeName);
-      if (status === AUTH_STATUSES.SIGNED_IN && isSignInBlockedRoute) {
-        return this.$router.push({ name: 'home' });
+      const isSignInAllowed = name => name && !['signUp', 'signIn', 'unsolved'].includes(name);
+      if (status === AUTH_STATUSES.SIGNED_IN && !isSignInAllowed(routeName)) {
+        const name = isSignInAllowed(this.userAttemptedRoute) ? this.userAttemptedRoute : 'home';
+        return this.$router.push({ name });
       };
     }
   }

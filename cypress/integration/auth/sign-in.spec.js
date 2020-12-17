@@ -1,6 +1,6 @@
 describe('sign in page', () => {
   describe('happy path', () => {
-    it.only('has route showing page', () => {
+    it('has route showing page', () => {
       cy.visit('/sign-in');
       cy.location('pathname').should('equal', '/sign-in');
 

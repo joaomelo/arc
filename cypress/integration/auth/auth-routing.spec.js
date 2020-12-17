@@ -22,16 +22,13 @@ describe('auth routing', () => {
       .should('include', '/sign-up');
   });
 
-  it('after successful sign up, redirects to home', () => {
+  it('after successful sign up, redirects to home and blocks signed out routes', () => {
     cy.signUpManual('teste@test.test', '12345678');
 
-    cy.location('pathname')
-      .should('equal', '/');
+    cy.location('pathname').should('equal', '/');
 
     cy.visit('/unsolved');
-
-    cy.location('pathname')
-      .should('equal', '/');
+    cy.location('pathname').should('equal', '/');
   });
 
   it('after successful sign out, redirects to sign-up', () => {
