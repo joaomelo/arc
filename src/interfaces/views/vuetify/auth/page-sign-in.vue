@@ -27,7 +27,7 @@
         <ControlPassword
           id="password"
           v-model="password"
-          :labels="$t('auth.password')"
+          :label="$t('auth.password')"
           rules="required"
         />
       </template>

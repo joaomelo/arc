@@ -2,15 +2,12 @@ describe('sign up', () => {
   const controlEMailId = '#control-email';
   const controlPasswordId = '#control-password';
   const controlRepeatPasswordId = '#control-repeat-password';
-  const actionSignInId = '#action-sign-in';
   const actionSignUpId = '#action-sign-up';
   const actionSignOutId = '#action-sign-out';
 
-  it('has a working link to sign in', () => {
+  it('has link to sign in', () => {
     cy.visit('/sign-up');
-
-    cy.get(actionSignInId).click();
-    cy.location('pathname').should('include', '/sign-in');
+    cy.get('a[href="/sign-in"]');
   });
 
   it('show home page with greeting after success', () => {
@@ -41,7 +38,7 @@ describe('sign up', () => {
     cy.get(controlEMailId).type('test');
     cy.get(controlEMailId).should('not.have.attr', 'data-has-passed');
 
-    cy.get(controlEMailId).type('test@test.test');
+    cy.get(controlEMailId).clear().type('test@test.test');
     cy.get(controlEMailId).should('have.attr', 'data-has-passed');
   });
 

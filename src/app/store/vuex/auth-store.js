@@ -1,4 +1,4 @@
-import { AUTH_STATUSES, signUp, signOut } from '@/domain/auth';
+import { AUTH_STATUSES, signUp, signOut, signIn } from '@/domain/auth';
 
 const initialState = {
   status: AUTH_STATUSES.UNSOLVED,
@@ -30,7 +30,9 @@ export const authStoreConfig = {
         const user = await signUp(payload, { authService: this.$authService });
         commit('signMutation', user);
       },
-      signInAction ({ commit }, payload) {
+      async signInAction ({ commit }, payload) {
+        const user = await signIn(payload, { authService: this.$authService });
+        commit('signMutation', user);
       },
       async signOutAction ({ commit }) {
         await signOut(null, { authService: this.$authService });
