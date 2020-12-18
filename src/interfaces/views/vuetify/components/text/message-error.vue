@@ -1,19 +1,20 @@
 <template>
-  <v-alert
-    v-if="errorMessage"
+  <MessageBase
     type="error"
-    :data-error="errorMessage.code"
-  >
-    {{ errorMessage.text }}
-  </v-alert>
+    :data-error="code"
+    v-bind="$attrs"
+  />
 </template>
 
 <script>
+import MessageBase from './message-base';
+
 export default {
   name: 'MessageError',
+  components: { MessageBase },
   props: {
-    errorMessage: {
-      type: Object,
+    code: {
+      type: String,
       default: null
     }
   }

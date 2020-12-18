@@ -1,77 +1,59 @@
 <template>
-  <div
-    :style="{ maxWidth: '400px' }"
-    class="mx-auto"
+  <PageSignWrapper
+    :config="config"
+    @sign="handleSubmit"
   >
-    <FormBase @submit="handleSubmit">
-      <template #header>
-        <div>
-          <p class="mb-0">
-            {{ $t('auth.sign-up-to-arc') }}
-          </p>
-          <LinkBase
-            route-name="signIn"
-            :text="$t('auth.go-sign-in')"
-            class="text-subtitle-2"
-          />
-        </div>
-      </template>
-
-      <template #default>
-        <ControlEmail
-          id="email"
-          v-model="email"
-          :label="$t('auth.email')"
-          rules="required"
-        />
-        <ControlPasswordWithConfirmation
-          v-model="password"
-          :ids="['password','repeat-password']"
-          :labels="[$t('auth.password'),$t('auth.password-repeat')]"
-          rules="required"
-        />
-      </template>
-
-      <template #footer>
-        <ButtonPrimary
-          id="sign-up"
-          :label="$t('auth.sign-up')"
-        />
-      </template>
-    </FormBase>
-    <MessageError
-      :error-message="errorMessage"
-      class="mt-2"
+    <ControlEmail
+      id="email"
+      v-model="email"
+      :label="$t('auth.email')"
+      rules="required"
     />
-  </div>
+    <ControlPasswordWithConfirmation
+      v-model="password"
+      :ids="['password','repeat-password']"
+      :labels="[$t('auth.password'),$t('auth.password-repeat')]"
+      rules="required"
+    />
+  </PageSignWrapper>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import {
-  FormBase,
   ControlEmail,
-  ControlPasswordWithConfirmation,
-  ButtonPrimary,
-  LinkBase,
-  MessageError
+  ControlPasswordWithConfirmation
 } from '../components';
+import PageSignWrapper from './page-sign-wrapper';
 
 export default {
   name: 'PageSignUp',
   components: {
-    FormBase,
     ControlEmail,
     ControlPasswordWithConfirmation,
-    ButtonPrimary,
-    MessageError,
-    LinkBase
+    PageSignWrapper
   },
   data () {
+    const config = {
+      headerText: 'auth.sign-up-to-arc',
+      link: {
+        route: 'signIn',
+        text: 'auth.go-sign-in'
+      },
+      button: {
+        id: 'sign-up',
+        label: 'auth.sign-up'
+      },
+      error: {
+        code: '',
+        text: ''
+      }
+    };
+
     return {
+      config,
       email: '',
-      password: '',
-      errorMessage: null
+      password: ''
     };
   },
   methods: {
@@ -83,10 +65,8 @@ export default {
         await this.signUpAction({ method, credentials });
       } catch (error) {
         if (error.isOperational) {
-          this.errorMessage = {
-            code: error.code,
-            text: this.$t(error.description)
-          };
+          this.config.error.code = error.code;
+          this.config.error.text = error.description;
         } else {
           throw error;
         }

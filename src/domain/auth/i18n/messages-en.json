@@ -1,5 +1,6 @@
 {
   "account": "Account",
+  "disclaimer": "This app is a personal instance of ARC, and you are welcome to use it freely. But beware, it is a hobby project. I can't guarantee any service level. The most reliable way to benefit from the app is to check the open-sourced code in GitHub and, when comfortable, raise your instance.",
   "email": "E-mail",
   "email-new": "New e-mail",
   "email-update": "Update e-mail",

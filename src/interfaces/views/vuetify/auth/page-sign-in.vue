@@ -1,77 +1,59 @@
 <template>
-  <div
-    :style="{ maxWidth: '400px' }"
-    class="mx-auto"
+  <PageSignWrapper
+    :config="config"
+    @sign="handleSubmit"
   >
-    <FormBase @submit="handleSubmit">
-      <template #header>
-        <div>
-          <p class="mb-0">
-            {{ $t('auth.sign-in-to-arc') }}
-          </p>
-          <LinkBase
-            route-name="signUp"
-            :text="$t('auth.go-sign-up')"
-            class="text-subtitle-2"
-          />
-        </div>
-      </template>
-
-      <template #default>
-        <ControlEmail
-          id="email"
-          v-model="email"
-          :label="$t('auth.email')"
-          rules="required"
-        />
-        <ControlPassword
-          id="password"
-          v-model="password"
-          :label="$t('auth.password')"
-          rules="required"
-        />
-      </template>
-
-      <template #footer>
-        <ButtonPrimary
-          id="sign-in"
-          :label="$t('auth.sign-in')"
-        />
-      </template>
-    </FormBase>
-    <MessageError
-      :error-message="errorMessage"
-      class="mt-2"
+    <ControlEmail
+      id="email"
+      v-model="email"
+      :label="$t('auth.email')"
+      rules="required"
     />
-  </div>
+    <ControlPassword
+      id="password"
+      v-model="password"
+      :label="$t('auth.password')"
+      rules="required"
+    />
+  </PageSignWrapper>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import {
-  FormBase,
   ControlEmail,
-  ControlPassword,
-  ButtonPrimary,
-  LinkBase,
-  MessageError
+  ControlPassword
 } from '../components';
+import PageSignWrapper from './page-sign-wrapper';
 
 export default {
   name: 'PageSignIn',
   components: {
-    FormBase,
     ControlEmail,
     ControlPassword,
-    ButtonPrimary,
-    MessageError,
-    LinkBase
+    PageSignWrapper
   },
   data () {
+    const config = {
+      headerText: 'auth.sign-in-to-arc',
+      link: {
+        route: 'signUp',
+        text: 'auth.go-sign-up'
+      },
+      button: {
+        id: 'sign-in',
+        label: 'auth.sign-in'
+      },
+      error: {
+        code: '',
+        text: ''
+      }
+    };
+
     return {
+      config,
       email: '',
-      password: '',
-      errorMessage: null
+      password: ''
     };
   },
   methods: {
@@ -83,10 +65,8 @@ export default {
         await this.signInAction({ method, credentials });
       } catch (error) {
         if (error.isOperational) {
-          this.errorMessage = {
-            code: error.code,
-            text: this.$t(error.description)
-          };
+          this.config.error.code = error.code;
+          this.config.error.text = error.description;
         } else {
           throw error;
         }
