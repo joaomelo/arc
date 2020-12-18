@@ -1,5 +1,6 @@
 import { PageHome, Page404 } from '../pages';
 import { PageUnsolved, PageSignUp, PageSignIn } from '../auth';
+import { PageArcs } from '../arcs';
 
 export const routes = [
   {
@@ -21,6 +22,11 @@ export const routes = [
     name: 'signIn',
     path: '/sign-in',
     component: PageSignIn
+  },
+  {
+    name: 'arcs',
+    path: '/arcs',
+    component: PageArcs
   },
   {
     name: '404',

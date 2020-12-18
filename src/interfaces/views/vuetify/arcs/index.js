@@ -1,1 +1,3 @@
-export { PageArcs } from './page-arcs';
+import PageArcs from './page-arcs';
+
+export { PageArcs };

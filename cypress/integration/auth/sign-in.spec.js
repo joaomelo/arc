@@ -6,6 +6,7 @@ describe('sign in page', () => {
 
   const goodEmail = 'test@test.test';
   const goodPassword = '12345678';
+  const anotherGoodPassword = '123456789';
   const smallPassword = '123457';
 
   describe('happy path', () => {
@@ -36,8 +37,18 @@ describe('sign in page', () => {
     });
 
     it('shows user original attempted route after sign in', () => {
-      // mock a valid route to test
-      expect(true).to.equal(false);
+      cy.signUpManual(goodEmail, goodPassword);
+      cy.get(actionSignOutId).click();
+      cy.location('pathname').should('equal', '/sign-up');
+
+      cy.visit('/arcs');
+      cy.get('a[href="/sign-in"]').click();
+      cy.location('pathname').should('equal', '/sign-in');
+      cy.get(controlEMailId).type(goodEmail);
+      cy.get(controlPasswordId).type(goodPassword);
+      cy.get(actionSignInId).click();
+
+      cy.location('pathname').should('equal', '/arcs');
     });
   });
 
@@ -70,7 +81,29 @@ describe('sign in page', () => {
       });
     });
 
-    // user exists but not with this password
-    // user does not exists
+    describe('exceptions', () => {
+      it('do not allow if not signed up yet', () => {
+        cy.visit('/sign-in');
+
+        cy.get(controlEMailId).type(goodEmail);
+        cy.get(controlPasswordId).type(goodPassword);
+        cy.get(actionSignInId).click();
+
+        cy.get('[data-error="CREDENTIALS_UNRECOGNIZED"]');
+      });
+
+      it('do not allow if password not match', () => {
+        cy.signUpManual(goodEmail, goodPassword);
+        cy.get(actionSignOutId).click();
+        cy.location('pathname').should('equal', '/sign-up');
+
+        cy.visit('/sign-in');
+        cy.get(controlEMailId).type(goodEmail);
+        cy.get(controlPasswordId).type(anotherGoodPassword);
+        cy.get(actionSignInId).click();
+
+        cy.get('[data-error="CREDENTIALS_UNRECOGNIZED"]');
+      });
+    });
   });
 });
