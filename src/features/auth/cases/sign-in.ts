@@ -1,6 +1,6 @@
-import { Credentials } from '../entities';
 import { IdentityProvider } from '../services/identity';
 import { AuthStore } from '../services/store';
+import { Credentials } from '../entities';
 
 interface dependencies {
   identityProvider: IdentityProvider,
