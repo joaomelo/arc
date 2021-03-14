@@ -1,19 +1,30 @@
 module.exports = {
   root: true,
-  parser: 'vue-eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    parser: '@babel/eslint-parser'
-  },
+    project: './tsconfig.json'
+  },  
+  plugins: [
+    '@typescript-eslint',
+    'jest',
+    'jest-formatting'
+  ],
   extends: [
-    'standard',
-    'plugin:vue/recommended'
+    'standard-with-typescript',
+    'plugin:jest/recommended',
+    'plugin:jest/style',
+    'plugin:jest-formatting/recommended'
   ],
   rules: {
-    semi: ['error', 'always'],
-    'no-console': ['warn'],
+    'no-console': [
+      'warn', {
+        allow: ['warn', 'error', 'info']
+      }
+    ],
     'no-debugger': 'warn'
   },
   env: {
-    browser: true
+    browser: true,
+    'jest/globals': true
   }
 };
