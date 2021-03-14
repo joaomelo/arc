@@ -1,5 +1,2 @@
-import type { User, Credentials } from '../../entities'
-
-export interface IdentityProvider {
-  signIn: (credentials: Credentials) => User
-}
+export { IdentityProvider } from './provider'
+export { createIdentityProvider } from './factory'
