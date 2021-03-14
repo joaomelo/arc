@@ -1,4 +1,6 @@
-![publish](https://github.com/joaomelo/arc/workflows/publish/badge.svg?branch=master)
+THIS PROJECT IS IN EARLY DEVELOPMENT THE DOCS BELOW SHOULD BE IGNORED FOR NOW.
+
+<!-- ![publish](https://github.com/joaomelo/arc/workflows/publish/badge.svg?branch=master) -->
 
 # Arc
 
