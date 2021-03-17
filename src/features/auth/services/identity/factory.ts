@@ -1,16 +1,9 @@
-import type { IdentityProvider } from './provider'
+import type { IdentityProvider } from '../../cases'
 import { createFirebaseAuthProvider } from './firebase-auth'
 
-export enum IdentityProviderType {
-  FirebaseAuth = 'FIREBASE_AUTH'
-};
-
-interface Options {
-  type: IdentityProviderType
-}
-
-export function createIdentityProvider (options: Options): IdentityProvider {
-  switch (options.type) {
-    case IdentityProviderType.FirebaseAuth: return createFirebaseAuthProvider(options)
+export function createIdentityProvider (type: string, options: Object): IdentityProvider {
+  switch (type) {
+    case 'FIREBASE_AUTH': return createFirebaseAuthProvider(options)
+    default: throw new Error(`Identity Provider of type "${type}" not supported.`)
   }
 }
