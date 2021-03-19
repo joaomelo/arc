@@ -1,21 +1,18 @@
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: './tsconfig.json'
-  },  
+  parser: '@babel/eslint-parser',
   plugins: [
-    '@typescript-eslint',
     'jest',
     'jest-formatting'
   ],
   extends: [
-    'standard-with-typescript',
+    'standard',
     'plugin:jest/recommended',
     'plugin:jest/style',
     'plugin:jest-formatting/recommended'
   ],
   rules: {
+    semi: ['error', 'always'],
     'no-console': [
       'warn', {
         allow: ['warn', 'error', 'info']

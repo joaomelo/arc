@@ -2,9 +2,6 @@ module.exports = function (api) {
   api.cache(true);
 
   return {
-    presets: [
-      '@babel/env',
-      '@babel/preset-typescript'
-    ]
+    presets: ['@babel/env']
   };
 };

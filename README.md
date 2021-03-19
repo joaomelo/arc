@@ -54,19 +54,15 @@ Since Vue was the choice, come with it other ecosystem libraries: Vuex, Vue-Rout
 
 # Development 
 
-## Process
-
-The development move by selecting a use case to implement and do the following steps:
-
-- Brainstorm test headlines to circumvent the use case (happy path, exception, security etc).
-- Iterate over the tests cases implementing first the test and then the feature.
-- Aspects are review with new tests if needed
-  - exceptions
-  - validation
-  - i18n
-  - ui
-- Reusability is assessed and implemented.
-
+API_KEY=KJHKJAHDKJASHDASD
+AUTH_DOMAIN=KLJFKLDSHFKSDLFJSDJFKL
+DATABASE_URL=KASJDLKSADKSALJD
+PROJECT_ID=JKDKLASDJLASDJAS
+STORAGE_BUCKET=ÇLDLÇAKÇLASDK
+MESSAGING_SENDER_ID=JKDHKJASHAKJSDHAKJSDH
+APP_ID=JKDHKJASHAKJSDHAKJSDH
+MEASUREMENT_ID=JKDHKJASHAKJSDHAKJSDH
+FIREBASE_AUTH_EMULATOR_URL=JKDHKJASHAKJSDHAKJSDH
 ## Architecture
 
 Every module is develop with this mindset: 'How can this module be decoupled so it could be exported as-is to do the same job in another app?'

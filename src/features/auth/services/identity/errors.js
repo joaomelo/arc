@@ -1,4 +1,4 @@
-import { AppError } from '@/app/error';
+import { AppError } from '../../../../app/error';
 
 export class EmailAlreadyInUseError extends AppError {
   constructor () {
@@ -19,15 +19,5 @@ export class CredentialsUnrecognizedError extends AppError {
       isOperational: true
     });
     Error.captureStackTrace(this, CredentialsUnrecognizedError);
-  }
-}
-
-export class UnsupportedSignMethod extends AppError {
-  constructor () {
-    super({
-      code: 'UNSUPPORTED_SIGN_METHOD',
-      isOperational: false
-    });
-    Error.captureStackTrace(this, UnsupportedSignMethod);
   }
 }

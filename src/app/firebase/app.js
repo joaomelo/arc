@@ -1,18 +1,18 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase/app';
 
-export function initFirebaseAppFromEnv (): firebase.app.App {
-  return initFirebaseApp(createFirebaseConfigFromEnv())
+export function initFirebaseAppFromEnv () {
+  return initFirebaseApp(createFirebaseConfigFromEnv());
 }
 
-export function initFirebaseApp (config: Object): firebase.app.App {
+export function initFirebaseApp (config) {
   const app = firebase.apps.length <= 0
     ? firebase.initializeApp(config)
-    : firebase.apps[0]
+    : firebase.apps[0];
 
-  return app
+  return app;
 }
 
-function createFirebaseConfigFromEnv (): Object {
+function createFirebaseConfigFromEnv () {
   return {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
@@ -22,5 +22,5 @@ function createFirebaseConfigFromEnv (): Object {
     messagingSender_id: process.env.MESSAGING_SENDER_ID,
     appId: process.env.APP_ID,
     measurementId: process.env.MEASUREMENT_ID
-  }
+  };
 }
