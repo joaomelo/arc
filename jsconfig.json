@@ -6,6 +6,6 @@
     "baseUrl": "./"
   },
   "typeAcquisition": { 
-      "include": [ "jest" ] 
+      "include": [ "jest", "xstate" ] 
   }
 }
