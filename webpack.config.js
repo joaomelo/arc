@@ -3,13 +3,12 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 const PATHS = {
   SRC: path.resolve(__dirname, 'src'),
-  BUILD: path.resolve(__dirname, 'build')
+  BUILD: path.resolve(__dirname, 'dist')
 };
 
 module.exports = env => {
@@ -21,19 +20,18 @@ module.exports = env => {
     devtool: 'source-map',
     watch: !isProd,
     resolve: {
-      alias: {
-        '@': PATHS.SRC
-      },
       extensions: ['.js', '.vue', '.json']
     },
-    entry: path.resolve(PATHS.SRC, 'main', 'vuetify-firebase.js'),
+    entry: path.resolve(PATHS.SRC, 'main', 'index.js'),
     output: {
       publicPath: '/',
       path: PATHS.BUILD,
       filename: `[name]${isProd ? '.[contenthash]' : ''}.bundle.js`
     },
     optimization: {
-      moduleIds: 'hashed',
+      // https://webpack.js.org/configuration/optimization/#optimizationmoduleids
+      // deterministic option is useful for long term caching...
+      moduleIds: 'deterministic',
       runtimeChunk: 'single',
       splitChunks: {
         cacheGroups: {
@@ -62,42 +60,35 @@ module.exports = env => {
           }
         },
         {
-          test: [/\.s(c|a)ss$/],
+          test: [/\.css$/],
           use: [
             'vue-style-loader',
             'style-loader',
-            'css-loader',
-            {
-              loader: 'sass-loader',
-              options: {
-                implementation: require('sass'),
-                sassOptions: {
-                  indentedSyntax: true
-                }
-              }
-            }
+            'css-loader'
           ]
         }
       ]
     },
     plugins: [
-      new ESLintPlugin({ extensions: ['js', 'vue'], fix: true }),
+      new ESLintPlugin({ extensions: ['js'], fix: true }),
+      // new ESLintPlugin({ extensions: ['js', 'vue'], fix: true }),
       new CircularDependencyPlugin({
         exclude: /node_modules/,
         allowAsyncCycles: false,
         cwd: process.cwd()
       }),
-      new CopyWebpackPlugin([
-        {
-          from: path.resolve(PATHS.SRC, 'app', 'images'),
-          to: path.resolve(PATHS.BUILD, 'public'),
-          toType: 'dir'
-        }
-      ]),
-      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'interfaces', 'views', 'vuetify', 'index.html') }),
-      new Dotenv({ path: path.resolve(__dirname, `env-${isProd ? 'prod' : 'dev'}.env`) }),
-      new VueLoaderPlugin(),
-      new VuetifyLoaderPlugin()
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.resolve(PATHS.SRC, 'app', 'images'),
+            to: path.resolve(PATHS.BUILD, 'public'),
+            toType: 'dir'
+          }
+        ]
+      }),
+      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'main', 'index.html') }),
+      new Dotenv({ path: path.resolve(__dirname, '.env') }),
+      new VueLoaderPlugin()
     ]
   };
 };
