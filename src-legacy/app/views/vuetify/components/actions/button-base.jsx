@@ -1,4 +1,3 @@
-import React from 'react';
 import { colors, spaces, weights } from '@/shared/design';
 
 function ButtonBase ({ label, ...rest }) {

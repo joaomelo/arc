@@ -1,4 +1,3 @@
-import React from 'react';
 import { spaces, colors } from '@/shared/design';
 
 export const Divider = props => (

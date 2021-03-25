@@ -1,4 +1,3 @@
-import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { spaces, colors } from '@/shared/design';
 import { PageUnsolved, PageAccount, PagePreferences } from '@/business/users';

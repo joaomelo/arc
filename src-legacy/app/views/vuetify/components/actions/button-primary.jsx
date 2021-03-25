@@ -1,4 +1,3 @@
-import React from 'react';
 import { colors } from '@/shared/design';
 import { ButtonBase } from './button-base';
 

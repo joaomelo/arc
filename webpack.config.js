@@ -1,7 +1,7 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const Dotenv = require('dotenv-webpack');
+// const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -12,7 +12,10 @@ const PATHS = {
 };
 
 module.exports = env => {
-  const isProd = !!env.prod;
+  const environment = establishEnvironment(env);
+  const isProd = ['localProd', 'ciProd'].includes(environment);
+
+  // const envPlugin = createEnvVariablesPlugin(environment);
 
   return {
     target: 'web',
@@ -44,6 +47,7 @@ module.exports = env => {
       }
     },
     module: {
+
       rules: [
         {
           test: /\.vue$/,
@@ -70,6 +74,7 @@ module.exports = env => {
       ]
     },
     plugins: [
+      // envPlugin,
       new ESLintPlugin({ extensions: ['js'], fix: true }),
       // new ESLintPlugin({ extensions: ['js', 'vue'], fix: true }),
       new CircularDependencyPlugin({
@@ -87,8 +92,56 @@ module.exports = env => {
         ]
       }),
       new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'main', 'index.html') }),
-      new Dotenv({ path: path.resolve(__dirname, '.env') }),
       new VueLoaderPlugin()
     ]
   };
 };
+
+function establishEnvironment (envArgs) {
+  if (envArgs.dev) return 'dev';
+  if (envArgs.localProd) return 'localProd';
+  if (envArgs.ciProd) return 'ciProd';
+
+  throw new Error('unsupported environment');
+}
+
+// function createEnvVariablesPlugin (environment) {
+//   switch (environment) {
+//     case 'dev': return createPluginToLoadFromEnvDevFile();
+//     case 'localProd': return createPluginReducingFromEnvDevFile();
+//     case 'ciProd': return createPluginFromEnvInMemory();
+//     default: throw new Error('unsupported environment');
+//   }
+// };
+
+// // new Dotenv({ path: path.resolve(__dirname, '.env') }),
+
+// const envDevFile = path.resolve(process.cwd(), '.env');
+
+// function createPluginToLoadFromEnvDevFile () {
+//   console.info(`attempting to inject env vars from "${envDevFile}" file using webpack plugin`);
+//   const dotEnvPlugin = new Dotenv({ path: envDevFile });
+//   return dotEnvPlugin;
+// }
+
+// function createPluginReducingFromEnvDevFile () {
+//   console.info(`attempting to inject env vars reducing from "${envDevFile}" file using webpack plugin`);
+//   const dotEnvPlugin = new Dotenv({ path: envDevFile });
+
+//   // the removal of emulator env variable is relevant to the productions app
+//   // since firebase node sdk automatically attempts connection to emulator host
+//   // if variable is set
+//   delete dotEnvPlugin.definitions['process.env.FIRESTORE_EMULATOR_HOST'];
+
+//   return dotEnvPlugin;
+// }
+
+// function createPluginFromEnvInMemory () {
+//   console.info('attempting to inject env vars from memory using webpack plugin');
+//   const dotEnvPlugin = new webpack.DefinePlugin({
+//     'process.env.SCALE_SERP_KEY': JSON.stringify(process.env.SCALE_SERP_KEY),
+//     'process.env.SEND_GRID_KEY': JSON.stringify(process.env.SEND_GRID_KEY),
+//     'process.env.DEFAULT_FROM_EMAIL': JSON.stringify(process.env.DEFAULT_FROM_EMAIL)
+//   });
+//   return dotEnvPlugin;
+// }

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const BaseSelect = ({ defaultValue, options, ...rest }) => {
   const stdOptions = options.map(option => {
     return {

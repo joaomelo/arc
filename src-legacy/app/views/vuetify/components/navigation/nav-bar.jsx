@@ -1,4 +1,3 @@
-import React from 'react';
 import { spaces, colors } from '@/shared/design';
 import { NavLogo } from './nav-logo';
 import { NavLinks } from './nav-links';

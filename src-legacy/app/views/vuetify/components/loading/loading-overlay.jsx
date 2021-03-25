@@ -1,4 +1,3 @@
-import React from 'react';
 import { LoadingSpinner } from './loading-spinner';
 
 function LoadingOverlay ({ isLoading }) {
@@ -22,6 +21,6 @@ function LoadingOverlay ({ isLoading }) {
       <LoadingSpinner />
     </span>
   );
-};
+}
 
 export { LoadingOverlay };

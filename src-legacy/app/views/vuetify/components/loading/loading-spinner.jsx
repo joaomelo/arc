@@ -1,4 +1,3 @@
-import React from 'react';
 import { sizes, colors } from '@/shared/design';
 
 function LoadingSpinner () {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { LOCALES } from '__com/i18n';
 import { ControlSelect } from '@/shared/components';

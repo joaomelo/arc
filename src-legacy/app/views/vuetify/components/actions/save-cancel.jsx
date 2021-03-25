@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { spaces } from '@/shared/design';
 import { ButtonSubmit } from './button-submit';

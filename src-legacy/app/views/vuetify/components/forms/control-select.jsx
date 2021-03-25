@@ -1,4 +1,3 @@
-import React from 'react';
 import { ControlGroup } from './control-group';
 import { BaseSelect } from './base-select';
 

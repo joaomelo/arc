@@ -1,4 +1,4 @@
-import React, { Children, useState } from 'react';
+import { Children, useState } from 'react';
 import { weights, spaces, colors } from '@/shared/design';
 import { Card } from './card';
 

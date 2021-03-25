@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@mdi/react';
 import { weights, spaces, colors, breakpoints } from '@/shared/design';

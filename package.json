@@ -15,7 +15,9 @@
     "test:local:integration": "firebase emulators:exec -- \"jest --detectOpenHandles --setupTestFrameworkScriptFile=./tests/config/local-prod.js\"",
     "test:ci:integration": "firebase emulators:exec -- \"jest --setupTestFrameworkScriptFile=./tests/config/ci.js\"",
     "deploy:local": "npm run base:lint && npm run base:build -- --env prodLocal && npm run test:local:integration && firebase deploy",
-    "deploy:ci": "npm run base:lint && npm run base:build -- --env prodCi && npm run test:ci:integration && firebase deploy"
+    "deploy:ci": "npm run base:lint && npm run base:build -- --env prodCi && npm run test:ci:integration && firebase deploy",
+    "local:prod:build": "rimraf dist/* && webpack --config webpack.config.js --env localProd",
+    "ci:prod:build": "rimraf dist/* && webpack --config webpack.config.js --env ciProd"
   },
   "repository": {
     "type": "git",
@@ -35,8 +37,6 @@
     "regenerator-runtime": "^0.13.7",
     "rxjs": "^6.6.6",
     "uuid": "^8.3.2",
-    "vue": "^3.0.7",
-    "vue-i18n": "^8.24.1",
     "winston": "^3.3.3",
     "xstate": "^4.16.2"
   },
@@ -45,9 +45,8 @@
     "@babel/core": "^7.13.10",
     "@babel/eslint-parser": "^7.13.10",
     "@babel/preset-env": "^7.13.12",
-    "@babel/preset-typescript": "^7.13.0",
+    "@babel/preset-react": "^7.12.13",
     "@types/jest": "^26.0.20",
-    "@vue/compiler-sfc": "^3.0.7",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "circular-dependency-plugin": "^5.2.0",
@@ -70,7 +69,6 @@
     "playwright": "^1.9.2",
     "rimraf": "^3.0.2",
     "style-loader": "^2.0.0",
-    "vue-loader": "^16.1.2",
     "webpack": "^5.27.2",
     "webpack-cli": "^4.5.0"
   }

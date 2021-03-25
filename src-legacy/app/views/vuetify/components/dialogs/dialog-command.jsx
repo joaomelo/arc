@@ -1,4 +1,3 @@
-import React from 'react';
 import { spaces } from '@/shared/design';
 import { useCommand } from '@/shared/commands';
 import { LoadingOverlay } from '../loading';

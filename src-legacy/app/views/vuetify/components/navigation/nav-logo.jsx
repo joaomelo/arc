@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { appName, appVersion } from '__com/meta';
 import { weights, sizes } from '@/shared/design';
