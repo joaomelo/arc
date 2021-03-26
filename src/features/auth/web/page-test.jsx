@@ -1,3 +1,3 @@
 export function PageTest () {
-  return (<p>Hi</p>);
+  return (<p className="bg-green-500">Hi</p>);
 }

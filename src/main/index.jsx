@@ -10,6 +10,7 @@ import 'regenerator-runtime/runtime';
 // import { initAdaptedVueI18n } from '@/app/i18n';
 import { mountWeb } from '../app/web';
 import { PageTest } from '../features/auth';
+import '../app/styles';
 
 function main () {
   // let emulators = null;

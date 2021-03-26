@@ -1,7 +1,7 @@
 const path = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-// const Dotenv = require('dotenv-webpack');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
@@ -12,12 +12,11 @@ const PATHS = {
 
 module.exports = env => {
   const environment = establishEnvironment(env);
-  const mode = ['localProd', 'ciProd'].includes(environment) ? 'production' : 'development';
+  const mode = environment.toLowerCase().includes('prod') ? 'production' : 'development';
   const isProd = mode === 'production';
-
   console.info(`Webpack build for environment "${environment}" with mode "${mode}"`);
 
-  // const envPlugin = createEnvVariablesPlugin(environment);
+  const envPlugin = createEnvVariablesPlugin(environment);
 
   return {
     target: 'web',
@@ -64,12 +63,12 @@ module.exports = env => {
         },
         {
           test: [/\.css$/],
-          use: ['style-loader', 'css-loader']
+          use: ['style-loader', 'css-loader', 'postcss-loader']
         }
       ]
     },
     plugins: [
-      // envPlugin,
+      envPlugin,
       new ESLintPlugin({ extensions: ['js', 'jsx'], fix: true }),
       new CircularDependencyPlugin({
         exclude: /node_modules/,
@@ -91,30 +90,29 @@ module.exports = env => {
 };
 
 function establishEnvironment (envArgs) {
-  if (envArgs.dev) return 'dev';
-  if (envArgs.localProd) return 'localProd';
-  if (envArgs.ciProd) return 'ciProd';
+  if (envArgs.devLocal) return 'devLocal';
+  if (envArgs.localProd) return 'prodLocal';
+  if (envArgs.prodCi) return 'prodCi';
   throw new Error('unsupported environment');
 }
 
-// function createEnvVariablesPlugin (environment) {
-//   switch (environment) {
-//     case 'dev': return createPluginToLoadFromEnvDevFile();
-//     case 'localProd': return createPluginReducingFromEnvDevFile();
-//     case 'ciProd': return createPluginFromEnvInMemory();
-//     default: throw new Error('unsupported environment');
-//   }
-// };
+function createEnvVariablesPlugin (environment) {
+  switch (environment) {
+    case 'devLocal': return createPluginToLoadFromEnvDevFile();
+    // case 'prodLocal': return createPluginReducingFromEnvDevFile();
+    // case 'prodCi': return createPluginFromEnvInMemory();
+    default: throw new Error(`unsupported environment "${environment}" for env var loading`);
+  }
+};
 
-// // new Dotenv({ path: path.resolve(__dirname, '.env') }),
+function createPluginToLoadFromEnvDevFile () {
+  const envDevFile = path.resolve(process.cwd(), 'env-dev.env');
+  const dotEnvPlugin = new Dotenv({ path: envDevFile });
 
-// const envDevFile = path.resolve(process.cwd(), '.env');
+  console.info(`attempting to inject env vars from "${envDevFile}" file using webpack plugin`);
 
-// function createPluginToLoadFromEnvDevFile () {
-//   console.info(`attempting to inject env vars from "${envDevFile}" file using webpack plugin`);
-//   const dotEnvPlugin = new Dotenv({ path: envDevFile });
-//   return dotEnvPlugin;
-// }
+  return dotEnvPlugin;
+}
 
 // function createPluginReducingFromEnvDevFile () {
 //   console.info(`attempting to inject env vars reducing from "${envDevFile}" file using webpack plugin`);
