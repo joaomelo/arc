@@ -8,7 +8,7 @@ import 'regenerator-runtime/runtime';
 // import { isProduction } from '@/app/meta';
 // import { initVuex } from '@/app/store';
 // import { initAdaptedVueI18n } from '@/app/i18n';
-import { mountVue } from '../app/vue-app';
+import { mountWeb } from '../app/web';
 import { PageTest } from '../features/auth';
 
 function main () {
@@ -48,9 +48,9 @@ function main () {
   //   },
   //   components: validationComponents
   // });
-  mountVue({
-    element: '#container',
-    root: PageTest
+  mountWeb({
+    element: 'container',
+    root: <PageTest />
   });
 }
 

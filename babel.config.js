@@ -1,10 +1,5 @@
 module.exports = function (api) {
-  api.cache(true);
-
-  console.log({
-    babelEnv: process.env.BABEL_ENV,
-    nodeEnv: process.env.NODE_ENV
-  });
+  console.info(`Babel config function executed with envName: ${api.env()}`);
 
   return {
     presets: [
@@ -13,7 +8,7 @@ module.exports = function (api) {
         '@babel/preset-react',
         {
           runtime: 'automatic',
-          development: process.env.BABEL_ENV === 'development'
+          development: api.env() === 'development'
         }
       ]
     ]

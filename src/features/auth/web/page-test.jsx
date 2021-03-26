@@ -1,5 +1,3 @@
-export function pageTest(){
-  return (<p>Hi</p>)
+export function PageTest () {
+  return (<p>Hi</p>);
 }
-
-

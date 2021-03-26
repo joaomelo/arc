@@ -7,6 +7,7 @@ module.exports = {
   ],
   extends: [
     'standard',
+    'plugin:react/recommended',
     'plugin:jest/recommended',
     'plugin:jest/style',
     'plugin:jest-formatting/recommended'
@@ -18,7 +19,14 @@ module.exports = {
         allow: ['warn', 'error', 'info']
       }
     ],
-    'no-debugger': 'warn'
+    'no-debugger': 'warn',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off'
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   },
   env: {
     browser: true,

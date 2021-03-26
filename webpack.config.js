@@ -4,7 +4,6 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 // const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
 
 const PATHS = {
   SRC: path.resolve(__dirname, 'src'),
@@ -13,19 +12,22 @@ const PATHS = {
 
 module.exports = env => {
   const environment = establishEnvironment(env);
-  const isProd = ['localProd', 'ciProd'].includes(environment);
+  const mode = ['localProd', 'ciProd'].includes(environment) ? 'production' : 'development';
+  const isProd = mode === 'production';
+
+  console.info(`Webpack build for environment "${environment}" with mode "${mode}"`);
 
   // const envPlugin = createEnvVariablesPlugin(environment);
 
   return {
     target: 'web',
-    mode: isProd ? 'production' : 'development',
+    mode,
     devtool: 'source-map',
     watch: !isProd,
     resolve: {
-      extensions: ['.js', '.vue', '.json']
+      extensions: ['.js', '.jsx', '.json']
     },
-    entry: path.resolve(PATHS.SRC, 'main', 'index.js'),
+    entry: path.resolve(PATHS.SRC, 'main', 'index.jsx'),
     output: {
       publicPath: '/',
       path: PATHS.BUILD,
@@ -50,33 +52,25 @@ module.exports = env => {
 
       rules: [
         {
-          test: /\.vue$/,
-          loader: 'vue-loader'
-        },
-        {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/env']
+              presets: ['@babel/env'],
+              envName: mode
             }
           }
         },
         {
           test: [/\.css$/],
-          use: [
-            'vue-style-loader',
-            'style-loader',
-            'css-loader'
-          ]
+          use: ['style-loader', 'css-loader']
         }
       ]
     },
     plugins: [
       // envPlugin,
-      new ESLintPlugin({ extensions: ['js'], fix: true }),
-      // new ESLintPlugin({ extensions: ['js', 'vue'], fix: true }),
+      new ESLintPlugin({ extensions: ['js', 'jsx'], fix: true }),
       new CircularDependencyPlugin({
         exclude: /node_modules/,
         allowAsyncCycles: false,
@@ -91,8 +85,7 @@ module.exports = env => {
           }
         ]
       }),
-      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'main', 'index.html') }),
-      new VueLoaderPlugin()
+      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'main', 'index.html') })
     ]
   };
 };
@@ -101,7 +94,6 @@ function establishEnvironment (envArgs) {
   if (envArgs.dev) return 'dev';
   if (envArgs.localProd) return 'localProd';
   if (envArgs.ciProd) return 'ciProd';
-
   throw new Error('unsupported environment');
 }
 

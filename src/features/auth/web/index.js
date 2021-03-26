@@ -4,7 +4,6 @@
 // import PageSignIn from './page-sign-in';
 // export { PageAccount } from './page-account';
 // export { PagePreferences } from './page-preferences';
-import PageTest from './page-test';
 
 // export { PageUnsolved, PageSignUp, PageSignIn, MonitorAuth };
-export { PageTest };
+export { PageTest } from './page-test';
