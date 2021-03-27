@@ -7,7 +7,7 @@ describe('createIdentityProvider factory function', () => {
   let identityProvider;
   const config = {
     app: initFirebaseAppFromEnv(),
-    emulatorUrl: process.env.FIRESTORE_EMULATOR_HOST
+    emulatorHost: process.env.FIRESTORE_EMULATOR_HOST
   };
 
   beforeAll(async () => {

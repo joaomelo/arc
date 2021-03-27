@@ -5,7 +5,7 @@ describe('identity provider factory module', () => {
   test('correctly connect to emulator', async () => {
     const config = {
       app: initFirebaseAppFromEnv(),
-      emulatorUrl: process.env.FIRESTORE_EMULATOR_HOST
+      emulatorHost: process.env.FIRESTORE_EMULATOR_HOST
     };
 
     const identityProvider = await createIdentityProvider(config);

@@ -1,4 +1,4 @@
-import { signIn } from './sign-in';
+import { signInCase } from './sign-in';
 
 describe('sign-in use case', () => {
   test('happy path', async () => {
@@ -8,7 +8,7 @@ describe('sign-in use case', () => {
     const identityProvider = { signIn: jest.fn(credentials => user) };
     const authStore = { send: jest.fn((event, payload) => undefined) };
 
-    await signIn(credentials, { identityProvider, authStore });
+    await signInCase(credentials, { identityProvider, authStore });
 
     expect(identityProvider.signIn).toHaveBeenCalledWith(credentials);
     expect(authStore.send).toHaveBeenCalledWith('SIGN_IN', { user });

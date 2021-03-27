@@ -1,15 +1,15 @@
 import { credentials } from '../../../../tests/fixtures';
 import { del } from '../../../app/request';
 
-export async function plugEmulator (fireauth, emulatorUrl) {
-  fireauth.useEmulator(emulatorUrl, { disableWarnings: true });
-  await clearUsers(fireauth, emulatorUrl);
+export async function plugEmulator (fireauth, emulatorHost) {
+  fireauth.useEmulator(emulatorHost, { disableWarnings: true });
+  await clearUsers(fireauth, emulatorHost);
   await createDefaultUser(fireauth);
 }
 
-function clearUsers (fireauth, emulatorUrl) {
+function clearUsers (fireauth, emulatorHost) {
   const projectId = fireauth.app.options.projectId;
-  const clearUsersUrl = `${emulatorUrl}/emulator/v1/projects/${projectId}/accounts`;
+  const clearUsersUrl = `${emulatorHost}/emulator/v1/projects/${projectId}/accounts`;
   return del(clearUsersUrl);
 }
 

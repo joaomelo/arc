@@ -26,7 +26,7 @@ module.exports = env => {
     resolve: {
       extensions: ['.js', '.jsx', '.json']
     },
-    entry: path.resolve(PATHS.SRC, 'main', 'index.jsx'),
+    entry: path.resolve(PATHS.SRC, 'main', 'index.js'),
     output: {
       publicPath: '/',
       path: PATHS.BUILD,

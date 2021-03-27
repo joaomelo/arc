@@ -20,8 +20,10 @@ module.exports = {
       }
     ],
     'no-debugger': 'warn',
+    'import/export': 0, // erroneous report "no named exports" when exporting from jsx
     'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 0
   },
   settings: {
     react: {

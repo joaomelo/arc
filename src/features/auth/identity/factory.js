@@ -9,11 +9,11 @@ export async function createIdentityProvider (config) {
 }
 
 async function initFireauth (config) {
-  const { app, emulatorUrl } = config;
+  const { app, emulatorHost } = config;
 
   const fireauth = app.auth();
-  if (emulatorUrl) {
-    await plugEmulator(fireauth, emulatorUrl);
+  if (emulatorHost) {
+    await plugEmulator(fireauth, emulatorHost);
   }
 
   return fireauth;
