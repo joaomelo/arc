@@ -20,7 +20,10 @@ export function createAuthStore () {
   return {
     state,
     getters,
-    subscribe: observer => subject.subscribe(observer),
+    subscribe: observer => {
+      const subscription = subject.subscribe(observer);
+      return () => subscription.unsubscribe();
+    },
     actions: {
       signIn (user) {
         state.user = { ...user };

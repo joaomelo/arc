@@ -7,14 +7,14 @@ import 'regenerator-runtime/runtime';
 // import { initVeeValidate } from '@/app/validation';
 // import { isProduction } from '@/app/meta';
 // import { initAdaptedVueI18n } from '@/app/i18n';
-import { createSessionStateStore } from '../app/store';
+import { createStores } from '../app/stores';
 import { initFirebaseAppFromEnv } from '../app/firebase';
 import { createIdentityProvider } from '../features/auth';
 import { mountWeb, Root } from '../app/web';
 import '../app/styles';
 
 async function main () {
-  const store = createSessionStateStore();
+  const stores = createStores();
 
   const app = initFirebaseAppFromEnv();
   const emulatorHost = process.env.FIRESTORE_EMULATOR_HOST;
@@ -27,7 +27,7 @@ async function main () {
   // const { validationComponents } = initVeeValidate(i18n);
 
   const dependencies = {
-    store,
+    stores,
     identityProvider
   };
 

@@ -1,15 +1,11 @@
-import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import { useGetter } from '../../store-toolkit';
 import { SignInPresenter } from '../../../features/auth';
 import { ArcsPresenter } from '../../../features/arcs';
 
 export function Pages ({ dependencies }) {
-  const [isSignedIn, setIsSignedIn] = useState(false);
-  dependencies.store.authStore.subscribe(getters => {
-    if (getters.isSignedIn !== isSignedIn) {
-      setIsSignedIn(getters.isSignedIn);
-    };
-  });
+  const { authStore } = dependencies.stores;
+  const isSignedIn = useGetter(authStore, 'isSignedIn');
 
   return (
     <Router >

@@ -1,6 +1,6 @@
 import { createAuthStore } from '../../features/auth';
 
-export function createSessionStateStore () {
+export function createStores () {
   const authStore = createAuthStore();
 
   return {
