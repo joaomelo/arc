@@ -6,11 +6,11 @@ describe('sign-in use case', () => {
     const credentials = { email, password: 'password' };
     const user = { id: 'id', email };
     const identityProvider = { signIn: jest.fn(credentials => user) };
-    const authStore = { send: jest.fn((event, payload) => undefined) };
+    const authStore = { signIn: jest.fn(user => undefined) };
 
     await signInCase(credentials, { identityProvider, authStore });
 
     expect(identityProvider.signIn).toHaveBeenCalledWith(credentials);
-    expect(authStore.send).toHaveBeenCalledWith('SIGN_IN', { user });
+    expect(authStore.actions.signIn).toHaveBeenCalledWith('SIGN_IN', { user });
   });
 });
