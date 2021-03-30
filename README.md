@@ -2,7 +2,7 @@ THIS PROJECT IS IN EARLY DEVELOPMENT THE DOCS BELOW SHOULD BE IGNORED FOR NOW.
 
 <!-- ![publish](https://github.com/joaomelo/arc/workflows/publish/badge.svg?branch=master) -->
 
-# Arc
+# Arcs
 
 ARC is an experimental web app that aims to help individuals, organizations, communities and families to collaboratively organize their work pipeline using an impact driven mindset.
 
