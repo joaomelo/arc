@@ -10,7 +10,7 @@ import 'regenerator-runtime/runtime';
 import { createStores } from '../app/stores';
 import { initFirebaseAppFromEnv } from '../app/firebase';
 import { createIdentityProvider } from '../features/auth';
-import { mountWeb, Root } from '../app/web';
+import { mountView, Root } from '../app/view';
 import '../app/styles';
 
 async function main () {
@@ -31,7 +31,7 @@ async function main () {
     identityProvider
   };
 
-  mountWeb({
+  mountView({
     element: 'container',
     Root,
     dependencies

@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 
-export function mountWeb (config) {
+export function mountView (config) {
   const { element, Root, dependencies } = config;
   ReactDOM.render(
     <Root dependencies={dependencies}/>,

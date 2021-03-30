@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 
-export function useGetter (store, getter) {
-  const [value, setValue] = useState(null);
+export function useGetter (store, getter, initialValue = null) {
+  const [value, setValue] = useState(initialValue);
 
-  const observer = getters => getters[getter] !== value && setValue(getters[getter]);
+  const observer = getters => setValue(getters[getter]);
   const subscribe = () => store.subscribe(observer);
-
-  useEffect(subscribe);
+  useEffect(subscribe, [store, getter]);
 
   return value;
 }

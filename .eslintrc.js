@@ -8,6 +8,7 @@ module.exports = {
   extends: [
     'standard',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:jest/recommended',
     'plugin:jest/style',
     'plugin:jest-formatting/recommended'
