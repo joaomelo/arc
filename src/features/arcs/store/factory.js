@@ -1,4 +1,5 @@
-import { BehaviorSubject } from 'rxjs';
+
+import { createStore } from '../../../app/store-toolkit';
 import { arcs } from '../../../../tests/fixtures';
 
 const indexedArcs = arcs.reduce((acc, arc) => {
@@ -17,20 +18,11 @@ export function createArcsStore () {
     }
   };
 
-  const subject = new BehaviorSubject(getters);
-
-  return {
-    state,
-    getters,
-    subscribe: observer => {
-      const subscription = subject.subscribe(observer);
-      return () => subscription.unsubscribe();
-    },
-    actions: {
-      addItem (arc) {
-        state.arcs[arc.id] = { ...arc };
-        subject.next(getters);
-      }
+  const actions = {
+    addItem (arc) {
+      state.arcs[arc.id] = { ...arc };
     }
   };
+
+  return createStore({ state, getters, actions });
 }

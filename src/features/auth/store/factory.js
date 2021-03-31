@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+import { createStore } from '../../../app/store-toolkit';
 
 export function createAuthStore () {
   const state = {
@@ -15,26 +15,16 @@ export function createAuthStore () {
     }
   };
 
-  const subject = new BehaviorSubject(getters);
-
-  return {
-    state,
-    getters,
-    subscribe: observer => {
-      const subscription = subject.subscribe(observer);
-      return () => subscription.unsubscribe();
+  const actions = {
+    signIn (user) {
+      state.user = { ...user };
+      state.authStatus = 'signedIn';
     },
-    actions: {
-      signIn (user) {
-        state.user = { ...user };
-        state.authStatus = 'signedIn';
-        subject.next(getters);
-      },
-      signOut () {
-        state.user = null;
-        state.authStatus = 'signedOut';
-        subject.next(getters);
-      }
+    signOut () {
+      state.user = null;
+      state.authStatus = 'signedOut';
     }
   };
+
+  return createStore({ state, getters, actions });
 }
