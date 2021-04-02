@@ -1,9 +1,8 @@
-import { signInCase } from '../domain';
+import { signInCase } from '../cases';
 import { SignInView } from './sign-in-view';
 
 export function SignInPresenter ({ dependencies }) {
-  const { stores, identityProvider } = dependencies;
-  const { authStore } = stores;
+  const { authStore, identityProvider } = dependencies;
   const onSubmit = ({ email, password }) =>
     signInCase({ email, password }, { authStore, identityProvider });
 

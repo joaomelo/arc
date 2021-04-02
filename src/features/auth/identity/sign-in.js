@@ -1,4 +1,5 @@
 import { CredentialsUnrecognizedError } from './errors';
+import { extractUser } from './extract-user';
 
 export async function signIn (credentials, fireauth) {
   try {
@@ -14,13 +15,4 @@ export async function signIn (credentials, fireauth) {
         throw error;
     }
   }
-}
-
-function extractUser (fireauthUser) {
-  const user = {
-    id: fireauthUser.uid,
-    email: fireauthUser.email
-  };
-
-  return user;
 }

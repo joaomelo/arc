@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
-import { useGetter } from '../../store-toolkit';
+import { useGetter } from '../../hooks';
 import { SignInPresenter } from '../../../features/auth';
 import { ArcsPresenter } from '../../../features/arcs';
 
 export function Pages ({ dependencies }) {
-  const { authStore } = dependencies.stores;
+  const { authStore } = dependencies;
   const isSignedIn = useGetter(authStore, 'isSignedIn');
 
   return (

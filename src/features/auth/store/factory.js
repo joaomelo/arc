@@ -1,8 +1,7 @@
-import { createStore } from '../../../app/store-toolkit';
+import { createBaseStore } from '../../../app/store';
 
-export function createAuthStore () {
+export function createAuthStore (identityProvider) {
   const state = {
-    authStatus: 'signedOut',
     user: null
   };
 
@@ -15,16 +14,12 @@ export function createAuthStore () {
     }
   };
 
-  const actions = {
-    signIn (user) {
-      state.user = { ...user };
-      state.authStatus = 'signedIn';
-    },
-    signOut () {
-      state.user = null;
-      state.authStatus = 'signedOut';
-    }
-  };
+  const authStore = createBaseStore({ state, getters });
 
-  return createStore({ state, getters, actions });
+  identityProvider.subscribe(user => {
+    state.user = user;
+    authStore.invalidate();
+  });
+
+  return authStore;
 }

@@ -1,6 +1,7 @@
 import 'firebase/auth';
 import { plugEmulator } from './emulator';
 import { signIn } from './sign-in';
+import { subscribe } from './subscribe';
 
 export async function createIdentityProvider (config) {
   const firebaseAuth = await initFireauth(config);
@@ -21,6 +22,7 @@ async function initFireauth (config) {
 
 function adaptFirebaseAuth (fireauth) {
   return {
+    subscribe: observer => subscribe(observer, fireauth),
     signIn: credentials => signIn(credentials, fireauth)
   };
 }

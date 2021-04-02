@@ -90,10 +90,9 @@ module.exports = env => {
 };
 
 function establishEnvironment (envArgs) {
-  if (envArgs.devLocal) return 'devLocal';
   if (envArgs.localProd) return 'prodLocal';
   if (envArgs.prodCi) return 'prodCi';
-  throw new Error('unsupported environment');
+  return 'devLocal';
 }
 
 function createEnvVariablesPlugin (environment) {
