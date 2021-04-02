@@ -1,11 +1,13 @@
 import { initFirebaseAppFromEnv } from '../../../app/firebase';
 import { createIdentityProvider } from './factory';
 
-describe('identity provider factory module', () => {
-  test('correctly connect to emulator', async () => {
+describe('firestore repository provider factory', () => {
+  test('correctly connect to emulator and clear data', async () => {
+    // create aoo, insert dummy data and check that the emulator is empty
+
     const config = {
       app: initFirebaseAppFromEnv(),
-      emulatorHost: process.env.FIREAUTH_EMULATOR_HOST
+      emulatorHost: process.env.FIRESTORE_EMULATOR_HOST
     };
 
     const identityProvider = await createIdentityProvider(config);

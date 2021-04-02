@@ -9,7 +9,7 @@ import { createArcsStore, createArcsRepository } from '../features/arcs';
 
 async function main () {
   const app = initFirebaseAppFromEnv();
-  const emulatorHost = process.env.FIRESTORE_EMULATOR_HOST;
+  const emulatorHost = process.env.FIREAUTH_EMULATOR_HOST;
 
   const identityProvider = await createIdentityProvider({ app, emulatorHost });
   const authStore = createAuthStore(identityProvider);
