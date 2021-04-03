@@ -6,6 +6,6 @@
     "baseUrl": "./"
   },
   "typeAcquisition": { 
-      "include": [ "jest", "xstate" ] 
+      "include": [ "jest", "playwright" ] 
   }
 }

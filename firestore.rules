@@ -7,6 +7,10 @@ service cloud.firestore {
       // allow create: if request.resource.id == 'dummy-key';
     }
 
+    match /arcs/{doc} {
+      allow read: if request.auth.uid != null;
+    }
+
     match /profiles/{profileId} {
       allow delete: if false;
       allow read: if request.auth.uid != null;

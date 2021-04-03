@@ -19,7 +19,7 @@ async function main () {
   const repositoryProvider = await createRepositoryProvider({ ...suite, firestoreEmulatorHost });
 
   const arcsRepository = createArcsRepository(repositoryProvider);
-  const arcsStore = createArcsStore(arcsRepository);
+  const arcsStore = createArcsStore(arcsRepository, authStore);
 
   const dependencies = {
     identityProvider,

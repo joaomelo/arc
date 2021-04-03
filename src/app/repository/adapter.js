@@ -47,7 +47,7 @@ async function query (filters, collection, firebase) {
 function subscribe (filters, observer, collection, firebase) {
   const query = mountQuery(filters, collection);
 
-  query.onSnapshot(snapshot => {
+  return query.onSnapshot(snapshot => {
     const items = convertSnapshotToItems(snapshot, firebase);
     observer(items);
   });
