@@ -4,13 +4,12 @@ import { adaptFirestore } from './adapter';
 
 export async function createRepositoryProvider (config) {
   const firestore = await initFirestore(config);
-  const repositoryProvider = adaptFirestore(firestore);
+  const repositoryProvider = adaptFirestore({ ...config, firestore });
   return repositoryProvider;
 }
 
 async function initFirestore (config) {
-  const { suite, firestoreEmulatorHost } = config;
-  const { app, projectId } = suite;
+  const { app, projectId, firestoreEmulatorHost } = config;
 
   const firestore = app.firestore();
 

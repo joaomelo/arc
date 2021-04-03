@@ -1,8 +1,10 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /dummy/dummy-key {
-      allow read, write: if true;
+    match /dummy/{doc} {
+      allow read, create: if true;
+      // allow read: if doc == 'dummy-key';
+      // allow create: if request.resource.id == 'dummy-key';
     }
 
     match /profiles/{profileId} {

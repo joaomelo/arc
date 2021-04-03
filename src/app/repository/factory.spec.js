@@ -3,7 +3,7 @@ import { createRepositoryProvider } from './factory';
 
 describe('firestore repository provider factory', () => {
   const config = {
-    suite: initFirebaseSuiteFromEnv(),
+    ...initFirebaseSuiteFromEnv(),
     firestoreEmulatorHost: process.env.FIRESTORE_EMULATOR_HOST
   };
 
@@ -14,22 +14,23 @@ describe('firestore repository provider factory', () => {
   });
 
   test('correctly instantiate firestore repository', async () => {
-    expect(repositoryProvider.firestore)
-      .toBeInstanceOf(config.suite.firebase.firestore.Firestore);
+    expect(repositoryProvider).toHaveProperty('collection');
   });
 
   test('connect to emulator and clear data', async () => {
-    // console.log(repositoryProvider);
+    const collection = repositoryProvider.collection('dummy');
 
-    const docRef = repositoryProvider
-      .firestore
-      .collection('dummy')
-      .doc('dummy-key');
-    await docRef.set({ dummyData: 'dummyData' });
+    await collection.addItems([{
+      id: 'dummy-key',
+      dummyData: 'dummyData'
+    }]);
 
     repositoryProvider = await createRepositoryProvider(config);
 
-    const doc = await docRef.get();
-    expect(doc.exists).toBeFalsy();
+    const items = await repositoryProvider
+      .collection('dummy')
+      .queryItems();
+
+    expect(items).toHaveLength(0);
   });
 });

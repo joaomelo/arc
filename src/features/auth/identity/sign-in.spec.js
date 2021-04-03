@@ -6,7 +6,7 @@ import { createIdentityProvider } from './factory';
 describe('createIdentityProvider factory function', () => {
   let identityProvider;
   const config = {
-    suite: initFirebaseSuiteFromEnv(),
+    ...initFirebaseSuiteFromEnv(),
     authEmulatorHost: process.env.FIREAUTH_EMULATOR_HOST
   };
 
