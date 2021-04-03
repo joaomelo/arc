@@ -1,6 +1,6 @@
 export function adaptFirestore (config) {
   return {
-    collection: name => collection(name, config)
+    repository: name => collection(name, config)
   };
 }
 
@@ -9,12 +9,13 @@ function collection (name, config) {
   const collection = firestore.collection(name);
 
   return {
-    queryItems: filters => queryItems(filters, collection, firebase),
-    addItems: items => addItems(items, collection, firestore)
+    add: items => add(items, collection, firestore),
+    query: filters => query(filters, collection, firebase),
+    subscribe: (filter, observer) => subscribe(filter, observer, collection, firebase)
   };
 }
 
-async function addItems (items, collection, firestore) {
+async function add (items, collection, firestore) {
   if (!Array.isArray(items) || items.length === 0) {
     return true;
   };
@@ -34,18 +35,36 @@ async function addItems (items, collection, firestore) {
   return true;
 }
 
-async function queryItems (filters = [], collection, firebase) {
+async function query (filters, collection, firebase) {
+  const query = mountQuery(filters, collection);
+
+  const snapshot = await query.get();
+  const items = convertSnapshotToItems(snapshot, firebase);
+
+  return items;
+};
+
+function subscribe (filters, observer, collection, firebase) {
+  const query = mountQuery(filters, collection);
+
+  query.onSnapshot(snapshot => {
+    const items = convertSnapshotToItems(snapshot, firebase);
+    observer(items);
+  });
+}
+
+function mountQuery (filters = [], collection) {
   let query = collection;
   filters.forEach(filter => {
     const { field, operator, value } = filter;
     query = query.where(field, operator, value);
   });
+  return query;
+}
 
-  const snapshot = await query.get();
-
-  const items = snapshot.docs.map(convertDocToItem, firebase);
-  return items;
-};
+function convertSnapshotToItems (snapshot, firebase) {
+  return snapshot.docs.map(convertDocToItem, firebase);
+}
 
 function convertDocToItem (doc, firebase) {
   const item = {};

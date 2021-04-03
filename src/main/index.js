@@ -11,12 +11,12 @@ import { createArcsStore, createArcsRepository } from '../features/arcs';
 async function main () {
   const suite = initFirebaseSuiteFromEnv();
 
-  const firestoreEmulatorHost = process.env.FIRESTORE_EMULATOR_HOST;
-  const repositoryProvider = await createRepositoryProvider({ ...suite, firestoreEmulatorHost });
-
   const authEmulatorHost = process.env.FIREAUTH_EMULATOR_HOST;
   const identityProvider = await createIdentityProvider({ ...suite, authEmulatorHost });
   const authStore = createAuthStore(identityProvider);
+
+  const firestoreEmulatorHost = process.env.FIRESTORE_EMULATOR_HOST;
+  const repositoryProvider = await createRepositoryProvider({ ...suite, firestoreEmulatorHost });
 
   const arcsRepository = createArcsRepository(repositoryProvider);
   const arcsStore = createArcsStore(arcsRepository);

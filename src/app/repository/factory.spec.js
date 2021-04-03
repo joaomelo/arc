@@ -14,13 +14,13 @@ describe('firestore repository provider factory', () => {
   });
 
   test('correctly instantiate firestore repository', async () => {
-    expect(repositoryProvider).toHaveProperty('collection');
+    expect(repositoryProvider).toHaveProperty('repository');
   });
 
   test('connect to emulator and clear data', async () => {
-    const collection = repositoryProvider.collection('dummy');
+    const repository = repositoryProvider.repository('dummy');
 
-    await collection.addItems([{
+    await repository.add([{
       id: 'dummy-key',
       dummyData: 'dummyData'
     }]);
@@ -28,8 +28,8 @@ describe('firestore repository provider factory', () => {
     repositoryProvider = await createRepositoryProvider(config);
 
     const items = await repositoryProvider
-      .collection('dummy')
-      .queryItems();
+      .repository('dummy')
+      .query();
 
     expect(items).toHaveLength(0);
   });
