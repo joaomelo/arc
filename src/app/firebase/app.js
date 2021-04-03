@@ -1,15 +1,24 @@
 import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
-export function initFirebaseAppFromEnv () {
-  return initFirebaseApp(createFirebaseConfigFromEnv());
+export function initFirebaseSuiteFromEnv () {
+  return initFirebaseSuite(createFirebaseConfigFromEnv());
 }
 
-export function initFirebaseApp (config) {
+export function initFirebaseSuite (config) {
   const app = firebase.apps.length <= 0
     ? firebase.initializeApp(config)
     : firebase.apps[0];
 
-  return app;
+  const suite = {
+    firebase,
+    app,
+    firestore: app.firestore(),
+    auth: app.auth()
+  };
+
+  return suite;
 }
 
 function createFirebaseConfigFromEnv () {

@@ -1,4 +1,4 @@
-import { initFirebaseAppFromEnv } from '../../../app/firebase';
+import { initFirebaseSuiteFromEnv } from '../../../app/firebase';
 import { createIdentityProvider } from './factory';
 
 describe('firestore repository provider factory', () => {
@@ -6,7 +6,7 @@ describe('firestore repository provider factory', () => {
     // create aoo, insert dummy data and check that the emulator is empty
 
     const config = {
-      app: initFirebaseAppFromEnv(),
+      suite: initFirebaseSuiteFromEnv(),
       emulatorHost: process.env.FIRESTORE_EMULATOR_HOST
     };
 

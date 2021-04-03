@@ -1,12 +1,12 @@
 import { credentials } from '../../../../tests/fixtures';
-import { initFirebaseAppFromEnv } from '../../../app/firebase';
+import { initFirebaseSuiteFromEnv } from '../../../app/firebase';
 import { CredentialsUnrecognizedError } from './errors';
 import { createIdentityProvider } from './factory';
 
 describe('createIdentityProvider factory function', () => {
   let identityProvider;
   const config = {
-    app: initFirebaseAppFromEnv(),
+    suite: initFirebaseSuiteFromEnv(),
     emulatorHost: process.env.FIREAUTH_EMULATOR_HOST
   };
 

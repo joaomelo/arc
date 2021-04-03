@@ -1,10 +1,10 @@
-import { initFirebaseAppFromEnv } from '../../../app/firebase';
+import { initFirebaseSuiteFromEnv } from '../../../app/firebase';
 import { createIdentityProvider } from './factory';
 
 describe('identity provider factory module', () => {
   test('correctly connect to emulator', async () => {
     const config = {
-      app: initFirebaseAppFromEnv(),
+      suite: initFirebaseSuiteFromEnv(),
       emulatorHost: process.env.FIREAUTH_EMULATOR_HOST
     };
 

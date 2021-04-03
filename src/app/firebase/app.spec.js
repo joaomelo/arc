@@ -1,10 +1,10 @@
-import { initFirebaseAppFromEnv } from './app';
+import { initFirebaseSuiteFromEnv } from './app';
 
 describe('firebase app module', () => {
   test('basic app initialization does no break', () => {
-    const app = initFirebaseAppFromEnv();
-    const sameApp = initFirebaseAppFromEnv();
+    const suite = initFirebaseSuiteFromEnv();
+    const sameSuite = initFirebaseSuiteFromEnv();
 
-    expect(app).toEqual(sameApp);
+    expect(suite.app).toEqual(sameSuite.app);
   });
 });

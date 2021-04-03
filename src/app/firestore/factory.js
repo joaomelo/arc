@@ -1,4 +1,3 @@
-import 'firebase/firestore';
 import { plugEmulator } from './emulator';
 import { adaptFirestore } from './repository';
 
@@ -9,9 +8,9 @@ export async function createRepositoryProvider (config) {
 }
 
 async function initFirestore (config) {
-  const { app, emulatorHost } = config;
+  const { suite, emulatorHost } = config;
 
-  const firestore = app.firestore();
+  const firestore = suite.firestore;
   if (emulatorHost) {
     await plugEmulator(firestore, emulatorHost);
   }
