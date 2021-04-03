@@ -7,7 +7,7 @@ describe('createIdentityProvider factory function', () => {
   let identityProvider;
   const config = {
     suite: initFirebaseSuiteFromEnv(),
-    emulatorHost: process.env.FIREAUTH_EMULATOR_HOST
+    authEmulatorHost: process.env.FIREAUTH_EMULATOR_HOST
   };
 
   beforeAll(async () => {

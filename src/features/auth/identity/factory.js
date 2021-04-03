@@ -1,3 +1,4 @@
+import 'firebase/auth';
 import { plugEmulator } from './emulator';
 import { signIn } from './sign-in';
 import { subscribe } from './subscribe';
@@ -9,11 +10,11 @@ export async function createIdentityProvider (config) {
 }
 
 async function initFireauth (config) {
-  const { suite, emulatorHost } = config;
+  const { suite, authEmulatorHost } = config;
 
-  const fireauth = suite.auth;
-  if (emulatorHost) {
-    await plugEmulator(fireauth, emulatorHost);
+  const fireauth = suite.app.auth();
+  if (authEmulatorHost) {
+    await plugEmulator(fireauth, authEmulatorHost);
   }
 
   return fireauth;

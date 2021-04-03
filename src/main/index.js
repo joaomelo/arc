@@ -2,19 +2,23 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import '../app/styles';
-import { initFirebaseSuiteFromEnv } from '../app/firebase';
 import { mountView, Root } from '../app/view';
+import { initFirebaseSuiteFromEnv } from '../app/firebase';
+import { createRepositoryProvider } from 'src/app/repository';
 import { createAuthStore, createIdentityProvider } from '../features/auth';
 import { createArcsStore, createArcsRepository } from '../features/arcs';
 
 async function main () {
   const suite = initFirebaseSuiteFromEnv();
-  const emulatorHost = process.env.FIREAUTH_EMULATOR_HOST;
 
-  const identityProvider = await createIdentityProvider({ suite, emulatorHost });
+  const firestoreEmulatorHost = process.env.FIRESTORE_EMULATOR_HOST;
+  const repositoryProvider = await createRepositoryProvider({ suite, firestoreEmulatorHost });
+
+  const authEmulatorHost = process.env.FIREAUTH_EMULATOR_HOST;
+  const identityProvider = await createIdentityProvider({ suite, authEmulatorHost });
   const authStore = createAuthStore(identityProvider);
 
-  const arcsRepository = createArcsRepository();
+  const arcsRepository = createArcsRepository(repositoryProvider);
   const arcsStore = createArcsStore(arcsRepository);
 
   const dependencies = {
