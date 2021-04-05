@@ -1,8 +1,10 @@
-const { chromium } = require('playwright');
+import { chromium } from 'playwright';
+import { credentials, globals } from '../../../../tests/fixtures';
 
 describe('sign in use case', () => {
-  let browser;
-  let page;
+  let browser, page;
+  const { baseUrl } = globals;
+  const { email, password } = credentials[0];
 
   beforeAll(async () => {
     browser = await chromium.launch();
@@ -21,7 +23,14 @@ describe('sign in use case', () => {
   });
 
   test('sign in with default user', async () => {
-    await page.goto('http://localhost:5000/');
-    expect(await page.title()).toBe('arc');
+    await page.goto(baseUrl);
+    await page.fill('#inputEmail', email);
+    await page.fill('#inputPassword', password);
+    await page.click('#buttonSignIn');
+
+    await page.waitForNavigation({ url: '**/in/arcs' });
+    const url = await page.url();
+
+    expect(url).toEqual(expect.stringContaining('/in/arcs'));
   });
 });

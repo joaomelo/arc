@@ -1,7 +1,11 @@
 import { BrowserRouter as Router, Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
-import { useGetter } from '../../hooks';
-import { SignInPresenter } from '../../../features/auth';
-import { ArcsPresenter } from '../../../features/arcs';
+import { useGetter } from '../hooks';
+import { SignInPresenter } from '../../features/auth';
+import { ArcsPresenter } from '../../features/arcs';
+
+export function Root ({ dependencies }) {
+  return <Pages dependencies={dependencies}/>;
+}
 
 export function Pages ({ dependencies }) {
   const { authStore } = dependencies;

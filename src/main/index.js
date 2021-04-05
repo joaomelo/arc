@@ -2,7 +2,7 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import '../app/styles';
-import { mountView, Root } from '../app/view';
+import { mountRoot } from '../app/root';
 import { initFirebaseSuiteFromEnv } from '../app/firebase';
 import { createRepositoryProvider } from '../app/repository';
 import { createAuthStore, createIdentityProvider } from '../features/auth';
@@ -28,9 +28,8 @@ async function main () {
     arcsStore
   };
 
-  mountView({
+  mountRoot({
     element: 'container',
-    Root,
     dependencies
   });
 }
