@@ -1,4 +1,4 @@
-export function ArcsListView ({ arcs }) {
+export function ListView ({ arcs }) {
   const arcsList = arcs.map(arc => <li key={arc.id}>{ arc.name }</li>);
   return (
     <>

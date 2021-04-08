@@ -1,1 +1,1 @@
-export * from './arcs-presenter';
+export * from './presenter';

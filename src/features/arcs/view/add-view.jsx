@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form';
 
-export function ArcAddView ({ onAdd }) {
+export function AddView ({ onAdd }) {
   const { register, handleSubmit } = useForm();
 
   return (
     <form onSubmit={handleSubmit(onAdd)}>
       <input
-        name="arc"
+        name="name"
         type="text"
         ref={register({ required: true })}
       />

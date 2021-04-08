@@ -6,11 +6,14 @@ export function createAuthStore (identityProvider) {
   };
 
   const getters = {
+    get isSignedIn () {
+      return !!state.user;
+    },
     get user () {
       return { ...state.user };
     },
-    get isSignedIn () {
-      return !!state.user;
+    get userId () {
+      return state.user.id;
     }
   };
 
