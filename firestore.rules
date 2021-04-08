@@ -8,7 +8,7 @@ service cloud.firestore {
     }
 
     match /arcs/{doc} {
-      allow read: if request.auth.uid != null;
+      allow read, create: if request.auth.uid != null;
     }
 
     match /profiles/{profileId} {

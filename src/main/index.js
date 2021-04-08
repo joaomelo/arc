@@ -28,6 +28,9 @@ async function main () {
     arcsStore
   };
 
+  // dependencies exposed globally to facilitate e2e tests
+  window.$dependencies = dependencies;
+
   mountRoot({
     element: 'container',
     dependencies
