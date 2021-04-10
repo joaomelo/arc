@@ -1,4 +1,4 @@
-import { useGetter } from '../../../app/hooks';
+import { useGetter } from '../../../app/store';
 import { addCase } from '../cases';
 import { ListView } from './list-view';
 import { AddView } from './add-view';

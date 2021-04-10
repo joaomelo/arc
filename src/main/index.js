@@ -2,9 +2,9 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import '../app/styles';
-import { mountRoot } from '../app/root';
 import { initFirebaseSuiteFromEnv } from '../app/firebase';
 import { createRepositoryProvider } from '../app/repository';
+import { mountRoot } from '../features/root';
 import { createAuthStore, createIdentityProvider } from '../features/auth';
 import { createArcsStore, createArcsRepository } from '../features/arcs';
 

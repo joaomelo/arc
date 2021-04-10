@@ -1,36 +1,37 @@
 import { BrowserRouter as Router, Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
-import { useGetter } from '../hooks';
-import { SignInPresenter } from '../../features/auth';
-import { ArcsPresenter } from '../../features/arcs';
+import { useGetter } from '../../app/store';
+import { NotFound } from '../not-found';
+import { SignInPresenter } from '../auth';
+import { ArcsPresenter } from '../arcs';
+import { ChallengesPresenter } from '../challenges';
 
 export function Root ({ dependencies }) {
-  return <Pages dependencies={dependencies}/>;
-}
-
-export function Pages ({ dependencies }) {
   const { authStore } = dependencies;
   const isSignedIn = useGetter(authStore, 'isSignedIn');
 
   return (
     <Router >
       <Switch>
-        <Route path="/out">
-          { isSignedIn && <Redirect to="/in" /> }
+        <Redirect exact from="/" to={isSignedIn ? '/i' : '/o'} />
+        <Route path='/o'>
+          { isSignedIn && <Redirect to="/i" /> }
           <OutPages dependencies={dependencies} />
         </Route>
-        <Route path="/in">
-          { !isSignedIn && <Redirect to="/out" /> }
+        <Route path="/i">
+          { !isSignedIn && <Redirect to="/o" /> }
           <InPages dependencies={dependencies} />
         </Route>
-        <Redirect to="/out" />
+        <Route path="/not-found">
+          <NotFound />
+        </Route>
+        <Redirect to='/not-found' />
       </Switch>
     </Router>
   );
 }
 
 function OutPages ({ dependencies }) {
-  const match = useRouteMatch();
-  const path = match.path;
+  const { path } = useRouteMatch();
   const defaultOutRoute = `${path}/sign-in`;
 
   return (
@@ -44,14 +45,18 @@ function OutPages ({ dependencies }) {
 }
 
 function InPages ({ dependencies }) {
-  const match = useRouteMatch();
-  const path = match.path;
+  const { path, url } = useRouteMatch();
   const defaultInRoute = `${path}/arcs`;
+
+  console.log(url);
 
   return (
     <Switch>
       <Route path={`${path}/arcs`}>
         <ArcsPresenter dependencies={dependencies}/>
+      </Route>
+      <Route path={`${path}/challenges?arc=:id`}>
+        <ChallengesPresenter dependencies={dependencies}/>
       </Route>
       <Redirect to={defaultInRoute} />
     </Switch>
