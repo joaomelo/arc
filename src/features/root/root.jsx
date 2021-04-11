@@ -45,17 +45,15 @@ function OutPages ({ dependencies }) {
 }
 
 function InPages ({ dependencies }) {
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
   const defaultInRoute = `${path}/arcs`;
-
-  console.log(url);
 
   return (
     <Switch>
       <Route path={`${path}/arcs`}>
         <ArcsPresenter dependencies={dependencies}/>
       </Route>
-      <Route path={`${path}/challenges?arc=:id`}>
+      <Route path={`${path}/challenges`}>
         <ChallengesPresenter dependencies={dependencies}/>
       </Route>
       <Redirect to={defaultInRoute} />
