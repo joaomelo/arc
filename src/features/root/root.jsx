@@ -1,4 +1,10 @@
-import { BrowserRouter as Router, Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  useRouteMatch
+} from 'react-router-dom';
 import { useGetter } from '../../app/store';
 import { NotFound } from '../not-found';
 import { SignInPresenter } from '../auth';
@@ -50,11 +56,12 @@ function InPages ({ dependencies }) {
 
   return (
     <Switch>
+      <Route path={`${path}/arcs/:arcId/challenges`}>
+        <ChallengesPresenter dependencies={dependencies}
+        />
+      </Route>
       <Route path={`${path}/arcs`}>
         <ArcsPresenter dependencies={dependencies}/>
-      </Route>
-      <Route path={`${path}/challenges`}>
-        <ChallengesPresenter dependencies={dependencies}/>
       </Route>
       <Redirect to={defaultInRoute} />
     </Switch>

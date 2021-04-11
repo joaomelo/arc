@@ -7,6 +7,7 @@ import { createRepositoryProvider } from '../app/repository';
 import { mountRoot } from '../features/root';
 import { createAuthStore, createIdentityProvider } from '../features/auth';
 import { createArcsStore, createArcsRepository } from '../features/arcs';
+import { createChallengesRepository, createChallengesStore } from '../features/challenges';
 
 async function main () {
   const suite = initFirebaseSuiteFromEnv();
@@ -20,12 +21,16 @@ async function main () {
 
   const arcsRepository = createArcsRepository(repositoryProvider);
   const arcsStore = createArcsStore(arcsRepository, authStore);
+  const challengesRepository = createChallengesRepository(repositoryProvider);
+  const challengesStore = createChallengesStore(challengesRepository, authStore);
 
   const dependencies = {
     identityProvider,
     authStore,
     arcsRepository,
-    arcsStore
+    arcsStore,
+    challengesRepository,
+    challengesStore
   };
 
   // dependencies exposed globally to facilitate e2e tests

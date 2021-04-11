@@ -1,12 +1,15 @@
-export function ListView ({ arc, challenges }) {
+export function ListView ({ challenges }) {
   return (
-    <>
-      <h2>{arc.name} challenges</h2>
-      <ChallengesList>{ challenges }</ChallengesList>
-    </>
+    <ul>
+      { challenges.map(challenge => <ListItem key={challenge.id} challenge={challenge} />)}
+    </ul>
   );
 }
 
-function ChallengesList ({ children }) {
-  return children.map(c => <li key={c.id}>{ c.name }</li>);
+function ListItem ({ challenge }) {
+  return (
+    <li>
+        { challenge.name }
+    </li>
+  );
 }

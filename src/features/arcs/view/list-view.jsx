@@ -20,7 +20,7 @@ function List ({ arcs }) {
 function ListItem ({ arc }) {
   return (
     <li>
-      <Link to={`/i/challenges?arc=${arc.id}`}>
+      <Link to={`/i/arcs/${arc.id}/challenges`}>
         { arc.name }
       </Link>
     </li>
