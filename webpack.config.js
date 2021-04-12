@@ -4,6 +4,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const PATHS = {
   SRC: path.resolve(__dirname, 'src'),
@@ -22,7 +23,6 @@ module.exports = env => {
     target: 'web',
     mode,
     devtool: 'source-map',
-    watch: !isProd,
     resolve: {
       extensions: ['.js', '.jsx', '.json']
     },
@@ -31,6 +31,12 @@ module.exports = env => {
       publicPath: '/',
       path: PATHS.BUILD,
       filename: `[name]${isProd ? '.[contenthash]' : ''}.bundle.js`
+    },
+    devServer: {
+      contentBase: PATHS.BUILD,
+      historyApiFallback: true,
+      hot: true,
+      port: 8181
     },
     optimization: {
       // https://webpack.js.org/configuration/optimization/#optimizationmoduleids
@@ -57,7 +63,8 @@ module.exports = env => {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/env'],
-              envName: mode
+              envName: mode,
+              ...!isProd && { plugins: [require.resolve('react-refresh/babel')] }
             }
           }
         },
@@ -84,7 +91,8 @@ module.exports = env => {
           }
         ]
       }),
-      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'main', 'index.html') })
+      new HtmlWebpackPlugin({ template: path.resolve(PATHS.SRC, 'main', 'index.html') }),
+      ...isProd ? [] : [new ReactRefreshWebpackPlugin()]
     ]
   };
 };

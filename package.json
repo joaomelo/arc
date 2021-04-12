@@ -8,7 +8,7 @@
     "test": "npm run dev:local:tests",
     "dev:local": "concurrently -c \"bgMagenta.bold,bgGreen.bold\" \"npm:dev:local:serve\" \"npm:dev:local:build\"",
     "dev:local:serve": "firebase emulators:start",
-    "dev:local:build": "rimraf dist/* && webpack --config webpack.config.js --env devLocal",
+    "dev:local:build": "rimraf dist/* && webpack serve --config webpack.config.js --env devLocal",
     "dev:local:tests": "jest --watchAll --detectOpenHandles --coverage=false --setupTestFrameworkScriptFile=./tests/config/dev-local.js",
     "dev:cosmos": "cosmos",
     "dev:cosmos:export": "cosmos-export",
@@ -33,6 +33,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
+    "cypress": "^7.0.1",
     "firebase": "^8.3.0",
     "lodash-es": "^4.17.21",
     "react": "^17.0.2",
@@ -50,6 +51,7 @@
     "@babel/eslint-parser": "^7.13.10",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.12.13",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@tailwindcss/forms": "^0.3.2",
     "@types/jest": "^26.0.20",
     "autoprefixer": "^10.2.5",
@@ -79,10 +81,12 @@
     "postcss": "^8.2.8",
     "postcss-loader": "^5.2.0",
     "react-cosmos": "^5.6.2",
+    "react-refresh": "^0.9.0",
     "rimraf": "^3.0.2",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.0.4",
     "webpack": "^5.27.2",
-    "webpack-cli": "^4.5.0"
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
