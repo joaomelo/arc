@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 
 export function AddView ({ onAdd }) {
@@ -10,7 +11,11 @@ export function AddView ({ onAdd }) {
         type="text"
         ref={register({ required: true })}
       />
-      <button type="submit">Add</button>
+      <Button type="submit">Add</Button>
     </form>
   );
 }
+
+const Button = styled.button`
+  background: 'blue'
+`;
