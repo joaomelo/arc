@@ -6,9 +6,9 @@
   "scripts": {
     "start": "npm run dev:local",
     "test": "npm run dev:local:tests",
-    "dev:local": "concurrently -c \"bgMagenta.bold,bgGreen.bold\" \"npm:dev:local:serve\" \"npm:dev:local:build\"",
-    "dev:local:serve": "firebase emulators:start",
-    "dev:local:build": "rimraf dist/* && webpack serve --config webpack.config.js --env devLocal",
+    "dev:local": "concurrently -c \"bgMagenta.bold,bgGreen.bold\" \"npm:dev:local:services\" \"npm:dev:local:server\"",
+    "dev:local:services": "firebase emulators:start",
+    "dev:local:server": "rimraf dist/* && webpack serve --config webpack.config.js --env devLocal",
     "dev:local:tests": "jest --watchAll --detectOpenHandles --coverage=false --setupTestFrameworkScriptFile=./tests/config/dev-local.js",
     "prod:local:build": "rimraf dist/* && webpack --config webpack.config.js --env prodLocal",
     "prod:local:tests": "firebase emulators:exec -- \"jest --detectOpenHandles --setupTestFrameworkScriptFile=./tests/config/prod-local.js\"",
