@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export function ListView ({ arcs }) {
   return (
@@ -20,9 +20,9 @@ function List ({ arcs }) {
 function ListItem ({ arc }) {
   return (
     <li>
-      <Link to={`/i/arcs/${arc.id}/challenges`}>
+      <a to={`/i/arcs/${arc.id}/challenges`}>
         { arc.name }
-      </Link>
+      </a>
     </li>
   );
 }
