@@ -1,9 +1,8 @@
-import { usePayload } from '../../../app/forms';
-import { useReportError } from '../../../app/error';
+import { Loading, usePayload } from '../../../app/components';
 
-export function SignInView ({ onSubmit, isLoading, error }) {
+export function SignInView ({ onSubmit, isLoading, errors }) {
   const { payload, updatePayload } = usePayload({ email: '', password: '' });
-  const reportError = useReportError();
+  const { formError, emailError, passwordError } = errors;
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -12,8 +11,8 @@ export function SignInView ({ onSubmit, isLoading, error }) {
 
   return (
     <div>
+      <Loading isLoading={isLoading} />
       <h2>Sign in</h2>
-      <p>{isLoading && 'Loading...'}</p>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="inputEmail">Email address</label>
@@ -22,7 +21,7 @@ export function SignInView ({ onSubmit, isLoading, error }) {
             value={payload.email}
             onChange={e => updatePayload({ email: e.target.value })}
           />
-          <p>{reportError(error, ['AUTH/EMAIL_INVALID'])}</p>
+          <p>{emailError}</p>
         </div>
         <div>
           <label htmlFor="inputPassword">Password</label>
@@ -31,12 +30,11 @@ export function SignInView ({ onSubmit, isLoading, error }) {
             type="password"
             value={payload.password}
             onChange={e => updatePayload({ password: e.target.value })}
-
           />
-          <p>{reportError(error, ['AUTH/PASSWORD_INVALID'])}</p>
+          <p>{passwordError}</p>
         </div>
 
-        <p>{reportError(error)}</p>
+        <p>{formError}</p>
 
         <button
           id="buttonSignIn"
