@@ -1,5 +1,4 @@
-
-import { validateCredentials } from './credentials';
+import { validateCredentials } from '../body';
 
 export async function signInCase (credentials, dependencies) {
   const { identityProvider } = dependencies;

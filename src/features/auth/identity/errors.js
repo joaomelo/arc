@@ -3,8 +3,7 @@ import { AppError } from '../../../app/error';
 export class EmailAlreadyInUseError extends AppError {
   constructor () {
     super({
-      code: 'EMAIL_ALREADY_IN_USE',
-      description: 'auth.error-email-already-in-use',
+      code: 'AUTH/EMAIL_ALREADY_IN_USE',
       isOperational: true
     });
     Error.captureStackTrace(this, EmailAlreadyInUseError);
@@ -14,8 +13,7 @@ export class EmailAlreadyInUseError extends AppError {
 export class CredentialsUnrecognizedError extends AppError {
   constructor () {
     super({
-      code: 'CREDENTIALS_UNRECOGNIZED',
-      description: 'auth.error-credentials-unrecognized',
+      code: 'AUTH/CREDENTIALS_UNRECOGNIZED',
       isOperational: true
     });
     Error.captureStackTrace(this, CredentialsUnrecognizedError);
