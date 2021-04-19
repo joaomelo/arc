@@ -1,2 +1,2 @@
 export * from './app-error';
-export * from './reports';
+export * from './report';

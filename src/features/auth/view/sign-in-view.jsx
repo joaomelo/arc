@@ -1,8 +1,7 @@
-import { Loading, usePayload } from '../../../app/components';
+import { usePayload } from '../../../app/components';
 
-export function SignInView ({ onSubmit, isLoading, errors }) {
+export function SignInView ({ onSubmit, errors }) {
   const { payload, updatePayload } = usePayload({ email: '', password: '' });
-  const { formError, emailError, passwordError } = errors;
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -11,7 +10,6 @@ export function SignInView ({ onSubmit, isLoading, errors }) {
 
   return (
     <div>
-      <Loading isLoading={isLoading} />
       <h2>Sign in</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -21,7 +19,7 @@ export function SignInView ({ onSubmit, isLoading, errors }) {
             value={payload.email}
             onChange={e => updatePayload({ email: e.target.value })}
           />
-          <p>{emailError}</p>
+          <p>{errors.email}</p>
         </div>
         <div>
           <label htmlFor="inputPassword">Password</label>
@@ -31,10 +29,10 @@ export function SignInView ({ onSubmit, isLoading, errors }) {
             value={payload.password}
             onChange={e => updatePayload({ password: e.target.value })}
           />
-          <p>{passwordError}</p>
+          <p>{errors.password}</p>
         </div>
 
-        <p>{formError}</p>
+        <p>{errors.escaped}</p>
 
         <button
           id="buttonSignIn"
