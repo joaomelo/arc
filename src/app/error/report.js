@@ -19,10 +19,12 @@ function reportOnCodes (error, codeOrCodes) {
 }
 
 function reportOnEscaped (error, schema) {
+  if (!error) return null;
+
   const { code } = error;
   const registeredCodes = Object.values(schema).flat();
 
-  if (!error || registeredCodes.includes(code)) return null;
+  if (registeredCodes.includes(code)) return null;
   if (!code) return error.message;
   return code;
 };

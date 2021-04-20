@@ -56,4 +56,17 @@ describe('error report module', () => {
       escaped: 'error without code'
     }));
   });
+
+  test('no error creates a report with null in all keys', () => {
+    const errors = createErrorReport(undefined, {
+      thisField: 'THIS_CODE',
+      otherField: 'OTHER_CODE'
+    });
+
+    expect(errors).toEqual(expect.objectContaining({
+      thisField: null,
+      otherField: null,
+      escaped: null
+    }));
+  });
 });

@@ -3,10 +3,10 @@ import 'regenerator-runtime/runtime';
 
 import { initFirebaseSuiteFromEnv } from '../app/firebase';
 import { createRepositoryProvider } from '../app/repository';
-import { mountRoot } from '../features/root';
 import { createAuthStore, createIdentityProvider } from '../features/auth';
 import { createArcsStore, createArcsRepository } from '../features/arcs';
 import { createChallengesRepository, createChallengesStore } from '../features/challenges';
+import { mountRoot } from '../features/root';
 
 async function main () {
   const suite = initFirebaseSuiteFromEnv();

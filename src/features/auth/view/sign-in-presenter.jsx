@@ -17,7 +17,6 @@ export function SignInPresenter ({ dependencies }) {
       <Loading isLoading={isRunning} />
       <SignInView
         onSubmit={run}
-        isLoading={isRunning}
         errors={errors}
       />
     </>
