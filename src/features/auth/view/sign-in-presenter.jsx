@@ -1,4 +1,3 @@
-import { Loading } from '../../../app/components';
 import { useCase } from '../../../app/use-case';
 import { createErrorReport } from '../../../app/error';
 import { signInCase } from '../cases';
@@ -14,9 +13,9 @@ export function SignInPresenter ({ dependencies }) {
 
   return (
     <>
-      <Loading isLoading={isRunning} />
       <SignInView
         onSubmit={run}
+        isLoading={isRunning}
         errors={errors}
       />
     </>
