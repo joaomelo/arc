@@ -7,6 +7,7 @@
   "email-updated": "E-mail updated",
   "error-credentials-unrecognized": "User's email does not exist or failed to validate password",
   "error-email-already-in-use": "Can't create or update a user with an e-mail already in use",
+  "language": "Language",
   "loading": "Loading user",
   "password": "Password",
   "password-current": "Current password",
@@ -14,11 +15,11 @@
   "password-repeat": "Repeat password",
   "password-update": "Update password",
   "password-updated": "Password updated",
+  "preferences": "Preferences",
+  "preferences-updated": "Preferences updated",
   "go-sign-up": "Don't have a account? Go to sign up",
   "go-sign-in": "Already have a account? Go to sign in",
   "sign-in": "Sign in",
   "sign-out": "Sign out",
-  "sign-up": "Sign up",
-  "sign-up-to-arc": "Sign up to ARC",
-  "sign-in-to-arc": "Sign in to ARC"
+  "sign-up": "Sign up"
 }

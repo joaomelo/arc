@@ -1,6 +1,10 @@
 import { UnsupportedSignMethod, EmailAlreadyInUseError } from '@/domain/auth';
 import { extractUser } from './extract-user';
 
+export async function signUp (payload, { authService }) {
+  return authService.signUp(payload);
+}
+
 export function fireauthSignUp ({ method, credentials }, fireauth) {
   switch (method) {
     case 'email':
